@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
 import Welcome from '../components/Welcome';
+import CreatePin from '../components/v2/Pin/CreatePin'
 
 import * as SettingsActions from '../actions/settings';
 import * as ValidateActions from '../actions/validate';
@@ -80,16 +81,9 @@ class WelcomeContainer extends Component<Props> {
       settings,
       validate
     } = this.props;
-    
+
     return (
-      <Welcome
-        actions={actions}
-        connection={connection}
-        history={history}
-        keys={keys}
-        settings={settings}
-        validate={validate}
-      />
+      <CreatePin />
     );
   }
 }
