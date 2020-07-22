@@ -1,8 +1,9 @@
 import React from "react"
 import PropTypes from "prop-types"
-import { Button, Container, Form, Input, Message } from "semantic-ui-react"
+import { Form, Input } from "semantic-ui-react"
 
 import "./Pin.global.css"
+import * as types from "../../../actions/types"
 
 const initialState = {
   pinDigitsCount: 6,
@@ -97,7 +98,12 @@ class CreatePin extends React.Component {
           if (confirmPinScreen) {
             if (allPinInputsFilled) {
               if (confirmPinMatches) {
-                // Store the data
+                return (dispatch: () => void) => {
+                  dispatch({
+                    type: types.SET_WALLET_PIN,
+                    payload: { pin }
+                  });
+                };
               } else {
                 // Reset to create pin if pin don't match
                 this.setState(initialState)
