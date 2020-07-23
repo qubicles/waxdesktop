@@ -41,7 +41,7 @@ form {
   padding-left: 35%;
 }
 
-.create-pin {
+.pin {
   display: block;
   position: absolute;
   box-sizing: content-box;
@@ -70,7 +70,7 @@ form {
   top: 0px;
 }
 
-.create-pin .pin-digit {
+.pin .pin-digit {
   box-sizing: border-box;
   -ms-transform: rotate(0deg);
   -webkit-transform: rotate(0deg);
@@ -112,11 +112,11 @@ form {
   color: #ffffff
 }
 
-.create-pin .pin-digit:focus-within {
+.pin .pin-digit:focus-within {
   opacity: 1 !important;
 }
 
-.create-pin .pin-digit input {
+.pin .pin-digit input {
   background: rgb(25, 31, 40) !important;
   color: rgb(70, 51, 53) !important;
   font-size: 29px !important;
@@ -126,18 +126,18 @@ form {
   caret-color: white;
 }
 
-.create-pin .is-filled {
+.pin .is-filled {
   border-color: rgb(70, 51, 53) !important;
   opacity: 1 !important;
 }
 
-.create-pin .is-filled input {
+.pin .is-filled input {
   background: rgb(70, 51, 53) !important;
   color: rgba(255, 136, 109, 1) !important;
   border: rgb(70, 51, 53) !important;
 }
 
-.create-pin .wax {
+.pin .wax {
   position: absolute;
   box-sizing: content-box;
   -ms-transform: rotate(0deg);
@@ -176,7 +176,7 @@ form {
   top: 260px;
 }
 
-.create-pin .desktop {
+.pin .desktop {
   position: absolute;
   box-sizing: content-box;
   -ms-transform: rotate(0deg);
@@ -215,7 +215,7 @@ form {
   top: 305.09px;
 }
 
-.create-pin .logo-rect1 {
+.pin .logo-rect1 {
   position: absolute;
   box-sizing: border-box;
   -ms-transform: rotate(45deg);
@@ -258,7 +258,7 @@ form {
   top: 256.06px;
 }
 
-.create-pin .logo-rect2 {
+.pin .logo-rect2 {
   position: absolute;
   box-sizing: border-box;
   -ms-transform: rotate(45deg);
@@ -301,7 +301,7 @@ form {
   top: 256.06px;
 }
 
-.create-pin .createYour6DigitPinToSecureYourWallet {
+.pin .onScreenInstruction {
   position: absolute;
   box-sizing: content-box;
   -ms-transform: rotate(0deg);
@@ -340,7 +340,7 @@ form {
   top: 354px;
 }
 
-.create-pin .createYour6DigitPinToSecureYourWallet .createYour6DigitPinToSecureYourWallet-0 {
+.pin .onScreenInstruction .onScreenInstruction-1 {
   color: rgba(255, 255, 255, 1);
   font-weight: 700;
   font-style: normal;
@@ -350,7 +350,7 @@ form {
   text-decoration: none;
 }
 
-.create-pin .createYour6DigitPinToSecureYourWallet .createYour6DigitPinToSecureYourWallet-12 {
+.pin .onScreenInstruction .onScreenInstruction-2 {
   color: rgba(255, 136, 109, 1);
   font-weight: 700;
   font-style: normal;
@@ -360,7 +360,7 @@ form {
   text-decoration: none;
 }
 
-.create-pin .createYour6DigitPinToSecureYourWallet .createYour6DigitPinToSecureYourWallet-23 {
+.pin .onScreenInstruction .onScreenInstruction-3 {
   color: rgba(255, 255, 255, 1);
   font-weight: 700;
   font-style: normal;
@@ -370,7 +370,7 @@ form {
   text-decoration: none;
 }
 
-.create-pin .resetWallet {
+.pin .resetWallet {
   position: absolute;
   box-sizing: content-box;
   -ms-transform: rotate(0deg);

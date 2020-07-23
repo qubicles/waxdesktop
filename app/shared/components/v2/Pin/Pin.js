@@ -3,7 +3,6 @@ import PropTypes from "prop-types"
 import { Form, Input } from "semantic-ui-react"
 
 import "./Pin.global.css"
-import * as types from "../../../actions/types"
 
 const initialState = {
   pinDigitsCount: 6,
@@ -33,7 +32,8 @@ const initialState = {
     confirmValue: ""
   }
 }
-class CreatePin extends React.Component {
+
+class Pin extends React.Component {
   constructor(props) {
     super(props)
 
@@ -75,9 +75,31 @@ class CreatePin extends React.Component {
     return allPinInputsFilled
   }
 
+  getPinEntered = () => {
+    let pin = ""
+    const { pinDigitsCount } = this.state
+
+    for (let i = 0; i < pinDigitsCount; i++) {
+      const { value, confirmValue } = this.state[`pinInput_${i}`]
+      pin += value
+    }
+    return pin
+  }
+
+  enteredCorrectPin = () => {
+    const {wallet} = this.props
+
+    if(this.getPinEntered() === wallet.pin) {
+      return true
+    }
+
+    return false
+  }
+
   onPinInput = e => {
     let { id, value } = e.target
     const { confirmPinScreen, [id]: pinInput, pinDigitsCount } = this.state
+    const { enterPinScreen, actions, onUserLogin } = this.props
     value = value.slice(0, 1)
 
     const currentInputId = id.split("_")[1]
@@ -91,24 +113,18 @@ class CreatePin extends React.Component {
           [id]: { ...pinInput, confirmValue: value }
         },
         () => {
-          // After entering pins in both the screens
           const allPinInputsFilled = this.checkAllPinInputsFilled()
           const confirmPinMatches = this.checkConfirmPinMatches()
 
-          if (confirmPinScreen) {
-            if (allPinInputsFilled) {
-              if (confirmPinMatches) {
-                return (dispatch: () => void) => {
-                  dispatch({
-                    type: types.SET_WALLET_PIN,
-                    payload: { pin }
-                  });
-                };
-              } else {
-                // Reset to create pin if pin don't match
-                this.setState(initialState)
-                document.getElementById(`pinInput_0`).focus()
-              }
+          if (allPinInputsFilled) {
+            // After entering pins in both the screens
+            if (confirmPinMatches) {
+              actions.setWalletPin(this.getPinEntered())
+              onUserLogin()
+            } else {
+              // Go back to Create PIN if confirm pin doesn't match
+              this.setState(initialState)
+              document.getElementById(`pinInput_0`).focus()
             }
           }
         }
@@ -122,8 +138,17 @@ class CreatePin extends React.Component {
           const allPinInputsFilled = this.checkAllPinInputsFilled()
 
           if (allPinInputsFilled) {
-            // Render the confirm PIN screen
-            this.setState({ confirmPinScreen: true })
+            if (enterPinScreen) {
+              if (this.enteredCorrectPin()) {
+                onUserLogin()
+              } else {
+                // Entered incorrect pin
+                this.setState(initialState)
+              }
+            } else {
+              // Render the confirm PIN screen
+              this.setState({ confirmPinScreen: true })
+            }
             document.getElementById(`pinInput_0`).focus()
           }
         }
@@ -131,7 +156,7 @@ class CreatePin extends React.Component {
     }
   }
 
-  getPinInputs() {
+  showPinInputs() {
     const pinInputs = [...Array(this.state.pinDigitsCount)].map((e, i) => {
       const pinInputId = `pinInput_${i}`
       const {
@@ -159,23 +184,27 @@ class CreatePin extends React.Component {
 
   render() {
     const { confirmPinScreen } = this.state
+    const { enterPinScreen } = this.props
 
     return (
-      <div className="create-pin">
-        <Form className="pin-form">{this.getPinInputs()}</Form>
+      <div className="pin">
+        <Form className="pin-form">{this.showPinInputs()}</Form>
         <div className="wax">WAX</div>
         <div className="desktop">DESKTOP</div>
         <div className="logo-rect1"></div>
         <div className="logo-rect2"></div>
-        <div className="createYour6DigitPinToSecureYourWallet">
-          <span className="createYour6DigitPinToSecureYourWallet-0">
-            {confirmPinScreen ? "Confirm Your " : "Create Your "}
+        <div className="onScreenInstruction">
+          <span className="onScreenInstruction-1">
+            {!enterPinScreen &&
+              (confirmPinScreen ? "Confirm Your " : "Create Your ")}
           </span>
-          <span className="createYour6DigitPinToSecureYourWallet-12">
-            6-Digit Pin{" "}
+          <span className="onScreenInstruction-2">
+            {enterPinScreen ? "Enter pin " : "6-Digit Pin "}
           </span>
-          <span className="createYour6DigitPinToSecureYourWallet-23">
-            {!confirmPinScreen && "To Secure Your Wallet"}
+          <span className="onScreenInstruction-3">
+            {enterPinScreen
+              ? "to access your wallet"
+              : !confirmPinScreen && "To Secure Your Wallet"}
           </span>
         </div>
         <div className="resetWallet">RESET WALLET</div>
@@ -184,8 +213,8 @@ class CreatePin extends React.Component {
   }
 }
 
-CreatePin.propTypes = {}
+Pin.propTypes = {}
 
-CreatePin.defaultProps = {}
+Pin.defaultProps = {}
 
-export default CreatePin
+export default Pin

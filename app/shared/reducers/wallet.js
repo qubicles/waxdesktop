@@ -1,7 +1,8 @@
 import * as types from "../actions/types";
 
 const initialState = {
-  data: false
+  data: false,
+  pin: ""
 };
 
 export default function wallet(state = initialState, action) {
