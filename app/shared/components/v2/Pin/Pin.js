@@ -99,7 +99,8 @@ class Pin extends React.Component {
   onPinInput = e => {
     let { id, value } = e.target
     const { confirmPinScreen, [id]: pinInput, pinDigitsCount } = this.state
-    const { enterPinScreen, actions, onUserLogin } = this.props
+    const { actions, onUserLogin, wallet } = this.props
+    const enterPinScreen = wallet.pin !== ""
     value = value.slice(0, 1)
 
     const currentInputId = id.split("_")[1]
@@ -184,7 +185,8 @@ class Pin extends React.Component {
 
   render() {
     const { confirmPinScreen } = this.state
-    const { enterPinScreen } = this.props
+    const { wallet } = this.props
+    const enterPinScreen = wallet.pin !== ""
 
     return (
       <div className="pin">
