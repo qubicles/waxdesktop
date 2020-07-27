@@ -1,6 +1,7 @@
 import React from "react"
 import PropTypes from "prop-types"
 import { Form, Input } from "semantic-ui-react"
+import showSweetAlert from "../../../utils/SweetAlert"
 
 import "./Pin.global.css"
 
@@ -123,9 +124,10 @@ class Pin extends React.Component {
               actions.setWalletPin(this.getPinEntered())
               onUserLogin()
             } else {
-              // Go back to Create PIN if confirm pin doesn't match
+              // Go back to Create PIN when confirm pin doesn't match
               this.setState(initialState)
               document.getElementById(`pinInput_0`).focus()
+              showSweetAlert('error', 'PINs don\'t match. Please try again.')
             }
           }
         }
@@ -144,13 +146,15 @@ class Pin extends React.Component {
                 onUserLogin()
               } else {
                 // Entered incorrect pin
+                document.getElementById(`pinInput_0`).focus()
                 this.setState(initialState)
+                showSweetAlert('error', 'Incorrect PIN entered. Please try again.')
               }
             } else {
               // Render the confirm PIN screen
               this.setState({ confirmPinScreen: true })
+              document.getElementById(`pinInput_0`).focus()
             }
-            document.getElementById(`pinInput_0`).focus()
           }
         }
       )
@@ -191,6 +195,7 @@ class Pin extends React.Component {
     const { confirmPinScreen } = this.state
     const { wallet } = this.props
     const enterPinScreen = wallet.pin !== ""
+    
     return (
       <div className="pin">
         <Form className="pin-form">{this.showPinInputs()}</Form>
