@@ -183,11 +183,14 @@ class Pin extends React.Component {
     return pinInputs
   }
 
+  componentDidMount() {
+    document.getElementById(`pinInput_0`).focus()
+  }
+
   render() {
     const { confirmPinScreen } = this.state
     const { wallet } = this.props
     const enterPinScreen = wallet.pin !== ""
-
     return (
       <div className="pin">
         <Form className="pin-form">{this.showPinInputs()}</Form>
