@@ -355,8 +355,11 @@ form {
   text-decoration: none;
 }
 
+.pin .resetWallet:hover {
+  cursor: pointer;
+}
+
 .pin .resetWallet {
-  position: absolute;
   box-sizing: content-box;
   -ms-transform: rotate(0deg);
   -webkit-transform: rotate(0deg);
@@ -366,14 +369,9 @@ form {
   transform-origin: center;
   opacity: 0.4000000059604645;
   cursor: default;
-  margin-top: 0px;
-  margin-right: 0px;
-  margin-bottom: 0px;
-  margin-left: 0px;
-  padding-top: 0px;
-  padding-right: 0px;
-  padding-bottom: 0px;
-  padding-left: 0px;
+  margin: auto;
+  margin-top: 630px;
+  margin-left: 543px;
   background-color: rgba(255, 255, 255, 0);
   text-align: center;
   letter-spacing: 0px;
@@ -390,6 +388,4 @@ form {
   white-space: pre;
   width: 138px;
   height: 19px;
-  left: 532px;
-  top: 640px;
 }

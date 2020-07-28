@@ -15,9 +15,16 @@ class WelcomeContainer extends Component {
   }
 
   render() {
-    const { wallet, actions } = this.props
+    const { wallet, actions, history, location } = this.props
+
     return (
-      <Pin wallet={wallet} actions={actions} onUserLogin={this.onUserLogin} />
+      <Pin
+        wallet={wallet}
+        actions={actions}
+        history={history}
+        location={location}
+        onUserLogin={this.onUserLogin}
+      />
     )
   }
 }

@@ -1,11 +1,14 @@
 import React from "react"
 import PropTypes from "prop-types"
-import { Form, Input } from "semantic-ui-react"
+import { Form, Input, Button } from "semantic-ui-react"
+
+import ResetWalletModal from "../ResetWallet/ResetWalletModal"
 import showSweetAlert from "../../../utils/SweetAlert"
 
 import "./Pin.global.css"
 
 const initialState = {
+  resetWalletModal: false,
   pinDigitsCount: 6,
   confirmPinScreen: false,
   pinInput_0: {
@@ -88,9 +91,9 @@ class Pin extends React.Component {
   }
 
   enteredCorrectPin = () => {
-    const {wallet} = this.props
+    const { wallet } = this.props
 
-    if(this.getPinEntered() === wallet.pin) {
+    if (this.getPinEntered() === wallet.pin) {
       return true
     }
 
@@ -126,8 +129,8 @@ class Pin extends React.Component {
             } else {
               // Go back to Create PIN when confirm pin doesn't match
               this.setState(initialState)
-              document.getElementById(`pinInput_0`).focus()
-              showSweetAlert('error', 'PINs don\'t match. Please try again.')
+              this.focusFirstInput()
+              showSweetAlert("error", "PINs don't match. Please try again.")
             }
           }
         }
@@ -146,14 +149,17 @@ class Pin extends React.Component {
                 onUserLogin()
               } else {
                 // Entered incorrect pin
-                document.getElementById(`pinInput_0`).focus()
+                this.focusFirstInput()
                 this.setState(initialState)
-                showSweetAlert('error', 'Incorrect PIN entered. Please try again.')
+                showSweetAlert(
+                  "error",
+                  "Incorrect PIN entered. Please try again."
+                )
               }
             } else {
               // Render the confirm PIN screen
               this.setState({ confirmPinScreen: true })
-              document.getElementById(`pinInput_0`).focus()
+              this.focusFirstInput()
             }
           }
         }
@@ -188,14 +194,26 @@ class Pin extends React.Component {
   }
 
   componentDidMount() {
+    this.focusFirstInput()
+  }
+
+  focusFirstInput() {
     document.getElementById(`pinInput_0`).focus()
   }
 
+  toggleResetWalletModal = () => {
+    const { resetWalletModal } = this.state
+    this.setState({ resetWalletModal: !resetWalletModal }, () => {
+      if (!this.state.resetWalletModal)
+        this.focusFirstInput()
+    })
+  }
+
   render() {
-    const { confirmPinScreen } = this.state
-    const { wallet } = this.props
+    const { confirmPinScreen, resetWalletModal } = this.state
+    const { wallet, actions, history, location } = this.props
     const enterPinScreen = wallet.pin !== ""
-    
+
     return (
       <div className="pin">
         <Form className="pin-form">{this.showPinInputs()}</Form>
@@ -217,7 +235,18 @@ class Pin extends React.Component {
               : !confirmPinScreen && "To Secure Your Wallet"}
           </span>
         </div>
-        <div className="resetWallet">RESET WALLET</div>
+        {enterPinScreen && (
+          <div className="resetWallet" onClick={this.toggleResetWalletModal}>
+            RESET WALLET
+          </div>
+        )}
+        <ResetWalletModal
+          closeModal={this.toggleResetWalletModal}
+          modalOpen={resetWalletModal}
+          history={history}
+          actions={actions}
+          location={location}
+        />
       </div>
     )
   }
