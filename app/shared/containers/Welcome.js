@@ -2,6 +2,7 @@
 import React, { Component } from "react"
 import { bindActionCreators } from "redux"
 import { connect } from "react-redux"
+import SnackbarProvider from "react-simple-snackbar"
 import { withRouter } from "react-router-dom"
 
 import Pin from "../components/v2/Pin/Pin"
@@ -18,13 +19,15 @@ class WelcomeContainer extends Component {
     const { wallet, actions, history, location } = this.props
 
     return (
-      <Pin
-        wallet={wallet}
-        actions={actions}
-        history={history}
-        location={location}
-        onUserLogin={this.onUserLogin}
-      />
+      <SnackbarProvider>
+        <Pin
+          wallet={wallet}
+          actions={actions}
+          history={history}
+          location={location}
+          onUserLogin={this.onUserLogin}
+        />
+      </SnackbarProvider>
     )
   }
 }

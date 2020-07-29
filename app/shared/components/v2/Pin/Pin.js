@@ -1,9 +1,9 @@
 import React from "react"
 import PropTypes from "prop-types"
+import { withSnackbar } from "react-simple-snackbar"
 import { Form, Input, Button } from "semantic-ui-react"
 
 import ResetWalletModal from "../ResetWallet/ResetWalletModal"
-import showSweetAlert from "../../../utils/SweetAlert"
 
 import "./Pin.global.css"
 
@@ -103,7 +103,7 @@ class Pin extends React.Component {
   onPinInput = e => {
     let { id, value } = e.target
     const { confirmPinScreen, [id]: pinInput, pinDigitsCount } = this.state
-    const { actions, onUserLogin, wallet } = this.props
+    const { actions, onUserLogin, wallet, openSnackbar } = this.props
     const enterPinScreen = wallet.pin !== ""
     value = value.slice(0, 1)
 
@@ -130,7 +130,7 @@ class Pin extends React.Component {
               // Go back to Create PIN when confirm pin doesn't match
               this.setState(initialState)
               this.focusFirstInput()
-              showSweetAlert("error", "PINs don't match. Please try again.")
+              openSnackbar("PINs don't match. Please try again.", 1000)
             }
           }
         }
@@ -151,10 +151,7 @@ class Pin extends React.Component {
                 // Entered incorrect pin
                 this.focusFirstInput()
                 this.setState(initialState)
-                showSweetAlert(
-                  "error",
-                  "Incorrect PIN entered. Please try again."
-                )
+                openSnackbar("Incorrect PIN entered. Please try again.", 1000)
               }
             } else {
               // Render the confirm PIN screen
@@ -204,8 +201,7 @@ class Pin extends React.Component {
   toggleResetWalletModal = () => {
     const { resetWalletModal } = this.state
     this.setState({ resetWalletModal: !resetWalletModal }, () => {
-      if (!this.state.resetWalletModal)
-        this.focusFirstInput()
+      if (!this.state.resetWalletModal) this.focusFirstInput()
     })
   }
 
@@ -256,4 +252,4 @@ Pin.propTypes = {}
 
 Pin.defaultProps = {}
 
-export default Pin
+export default withSnackbar(Pin)
