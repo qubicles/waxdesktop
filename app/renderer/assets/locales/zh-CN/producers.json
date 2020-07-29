@@ -38,7 +38,7 @@
   "producer_voter_preview_transaction_successful_message": "此操作已记录在区块链中,交易信息可在下方找到.",
   "producer_voter_preview_close": "关闭",
   "producer_voter_proxying_vote": "Currently selected proxy votes",
-  "producer_welcome_header": "欢迎Sqrl-投票者",
+  "producer_welcome_header": "欢迎WAX Desktop-投票者",
   "producer_welcome_subheader": "",
   "producers_block_producers": "Block Producers",
   "producer_welcome_p1": "",

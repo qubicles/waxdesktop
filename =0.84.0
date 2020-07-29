@@ -1,0 +1,8 @@
++ semantic-ui-react@0.81.3
+updated 1 package and audited 2988 packages in 27.879s
+
+23 packages are looking for funding
+  run `npm fund` for details
+
+found 390 vulnerabilities (380 low, 4 moderate, 6 high)
+  run `npm audit fix` to fix them, or `npm audit` for details

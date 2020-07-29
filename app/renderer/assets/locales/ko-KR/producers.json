@@ -38,7 +38,7 @@
   "producer_voter_preview_transaction_successful_message": "이 작업은 블록체인에 기록되었습니다. 거래 정보는 아래에서 확인할 수 있습니다.",
   "producer_voter_preview_close": "닫기",
   "producer_voter_proxying_vote": "현재 선택된 프록시 투표",
-  "producer_welcome_header": "Sqrl에 오신 것을 환영합니다.",
+  "producer_welcome_header": "WAX Desktop에 오신 것을 환영합니다.",
   "producer_welcome_subheader": "",
   "producers_block_producers": "Block Producers",
   "producer_welcome_p1": "",

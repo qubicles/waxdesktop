@@ -128,7 +128,7 @@ class GovernanceProposalsProposal extends Component<Props> {
       profile = {
         referrals: 0,
         vip_level: 0,
-        usage: '0.0000 SQRL'
+        usage: '0.0000 POWER'
       }
     if (!profile.avatar)
       profile.avatar = avatarPlaceholder;

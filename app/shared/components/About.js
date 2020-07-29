@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import { Divider, Grid, Header, Image, Segment } from 'semantic-ui-react';
 import { I18n } from 'react-i18next';
 
-import logo from '../../renderer/assets/images/sqrl.png';
+import logo from '../../renderer/assets/images/wdw.png';
 import GlobalButtonResetContainer from '../containers/Global/Button/Reset';
 
 const { shell } = require('electron');
@@ -52,22 +52,17 @@ export default class About extends Component<Props> {
                 </Grid.Column>
                 <Grid.Column width={8}>
                   <Segment basic>
-                    <Image src={logo} alt="Telos Sqrl" />
+                    <Image src={logo} alt="WAX Desktop" />
                     <Segment basic padded>
                       <p>{t('about_greymass_message_1')}</p>
                       <p>
                         {t('about_greymass_message_2')}
                         {' '}
                         <a
-                          onClick={() => this.openLink('https://telosfoundation.io')}
+                          onClick={() => this.openLink('https://zenblocks.io')}
                           role="button"
                         >
-                          https://telosfoundation.io
-                        </a> or <a
-                          onClick={() => this.openLink('https://eos.miami')}
-                          role="button"
-                        >
-                          https://eos.miami
+                          https://zenblocks.io
                         </a>.
                       </p>
                     </Segment>

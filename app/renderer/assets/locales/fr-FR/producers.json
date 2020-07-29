@@ -38,7 +38,7 @@
   "producer_voter_preview_transaction_successful_message": "Cette action a été enregistrée sur la Blockchain. Les identifiants de la transaction peuvent être trouvées ci-dessous.",
   "producer_voter_preview_close": "Fermer",
   "producer_voter_proxying_vote": "Currently selected proxy votes",
-  "producer_welcome_header": "Bienvenue sur Sqrl",
+  "producer_welcome_header": "Bienvenue sur WAX Desktop",
   "producer_welcome_subheader": "",
   "producers_block_producers": "Block Producers",
   "producer_welcome_p1": "",

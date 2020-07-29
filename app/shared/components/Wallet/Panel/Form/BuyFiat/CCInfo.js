@@ -277,7 +277,7 @@ class WalletPanelFormBuyFiatCCInfo extends Component<Props> {
         </Segment>}
 
         <Message
-          content="Important Note: Sqrl does NOT store your information. It simply collects and securely transmits your payment information to Carbon.Money for processing."
+          content="Important Note: WAX Desktop does NOT store your information. It simply collects and securely transmits your payment information to Carbon.Money for processing."
           icon="info circle"
           info
         />

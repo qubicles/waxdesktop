@@ -3,11 +3,11 @@ import React, { Component } from 'react';
 import { Dropdown } from 'semantic-ui-react';
 import { translate } from 'react-i18next';
 
-class GlobalSettingsSqrlToken extends Component<Props> {
+class GlobalSettingsPowerToken extends Component<Props> {
   onChange = (e, { value }) => {
     const { actions } = this.props;
 
-    actions.setSetting('useSQRLtoken', value);
+    actions.setSetting('usePOWERtoken', value);
   }
 
   render() {
@@ -19,8 +19,8 @@ class GlobalSettingsSqrlToken extends Component<Props> {
     } = this.props;
 
     const options = [
-      { key: 'use_sqrl_token_on', value: true, text: t('global_settings_use_sqrl_token_on') },
-      { key: 'use_sqrl_token_off', value: false, text: t('global_settings_use_sqrl_token_off') }
+      { key: 'use_power_token_on', value: true, text: t('global_settings_use_power_token_on') },
+      { key: 'use_power_token_off', value: false, text: t('global_settings_use_power_token_off') }
     ];
 
     return (
@@ -35,4 +35,4 @@ class GlobalSettingsSqrlToken extends Component<Props> {
   }
 }
 
-export default translate('global')(GlobalSettingsSqrlToken);
+export default translate('global')(GlobalSettingsPowerToken);

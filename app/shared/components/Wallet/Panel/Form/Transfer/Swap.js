@@ -16,14 +16,14 @@ class WalletPanelFormTransferSwap extends Component<Props> {
     
     const { globals } = props;
 
-    const fromToken = globals.remotetokens && globals.remotetokens.filter((token) => token.symbol=='QBE')[0];
-    const toToken = globals.remotetokens && globals.remotetokens.filter((token) => token.symbol=='SQRL')[0];
+    const fromToken = globals.remotetokens && globals.remotetokens.filter((token) => token.symbol=='WAX')[0];
+    const toToken = globals.remotetokens && globals.remotetokens.filter((token) => token.symbol=='POWER')[0];
 
     this.state = {
-      fromAsset: 'QBE',
-      toAsset: 'SQRL',
-      quantity: '0.0000 QBE',
-      toQuantity: '0.0000 SQRL',
+      fromAsset: 'WAX',
+      toAsset: 'POWER',
+      quantity: '0.0000 WAX',
+      toQuantity: '0.0000 POWER',
       fromLogo: fromToken ? fromToken.logo : '',
       toLogo: toToken ? toToken.logo : '',
       confirming: false,

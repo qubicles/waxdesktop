@@ -51,9 +51,9 @@ export default class ProducersSelector extends Component<Props> {
                 <Icon name='thumbs outline up' />
                 <Message.Content>
                 <Message.Header>
-                  Help us make Sqrl better
+                  Help us make WAX Desktop Wallet better
                 </Message.Header>
-                  Please vote for&nbsp;<b><a onClick={() => this.openLink("https://telos.miami")} role="link" style={{ cursor: 'pointer' }}>telosmiamibp</a></b>&nbsp;to help support Sqrl development and 
+                  Please vote for&nbsp;<b><a onClick={() => this.openLink("https://telos.miami")} role="link" style={{ cursor: 'pointer' }}>telosmiamibp</a></b>&nbsp;to help support WAX Desktop development and 
                   for&nbsp;<b><a onClick={() => this.openLink("https://goodblock.io")} role="link" style={{ cursor: 'pointer' }}>goodblocktls</a></b>, a key sponsor of Telos.
                   </Message.Content>
                 </Message>
@@ -63,9 +63,9 @@ export default class ProducersSelector extends Component<Props> {
                 <Icon name='thumbs outline up' />
                 <Message.Content>
                 <Message.Header>
-                  Help us make Sqrl better
+                  Help us make WAX Desktop Wallet better
                 </Message.Header>
-                  Please vote for&nbsp;<b><a onClick={() => this.openLink("https://zenblocks.io")} role="link" style={{ cursor: 'pointer' }}>zenblockswax</a></b>&nbsp;to help support our development for great tools such as Sqrl.
+                  Please vote for&nbsp;<b><a onClick={() => this.openLink("https://zenblocks.io")} role="link" style={{ cursor: 'pointer' }}>zenblockswax</a></b>&nbsp;to help support our development for great tools such as WAX Desktop.
                   </Message.Content>
                 </Message>
                 :''}

@@ -11,7 +11,7 @@ class WalletStatusReferralsForm extends Component<Props> {
     super(props);
 
     const { settings } = this.props;
-    const referralUrl = 'https://sqrlwallet.io/earn?refer=' + settings.account;
+    const referralUrl = 'https://waxdesktop.io/earn?refer=' + settings.account;
 
     this.state = {
       copied: false,
@@ -27,7 +27,7 @@ class WalletStatusReferralsForm extends Component<Props> {
 
     let linkRequest = {
       destination: dedicatedUrl,
-      domain: { fullName: "refer.sqrlwallet.io" }
+      domain: { fullName: "refer.waxdesktop.io" }
     }
     
     let requestHeaders = {
@@ -107,7 +107,7 @@ class WalletStatusReferralsForm extends Component<Props> {
                 </Table.Cell>
                 <Table.Cell>
                   <Header as='h2' textAlign='center'>
-                    {earnings} SQRL
+                    {earnings} POWER
                   </Header>
                 </Table.Cell>
               </Table.Row>

@@ -35,12 +35,12 @@ export default function eos(connection, signing = false, payforsig = false) {
 }
 
 export function payforcpunet(account, state) {
-  if ( !(state.settings.useSQRLtoken == null || state.settings.useSQRLtoken === true)) return null;
+  if ( !(state.settings.usePOWERtoken == null || state.settings.usePOWERtoken === true)) return null;
   
-  // get current balance of SQRL tokens
+  // get current balance of POWER tokens
   // if none, return NULL to not pay for tx
   // if 1, deduct from account and proceed
-  const balance = state.balances[account]['SQRL'];
+  const balance = state.balances[account]['POWER'];
   if (!balance || balance < 1) return null;
 
   // make sure user has profile account to
@@ -51,10 +51,10 @@ export function payforcpunet(account, state) {
     profile = profiles.filter((p)=>p.account==account)[0];
 
   const actions = [{ // our action as first auth so we foot the bill
-    account: config.SQRL_CONTRACT,
+    account: config.POWER_CONTRACT,
     name: 'payforcpunet',
     authorization: [{
-        actor: config.SQRL_CONTRACT,
+        actor: config.POWER_CONTRACT,
         permission: 'payforcpunet'
       }],
     data: {
@@ -62,9 +62,9 @@ export function payforcpunet(account, state) {
     }
   }];
   
-  if (!profile) { // new user, do not charge 1 SQRL
+  if (!profile) { // new user, do not charge 1 POWER
     actions.push({
-      account: config.SQRL_CONTRACT,
+      account: config.POWER_CONTRACT,
       name: 'openprofile',
       authorization: [{
           actor: account,
@@ -74,9 +74,9 @@ export function payforcpunet(account, state) {
         account: account
       }
     });
-  } else { // existing user, xfer 1 SQRL as payment for tx
+  } else { // existing user, xfer 1 POWER as payment for tx
     actions.push({
-      account: config.SQRL_CONTRACT,
+      account: config.POWER_CONTRACT,
       name: 'transfer',
       authorization: [{
         actor: account,
@@ -84,9 +84,9 @@ export function payforcpunet(account, state) {
       }],
       data: {
         from:account,
-        to:config.SQRL_CONTRACT,
-        quantity:'1.0000 SQRL',
-        memo:'Here\'s a SQRL for covering my CPU and NET for this transaction ;-) Thank you! ',
+        to:config.POWER_CONTRACT,
+        quantity:'1.0000 POWER',
+        memo:'Here\'s a POWER for covering my CPU and NET for this transaction ;-) Thank you! ',
       },
     });
   }
