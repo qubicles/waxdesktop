@@ -1,0 +1,69 @@
+/*==========================
+tab rotate 
+===========================*/
+@media (max-width: 1450px){
+   .features-curve-img {
+       /*display: none;*/
+   }
+   .body-features-content {
+       min-width: unset;
+   }
+}
+@media (min-width: 1200px){
+    .container {
+        max-width: 1600px;
+    }
+    .refer-intro {
+        max-width: 1200px;
+        margin: auto;
+    }
+}
+
+  /*==========================
+  tab device 
+  ===========================*/
+@media (min-width:992px) and (max-width:1200px) {
+
+}
+
+@media (max-width:991px) {
+    .Features-items-wrap {
+        display: block;
+    }
+    .feature-card {
+        width: unset;
+        margin: auto;
+        margin-bottom: 30px;
+    }
+    .testimonials-card-wrap {
+        display: block !important;
+    }
+}
+
+@media (min-width:768px) and (max-width:991px) {
+
+}
+
+
+  /*==========================
+  small device /mobile sm and large
+  ===========================*/
+@media (max-width:767px) {
+
+}
+@media (max-width:550px) {
+    .download-btn {
+        width: 90%;
+    }
+}
+@media (max-width:480px) {
+    .nav-right-item {
+        font-size: 13px;
+    }
+    .full-support-wrap img {
+        width: 80%;
+    }
+    h1 {
+        font-size: 28px;
+    }
+}
