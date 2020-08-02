@@ -45,7 +45,7 @@
   "welcome_more_servers_1": "Не знаете, какую ноду использовать?",
   "welcome_more_servers_2": "Нажмите здесь, чтобы просмотреть варианты.",
   "welcome_path_generate_keys_header": "Создать новый Аккаунт",
-  "welcome_path_generate_keys_subheader": "Сгенерировать запрос на новый Аккаунт и позволить Sqrl попытаться автоматически создать его для вас",
+  "welcome_path_generate_keys_subheader": "Сгенерировать запрос на новый Аккаунт и позволить WAX Desktop попытаться автоматически создать его для вас",
   "welcome_path_have_account_button": "Импорт Аккаунта",
   "welcome_path_have_account_header": "Импорт существующего Аккаунта",
   "welcome_path_have_account_subheader": "У вас уже есть Аккаунт и Приватный Ключ?",

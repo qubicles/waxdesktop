@@ -1,7 +1,8 @@
-import * as types from '../actions/types';
+import * as types from "../actions/types";
 
 const initialState = {
-  data: false
+  data: false,
+  pin: ""
 };
 
 export default function wallet(state = initialState, action) {
@@ -19,6 +20,11 @@ export default function wallet(state = initialState, action) {
         mode: action.payload.mode,
         pubkey: action.payload.pubkey,
         chainId: action.payload.chainId
+      });
+    }
+    case types.SET_WALLET_PIN: {
+      return Object.assign({}, state, {
+        pin: action.payload.pin
       });
     }
     default: {

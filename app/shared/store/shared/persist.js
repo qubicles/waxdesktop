@@ -340,7 +340,7 @@ const migrations = {
 };
 
 const persistConfig = {
-  key: 'Sqrl-config',
+  key: 'WDW-config',
   version: 10,
   migrate: createMigrate(migrations, { debug: true }),
   storage: createElectronStorage(),

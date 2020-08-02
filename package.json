@@ -1,8 +1,8 @@
 {
-  "name": "Sqrl",
-  "productName": "Sqrl",
+  "name": "wax-desktop",
+  "productName": "WAX Desktop Wallet",
   "version": "1.2.2",
-  "description": "A fully featured wallet and governance tool for EOS.IO blockchains",
+  "description": "The most powerful and user-friendly desktop wallet for the WAX blockchain",
   "scripts": {
     "build": "concurrently \"GENERATE_SOURCEMAP=false npm run build-main\" \"GENERATE_SOURCEMAP=false npm run build-renderer\"",
     "build-dll": "cross-env NODE_ENV=development node --trace-warnings -r babel-register ./node_modules/webpack/bin/webpack --config webpack.config.renderer.dev.dll.js --colors",
@@ -29,8 +29,8 @@
   },
   "browserslist": "electron 1.6",
   "build": {
-    "productName": "Sqrl",
-    "appId": "io.telosfoundation.Sqrl",
+    "productName": "WAX Desktop",
+    "appId": "io.waxdesktop.WAXDesktop",
     "artifactName": "${os}-${productName}-${version}-${arch}.${ext}",
     "asar": true,
     "files": [
@@ -81,16 +81,16 @@
       "oneClick": false,
       "createDesktopShortcut": "always",
       "createStartMenuShortcut": true,
-      "shortcutName": "Sqrl"
+      "shortcutName": "WAX Desktop"
     },
     "linux": {
       "category": "Network",
-      "description": "A fully featured wallet and governance tool for EOS.IO blockchains",
+      "description": "The most powerful and user-friendly desktop wallet for the WAX blockchain",
       "desktop": {
-        "Name": "Sqrl",
-        "GenericName": "EOS.IO Wallet + Governance",
-        "X-GNOME-FullName": "Sqrl",
-        "Comment": "A fully featured wallet and governance tool for EOS.IO blockchains",
+        "Name": "WAX Desktop",
+        "GenericName": "WAX Desktop Wallet",
+        "X-GNOME-FullName": "WAX Desktop",
+        "Comment": "The most powerful and user-friendly desktop wallet for the WAX blockchain",
         "Type": "Application",
         "Terminal": "false",
         "StartupNotify": "false",
@@ -112,7 +112,7 @@
       ]
     },
     "snap": {
-      "synopsis": "A fully featured wallet and governance tool for EOS.IO blockchains"
+      "synopsis": "The most powerful and user-friendly desktop wallet for the WAX blockchain"
     },
     "directories": {
       "buildResources": "resources",
@@ -121,23 +121,25 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Telos-Foundation/Sqrl.git"
+    "url": "git+https://github.com/qubicles/waxdesktop.git"
   },
   "author": {
-    "name": "EOS Miami",
-    "email": "info@eos.miami",
-    "url": "https://eos.miami"
+    "name": "ZenBlocks.io",
+    "email": "info@zenblocks.io",
+    "url": "https://zenblocks.io"
   },
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Telos-Foundation/Sqrl/issues"
+    "url": "https://github.com/qubicles/waxdesktop/issues"
   },
   "keywords": [
-    "telos",
-    "voting",
+    "blockchain",
+    "wax",
+    "wdw",
+    "wax desktop",
     "wallet"
   ],
-  "homepage": "https://github.com/Telos-Foundation/Sqrl#readme",
+  "homepage": "https://waxdesktop.io",
   "jest": {
     "moduleNameMapper": {
       "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/internals/mocks/fileMock.js",
@@ -185,7 +187,7 @@
     "electron-devtools-installer": "^2.2.4",
     "electron-log": "^2.2.14",
     "electron-packager": "^12.1.1",
-    "electron-rebuild": "^1.7.3",
+    "electron-rebuild": "^1.11.0",
     "enzyme": "^3.3.0",
     "enzyme-adapter-react-16": "^1.1.1",
     "enzyme-to-json": "^3.3.4",
@@ -202,7 +204,7 @@
     "eslint-plugin-react": "^7.9.1",
     "express": "^4.16.3",
     "extract-text-webpack-plugin": "^4.0.0-beta.0",
-    "fbjs-scripts": "^0.8.3",
+    "fbjs-scripts": "^1.2.0",
     "file-loader": "^1.1.11",
     "find-in-files": "^0.5.0",
     "flow-bin": "^0.73.0",
@@ -210,15 +212,15 @@
     "flow-typed": "^2.4.0",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^23.1.0",
-    "minimist": "^1.2.0",
+    "minimist": "^1.2.5",
     "ncp": "^2.0.0",
-    "node-sass": "^4.9.0",
+    "node-sass": "^4.14.1",
     "npm-logical-tree": "^1.2.1",
     "react-test-renderer": "^16.4.0",
     "redux-logger": "^3.0.6",
     "rimraf": "^2.6.2",
     "sass-loader": "^7.0.3",
-    "semantic-ui-react": "^0.81.1",
+    "semantic-ui-react": "^0.81.3",
     "sinon": "^5.1.0",
     "source-map-support": "^0.5.6",
     "spectron": "^3.8.0",
@@ -228,14 +230,16 @@
     "stylelint-config-standard": "^18.2.0",
     "uglifyjs-webpack-plugin": "^1.2.5",
     "url-loader": "^1.0.1",
-    "webpack": "^4.11.1",
-    "webpack-bundle-analyzer": "^2.13.1",
-    "webpack-cli": "^3.0.2",
-    "webpack-dev-server": "^3.1.4",
+    "webpack": "^4.44.0",
+    "webpack-bundle-analyzer": "^3.3.2",
+    "webpack-cli": "^3.3.12",
+    "webpack-dev-server": "^3.11.0",
     "webpack-hot-middleware": "^2.22.2",
     "webpack-merge": "^4.1.2"
   },
   "dependencies": {
+    "@babel/core": "^7.10.5",
+    "ajv": "^6.12.3",
     "axios": "^0.19.0",
     "country-iso-2-to-3": "^1.0.1",
     "crypto-js": "^3.1.9-1",
@@ -252,7 +256,7 @@
     "i18next": "^11.3.2",
     "i18next-electron-language-detector": "^0.0.10",
     "i18next-sprintf-postprocessor": "^0.2.2",
-    "i18next-sync-fs-backend": "^1.1.0",
+    "i18next-sync-fs-backend": "^1.1.1",
     "lodash.clonedeep": "^4.5.0",
     "macaddress": "^0.2.9",
     "moment": "^2.22.2",
@@ -263,7 +267,7 @@
     "react-countdown-now": "^2.1.1",
     "react-country-region-selector": "^1.4.4",
     "react-credit-card-input": "^1.1.5",
-    "react-dom": "^16.4.0",
+    "react-dom": "^16.13.1",
     "react-google-charts": "^3.0.13",
     "react-hot-loader": "^4.3.0",
     "react-i18next": "^7.7.0",
@@ -287,7 +291,8 @@
     "redux-thunk": "^2.3.0",
     "scrypt-async": "^2.0.1",
     "semantic-ui-calendar-react": "^0.15.3",
-    "styled-components": "^4.3.2"
+    "styled-components": "^4.3.2",
+    "sweetalert2": "^9.17.1"
   },
   "devEngines": {
     "node": ">=7.x",

@@ -38,7 +38,7 @@
   "producer_voter_preview_transaction_successful_message": "Данное действие было записано в блокчейн. Информацию о Транзакции вы можете найти ниже.",
   "producer_voter_preview_close": "Закрыть",
   "producer_voter_proxying_vote": "Выбранные в данный момент голоса Proxy",
-  "producer_welcome_header": "Добро пожаловать в Sqrl",
+  "producer_welcome_header": "Добро пожаловать в WAX Desktop",
   "producer_welcome_subheader": "",
   "producers_block_producers": "Блок Продюсеры",
   "producer_welcome_p1": "",

@@ -1,13 +1,13 @@
 {
-  "name": "Sqrl",
-  "productName": "Sqrl",
+  "name": "wax-desktop",
+  "productName": "WAX Desktop Wallet",
   "version": "1.2.2",
   "description": "",
   "main": "./main.prod.js",
   "author": {
-    "name": "Telos Foundation",
-    "email": "hello@telosfoundation.io",
-    "url": "https://github.com/Telos-Foundation"
+    "name": "ZenBlocks.io",
+    "email": "info@zenblocks.io",
+    "url": "https://zenblocks.io"
   },
   "scripts": {
     "electron-rebuild": "node -r babel-register ../internals/scripts/ElectronRebuild.js",

@@ -1,117 +1,51 @@
 // @flow
-import React, { Component } from 'react';
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
+import React, { Component } from "react"
+import { bindActionCreators } from "redux"
+import { connect } from "react-redux"
+import { withRouter } from "react-router-dom"
 
-import Welcome from '../components/Welcome';
+import Pin from "../components/v2/Pin/Pin"
 
-import * as SettingsActions from '../actions/settings';
-import * as ValidateActions from '../actions/validate';
-import * as WalletActions from '../actions/wallet';
+import * as WalletActions from "../actions/wallet"
 
-type Props = {
-  actions: {},
-  connection: {},
-  history: {},
-  keys: {},
-  settings: {},
-  validate: {}
-};
-
-class WelcomeContainer extends Component<Props> {
-  props: Props;
-
-  componentDidMount() {
-    const {
-      actions,
-      history,
-      settings,
-      validate,
-      wallet
-    } = this.props;
-    const {
-      setWalletMode
-    } = actions;
-    setWalletMode(settings.walletMode);
-
-    switch (settings.walletMode) {
-      case 'cold': {
-        if (settings.walletInit && wallet.data) {
-          history.push('/coldwallet');
-        }
-        break;
-      }
-      default: {
-        if (validate.NODE !== 'SUCCESS' && settings.node) {
-          const { validateNode } = actions;
-          validateNode(settings.node);
-        }
-        break;
-      }
-    }
-  }
-
-  componentWillReceiveProps(nextProps) {
-    const {
-      actions,
-      history,
-      settings,
-      validate,
-      wallet
-    } = this.props;
-    if (validate.NODE !== 'SUCCESS' && nextProps.validate.NODE === 'SUCCESS') {
-      if (settings.walletInit) {
-        history.push('/voter');
-      } else if (!!wallet.account && !!wallet.data && wallet.version === 1) {
-        // If a wallet account + data exists and the wallet is V1, update init flag and proceed.
-        actions.setSetting('walletInit', true);
-        history.push('/voter');
-      }
-    }
+class WelcomeContainer extends Component {
+  onUserLogin = () => {
+    const { history } = this.props
+    history.push("/dashboard")
   }
 
   render() {
-    const {
-      actions,
-      connection,
-      history,
-      keys,
-      settings,
-      validate
-    } = this.props;
-    
+    const { wallet, actions, history, location } = this.props
+
     return (
-      <Welcome
+      <Pin
+        wallet={wallet}
         actions={actions}
-        connection={connection}
         history={history}
-        keys={keys}
-        settings={settings}
-        validate={validate}
+        location={location}
+        onUserLogin={this.onUserLogin}
       />
-    );
+    )
   }
 }
 
 function mapStateToProps(state) {
   return {
-    connection: state.connection,
-    keys: state.keys,
-    settings: state.settings,
-    validate: state.validate,
     wallet: state.wallet
-  };
+  }
 }
 
 function mapDispatchToProps(dispatch) {
   return {
-    actions: bindActionCreators({
-      ...SettingsActions,
-      ...ValidateActions,
-      ...WalletActions
-    }, dispatch)
-  };
+    actions: bindActionCreators(
+      {
+        ...WalletActions
+      },
+      dispatch
+    )
+  }
 }
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(WelcomeContainer));
+export default withRouter(
+  connect(mapStateToProps, mapDispatchToProps)(WelcomeContainer)
+)

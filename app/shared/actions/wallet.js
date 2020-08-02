@@ -18,7 +18,7 @@ export function setWalletKey(data, password, mode = 'hot', existingHash = false,
       hash = encrypt(password, password, 1).toString(CryptoJS.enc.Utf8);
       obfuscated = encrypt(key, hash, 1).toString(CryptoJS.enc.Utf8);
     }
-    
+
     const pubkey = ecc.privateToPublic(key);
     const accountData = accounts[settings.account];
     let authorization;
@@ -73,7 +73,7 @@ export function setTemporaryKey(key, authorization = 'active') {
     // Obfuscate key for in-memory storage
     const hash = encrypt(key, key, 1).toString(CryptoJS.enc.Utf8);
     const obfuscated = encrypt(key, hash, 1).toString(CryptoJS.enc.Utf8);
-    
+
     dispatch({
       type: types.SET_WALLET_KEYS_TEMPORARY,
       payload: {
@@ -160,7 +160,7 @@ export function unlockWallet(password, useWallet = false) {
     if (settings.walletMode === 'hot' && !account) {
       account = await eos(connection).getAccount(wallet.account);
     }
-    
+
     dispatch({
       type: types.VALIDATE_WALLET_PASSWORD_PENDING
     });
@@ -277,7 +277,17 @@ export function decrypt(data, pass, iterations = 4500) {
   return decrypted;
 }
 
+export function setWalletPin(pin) {
+  return (dispatch) => {
+    dispatch({
+      type: types.SET_WALLET_PIN,
+      payload: {pin}
+    });
+  };
+}
+
 export default {
+  setWalletPin,
   decrypt,
   encrypt,
   lockWallet,

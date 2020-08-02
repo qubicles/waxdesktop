@@ -1,5 +1,5 @@
 import * as types from '../wapii.types';
-import * as SqrlTypes from '../../shared/actions/types';
+import * as WalletTypes from '../../shared/actions/types';
 import eos from '../../shared/actions/helpers/eos';
 import APIUtils from '../API/util/APIUtils';
 import Network from '../API/models/Network';
@@ -90,7 +90,7 @@ export function unlockWallet(data) {
         }
         
         dispatch({
-            type: SqrlTypes.VALIDATE_WALLET_PASSWORD_PENDING
+            type: WalletTypes.VALIDATE_WALLET_PASSWORD_PENDING
         });
 
         let account = accounts[wallet.account];
@@ -104,7 +104,7 @@ export function unlockWallet(data) {
                 if (ecc.isValidPrivate(key) === true) {
                     if(!changeWallet){
                         dispatch({
-                          type: SqrlTypes.VALIDATE_WALLET_PASSWORD_SUCCESS
+                          type: WalletTypes.VALIDATE_WALLET_PASSWORD_SUCCESS
                         });
                         return resolve(key);
                     }
@@ -118,7 +118,7 @@ export function unlockWallet(data) {
                         accountData: account,
                         pubkey
                       },
-                      type: SqrlTypes.SET_WALLET_ACTIVE
+                      type: WalletTypes.SET_WALLET_ACTIVE
                     });
                     
                     // Obfuscate key for in-memory storage
@@ -134,7 +134,7 @@ export function unlockWallet(data) {
                         key: obfuscatedKey,
                         pubkey
                       },
-                      type: SqrlTypes.SET_WALLET_KEYS_ACTIVE
+                      type: WalletTypes.SET_WALLET_KEYS_ACTIVE
                     });
                 }else{
                     key = '';
@@ -142,11 +142,11 @@ export function unlockWallet(data) {
 
                 if(!key){
                     dispatch({
-                        type: SqrlTypes.VALIDATE_WALLET_PASSWORD_FAILURE
+                        type: WalletTypes.VALIDATE_WALLET_PASSWORD_FAILURE
                     });
                 }else{
                     dispatch({
-                        type: SqrlTypes.VALIDATE_WALLET_PASSWORD_SUCCESS
+                        type: WalletTypes.VALIDATE_WALLET_PASSWORD_SUCCESS
                     });
                 }
                 resolve(key);

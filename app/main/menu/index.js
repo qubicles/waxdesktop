@@ -46,11 +46,11 @@ export default class MenuBuilder {
 
   buildDarwinTemplate() {
     const subMenuAbout = {
-      label: 'Sqrl',
+      label: 'WAX Desktop',
       submenu: [
         { role: 'about' },
         { type: 'separator' },
-        { label: 'Hide Sqrl', accelerator: 'Command+H', selector: 'hide:' },
+        { label: 'Hide WAX Desktop', accelerator: 'Command+H', selector: 'hide:' },
         { label: 'Hide Others', accelerator: 'Command+Shift+H', selector: 'hideOtherApplications:' },
         { label: 'Show All', selector: 'unhideAllApplications:' },
         { type: 'separator' },
@@ -104,11 +104,11 @@ export default class MenuBuilder {
     const subMenuHelp = {
       label: 'Help',
       submenu: [
-        { label: 'Source Code (Github)', click() { shell.openExternal('https://github.com/Telos-Foundation/Sqrl'); } },
-        { label: 'Report Bug (Github)', click() { shell.openExternal('https://github.com/Telos-Foundation/Sqrl/issues'); } },
-        { label: 'Web Site', click() { shell.openExternal('https://sqrlwallet.io'); } },
-        //{ type: 'separator' },
-        //{ label: 'Check for Updates', click: (menuItem, browserWindow) => { checkForUpdates(menuItem, browserWindow); } }
+        { label: 'Source Code (Github)', click() { shell.openExternal('https://github.com/qubicles/waxdesktop'); } },
+        { label: 'Report Bug (Github)', click() { shell.openExternal('https://github.com/qubicles/waxdesktop/issues'); } },
+        { label: 'Web Site', click() { shell.openExternal('https://waxdesktop.io'); } },
+        { type: 'separator' },
+        { label: 'Check for Updates', click: (menuItem, browserWindow) => { checkForUpdates(menuItem, browserWindow); } }
       ]
     };
 
@@ -176,11 +176,11 @@ export default class MenuBuilder {
     }, {
       label: 'Help',
       submenu: [
-        { label: 'Source Code (Github)', click() { shell.openExternal('https://github.com/Telos-Foundation/Sqrl'); } },
-        { label: 'Report Bug (Github)', click() { shell.openExternal('https://github.com/Telos-Foundation/Sqrl/issues'); } },
-        { label: 'Releases (Github)', click() { shell.openExternal('https://github.com/Telos-Foundation/Sqrl/releases'); } },
-        //{ type: 'separator' },
-        //{ label: 'Check Updates...', click: (menuItem, browserWindow) => { checkForUpdates(menuItem, browserWindow); } }
+        { label: 'Source Code (Github)', click() { shell.openExternal('https://github.com/qubicles/waxdesktop'); } },
+        { label: 'Report Bug (Github)', click() { shell.openExternal('https://github.com/qubicles/waxdesktop/issues'); } },
+        { label: 'Releases (Github)', click() { shell.openExternal('https://github.com/qubicles/waxdesktop/releases'); } },
+        { type: 'separator' },
+        { label: 'Check Updates...', click: (menuItem, browserWindow) => { checkForUpdates(menuItem, browserWindow); } }
       ]
     }];
 

@@ -226,9 +226,9 @@ export function chargeCard(
           receiveAddress: receiveAddress,
           memo: memo || '',
           contactId: contactId,
-          confirmationUrl:`https://sqrlwallet.io/carbon?action=confirm&contactid=${contactId}`,
-          successRedirectUrl:`https://sqrlwallet.io/carbon?action=success&contactid=${contactId}`,
-          errorRedirectUrl:`https://sqrlwallet.io/carbon?action=fail&contactid=${contactId}`
+          confirmationUrl:`https://waxdesktop.io/carbon?action=confirm&contactid=${contactId}`,
+          successRedirectUrl:`https://waxdesktop.io/carbon?action=success&contactid=${contactId}`,
+          errorRedirectUrl:`https://waxdesktop.io/carbon?action=fail&contactid=${contactId}`
         });
         
         return fetch(`${config.CARBON_ROOT}/v1/card/charge3d`, {
@@ -712,7 +712,7 @@ export function settleDeposit(contactId, depositId) {
   };
 }
 
-export function create2FA(contactId, issuer='SqrlWallet') {
+export function create2FA(contactId, issuer='WAXDesktop') {
   return async (dispatch: () => void, getState) => {
     dispatch({
       type: types.GET_CREATE2FA_REQUEST
@@ -944,8 +944,8 @@ export function getProfiles(account) {
     });
     const { connection } = getState();
     const query = {
-      scope: config.SQRL_CONTRACT,
-      code: config.SQRL_CONTRACT,
+      scope: config.POWER_CONTRACT,
+      code: config.POWER_CONTRACT,
       table: 'profiles',
       json: true,
       limit:1000000
@@ -988,7 +988,7 @@ export function setProfileAvatar(avatar, bio) {
 
     let actions = [
       {
-        account: config.SQRL_CONTRACT,
+        account: config.POWER_CONTRACT,
         name: 'setavatar',
         authorization: [{
             actor: account,
@@ -1036,17 +1036,17 @@ export function openProfile() {
     const { account } = settings;
 
     let actions = [{
-      account: config.SQRL_CONTRACT,
+      account: config.POWER_CONTRACT,
       name: 'payforcpunet',
       authorization: [{
-          actor: config.SQRL_CONTRACT,
+          actor: config.POWER_CONTRACT,
           permission: 'payforcpunet'
         }],
       data: {
         account: account
       }
     },{
-      account: config.SQRL_CONTRACT,
+      account: config.POWER_CONTRACT,
       name: 'openprofile',
       authorization: [{
           actor: account,
@@ -1079,7 +1079,7 @@ export function getCustomTokensRemote() {
     dispatch({
       type: types.GET_CUSTOMTOKENSREMOTE_REQUEST
     });
-    return fetch('https://raw.githubusercontent.com/telos-foundation/sqrl/master/resources/tokens.json')
+    return fetch('https://raw.githubusercontent.com/qubicles/waxdesktop/master/resources/tokens.json')
     .then(response => response.json()).then((response) => {
       return dispatch({
         payload: response,

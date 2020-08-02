@@ -15,8 +15,8 @@ const createInterface = (resourcePath, route = '/', closable = true, store) => {
   log.info('ui: creating');
 
   const uiStateKeeper = windowStateKeeper(store);
-  const { name, version } = packageJson;
-  const title = `${name} - ${version}`;
+  const { name, productName, version } = packageJson;
+  const title = `${productName} - ${version}`;
   const ui = new BrowserWindow({
     closable,
     x: uiStateKeeper.x,

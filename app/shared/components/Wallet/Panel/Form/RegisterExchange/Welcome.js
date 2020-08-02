@@ -23,7 +23,7 @@ class WalletPanelFormRegisterExchangeWelcome extends Component<Props> {
           <Message.Header>What is Carbon.Money?</Message.Header>
           <p>
           Carbon.Money is the creator of CarbonUSD, the first U.S. dollar-pegged stablecoin for EOSIO-based networks. 
-          Features within Carbon allow Sqrl to abstract trading cryptocurrency into an easy-to-use exchange service.
+          Features within Carbon allow WAX Desktop to abstract trading cryptocurrency into an easy-to-use exchange service.
           </p>
           <p>
             In order to take advantage of our exchange features, you must create an account within the Carbon platform. You 

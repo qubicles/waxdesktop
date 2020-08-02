@@ -55,7 +55,7 @@ class WalletStatusVIPForm extends Component<Props> {
     return (
       <Segment>
         <Message positive>
-          Your current SQRL consumption is: <b>{profile.usage}</b>
+          Your current POWER consumption is: <b>{profile.usage}</b>
         </Message>
         <Table celled padded>
         <Table.Header>
@@ -80,7 +80,7 @@ class WalletStatusVIPForm extends Component<Props> {
             </Header>}
             </Table.Cell>
             <Table.Cell singleLine>Trader</Table.Cell>
-            <Table.Cell singleLine>100 - 249 SQRL</Table.Cell>
+            <Table.Cell singleLine>100 - 249 POWER</Table.Cell>
             <Table.Cell>
             Obtain Level 1 after consuming between 100 - 249 tokens. This unlocks the Bancor token swap feature.
             </Table.Cell>
@@ -99,9 +99,9 @@ class WalletStatusVIPForm extends Component<Props> {
             </Header>}
             </Table.Cell>
             <Table.Cell singleLine>Socializer</Table.Cell>
-            <Table.Cell singleLine>250 - 499 SQRL</Table.Cell>
+            <Table.Cell singleLine>250 - 499 POWER</Table.Cell>
             <Table.Cell>
-            Obtain Level 2 after consuming between 250 - 499 tokens. This unlocks all social features in Sqrl.
+            Obtain Level 2 after consuming between 250 - 499 tokens. This unlocks all social features in WAX Desktop.
             </Table.Cell>
             {(profile.vip_level < 2 && 0==1) ?
             <Table.Cell collapsing>
@@ -118,7 +118,7 @@ class WalletStatusVIPForm extends Component<Props> {
             </Header>}
             </Table.Cell>
             <Table.Cell singleLine>Telosian</Table.Cell>
-            <Table.Cell singleLine>500 - 999 SQRL</Table.Cell>
+            <Table.Cell singleLine>500 - 999 POWER</Table.Cell>
             <Table.Cell>
             Obtain Level 3 after consuming between 500 - 999 tokens. This unlocks a hidden, unannounced feature.
             </Table.Cell>
@@ -137,7 +137,7 @@ class WalletStatusVIPForm extends Component<Props> {
             </Header>}
             </Table.Cell>
             <Table.Cell singleLine>Banker</Table.Cell>
-            <Table.Cell singleLine>1,000 - 9,999 SQRL</Table.Cell>
+            <Table.Cell singleLine>1,000 - 9,999 POWER</Table.Cell>
             <Table.Cell>
             Obtain Level 4 after consuming between 1000 - 9999 tokens. This unlocks the bank ACH/wire withdrawal feature.
             </Table.Cell>
@@ -156,7 +156,7 @@ class WalletStatusVIPForm extends Component<Props> {
             </Header>}
             </Table.Cell>
             <Table.Cell singleLine>Squirrel</Table.Cell>
-            <Table.Cell singleLine>10,000+ SQRL</Table.Cell>
+            <Table.Cell singleLine>10,000+ POWER</Table.Cell>
             <Table.Cell>
             Obtain Level 5 after consuming 10,000 or more tokens. This level automatically unlocks all wallet features.
             </Table.Cell>
