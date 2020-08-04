@@ -66,7 +66,7 @@
 
 }
 
-.marketplace .rectangle324 {
+.marketplace .currentUserDropdown {
     position: absolute;
       box-sizing: content-box;
       -ms-transform: rotate(0.00deg);
@@ -111,7 +111,7 @@
 
 }
 
-.marketplace .rectangle5 {
+.marketplace .marketImageBackground {
     position: absolute;
       box-sizing: content-box;
       -ms-transform: rotate(0.00deg);
@@ -396,7 +396,7 @@
 
 }
 
-.marketplace .rectangle307 {
+.marketplace .stakingImageOuterLayer {
     position: absolute;
       box-sizing: border-box;
       -ms-transform: rotate(0.00deg);
@@ -440,7 +440,7 @@
 
 }
 
-.marketplace .rectangle561 {
+.marketplace .advancedImageOuterLayer {
     position: absolute;
       box-sizing: border-box;
       -ms-transform: rotate(0.00deg);
@@ -484,7 +484,7 @@
 
 }
 
-.marketplace .rectangle563 {
+.marketplace .advancedImageHorizontal {
     position: absolute;
       box-sizing: border-box;
       -ms-transform: rotate(90.00deg);
@@ -528,7 +528,7 @@
 
 }
 
-.marketplace .rectangle319 {
+.marketplace .marketImageTop {
     position: absolute;
       box-sizing: content-box;
       -ms-transform: rotate(0.00deg);
@@ -572,7 +572,7 @@
 
 }
 
-.marketplace .rectangle320 {
+.marketplace .marketImageLeft {
     position: absolute;
       box-sizing: content-box;
       -ms-transform: rotate(0.00deg);
@@ -616,7 +616,7 @@
 
 }
 
-.marketplace .rectangle322 {
+.marketplace .marketImageCenter {
     position: absolute;
       box-sizing: border-box;
       -ms-transform: rotate(0.00deg);
@@ -660,7 +660,7 @@
 
 }
 
-.marketplace .rectangle564 {
+.marketplace .marketImageBottom {
     position: absolute;
       box-sizing: border-box;
       -ms-transform: rotate(0.00deg);
@@ -704,7 +704,7 @@
 
 }
 
-.marketplace .rectangle308 {
+.marketplace .stakingImageInnerLayer {
     position: absolute;
       box-sizing: content-box;
       -ms-transform: rotate(0.00deg);
@@ -788,7 +788,7 @@
 
 }
 
-.marketplace .polygon5 {
+.marketplace .changeUserDropdown {
     position: absolute;
       box-sizing: content-box;
       -ms-transform: rotate(180.00deg);
@@ -847,7 +847,7 @@
 
 }
 
-.marketplace .group222 .rectangle266e7b293a {
+.marketplace .group222 .waxLogoOuterLayer {
     position: absolute;
       box-sizing: border-box;
       -ms-transform: rotate(0.00deg);
@@ -896,7 +896,7 @@
 
 }
 
-.marketplace .group222 .waxPrimaryLogo1053a20aa {
+.marketplace .group222 .waxPrimaryLogo {
     position: absolute;
       box-sizing: content-box;
       -ms-transform: rotate(0.00deg);
@@ -944,7 +944,7 @@
 
 }
 
-.marketplace .group224 {
+.marketplace .appsGroup {
 
       display: block;
       position: absolute;
@@ -975,7 +975,7 @@
 
 }
 
-.marketplace .group224 .path667e8ebfc0 {
+.marketplace .appsGroup .path667e8ebfc0 {
     position: absolute;
       box-sizing: border-box;
       -ms-transform: rotate(0.00deg);
@@ -1006,7 +1006,7 @@
 
 }
 
-.marketplace .group224 .rectangle5344d75d666 {
+.marketplace .appsGroup .appsImageTopRight {
     position: absolute;
       box-sizing: border-box;
       -ms-transform: rotate(0.00deg);
@@ -1050,7 +1050,7 @@
 
 }
 
-.marketplace .group224 .rectangle5337c202dfd {
+.marketplace .appsGroup .appsImageBottomLeft {
     position: absolute;
       box-sizing: border-box;
       -ms-transform: rotate(0.00deg);
@@ -1094,7 +1094,7 @@
 
 }
 
-.marketplace .group224 .rectangle53525dc59ae {
+.marketplace .appsGroup .appsImageBottomRight {
     position: absolute;
       box-sizing: content-box;
       -ms-transform: rotate(0.00deg);
@@ -1138,7 +1138,7 @@
 
 }
 
-.marketplace .group228 {
+.marketplace .homeGroup {
 
       display: block;
       position: absolute;
@@ -1169,7 +1169,7 @@
 
 }
 
-.marketplace .group228 .path66 {
+.marketplace .homeGroup .path66 {
     position: absolute;
       box-sizing: border-box;
       -ms-transform: rotate(0.00deg);
@@ -1200,7 +1200,7 @@
 
 }
 
-.marketplace .group228 .rectangle534 {
+.marketplace .homeGroup .homeImageTopRight {
     position: absolute;
       box-sizing: border-box;
       -ms-transform: rotate(0.00deg);
@@ -1244,7 +1244,7 @@
 
 }
 
-.marketplace .group228 .rectangle533 {
+.marketplace .homeGroup .homeImageBottomLeft {
     position: absolute;
       box-sizing: border-box;
       -ms-transform: rotate(0.00deg);
@@ -1288,7 +1288,7 @@
 
 }
 
-.marketplace .group228 .rectangle535 {
+.marketplace .homeGroup .homeImageBottomRight {
     position: absolute;
       box-sizing: content-box;
       -ms-transform: rotate(0.00deg);
@@ -1363,7 +1363,7 @@
 
 }
 
-.marketplace .ellipse1 {
+.marketplace .guildImageTop {
     position: absolute;
       box-sizing: content-box;
       -ms-transform: rotate(0.00deg);
@@ -1391,7 +1391,7 @@
 
 }
 
-.marketplace .ellipse3 {
+.marketplace .guildImageRight {
     position: absolute;
       box-sizing: content-box;
       -ms-transform: rotate(90.00deg);
@@ -1419,7 +1419,7 @@
 
 }
 
-.marketplace .ellipse48fc2326e {
+.marketplace .guildImageBottomRight {
     position: absolute;
       box-sizing: content-box;
       -ms-transform: rotate(90.00deg);
@@ -1447,7 +1447,7 @@
 
 }
 
-.marketplace .ellipse4a33199f4 {
+.marketplace .guildImageBottomLeft {
     position: absolute;
       box-sizing: content-box;
       -ms-transform: rotate(45.00deg);
@@ -1475,7 +1475,7 @@
 
 }
 
-.marketplace .ellipse4 {
+.marketplace .guildImageLeft {
     position: absolute;
       box-sizing: content-box;
       -ms-transform: rotate(-45.00deg);
@@ -1503,7 +1503,7 @@
 
 }
 
-.marketplace .rectangle562 {
+.marketplace .advancedImageVertical {
     position: absolute;
       box-sizing: border-box;
       -ms-transform: rotate(0.00deg);
@@ -1547,7 +1547,7 @@
 
 }
 
-.marketplace .rectangle2231 {
+.marketplace .searchBoxOutline {
     position: absolute;
       box-sizing: border-box;
       -ms-transform: rotate(0.00deg);
@@ -1591,7 +1591,7 @@
 
 }
 
-.marketplace .rectangle2232 {
+.marketplace .searchBoxImage {
     position: absolute;
       box-sizing: border-box;
       -ms-transform: rotate(0.00deg);
@@ -1635,7 +1635,7 @@
 
 }
 
-.marketplace .rectangle2233 {
+.marketplace .mostRecentBoxOutline {
     position: absolute;
       box-sizing: border-box;
       -ms-transform: rotate(0.00deg);
@@ -1679,7 +1679,7 @@
 
 }
 
-.marketplace .group543 {
+.marketplace .seachBoxGroup {
 
       display: block;
       position: absolute;
@@ -1710,7 +1710,7 @@
 
 }
 
-.marketplace .group543 .rectangle2234 {
+.marketplace .seachBoxGroup .searchBoxTop {
     position: absolute;
       box-sizing: border-box;
       -ms-transform: rotate(0.00deg);
@@ -1754,7 +1754,7 @@
 
 }
 
-.marketplace .group543 .rectangle2235 {
+.marketplace .seachBoxGroup .searchBoxBottom {
     position: absolute;
       box-sizing: border-box;
       -ms-transform: rotate(-29.00deg);
@@ -1798,7 +1798,7 @@
 
 }
 
-.marketplace .rectangle2789 {
+.marketplace .minAndMaxBox {
     position: absolute;
       box-sizing: border-box;
       -ms-transform: rotate(0.00deg);
@@ -1843,7 +1843,7 @@
 
 }
 
-.marketplace .rectangle2237 {
+.marketplace .waxCurrencyBox {
     position: absolute;
       box-sizing: border-box;
       -ms-transform: rotate(0.00deg);
@@ -1887,7 +1887,7 @@
 
 }
 
-.marketplace .rectangle2239 {
+.marketplace .gpkCollectionsImage {
     position: absolute;
       box-sizing: border-box;
       -ms-transform: rotate(0.00deg);
@@ -1932,7 +1932,7 @@
 
 }
 
-.marketplace .rectangle2240 {
+.marketplace .toppsCollectionsImage {
     position: absolute;
       box-sizing: border-box;
       -ms-transform: rotate(0.00deg);
@@ -1977,7 +1977,7 @@
 
 }
 
-.marketplace .rectangle2241 {
+.marketplace .tigerKingsCollectionsImage {
     position: absolute;
       box-sizing: border-box;
       -ms-transform: rotate(0.00deg);
@@ -2022,7 +2022,7 @@
 
 }
 
-.marketplace .rectangle2238 {
+.marketplace .usdCurrencyBox {
     position: absolute;
       box-sizing: border-box;
       -ms-transform: rotate(0.00deg);
@@ -2511,7 +2511,7 @@
 
 }
 
-.marketplace .polygon10 {
+.marketplace .mostRecentDropdown {
     position: absolute;
       box-sizing: content-box;
       -ms-transform: rotate(180.00deg);
@@ -2579,7 +2579,7 @@
 
 }
 
-.marketplace .group1687 {
+.marketplace .assetAndCollectionsGroup {
 
       display: block;
       position: absolute;
@@ -2610,7 +2610,7 @@
 
 }
 
-.marketplace .group1687 .rectangle406 {
+.marketplace .assetAndCollectionsGroup .assAndCollectionsBoxLeftTopRow {
     position: absolute;
       box-sizing: content-box;
       -ms-transform: rotate(0.00deg);
@@ -2655,7 +2655,7 @@
 
 }
 
-.marketplace .group1687 .rectangle407 {
+.marketplace .assetAndCollectionsGroup .assAndCollectionsBoxMidLeftTopRow {
     position: absolute;
       box-sizing: content-box;
       -ms-transform: rotate(0.00deg);
@@ -2700,7 +2700,7 @@
 
 }
 
-.marketplace .group1687 .rectangle408 {
+.marketplace .assetAndCollectionsGroup .assAndCollectionsBoxMidRightTopRow {
     position: absolute;
       box-sizing: content-box;
       -ms-transform: rotate(0.00deg);
@@ -2745,7 +2745,7 @@
 
 }
 
-.marketplace .group1687 .rectangle410 {
+.marketplace .assetAndCollectionsGroup .assAndCollectionsBoxRightTopRow {
     position: absolute;
       box-sizing: content-box;
       -ms-transform: rotate(0.00deg);
@@ -2790,7 +2790,7 @@
 
 }
 
-.marketplace .group1687 .theonlykarma06a55599 {
+.marketplace .assetAndCollectionsGroup .theonlykarma06a55599 {
     position: absolute;
       box-sizing: content-box;
       -ms-transform: rotate(0.00deg);
@@ -2830,7 +2830,7 @@
 
 }
 
-.marketplace .group1687 .theonlykarma843bdd3c {
+.marketplace .assetAndCollectionsGroup .theonlykarma843bdd3c {
     position: absolute;
       box-sizing: content-box;
       -ms-transform: rotate(0.00deg);
@@ -2870,7 +2870,7 @@
 
 }
 
-.marketplace .group1687 .theonlykarma196f5a55 {
+.marketplace .assetAndCollectionsGroup .theonlykarma196f5a55 {
     position: absolute;
       box-sizing: content-box;
       -ms-transform: rotate(0.00deg);
@@ -2910,7 +2910,7 @@
 
 }
 
-.marketplace .group1687 .theonlykarma1408369f {
+.marketplace .assetAndCollectionsGroup .theonlykarma1408369f {
     position: absolute;
       box-sizing: content-box;
       -ms-transform: rotate(0.00deg);
@@ -2950,7 +2950,7 @@
 
 }
 
-.marketplace .group1687 .godzilla38883423 {
+.marketplace .assetAndCollectionsGroup .godzillRightTopRow {
     position: absolute;
       box-sizing: content-box;
       -ms-transform: rotate(0.00deg);
@@ -2990,7 +2990,7 @@
 
 }
 
-.marketplace .group1687 .astroDudebcc8434f {
+.marketplace .assetAndCollectionsGroup .astroDudeMidTopRow {
     position: absolute;
       box-sizing: content-box;
       -ms-transform: rotate(0.00deg);
@@ -3030,7 +3030,7 @@
 
 }
 
-.marketplace .group1687 .piggyBanka8614879 {
+.marketplace .assetAndCollectionsGroup .piggyBankMidTopRow {
     position: absolute;
       box-sizing: content-box;
       -ms-transform: rotate(0.00deg);
@@ -3070,7 +3070,7 @@
 
 }
 
-.marketplace .group1687 .kingKeodc6a0b6d {
+.marketplace .assetAndCollectionsGroup .kingKeoLeftTopRow {
     position: absolute;
       box-sizing: content-box;
       -ms-transform: rotate(0.00deg);
@@ -3110,7 +3110,7 @@
 
 }
 
-.marketplace .group1687 .dallas141a33f1edf {
+.marketplace .assetAndCollectionsGroup .dallas141Image {
     position: absolute;
       box-sizing: content-box;
       -ms-transform: rotate(0.00deg);
@@ -3158,7 +3158,7 @@
 
 }
 
-.marketplace .group1687 .x25000Karma624424a7 {
+.marketplace .assetAndCollectionsGroup .karmaCurrencyLeftTopRow {
     position: absolute;
       box-sizing: content-box;
       -ms-transform: rotate(0.00deg);
@@ -3198,7 +3198,7 @@
 
 }
 
-.marketplace .group1687 .group47 {
+.marketplace .assetAndCollectionsGroup .logoGroupLeftTopRow {
 
       display: block;
       position: absolute;
@@ -3229,7 +3229,7 @@
 
 }
 
-.marketplace .group1687 .group47 .rectangle25b1e13312 {
+.marketplace .assetAndCollectionsGroup .logoGroupLeftTopRow .logoOutlineLeftTopRow {
     position: absolute;
       box-sizing: border-box;
       -ms-transform: rotate(0.00deg);
@@ -3277,7 +3277,7 @@
 
 }
 
-.marketplace .group1687 .group47 .logoGradient42c3069d {
+.marketplace .assetAndCollectionsGroup .logoGroupLeftTopRow .logoGradient42c3069d {
     position: absolute;
       box-sizing: content-box;
       -ms-transform: rotate(0.00deg);
@@ -3325,7 +3325,7 @@
 
 }
 
-.marketplace .group1687 .group216 {
+.marketplace .assetAndCollectionsGroup .piggyBankMidLeftTopRow {
 
       display: block;
       position: absolute;
@@ -3356,7 +3356,7 @@
 
 }
 
-.marketplace .group1687 .group216 .x500Wax8520276a {
+.marketplace .assetAndCollectionsGroup .piggyBankMidLeftTopRow .waxCurrnecyMidLeftTopRow {
     position: absolute;
       box-sizing: content-box;
       -ms-transform: rotate(0.00deg);
@@ -3396,7 +3396,7 @@
 
 }
 
-.marketplace .group1687 .group216 .group4418045aea {
+.marketplace .assetAndCollectionsGroup .piggyBankMidLeftTopRow .waxLogoGroupMidLeftTopRow {
 
       display: block;
       position: absolute;
@@ -3427,7 +3427,7 @@
 
 }
 
-.marketplace .group1687 .group216 .group4418045aea .rectangle262708bbe6 {
+.marketplace .assetAndCollectionsGroup .piggyBankMidLeftTopRow .waxLogoGroupMidLeftTopRow .waxLogoOutlineMidLeftTopRow {
     position: absolute;
       box-sizing: border-box;
       -ms-transform: rotate(0.00deg);
@@ -3475,7 +3475,7 @@
 
 }
 
-.marketplace .group1687 .group216 .group4418045aea .waxPrimaryLogo1d3b7fa29 {
+.marketplace .assetAndCollectionsGroup .piggyBankMidLeftTopRow .waxLogoGroupMidLeftTopRow .waxPrimaryLogo1d3b7fa29 {
     position: absolute;
       box-sizing: content-box;
       -ms-transform: rotate(0.00deg);
@@ -3523,7 +3523,7 @@
 
 }
 
-.marketplace .group1687 .group217 {
+.marketplace .assetAndCollectionsGroup .astroDudeMidRightTopRow {
 
       display: block;
       position: absolute;
@@ -3554,7 +3554,7 @@
 
 }
 
-.marketplace .group1687 .group217 .x4700Wax11fe0928 {
+.marketplace .assetAndCollectionsGroup .astroDudeMidRightTopRow .waxCurrencyMidRightTopRow {
     position: absolute;
       box-sizing: content-box;
       -ms-transform: rotate(0.00deg);
@@ -3594,7 +3594,7 @@
 
 }
 
-.marketplace .group1687 .group217 .group44538e470f {
+.marketplace .assetAndCollectionsGroup .astroDudeMidRightTopRow .waxLogoGroupMidRightTopRow {
 
       display: block;
       position: absolute;
@@ -3625,7 +3625,7 @@
 
 }
 
-.marketplace .group1687 .group217 .group44538e470f .rectangle265c8460cc {
+.marketplace .assetAndCollectionsGroup .astroDudeMidRightTopRow .waxLogoGroupMidRightTopRow .waxLogoOutlineMidRightTopRow {
     position: absolute;
       box-sizing: border-box;
       -ms-transform: rotate(0.00deg);
@@ -3673,7 +3673,7 @@
 
 }
 
-.marketplace .group1687 .group217 .group44538e470f .waxPrimaryLogo1f6ab7b4a {
+.marketplace .assetAndCollectionsGroup .astroDudeMidRightTopRow .waxLogoGroupMidRightTopRow .waxPrimaryLogo1f6ab7b4a {
     position: absolute;
       box-sizing: content-box;
       -ms-transform: rotate(0.00deg);
@@ -3721,7 +3721,7 @@
 
 }
 
-.marketplace .group1687 .group218 {
+.marketplace .assetAndCollectionsGroup .group218 {
 
       display: block;
       position: absolute;
@@ -3752,7 +3752,7 @@
 
 }
 
-.marketplace .group1687 .group218 .x5000Wax5d54eede {
+.marketplace .assetAndCollectionsGroup .godzillaTopRow .waxCurrencyTopRow {
     position: absolute;
       box-sizing: content-box;
       -ms-transform: rotate(0.00deg);
@@ -3792,7 +3792,7 @@
 
 }
 
-.marketplace .group1687 .group218 .group4447d18803 {
+.marketplace .assetAndCollectionsGroup .godzillaTopRow .waxLogoGroupRightTopRow {
 
       display: block;
       position: absolute;
@@ -3823,7 +3823,7 @@
 
 }
 
-.marketplace .group1687 .group218 .group4447d18803 .rectangle263986c06f {
+.marketplace .assetAndCollectionsGroup .godzillaTopRow .waxLogoGroupRightTopRow .waxLogoOutlineRightTopRow {
     position: absolute;
       box-sizing: border-box;
       -ms-transform: rotate(0.00deg);
@@ -3871,7 +3871,7 @@
 
 }
 
-.marketplace .group1687 .group218 .group4447d18803 .waxPrimaryLogo1d350aae6 {
+.marketplace .assetAndCollectionsGroup .godzillaTopRow .waxLogoGroupRightTopRow .waxPrimaryLogo1d350aae6 {
     position: absolute;
       box-sizing: content-box;
       -ms-transform: rotate(0.00deg);
@@ -3919,7 +3919,7 @@
 
 }
 
-.marketplace .group1687 .piggyBankf5768d9a {
+.marketplace .assetAndCollectionsGroup .piggyBankf5768d9a {
     position: absolute;
       box-sizing: content-box;
       -ms-transform: rotate(0.00deg);
@@ -3967,7 +3967,7 @@
 
 }
 
-.marketplace .group1687 .astronaut5fb02e1a {
+.marketplace .assetAndCollectionsGroup .astronaut5fb02e1a {
     position: absolute;
       box-sizing: content-box;
       -ms-transform: rotate(0.00deg);
@@ -4015,7 +4015,7 @@
 
 }
 
-.marketplace .group1687 .godzilla8c995133 {
+.marketplace .assetAndCollectionsGroup .godzilla8c995133 {
     position: absolute;
       box-sizing: content-box;
       -ms-transform: rotate(0.00deg);
@@ -4064,7 +4064,7 @@
 
 }
 
-.marketplace .group1687 .rectangle2242 {
+.marketplace .assetAndCollectionsGroup .detailsBoxLeftTopRow {
     position: absolute;
       box-sizing: content-box;
       -ms-transform: rotate(0.00deg);
@@ -4108,7 +4108,7 @@
 
 }
 
-.marketplace .group1687 .rectangle2244 {
+.marketplace .assetAndCollectionsGroup .detailsBoxMidLeftTopRow {
     position: absolute;
       box-sizing: content-box;
       -ms-transform: rotate(0.00deg);
@@ -4152,7 +4152,7 @@
 
 }
 
-.marketplace .group1687 .rectangle2246 {
+.marketplace .assetAndCollectionsGroup .detailsBoxMidRightTopRow {
     position: absolute;
       box-sizing: content-box;
       -ms-transform: rotate(0.00deg);
@@ -4196,7 +4196,7 @@
 
 }
 
-.marketplace .group1687 .rectangle2248 {
+.marketplace .assetAndCollectionsGroup .detailsBoxRightTopRow {
     position: absolute;
       box-sizing: content-box;
       -ms-transform: rotate(0.00deg);
@@ -4240,7 +4240,7 @@
 
 }
 
-.marketplace .group1687 .rectangle2243 {
+.marketplace .assetAndCollectionsGroup .buyBoxLeftTopRow {
     position: absolute;
       box-sizing: content-box;
       -ms-transform: rotate(0.00deg);
@@ -4282,9 +4282,8 @@
     left: 72.00px;
     top: 174.00px;
 
-}
-
-.marketplace .group1687 .rectangle2245 {
+}assetAndCollectionsGroup
+.marketplace .assetAndCollectionsGroup .buyBoxLeftMidTopRow {
     position: absolute;
       box-sizing: content-box;
       -ms-transform: rotate(0.00deg);
@@ -4328,7 +4327,7 @@
 
 }
 
-.marketplace .group1687 .rectangle2247 {
+.marketplace .assetAndCollectionsGroup .buyBoxRightMidTopRow {
     position: absolute;
       box-sizing: content-box;
       -ms-transform: rotate(0.00deg);
@@ -4372,7 +4371,7 @@
 
 }
 
-.marketplace .group1687 .rectangle2249 {
+.marketplace .assetAndCollectionsGroup .buyBoxRightTopRow {
     position: absolute;
       box-sizing: content-box;
       -ms-transform: rotate(0.00deg);
@@ -4416,7 +4415,7 @@
 
 }
 
-.marketplace .group1687 .buyd978fd95 {
+.marketplace .assetAndCollectionsGroup .buyd978fd95 {
     position: absolute;
       box-sizing: content-box;
       -ms-transform: rotate(0.00deg);
@@ -4456,7 +4455,7 @@
 
 }
 
-.marketplace .group1687 .buy018ff8eb {
+.marketplace .assetAndCollectionsGroup .buy018ff8eb {
     position: absolute;
       box-sizing: content-box;
       -ms-transform: rotate(0.00deg);
@@ -4496,7 +4495,7 @@
 
 }
 
-.marketplace .group1687 .buyf890f06a {
+.marketplace .assetAndCollectionsGroup .buyf890f06a {
     position: absolute;
       box-sizing: content-box;
       -ms-transform: rotate(0.00deg);
@@ -4536,7 +4535,7 @@
 
 }
 
-.marketplace .group1687 .buy85ca4073 {
+.marketplace .assetAndCollectionsGroup .buy85ca4073 {
     position: absolute;
       box-sizing: content-box;
       -ms-transform: rotate(0.00deg);
@@ -4576,7 +4575,7 @@
 
 }
 
-.marketplace .group1687 .details0b4489e9 {
+.marketplace .assetAndCollectionsGroup .details0b4489e9 {
     position: absolute;
       box-sizing: content-box;
       -ms-transform: rotate(0.00deg);
@@ -4616,7 +4615,7 @@
 
 }
 
-.marketplace .group1687 .detailsde3ebdb2 {
+.marketplace .assetAndCollectionsGroup .detailsde3ebdb2 {
     position: absolute;
       box-sizing: content-box;
       -ms-transform: rotate(0.00deg);
@@ -4656,7 +4655,7 @@
 
 }
 
-.marketplace .group1687 .details3988eea3 {
+.marketplace .assetAndCollectionsGroup .details3988eea3 {
     position: absolute;
       box-sizing: content-box;
       -ms-transform: rotate(0.00deg);
@@ -4696,7 +4695,7 @@
 
 }
 
-.marketplace .group1687 .detailsaf0b050f {
+.marketplace .assetAndCollectionsGroup .detailsaf0b050f {
     position: absolute;
       box-sizing: content-box;
       -ms-transform: rotate(0.00deg);
@@ -4736,7 +4735,7 @@
 
 }
 
-.marketplace .group1687 .group548 {
+.marketplace .assetAndCollectionsGroup .group548 {
 
       display: block;
       position: absolute;
@@ -4767,7 +4766,7 @@
 
 }
 
-.marketplace .group1687 .group548 .rectangle2250c2b4f5bd {
+.marketplace .assetAndCollectionsGroup .group548 .assAndCollectionsBoxLeftMidRow {
     position: absolute;
       box-sizing: content-box;
       -ms-transform: rotate(0.00deg);
@@ -4812,7 +4811,7 @@
 
 }
 
-.marketplace .group1687 .group548 .rectangle2251689f9546 {
+.marketplace .assetAndCollectionsGroup .group548 .assAndCollectionsBoxMidLeftMidRow {
     position: absolute;
       box-sizing: content-box;
       -ms-transform: rotate(0.00deg);
@@ -4857,7 +4856,7 @@
 
 }
 
-.marketplace .group1687 .group548 .rectangle22520ffdce0d {
+.marketplace .assetAndCollectionsGroup .group548 .assAndCollectionsBoxMidRightMidRow {
     position: absolute;
       box-sizing: content-box;
       -ms-transform: rotate(0.00deg);
@@ -4902,7 +4901,7 @@
 
 }
 
-.marketplace .group1687 .group548 .rectangle2253628f3af6 {
+.marketplace .assetAndCollectionsGroup .group548 .assAndCollectionsBoxRightMidRow {
     position: absolute;
       box-sizing: content-box;
       -ms-transform: rotate(0.00deg);
@@ -4947,7 +4946,7 @@
 
 }
 
-.marketplace .group1687 .group548 .theonlykarma0c945f4c {
+.marketplace .assetAndCollectionsGroup .group548 .theonlykarma0c945f4c {
     position: absolute;
       box-sizing: content-box;
       -ms-transform: rotate(0.00deg);
@@ -4987,7 +4986,7 @@
 
 }
 
-.marketplace .group1687 .group548 .theonlykarmad8623773 {
+.marketplace .assetAndCollectionsGroup .group548 .theonlykarmad8623773 {
     position: absolute;
       box-sizing: content-box;
       -ms-transform: rotate(0.00deg);
@@ -5027,7 +5026,7 @@
 
 }
 
-.marketplace .group1687 .group548 .theonlykarma0aa08030 {
+.marketplace .assetAndCollectionsGroup .group548 .theonlykarma0aa08030 {
     position: absolute;
       box-sizing: content-box;
       -ms-transform: rotate(0.00deg);
@@ -5067,7 +5066,7 @@
 
 }
 
-.marketplace .group1687 .group548 .theonlykarmafda214a1 {
+.marketplace .assetAndCollectionsGroup .group548 .theonlykarmafda214a1 {
     position: absolute;
       box-sizing: content-box;
       -ms-transform: rotate(0.00deg);
@@ -5107,7 +5106,7 @@
 
 }
 
-.marketplace .group1687 .group548 .godzilla9d44131d {
+.marketplace .assetAndCollectionsGroup .group548 .godzillRightMidRow {
     position: absolute;
       box-sizing: content-box;
       -ms-transform: rotate(0.00deg);
@@ -5147,7 +5146,7 @@
 
 }
 
-.marketplace .group1687 .group548 .astroDudea0c96960 {
+.marketplace .assetAndCollectionsGroup .group548 .astroDudeMidMidRow {
     position: absolute;
       box-sizing: content-box;
       -ms-transform: rotate(0.00deg);
@@ -5187,7 +5186,7 @@
 
 }
 
-.marketplace .group1687 .group548 .piggyBank0a6098c7 {
+.marketplace .assetAndCollectionsGroup .group548 .piggyBankMidMidRow {
     position: absolute;
       box-sizing: content-box;
       -ms-transform: rotate(0.00deg);
@@ -5227,7 +5226,7 @@
 
 }
 
-.marketplace .group1687 .group548 .kingKeo26cbc6c2 {
+.marketplace .assetAndCollectionsGroup .group548 .kingKeoLeftMidRow {
     position: absolute;
       box-sizing: content-box;
       -ms-transform: rotate(0.00deg);
@@ -5267,7 +5266,7 @@
 
 }
 
-.marketplace .group1687 .group548 .dallas14152309f7f {
+.marketplace .assetAndCollectionsGroup .group548 .dallas14152309f7f {
     position: absolute;
       box-sizing: content-box;
       -ms-transform: rotate(0.00deg);
@@ -5315,7 +5314,7 @@
 
 }
 
-.marketplace .group1687 .group548 .x25000Karmae10cfaeb {
+.marketplace .assetAndCollectionsGroup .group548 .karmaCurrencyLeftMidRow {
     position: absolute;
       box-sizing: content-box;
       -ms-transform: rotate(0.00deg);
@@ -5355,7 +5354,7 @@
 
 }
 
-.marketplace .group1687 .group548 .group544c6c73b59 {
+.marketplace .assetAndCollectionsGroup .group548 .logoGroupMidRow {
 
       display: block;
       position: absolute;
@@ -5386,7 +5385,7 @@
 
 }
 
-.marketplace .group1687 .group548 .group544c6c73b59 .rectangle259318c890 {
+.marketplace .assetAndCollectionsGroup .group548 .logoGroupMidRow .logoOutlineMidRow {
     position: absolute;
       box-sizing: border-box;
       -ms-transform: rotate(0.00deg);
@@ -5434,7 +5433,7 @@
 
 }
 
-.marketplace .group1687 .group548 .group544c6c73b59 .logoGradientdafedd01 {
+.marketplace .assetAndCollectionsGroup .group548 .logoGroupMidRow .logoGradientdafedd01 {
     position: absolute;
       box-sizing: content-box;
       -ms-transform: rotate(0.00deg);
@@ -5482,7 +5481,7 @@
 
 }
 
-.marketplace .group1687 .group548 .group545baf1f3b4 {
+.marketplace .assetAndCollectionsGroup .group548 .piggyBankLeftMidRow {
 
       display: block;
       position: absolute;
@@ -5513,7 +5512,7 @@
 
 }
 
-.marketplace .group1687 .group548 .group545baf1f3b4 .x500Wax2612c38f {
+.marketplace .assetAndCollectionsGroup .group548 .piggyBankLeftMidRow .waxCurrnecyLeftMidRow {
     position: absolute;
       box-sizing: content-box;
       -ms-transform: rotate(0.00deg);
@@ -5553,7 +5552,7 @@
 
 }
 
-.marketplace .group1687 .group548 .group545baf1f3b4 .group449a360eb0 {
+.marketplace .assetAndCollectionsGroup .group548 .piggyBankLeftMidRow .waxLogoGroupLeftMidRow {
 
       display: block;
       position: absolute;
@@ -5584,7 +5583,7 @@
 
 }
 
-.marketplace .group1687 .group548 .group545baf1f3b4 .group449a360eb0 .rectangle26fa5becf4 {
+.marketplace .assetAndCollectionsGroup .group548 .piggyBankLeftMidRow .waxLogoGroupLeftMidRow .waxLogoOutlineLeftMidRow {
     position: absolute;
       box-sizing: border-box;
       -ms-transform: rotate(0.00deg);
@@ -5632,7 +5631,7 @@
 
 }
 
-.marketplace .group1687 .group548 .group545baf1f3b4 .group449a360eb0 .waxPrimaryLogo12311c13f {
+.marketplace .assetAndCollectionsGroup .group548 .piggyBankLeftMidRow .waxLogoGroupLeftMidRow .waxPrimaryLogo12311c13f {
     position: absolute;
       box-sizing: content-box;
       -ms-transform: rotate(0.00deg);
@@ -5680,7 +5679,7 @@
 
 }
 
-.marketplace .group1687 .group548 .group546a266592c {
+.marketplace .assetAndCollectionsGroup .group548 .astroDudeMidRightMidRow {
 
       display: block;
       position: absolute;
@@ -5711,7 +5710,7 @@
 
 }
 
-.marketplace .group1687 .group548 .group546a266592c .x4700Wax5e09b06d {
+.marketplace .assetAndCollectionsGroup .group548 .astroDudeMidRightMidRow .waxCurrencyMidRightMidRow {
     position: absolute;
       box-sizing: content-box;
       -ms-transform: rotate(0.00deg);
@@ -5751,7 +5750,7 @@
 
 }
 
-.marketplace .group1687 .group548 .group546a266592c .group44746d9321 {
+.marketplace .assetAndCollectionsGroup .group548 .astroDudeMidRightMidRow .waxLogoGroupMidRightMidRow {
 
       display: block;
       position: absolute;
@@ -5782,7 +5781,7 @@
 
 }
 
-.marketplace .group1687 .group548 .group546a266592c .group44746d9321 .rectangle260c2e8790 {
+.marketplace .assetAndCollectionsGroup .group548 .astroDudeMidRightMidRow .waxLogoGroupMidRightMidRow .waxLogoOutlineMidRightMidRow {
     position: absolute;
       box-sizing: border-box;
       -ms-transform: rotate(0.00deg);
@@ -5830,7 +5829,7 @@
 
 }
 
-.marketplace .group1687 .group548 .group546a266592c .group44746d9321 .waxPrimaryLogo138b77e3a {
+.marketplace .assetAndCollectionsGroup .group548 .astroDudeMidRightMidRow .waxLogoGroupMidRightMidRow .waxPrimaryLogo138b77e3a {
     position: absolute;
       box-sizing: content-box;
       -ms-transform: rotate(0.00deg);
@@ -5878,7 +5877,7 @@
 
 }
 
-.marketplace .group1687 .group548 .group54711caa58f {
+.marketplace .assetAndCollectionsGroup .group548 .godzillaMidRow {
 
       display: block;
       position: absolute;
@@ -5909,7 +5908,7 @@
 
 }
 
-.marketplace .group1687 .group548 .group54711caa58f .x5000Wax88fb19d1 {
+.marketplace .assetAndCollectionsGroup .group548 .godzillaMidRow .waxCurrencyRightMidRow {
     position: absolute;
       box-sizing: content-box;
       -ms-transform: rotate(0.00deg);
@@ -5949,7 +5948,7 @@
 
 }
 
-.marketplace .group1687 .group548 .group54711caa58f .group441cab4902 {
+.marketplace .assetAndCollectionsGroup .group548 .godzillaMidRow .waxLogoGroupRightMidRow {
 
       display: block;
       position: absolute;
@@ -5980,7 +5979,7 @@
 
 }
 
-.marketplace .group1687 .group548 .group54711caa58f .group441cab4902 .rectangle264180d23c {
+.marketplace .assetAndCollectionsGroup .group548 .godzillaMidRow .waxLogoGroupRightMidRow .waxLogoOutlineRightMidRow {
     position: absolute;
       box-sizing: border-box;
       -ms-transform: rotate(0.00deg);
@@ -6028,7 +6027,7 @@
 
 }
 
-.marketplace .group1687 .group548 .group54711caa58f .group441cab4902 .waxPrimaryLogo190f87f62 {
+.marketplace .assetAndCollectionsGroup .group548 .godzillaMidRow .waxLogoGroupRightMidRow .waxPrimaryLogo190f87f62 {
     position: absolute;
       box-sizing: content-box;
       -ms-transform: rotate(0.00deg);
@@ -6076,7 +6075,7 @@
 
 }
 
-.marketplace .group1687 .group548 .piggyBank6446c3f1 {
+.marketplace .assetAndCollectionsGroup .group548 .piggyBank6446c3f1 {
     position: absolute;
       box-sizing: content-box;
       -ms-transform: rotate(0.00deg);
@@ -6124,7 +6123,7 @@
 
 }
 
-.marketplace .group1687 .group548 .astronaut430b8aa5 {
+.marketplace .assetAndCollectionsGroup .group548 .astronaut430b8aa5 {
     position: absolute;
       box-sizing: content-box;
       -ms-transform: rotate(0.00deg);
@@ -6172,7 +6171,7 @@
 
 }
 
-.marketplace .group1687 .group548 .godzilla30bc9ab2 {
+.marketplace .assetAndCollectionsGroup .group548 .godzilla30bc9ab2 {
     position: absolute;
       box-sizing: content-box;
       -ms-transform: rotate(0.00deg);
@@ -6221,7 +6220,7 @@
 
 }
 
-.marketplace .group1687 .group548 .rectangle22547bb7c77a {
+.marketplace .assetAndCollectionsGroup .group548 .detailsBoxLeftMidRow {
     position: absolute;
       box-sizing: content-box;
       -ms-transform: rotate(0.00deg);
@@ -6265,7 +6264,7 @@
 
 }
 
-.marketplace .group1687 .group548 .rectangle2255913664aa {
+.marketplace .assetAndCollectionsGroup .group548 .detailsBoxMidLeftMidRow {
     position: absolute;
       box-sizing: content-box;
       -ms-transform: rotate(0.00deg);
@@ -6309,7 +6308,7 @@
 
 }
 
-.marketplace .group1687 .group548 .rectangle225649645ad6 {
+.marketplace .assetAndCollectionsGroup .group548 .detailsBoxMidRightMidRow {
     position: absolute;
       box-sizing: content-box;
       -ms-transform: rotate(0.00deg);
@@ -6353,7 +6352,7 @@
 
 }
 
-.marketplace .group1687 .group548 .rectangle22571995869a {
+.marketplace .assetAndCollectionsGroup .group548 .detailsBoxRightMidRow {
     position: absolute;
       box-sizing: content-box;
       -ms-transform: rotate(0.00deg);
@@ -6397,7 +6396,7 @@
 
 }
 
-.marketplace .group1687 .group548 .rectangle225845644954 {
+.marketplace .assetAndCollectionsGroup .group548 .buyBoxLeftMidRow {
     position: absolute;
       box-sizing: content-box;
       -ms-transform: rotate(0.00deg);
@@ -6441,7 +6440,7 @@
 
 }
 
-.marketplace .group1687 .group548 .rectangle225941e6fcd5 {
+.marketplace .assetAndCollectionsGroup .group548 .buyBoxLeftMidMidRow {
     position: absolute;
       box-sizing: content-box;
       -ms-transform: rotate(0.00deg);
@@ -6485,7 +6484,7 @@
 
 }
 
-.marketplace .group1687 .group548 .rectangle226043cbe41e {
+.marketplace .assetAndCollectionsGroup .group548 .buyBoxRightMidMidRow {
     position: absolute;
       box-sizing: content-box;
       -ms-transform: rotate(0.00deg);
@@ -6529,7 +6528,7 @@
 
 }
 
-.marketplace .group1687 .group548 .rectangle2261a23a3aa2 {
+.marketplace .assetAndCollectionsGroup .group548 .buyBoxRightMidRow {
     position: absolute;
       box-sizing: content-box;
       -ms-transform: rotate(0.00deg);
@@ -6573,7 +6572,7 @@
 
 }
 
-.marketplace .group1687 .group548 .buy43e5c6d8 {
+.marketplace .assetAndCollectionsGroup .group548 .buy43e5c6d8 {
     position: absolute;
       box-sizing: content-box;
       -ms-transform: rotate(0.00deg);
@@ -6613,7 +6612,7 @@
 
 }
 
-.marketplace .group1687 .group548 .buyad58a953 {
+.marketplace .assetAndCollectionsGroup .group548 .buyad58a953 {
     position: absolute;
       box-sizing: content-box;
       -ms-transform: rotate(0.00deg);
@@ -6653,7 +6652,7 @@
 
 }
 
-.marketplace .group1687 .group548 .buy652dc7b3 {
+.marketplace .assetAndCollectionsGroup .group548 .buy652dc7b3 {
     position: absolute;
       box-sizing: content-box;
       -ms-transform: rotate(0.00deg);
@@ -6693,7 +6692,7 @@
 
 }
 
-.marketplace .group1687 .group548 .buy5a78af20 {
+.marketplace .assetAndCollectionsGroup .group548 .buy5a78af20 {
     position: absolute;
       box-sizing: content-box;
       -ms-transform: rotate(0.00deg);
@@ -6733,7 +6732,7 @@
 
 }
 
-.marketplace .group1687 .group548 .detailsc8088909 {
+.marketplace .assetAndCollectionsGroup .group548 .detailsc8088909 {
     position: absolute;
       box-sizing: content-box;
       -ms-transform: rotate(0.00deg);
@@ -6773,7 +6772,7 @@
 
 }
 
-.marketplace .group1687 .group548 .detailsb8eb8109 {
+.marketplace .assetAndCollectionsGroup .group548 .detailsb8eb8109 {
     position: absolute;
       box-sizing: content-box;
       -ms-transform: rotate(0.00deg);
@@ -6813,7 +6812,7 @@
 
 }
 
-.marketplace .group1687 .group548 .details4bb07f6f {
+.marketplace .assetAndCollectionsGroup .group548 .details4bb07f6f {
     position: absolute;
       box-sizing: content-box;
       -ms-transform: rotate(0.00deg);
@@ -6853,7 +6852,7 @@
 
 }
 
-.marketplace .group1687 .group548 .detailsb2d23e14 {
+.marketplace .assetAndCollectionsGroup .group548 .detailsb2d23e14 {
     position: absolute;
       box-sizing: content-box;
       -ms-transform: rotate(0.00deg);
@@ -6893,7 +6892,7 @@
 
 }
 
-.marketplace .group1687 .group549 {
+.marketplace .assetAndCollectionsGroup .group549 {
 
       display: block;
       position: absolute;
@@ -6924,7 +6923,7 @@
 
 }
 
-.marketplace .group1687 .group549 .rectangle22503651c1a5 {
+.marketplace .assetAndCollectionsGroup .group549 .assAndCollectionsBoxLeftMidRow2 {
     position: absolute;
       box-sizing: content-box;
       -ms-transform: rotate(0.00deg);
@@ -6969,7 +6968,7 @@
 
 }
 
-.marketplace .group1687 .group549 .rectangle2251ec553d8a {
+.marketplace .assetAndCollectionsGroup .group549 .assAndCollectionsBoxMidLeftMidRow2 {
     position: absolute;
       box-sizing: content-box;
       -ms-transform: rotate(0.00deg);
@@ -7014,7 +7013,7 @@
 
 }
 
-.marketplace .group1687 .group549 .rectangle2252a1aede32 {
+.marketplace .assetAndCollectionsGroup .group549 .assAndCollectionsBoxMidRightMidRow2 {
     position: absolute;
       box-sizing: content-box;
       -ms-transform: rotate(0.00deg);
@@ -7059,7 +7058,7 @@
 
 }
 
-.marketplace .group1687 .group549 .rectangle22530f8cb3ee {
+.marketplace .assetAndCollectionsGroup .group549 .assAndCollectionsBoxRightMidRow2 {
     position: absolute;
       box-sizing: content-box;
       -ms-transform: rotate(0.00deg);
@@ -7104,7 +7103,7 @@
 
 }
 
-.marketplace .group1687 .group549 .theonlykarmad69aa2cf {
+.marketplace .assetAndCollectionsGroup .group549 .theonlykarmad69aa2cf {
     position: absolute;
       box-sizing: content-box;
       -ms-transform: rotate(0.00deg);
@@ -7144,7 +7143,7 @@
 
 }
 
-.marketplace .group1687 .group549 .theonlykarma41c63ff8 {
+.marketplace .assetAndCollectionsGroup .group549 .theonlykarma41c63ff8 {
     position: absolute;
       box-sizing: content-box;
       -ms-transform: rotate(0.00deg);
@@ -7184,7 +7183,7 @@
 
 }
 
-.marketplace .group1687 .group549 .theonlykarma1cd1856e {
+.marketplace .assetAndCollectionsGroup .group549 .theonlykarma1cd1856e {
     position: absolute;
       box-sizing: content-box;
       -ms-transform: rotate(0.00deg);
@@ -7224,7 +7223,7 @@
 
 }
 
-.marketplace .group1687 .group549 .theonlykarma70ec02fb {
+.marketplace .assetAndCollectionsGroup .group549 .theonlykarma70ec02fb {
     position: absolute;
       box-sizing: content-box;
       -ms-transform: rotate(0.00deg);
@@ -7264,7 +7263,7 @@
 
 }
 
-.marketplace .group1687 .group549 .godzillaf6db7b49 {
+.marketplace .assetAndCollectionsGroup .group549 .godzillRightMidRow2 {
     position: absolute;
       box-sizing: content-box;
       -ms-transform: rotate(0.00deg);
@@ -7304,7 +7303,7 @@
 
 }
 
-.marketplace .group1687 .group549 .astroDude37ebabce {
+.marketplace .assetAndCollectionsGroup .group549 .astroDudeMidMidRow2 {
     position: absolute;
       box-sizing: content-box;
       -ms-transform: rotate(0.00deg);
@@ -7344,7 +7343,7 @@
 
 }
 
-.marketplace .group1687 .group549 .piggyBank3b3d54de {
+.marketplace .assetAndCollectionsGroup .group549 .piggyBankMidMidRow2 {
     position: absolute;
       box-sizing: content-box;
       -ms-transform: rotate(0.00deg);
@@ -7384,7 +7383,7 @@
 
 }
 
-.marketplace .group1687 .group549 .kingKeo86531091 {
+.marketplace .assetAndCollectionsGroup .group549 .kingKeoLeftMidRow {
     position: absolute;
       box-sizing: content-box;
       -ms-transform: rotate(0.00deg);
@@ -7424,7 +7423,7 @@
 
 }
 
-.marketplace .group1687 .group549 .dallas1413090169e {
+.marketplace .assetAndCollectionsGroup .group549 .dallas1413090169e {
     position: absolute;
       box-sizing: content-box;
       -ms-transform: rotate(0.00deg);
@@ -7472,7 +7471,7 @@
 
 }
 
-.marketplace .group1687 .group549 .x25000Karmab5d33daa {
+.marketplace .assetAndCollectionsGroup .group549 .karmaCurrencyLeftMidRow2 {
     position: absolute;
       box-sizing: content-box;
       -ms-transform: rotate(0.00deg);
@@ -7512,7 +7511,7 @@
 
 }
 
-.marketplace .group1687 .group549 .group544523baabc {
+.marketplace .assetAndCollectionsGroup .group549 .logoGroupMidRow2 {
 
       display: block;
       position: absolute;
@@ -7543,7 +7542,7 @@
 
 }
 
-.marketplace .group1687 .group549 .group544523baabc .rectangle254cedcc97 {
+.marketplace .assetAndCollectionsGroup .group549 .logoGroupMidRow2 .logoOutlineMidRow2 {
     position: absolute;
       box-sizing: border-box;
       -ms-transform: rotate(0.00deg);
@@ -7591,7 +7590,7 @@
 
 }
 
-.marketplace .group1687 .group549 .group544523baabc .logoGradient3adf50a1 {
+.marketplace .assetAndCollectionsGroup .group549 .logoGroupMidRow2 .logoGradient3adf50a1 {
     position: absolute;
       box-sizing: content-box;
       -ms-transform: rotate(0.00deg);
@@ -7639,7 +7638,7 @@
 
 }
 
-.marketplace .group1687 .group549 .group545235ebb3d {
+.marketplace .assetAndCollectionsGroup .group549 .piggyBankLeftMidRow2 {
 
       display: block;
       position: absolute;
@@ -7670,7 +7669,7 @@
 
 }
 
-.marketplace .group1687 .group549 .group545235ebb3d .x500Waxdb26d3e1 {
+.marketplace .assetAndCollectionsGroup .group549 .piggyBankLeftMidRow2 .waxCurrnecyLeftMidRow2 {
     position: absolute;
       box-sizing: content-box;
       -ms-transform: rotate(0.00deg);
@@ -7710,7 +7709,7 @@
 
 }
 
-.marketplace .group1687 .group549 .group545235ebb3d .group443c90987c {
+.marketplace .assetAndCollectionsGroup .group549 .piggyBankLeftMidRow2 .waxLogoGroupLeftMidRow2 {
 
       display: block;
       position: absolute;
@@ -7741,7 +7740,7 @@
 
 }
 
-.marketplace .group1687 .group549 .group545235ebb3d .group443c90987c .rectangle26112bb5fa {
+.marketplace .assetAndCollectionsGroup .group549 .piggyBankLeftMidRow2 .waxLogoGroupLeftMidRow2 .waxLogoOutlineLeftMidRow2 {
     position: absolute;
       box-sizing: border-box;
       -ms-transform: rotate(0.00deg);
@@ -7789,7 +7788,7 @@
 
 }
 
-.marketplace .group1687 .group549 .group545235ebb3d .group443c90987c .waxPrimaryLogo10e86f799 {
+.marketplace .assetAndCollectionsGroup .group549 .piggyBankLeftMidRow2 .waxLogoGroupLeftMidRow2 .waxPrimaryLogo10e86f799 {
     position: absolute;
       box-sizing: content-box;
       -ms-transform: rotate(0.00deg);
@@ -7837,7 +7836,7 @@
 
 }
 
-.marketplace .group1687 .group549 .group546b5f1a284 {
+.marketplace .assetAndCollectionsGroup .group549 .astroDudeMidRightMidRow2 {
 
       display: block;
       position: absolute;
@@ -7868,7 +7867,7 @@
 
 }
 
-.marketplace .group1687 .group549 .group546b5f1a284 .x4700Wax17217973 {
+.marketplace .assetAndCollectionsGroup .group549 .astroDudeMidRightMidRow2 .waxCurrencyMidRightMidRow2 {
     position: absolute;
       box-sizing: content-box;
       -ms-transform: rotate(0.00deg);
@@ -7908,7 +7907,7 @@
 
 }
 
-.marketplace .group1687 .group549 .group546b5f1a284 .group4457d4c157 {
+.marketplace .assetAndCollectionsGroup .group549 .astroDudeMidRightMidRow2 .waxLogoGroupMidRightMidRow2 {
 
       display: block;
       position: absolute;
@@ -7939,7 +7938,7 @@
 
 }
 
-.marketplace .group1687 .group549 .group546b5f1a284 .group4457d4c157 .rectangle26fb916659 {
+.marketplace .assetAndCollectionsGroup .group549 .astroDudeMidRightMidRow2 .waxLogoGroupMidRightMidRow2 .waxLogoOutlineMidRightMidRow2 {
     position: absolute;
       box-sizing: border-box;
       -ms-transform: rotate(0.00deg);
@@ -7987,7 +7986,7 @@
 
 }
 
-.marketplace .group1687 .group549 .group546b5f1a284 .group4457d4c157 .waxPrimaryLogo12909a9ba {
+.marketplace .assetAndCollectionsGroup .group549 .astroDudeMidRightMidRow2 .waxLogoGroupMidRightMidRow2 .waxPrimaryLogo12909a9ba {
     position: absolute;
       box-sizing: content-box;
       -ms-transform: rotate(0.00deg);
@@ -8035,7 +8034,7 @@
 
 }
 
-.marketplace .group1687 .group549 .group54786db349d {
+.marketplace .assetAndCollectionsGroup .group549 .godzillaMidRow2 {
 
       display: block;
       position: absolute;
@@ -8066,7 +8065,7 @@
 
 }
 
-.marketplace .group1687 .group549 .group54786db349d .x5000Wax08e38119 {
+.marketplace .assetAndCollectionsGroup .group549 .godzillaMidRow2 .waxCurrencyRightMidRow2 {
     position: absolute;
       box-sizing: content-box;
       -ms-transform: rotate(0.00deg);
@@ -8106,7 +8105,7 @@
 
 }
 
-.marketplace .group1687 .group549 .group54786db349d .group4492106780 {
+.marketplace .assetAndCollectionsGroup .group549 .godzillaMidRow2 .waxLogoGroupRightMidRow2 {
 
       display: block;
       position: absolute;
@@ -8137,7 +8136,7 @@
 
 }
 
-.marketplace .group1687 .group549 .group54786db349d .group4492106780 .rectangle265fa56474 {
+.marketplace .assetAndCollectionsGroup .group549 .godzillaMidRow2 .waxLogoGroupRightMidRow2 .waxLogoOutlineRightMidRow2 {
     position: absolute;
       box-sizing: border-box;
       -ms-transform: rotate(0.00deg);
@@ -8185,7 +8184,7 @@
 
 }
 
-.marketplace .group1687 .group549 .group54786db349d .group4492106780 .waxPrimaryLogo1d9322b5a {
+.marketplace .assetAndCollectionsGroup .group549 .godzillaMidRow2 .waxLogoGroupRightMidRow2 .waxPrimaryLogo1d9322b5a {
     position: absolute;
       box-sizing: content-box;
       -ms-transform: rotate(0.00deg);
@@ -8233,7 +8232,7 @@
 
 }
 
-.marketplace .group1687 .group549 .piggyBankf22040c1 {
+.marketplace .assetAndCollectionsGroup .group549 .piggyBankf22040c1 {
     position: absolute;
       box-sizing: content-box;
       -ms-transform: rotate(0.00deg);
@@ -8281,7 +8280,7 @@
 
 }
 
-.marketplace .group1687 .group549 .astronaut7ff5ed4f {
+.marketplace .assetAndCollectionsGroup .group549 .astronaut7ff5ed4f {
     position: absolute;
       box-sizing: content-box;
       -ms-transform: rotate(0.00deg);
@@ -8329,7 +8328,7 @@
 
 }
 
-.marketplace .group1687 .group549 .godzillad404956b {
+.marketplace .assetAndCollectionsGroup .group549 .godzillad404956b {
     position: absolute;
       box-sizing: content-box;
       -ms-transform: rotate(0.00deg);
@@ -8378,7 +8377,7 @@
 
 }
 
-.marketplace .group1687 .group549 .rectangle22541f8e0393 {
+.marketplace .assetAndCollectionsGroup .group549 .detailsBoxLeftMidRow2 {
     position: absolute;
       box-sizing: content-box;
       -ms-transform: rotate(0.00deg);
@@ -8422,7 +8421,7 @@
 
 }
 
-.marketplace .group1687 .group549 .rectangle2255c7251064 {
+.marketplace .assetAndCollectionsGroup .group549 .detailsBoxMidLeftMidRow2 {
     position: absolute;
       box-sizing: content-box;
       -ms-transform: rotate(0.00deg);
@@ -8466,7 +8465,7 @@
 
 }
 
-.marketplace .group1687 .group549 .rectangle2256336e11be {
+.marketplace .assetAndCollectionsGroup .group549 .detailsBoxMidRightMidRow2 {
     position: absolute;
       box-sizing: content-box;
       -ms-transform: rotate(0.00deg);
@@ -8510,7 +8509,7 @@
 
 }
 
-.marketplace .group1687 .group549 .rectangle22572e622aa0 {
+.marketplace .assetAndCollectionsGroup .group549 .detailsBoxMidRightMidRow2 {
     position: absolute;
       box-sizing: content-box;
       -ms-transform: rotate(0.00deg);
@@ -8554,7 +8553,7 @@
 
 }
 
-.marketplace .group1687 .group549 .rectangle225819c5b9e6 {
+.marketplace .assetAndCollectionsGroup .group549 .buyBoxLeftMidRow2 {
     position: absolute;
       box-sizing: content-box;
       -ms-transform: rotate(0.00deg);
@@ -8598,7 +8597,7 @@
 
 }
 
-.marketplace .group1687 .group549 .rectangle22594f399e42 {
+.marketplace .assetAndCollectionsGroup .group549 .buyBoxLeftMidMidRow2 {
     position: absolute;
       box-sizing: content-box;
       -ms-transform: rotate(0.00deg);
@@ -8642,7 +8641,7 @@
 
 }
 
-.marketplace .group1687 .group549 .rectangle226034bb383d {
+.marketplace .assetAndCollectionsGroup .group549 .buyBoxRightMidMidRow2 {
     position: absolute;
       box-sizing: content-box;
       -ms-transform: rotate(0.00deg);
@@ -8686,7 +8685,7 @@
 
 }
 
-.marketplace .group1687 .group549 .rectangle2261656a610f {
+.marketplace .assetAndCollectionsGroup .group549 .buyBoxRightMidRow2 {
     position: absolute;
       box-sizing: content-box;
       -ms-transform: rotate(0.00deg);
@@ -8730,7 +8729,7 @@
 
 }
 
-.marketplace .group1687 .group549 .buybdf971cd {
+.marketplace .assetAndCollectionsGroup .group549 .buybdf971cd {
     position: absolute;
       box-sizing: content-box;
       -ms-transform: rotate(0.00deg);
@@ -8770,7 +8769,7 @@
 
 }
 
-.marketplace .group1687 .group549 .buyda1da78d {
+.marketplace .assetAndCollectionsGroup .group549 .buyda1da78d {
     position: absolute;
       box-sizing: content-box;
       -ms-transform: rotate(0.00deg);
@@ -8810,7 +8809,7 @@
 
 }
 
-.marketplace .group1687 .group549 .buy0969fcfd {
+.marketplace .assetAndCollectionsGroup .group549 .buy0969fcfd {
     position: absolute;
       box-sizing: content-box;
       -ms-transform: rotate(0.00deg);
@@ -8850,7 +8849,7 @@
 
 }
 
-.marketplace .group1687 .group549 .buy1808a343 {
+.marketplace .assetAndCollectionsGroup .group549 .buy1808a343 {
     position: absolute;
       box-sizing: content-box;
       -ms-transform: rotate(0.00deg);
@@ -8890,7 +8889,7 @@
 
 }
 
-.marketplace .group1687 .group549 .details466a2e62 {
+.marketplace .assetAndCollectionsGroup .group549 .details466a2e62 {
     position: absolute;
       box-sizing: content-box;
       -ms-transform: rotate(0.00deg);
@@ -8930,7 +8929,7 @@
 
 }
 
-.marketplace .group1687 .group549 .detailsd759487e {
+.marketplace .assetAndCollectionsGroup .group549 .detailsd759487e {
     position: absolute;
       box-sizing: content-box;
       -ms-transform: rotate(0.00deg);
@@ -8970,7 +8969,7 @@
 
 }
 
-.marketplace .group1687 .group549 .details3d6f38f0 {
+.marketplace .assetAndCollectionsGroup .group549 .details3d6f38f0 {
     position: absolute;
       box-sizing: content-box;
       -ms-transform: rotate(0.00deg);
@@ -9010,7 +9009,7 @@
 
 }
 
-.marketplace .group1687 .group549 .detailse5206131 {
+.marketplace .assetAndCollectionsGroup .group549 .detailse5206131 {
     position: absolute;
       box-sizing: content-box;
       -ms-transform: rotate(0.00deg);
@@ -9050,7 +9049,7 @@
 
 }
 
-.marketplace .group1687 .group550 {
+.marketplace .assetAndCollectionsGroup .group550 {
 
       display: block;
       position: absolute;
@@ -9081,7 +9080,7 @@
 
 }
 
-.marketplace .group1687 .group550 .rectangle2250 {
+.marketplace .assetAndCollectionsGroup .group550 .assAndCollectionsBoxLeftBottomRow {
     position: absolute;
       box-sizing: content-box;
       -ms-transform: rotate(0.00deg);
@@ -9126,7 +9125,7 @@
 
 }
 
-.marketplace .group1687 .group550 .rectangle2251 {
+.marketplace .assetAndCollectionsGroup .group550 .assAndCollectionsBoxMidLeftBottomRow {
     position: absolute;
       box-sizing: content-box;
       -ms-transform: rotate(0.00deg);
@@ -9171,7 +9170,7 @@
 
 }
 
-.marketplace .group1687 .group550 .rectangle2252 {
+.marketplace .assetAndCollectionsGroup .group550 .assAndCollectionsBoxMidRightBottomRow {
     position: absolute;
       box-sizing: content-box;
       -ms-transform: rotate(0.00deg);
@@ -9216,7 +9215,7 @@
 
 }
 
-.marketplace .group1687 .group550 .rectangle2253 {
+.marketplace .assetAndCollectionsGroup .group550 .assAndCollectionsBoxRightBottomRow {
     position: absolute;
       box-sizing: content-box;
       -ms-transform: rotate(0.00deg);
@@ -9261,7 +9260,7 @@
 
 }
 
-.marketplace .group1687 .group550 .theonlykarma8964f21b {
+.marketplace .assetAndCollectionsGroup .group550 .theonlykarma8964f21b {
     position: absolute;
       box-sizing: content-box;
       -ms-transform: rotate(0.00deg);
@@ -9301,7 +9300,7 @@
 
 }
 
-.marketplace .group1687 .group550 .theonlykarma2ca35b42 {
+.marketplace .assetAndCollectionsGroup .group550 .theonlykarma2ca35b42 {
     position: absolute;
       box-sizing: content-box;
       -ms-transform: rotate(0.00deg);
@@ -9341,7 +9340,7 @@
 
 }
 
-.marketplace .group1687 .group550 .theonlykarma6a258701 {
+.marketplace .assetAndCollectionsGroup .group550 .theonlykarma6a258701 {
     position: absolute;
       box-sizing: content-box;
       -ms-transform: rotate(0.00deg);
@@ -9381,7 +9380,7 @@
 
 }
 
-.marketplace .group1687 .group550 .theonlykarma {
+.marketplace .assetAndCollectionsGroup .group550 .theonlykarma {
     position: absolute;
       box-sizing: content-box;
       -ms-transform: rotate(0.00deg);
@@ -9421,7 +9420,7 @@
 
 }
 
-.marketplace .group1687 .group550 .godzilla8643549d {
+.marketplace .assetAndCollectionsGroup .group550 .godzillRightBottomRow {
     position: absolute;
       box-sizing: content-box;
       -ms-transform: rotate(0.00deg);
@@ -9461,7 +9460,7 @@
 
 }
 
-.marketplace .group1687 .group550 .astroDude {
+.marketplace .assetAndCollectionsGroup .group550 .astroDudeMidBottomRow {
     position: absolute;
       box-sizing: content-box;
       -ms-transform: rotate(0.00deg);
@@ -9501,7 +9500,7 @@
 
 }
 
-.marketplace .group1687 .group550 .piggyBank34aaa936 {
+.marketplace .assetAndCollectionsGroup .group550 .piggyBankMidBottomRow {
     position: absolute;
       box-sizing: content-box;
       -ms-transform: rotate(0.00deg);
@@ -9541,7 +9540,7 @@
 
 }
 
-.marketplace .group1687 .group550 .kingKeo {
+.marketplace .assetAndCollectionsGroup .group550 .kingKeoLeftBottomRow {
     position: absolute;
       box-sizing: content-box;
       -ms-transform: rotate(0.00deg);
@@ -9581,7 +9580,7 @@
 
 }
 
-.marketplace .group1687 .group550 .dallas141 {
+.marketplace .assetAndCollectionsGroup .group550 .dallas141 {
     position: absolute;
       box-sizing: content-box;
       -ms-transform: rotate(0.00deg);
@@ -9629,7 +9628,7 @@
 
 }
 
-.marketplace .group1687 .group550 .x25000Karma {
+.marketplace .assetAndCollectionsGroup .group550 .karmaCurrencyLeftBottomRow {
     position: absolute;
       box-sizing: content-box;
       -ms-transform: rotate(0.00deg);
@@ -9669,7 +9668,7 @@
 
 }
 
-.marketplace .group1687 .group550 .group544 {
+.marketplace .assetAndCollectionsGroup .group550 .logoGroupBottomRow {
 
       display: block;
       position: absolute;
@@ -9700,7 +9699,7 @@
 
 }
 
-.marketplace .group1687 .group550 .group544 .rectangle25 {
+.marketplace .assetAndCollectionsGroup .group550 .logoGroupBottomRow .logoOutlineBottomRow {
     position: absolute;
       box-sizing: border-box;
       -ms-transform: rotate(0.00deg);
@@ -9748,7 +9747,7 @@
 
 }
 
-.marketplace .group1687 .group550 .group544 .logoGradient {
+.marketplace .assetAndCollectionsGroup .group550 .logoGroupBottomRow .logoGradient {
     position: absolute;
       box-sizing: content-box;
       -ms-transform: rotate(0.00deg);
@@ -9796,7 +9795,7 @@
 
 }
 
-.marketplace .group1687 .group550 .group545 {
+.marketplace .assetAndCollectionsGroup .group550 .piggyBankLeftBottomRow {
 
       display: block;
       position: absolute;
@@ -9827,7 +9826,7 @@
 
 }
 
-.marketplace .group1687 .group550 .group545 .x500Wax {
+.marketplace .assetAndCollectionsGroup .group550 .piggyBankLeftBottomRow .waxCurrnecyLeftbottomRow {
     position: absolute;
       box-sizing: content-box;
       -ms-transform: rotate(0.00deg);
@@ -9867,7 +9866,7 @@
 
 }
 
-.marketplace .group1687 .group550 .group545 .group44989974e5 {
+.marketplace .assetAndCollectionsGroup .group550 .piggyBankLeftBottomRow .waxLogoGroupLeftBottomRow {
 
       display: block;
       position: absolute;
@@ -9898,7 +9897,7 @@
 
 }
 
-.marketplace .group1687 .group550 .group545 .group44989974e5 .rectangle260a4cb36f {
+.marketplace .assetAndCollectionsGroup .group550 .piggyBankLeftBottomRow .waxLogoGroupLeftBottomRow .waxLogoOutlineLeftBottomRow {
     position: absolute;
       box-sizing: border-box;
       -ms-transform: rotate(0.00deg);
@@ -9946,7 +9945,7 @@
 
 }
 
-.marketplace .group1687 .group550 .group545 .group44989974e5 .waxPrimaryLogo1165f072b {
+.marketplace .assetAndCollectionsGroup .group550 .piggyBankLeftBottomRow .waxLogoGroupLeftBottomRow .waxPrimaryLogo1165f072b {
     position: absolute;
       box-sizing: content-box;
       -ms-transform: rotate(0.00deg);
@@ -9994,7 +9993,7 @@
 
 }
 
-.marketplace .group1687 .group550 .group546 {
+.marketplace .assetAndCollectionsGroup .group550 .astroDudeMidRightBottomRow {
 
       display: block;
       position: absolute;
@@ -10025,7 +10024,7 @@
 
 }
 
-.marketplace .group1687 .group550 .group546 .x4700Wax {
+.marketplace .assetAndCollectionsGroup .group550 .astroDudeMidRightBottomRow .waxCurrencyMi {
     position: absolute;
       box-sizing: content-box;
       -ms-transform: rotate(0.00deg);
@@ -10061,11 +10060,10 @@
       width: 62.00px;
     height: 14.00px;
     left: 21.00px;
-    top: 1.00px;
-
+    top: astroDudeMidRightBottomRow
 }
 
-.marketplace .group1687 .group550 .group546 .group447de05f67 {
+.marketplace .assetAndCollectionsGroup .group550 .astroDudeMidRightBottomRow .waxLogoGroupMidRightBottomRow {
 
       display: block;
       position: absolute;
@@ -10096,7 +10094,7 @@
 
 }
 
-.marketplace .group1687 .group550 .group546 .group447de05f67 .rectangle269211d829 {
+.marketplace .assetAndCollectionsGroup .group550 .astroDudeMidRightBottomRow .waxLogoGroupMidRightBottomRow .waxLogoOutlineMidRightBgodzillaBottomRow {
     position: absolute;
       box-sizing: border-box;
       -ms-transform: rotate(0.00deg);
@@ -10144,7 +10142,7 @@
 
 }
 
-.marketplace .group1687 .group550 .group546 .group447de05f67 .waxPrimaryLogo11718f770 {
+.marketplace .assetAndCollectionsGroup .group550 .astroDudeMidRightBottomRow .waxLogoGroupMidRightBottomRow .waxPrimaryLogo11718f770 {
     position: absolute;
       box-sizing: content-box;
       -ms-transform: rotate(0.00deg);
@@ -10192,7 +10190,7 @@
 
 }
 
-.marketplace .group1687 .group550 .group547 {
+.marketplace .assetAndCollectionsGroup .group550 .godzillaBottomRow {
 
       display: block;
       position: absolute;
@@ -10223,7 +10221,7 @@
 
 }
 
-.marketplace .group1687 .group550 .group547 .x5000Wax {
+.marketplace .assetAndCollectionsGroup .group550 .godzillaBottomRow .waxCurrencyRightBowaxLogoGroupRightBottomRow {
     position: absolute;
       box-sizing: content-box;
       -ms-transform: rotate(0.00deg);
@@ -10263,7 +10261,7 @@
 
 }
 
-.marketplace .group1687 .group550 .group547 .group44 {
+.marketplace .assetAndCollectionsGroup .group550 .godzillaBottomRow .waxLogoGroupRightBottomRow {
 
       display: block;
       position: absolute;
@@ -10294,7 +10292,7 @@
 
 }
 
-.marketplace .group1687 .group550 .group547 .group44 .rectangle26 {
+.marketplace .assetAndCollectionsGroup .group550 .godzillaBottomRow .waxLogoGroupRightBottomRow .waxLogoOutlineRightBottomRow {
     position: absolute;
       box-sizing: border-box;
       -ms-transform: rotate(0.00deg);
@@ -10342,7 +10340,7 @@
 
 }
 
-.marketplace .group1687 .group550 .group547 .group44 .waxPrimaryLogo1 {
+.marketplace .assetAndCollectionsGroup .group550 .godzillaBottomRow .waxLogoGroupRightBottomRow .waxPrimaryLogo1 {
     position: absolute;
       box-sizing: content-box;
       -ms-transform: rotate(0.00deg);
@@ -10390,7 +10388,7 @@
 
 }
 
-.marketplace .group1687 .group550 .piggyBank {
+.marketplace .assetAndCollectionsGroup .group550 .piggyBank {
     position: absolute;
       box-sizing: content-box;
       -ms-transform: rotate(0.00deg);
@@ -10438,7 +10436,7 @@
 
 }
 
-.marketplace .group1687 .group550 .astronaut {
+.marketplace .assetAndCollectionsGroup .group550 .astronaut {
     position: absolute;
       box-sizing: content-box;
       -ms-transform: rotate(0.00deg);
@@ -10486,7 +10484,7 @@
 
 }
 
-.marketplace .group1687 .group550 .godzilla {
+.marketplace .assetAndCollectionsGroup .group550 .godzilla {
     position: absolute;
       box-sizing: content-box;
       -ms-transform: rotate(0.00deg);
@@ -10535,7 +10533,7 @@
 
 }
 
-.marketplace .group1687 .group550 .rectangle2254 {
+.marketplace .assetAndCollectionsGroup .group550 .detailsBoxLeftBottomRow {
     position: absolute;
       box-sizing: content-box;
       -ms-transform: rotate(0.00deg);
@@ -10579,7 +10577,7 @@
 
 }
 
-.marketplace .group1687 .group550 .rectangle2255 {
+.marketplace .assetAndCollectionsGroup .group550 .detailsBoxMidLeftBottomRow {
     position: absolute;
       box-sizing: content-box;
       -ms-transform: rotate(0.00deg);
@@ -10623,7 +10621,7 @@
 
 }
 
-.marketplace .group1687 .group550 .rectangle2256 {
+.marketplace .assetAndCollectionsGroup .group550 .detailsBoxMidRightBottomRow {
     position: absolute;
       box-sizing: content-box;
       -ms-transform: rotate(0.00deg);
@@ -10667,7 +10665,7 @@
 
 }
 
-.marketplace .group1687 .group550 .rectangle2257 {
+.marketplace .assetAndCollectionsGroup .group550 .detailsBoxRightBottomRow {
     position: absolute;
       box-sizing: content-box;
       -ms-transform: rotate(0.00deg);
@@ -10711,7 +10709,7 @@
 
 }
 
-.marketplace .group1687 .group550 .rectangle2258 {
+.marketplace .assetAndCollectionsGroup .group550 .buyBoxLeftBottomRow {
     position: absolute;
       box-sizing: content-box;
       -ms-transform: rotate(0.00deg);
@@ -10755,7 +10753,7 @@
 
 }
 
-.marketplace .group1687 .group550 .rectangle2259 {
+.marketplace .assetAndCollectionsGroup .group550 .buyBoxLeftMidBottomRow {
     position: absolute;
       box-sizing: content-box;
       -ms-transform: rotate(0.00deg);
@@ -10799,7 +10797,7 @@
 
 }
 
-.marketplace .group1687 .group550 .rectangle2260 {
+.marketplace .assetAndCollectionsGroup .group550 .buyBoxRightMidBottomRow {
     position: absolute;
       box-sizing: content-box;
       -ms-transform: rotate(0.00deg);
@@ -10843,7 +10841,7 @@
 
 }
 
-.marketplace .group1687 .group550 .rectangle2261 {
+.marketplace .assetAndCollectionsGroup .group550 .buyBoxRightBottomRow {
     position: absolute;
       box-sizing: content-box;
       -ms-transform: rotate(0.00deg);
@@ -10887,7 +10885,7 @@
 
 }
 
-.marketplace .group1687 .group550 .buy61304eee {
+.marketplace .assetAndCollectionsGroup .group550 .buy61304eee {
     position: absolute;
       box-sizing: content-box;
       -ms-transform: rotate(0.00deg);
@@ -10927,7 +10925,7 @@
 
 }
 
-.marketplace .group1687 .group550 .buy15b5ce9c {
+.marketplace .assetAndCollectionsGroup .group550 .buy15b5ce9c {
     position: absolute;
       box-sizing: content-box;
       -ms-transform: rotate(0.00deg);
@@ -10967,7 +10965,7 @@
 
 }
 
-.marketplace .group1687 .group550 .buy52c32023 {
+.marketplace .assetAndCollectionsGroup .group550 .buy52c32023 {
     position: absolute;
       box-sizing: content-box;
       -ms-transform: rotate(0.00deg);
@@ -11007,7 +11005,7 @@
 
 }
 
-.marketplace .group1687 .group550 .buy {
+.marketplace .assetAndCollectionsGroup .group550 .buy {
     position: absolute;
       box-sizing: content-box;
       -ms-transform: rotate(0.00deg);
@@ -11047,7 +11045,7 @@
 
 }
 
-.marketplace .group1687 .group550 .detailsdf3b12ec {
+.marketplace .assetAndCollectionsGroup .group550 .detailsdf3b12ec {
     position: absolute;
       box-sizing: content-box;
       -ms-transform: rotate(0.00deg);
@@ -11087,7 +11085,7 @@
 
 }
 
-.marketplace .group1687 .group550 .detailse6bcef8d {
+.marketplace .assetAndCollectionsGroup .group550 .detailse6bcef8d {
     position: absolute;
       box-sizing: content-box;
       -ms-transform: rotate(0.00deg);
@@ -11127,7 +11125,7 @@
 
 }
 
-.marketplace .group1687 .group550 .detailsedaabad4 {
+.marketplace .assetAndCollectionsGroup .group550 .detailsedaabad4 {
     position: absolute;
       box-sizing: content-box;
       -ms-transform: rotate(0.00deg);
@@ -11167,7 +11165,7 @@
 
 }
 
-.marketplace .group1687 .group550 .details {
+.marketplace .assetAndCollectionsGroup .group550 .details {
     position: absolute;
       box-sizing: content-box;
       -ms-transform: rotate(0.00deg);
@@ -11318,7 +11316,7 @@
 
 }
 
-.marketplace .group561 .rectangle525 {
+.marketplace .group561 .waxdesktopImgRight {
     position: absolute;
       box-sizing: border-box;
       -ms-transform: rotate(45.00deg);
@@ -11362,7 +11360,7 @@
 
 }
 
-.marketplace .group561 .rectangle558 {
+.marketplace .group561 .waxDesktopImgLeft {
     position: absolute;
       box-sizing: border-box;
       -ms-transform: rotate(45.00deg);
