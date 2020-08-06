@@ -40,13 +40,8 @@ body {
   margin-top: 50px;
 }
 
-.ui.modal>.content {
-  width: 0;
-}
-
 .modalInstructions {
   background-color: rgba(25, 31, 40, 1) !important;
-  margin-left: 50px;
 }
 
 .ui.modal>.actions {
@@ -7528,39 +7523,16 @@ body {
 }
 
 .doubleConfirm {
-  box-sizing: content-box;
-  -ms-transform: rotate(0.00deg);
-  -webkit-transform: rotate(0.00deg);
-  transform: rotate(0.00deg);
-  -ms-transform-origin: center;
-  -webkit-transform-origin: center;
-  transform-origin: center;
-  opacity: 1;
-  cursor: default;
   margin-top: 50.00px;
-  margin-right: 0.00px;
-  margin-bottom: 0.00px;
-  margin-left: 11.00px;
-  padding-top: 0.00px;
-  padding-right: 0.00px;
-  padding-bottom: 0.00px;
-  padding-left: 0.00px;
   background-color: rgba(255, 255, 255, 0) !important;
   text-align: center;
   letter-spacing: 0.00px;
   color: rgba(255, 255, 255, 1);
-  -webkit-text-stroke: 1.00px rgba(0, 0, 0, 0);
   font-size: 20.00px !important;
   font-weight: 700 !important;
   font-style: normal;
   font-family: montserrat_bold, Arial;
-  text-decoration: none;
-  box-shadow: none;
-  overflow-x: unset;
-  overflow-y: unset;
-  white-space: pre;
-  width: 372.00px;
-  height: 24.00px;
+  width: 100% !important;
 }
 
 .closeIcon {
@@ -7593,38 +7565,14 @@ body {
 }
 
 .basicInstruction {
-  -ms-transform: rotate(0.00deg);
-  -webkit-transform: rotate(0.00deg);
-  transform: rotate(0.00deg);
-  -ms-transform-origin: center;
-  -webkit-transform-origin: center;
-  transform-origin: center;
-  opacity: 1;
-  cursor: default;
-  margin-top: 0.00px;
-  margin-right: 0.00px;
-  margin-bottom: 0.00px;
-  margin-left: 0.00px;
-  padding-top: 0.00px;
-  padding-right: 0.00px;
-  padding-bottom: 0.00px;
-  padding-left: 0.00px;
-  background-color: rgba(255, 255, 255, 0);
   text-align: center;
   letter-spacing: 0.00px;
   color: rgba(255, 255, 255, 1);
-  -webkit-text-stroke: 1.00px rgba(0, 0, 0, 0);
   font-size: 20.00px;
   font-weight: 700;
   font-style: normal;
   font-family: montserrat_semibold, Arial;
-  text-decoration: none;
-  box-shadow: none;
-  overflow-x: unset;
-  overflow-y: unset;
-  white-space: pre;
-  width: 402.00px;
-  height: 48.00px;
+  width: 100% !important;
 }
 
 .rectangle2913 {

@@ -199,7 +199,5 @@ input[type="number"] {
 /* resetWalletModal css */
 .resetWalletModal {
   height: auto;
-}
-.ui.modal>.content {
-  padding: 0 !important;
+  box-sizing: border-box;
 }
