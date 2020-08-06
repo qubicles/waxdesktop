@@ -36,64 +36,21 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
 input[type="number"] {
   -moz-appearance: textfield;
 }
-
-form {
-  padding-left: 35%;
+#root {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-
-.pin {
-  display: block;
-  position: absolute;
-  box-sizing: content-box;
-  -ms-transform: rotate(0deg);
-  -webkit-transform: rotate(0deg);
-  transform: rotate(0deg);
-  -ms-transform-origin: center;
-  -webkit-transform-origin: center;
-  transform-origin: center;
-  opacity: 1;
-  cursor: default;
-  margin-top: 0px;
-  margin-right: 0px;
-  margin-bottom: 0px;
-  margin-left: 0px;
-  padding-top: 0px;
-  padding-right: 0px;
-  padding-bottom: 0px;
-  padding-left: 0px;
-  overflow-x: auto;
-  overflow-y: auto;
-  background-color: rgba(25, 31, 40, 1);
-  width: 1200px;
-  height: 700px;
-  left: 15%;
-  top: 0px;
-}
-
 .pin .pin-digit {
-  box-sizing: border-box;
-  -ms-transform: rotate(0deg);
-  -webkit-transform: rotate(0deg);
-  transform: rotate(0deg);
-  -ms-transform-origin: center;
-  -webkit-transform-origin: center;
-  transform-origin: center;
   opacity: 0.4000000059604645;
-  cursor: default;
-  margin-top: 0px;
-  margin-right: 0px;
-  margin-bottom: 0px;
   margin-left: 20px;
-  padding-top: 0px;
-  padding-right: 0px;
-  padding-bottom: 0px;
-  padding-left: 0px;
   background-color: transparent;
   border: 3px solid rgba(255, 255, 255, 1);
   border-radius: 10px;
   width: 41px;
   height: 50px;
-  top: 418px;
   color: #ffffff
 }
 
@@ -121,210 +78,73 @@ form {
   color: rgba(255, 136, 109, 1) !important;
   border: rgb(70, 51, 53) !important;
 }
-
-.pin .wax {
-  position: absolute;
-  box-sizing: content-box;
-  -ms-transform: rotate(0deg);
-  -webkit-transform: rotate(0deg);
-  transform: rotate(0deg);
-  -ms-transform-origin: center;
-  -webkit-transform-origin: center;
-  transform-origin: center;
-  opacity: 1;
-  cursor: default;
-  margin-top: 0px;
-  margin-right: 0px;
-  margin-bottom: 0px;
-  margin-left: 0px;
-  padding-top: 0px;
-  padding-right: 0px;
-  padding-bottom: 0px;
-  padding-left: 0px;
-  background-color: rgba(255, 255, 255, 0);
-  text-align: left;
-  letter-spacing: 0px;
-  color: rgba(255, 255, 255, 1);
-  -webkit-text-stroke: 1px rgba(0, 0, 0, 0);
-  font-size: 64px;
-  font-weight: 700;
-  font-style: normal;
-  font-family: montserrat_semibold, Arial;
-  text-decoration: none;
-  box-shadow: none;
-  overflow-x: unset;
-  overflow-y: unset;
-  white-space: pre;
-  width: 161px;
-  height: 78px;
-  left: 588.76px;
-  top: 260px;
+.logo-img-wrap {
+  position: relative;
 }
-
-.pin .desktop {
-  position: absolute;
-  box-sizing: content-box;
-  -ms-transform: rotate(0deg);
-  -webkit-transform: rotate(0deg);
-  transform: rotate(0deg);
-  -ms-transform-origin: center;
-  -webkit-transform-origin: center;
-  transform-origin: center;
-  opacity: 1;
-  cursor: default;
-  margin-top: 0px;
-  margin-right: 0px;
-  margin-bottom: 0px;
-  margin-left: 0px;
-  padding-top: 0px;
-  padding-right: 0px;
-  padding-bottom: 0px;
-  padding-left: 0px;
-  background-color: rgba(255, 255, 255, 0);
-  text-align: left;
-  letter-spacing: 7.35px;
-  color: rgba(255, 255, 255, 1);
-  -webkit-text-stroke: 1px rgba(0, 0, 0, 0);
-  font-size: 21px;
+.logo-text-wrap {
+  color: white;
+  margin-left: 20px;
+  height: 100%;
+}
+.pin-wax {
+  font-size: 60px;
+  font-weight: bold;
+  height: 38px;
+}
+.pin-desktop {
+  font-size: 22px;
   font-weight: 700;
-  font-style: normal;
-  font-family: montserrat_semibold, Arial;
-  text-decoration: none;
-  box-shadow: none;
-  overflow-x: unset;
-  overflow-y: unset;
-  white-space: pre;
-  width: 148px;
-  height: 25px;
-  left: 596.88px;
-  top: 305.09px;
+  text-align: center;
+}
+.logo-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.logo-rect1-wrap {
+  padding: 25px;
+  width: 100%;
+  height: 100%;
+}
+.logo-rect2-wrap {
+  padding: 25px;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0px;
+  left: 30px;
+  z-index: -99;
+}
+.pin .logo-rect2 {
+  box-sizing: border-box;
+  transform: rotate(45deg);
+  transform-origin: center;
+  background-color: rgba(255, 136, 109, 1);
+  border: solid 2px rgba(255, 136, 109, 1);
+  border-radius: 10px;
+  width: 64.97px;
+  height: 64.97px; 
 }
 
 .pin .logo-rect1 {
-  position: absolute;
   box-sizing: border-box;
-  -ms-transform: rotate(45deg);
-  -webkit-transform: rotate(45deg);
   transform: rotate(45deg);
-  -ms-transform-origin: center;
-  -webkit-transform-origin: center;
   transform-origin: center;
-  opacity: 1;
-  cursor: default;
-  margin-top: 0px;
-  margin-right: 0px;
-  margin-bottom: 0px;
-  margin-left: 0px;
-  padding-top: 0px;
-  padding-right: 0px;
-  padding-bottom: 0px;
-  padding-left: 0px;
-  background-color: rgba(255, 136, 109, 1);
-  border-bottom-color: rgba(255, 136, 109, 1);
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-left-color: rgba(255, 136, 109, 1);
-  border-left-style: solid;
-  border-left-width: 2px;
-  border-right-color: rgba(255, 136, 109, 1);
-  border-right-style: solid;
-  border-right-width: 2px;
-  border-top-color: rgba(255, 136, 109, 1);
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
-  border-bottom-left-radius: 10px;
-  border-bottom-right-radius: 10px;
-  box-shadow: none;
-  width: 64.97px;
-  height: 64.97px;
-  left: 497.11px;
-  top: 256.06px;
-}
-
-.pin .logo-rect2 {
-  position: absolute;
-  box-sizing: border-box;
-  -ms-transform: rotate(45deg);
-  -webkit-transform: rotate(45deg);
-  transform: rotate(45deg);
-  -ms-transform-origin: center;
-  -webkit-transform-origin: center;
-  transform-origin: center;
-  opacity: 1;
-  cursor: default;
-  margin-top: 0px;
-  margin-right: 0px;
-  margin-bottom: 0px;
-  margin-left: 0px;
-  padding-top: 0px;
-  padding-right: 0px;
-  padding-bottom: 0px;
-  padding-left: 0px;
   background-color: rgba(25, 31, 40, 1);
-  border-bottom-color: rgba(255, 136, 109, 1);
-  border-bottom-style: solid;
-  border-bottom-width: 6px;
-  border-left-color: rgba(255, 136, 109, 1);
-  border-left-style: solid;
-  border-left-width: 6px;
-  border-right-color: rgba(255, 136, 109, 1);
-  border-right-style: solid;
-  border-right-width: 6px;
-  border-top-color: rgba(255, 136, 109, 1);
-  border-top-style: solid;
-  border-top-width: 6px;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
-  border-bottom-left-radius: 10px;
-  border-bottom-right-radius: 10px;
-  box-shadow: none;
+  border: solid 6px rgba(255, 136, 109, 1);
+  border-radius: 10px;
   width: 64.97px;
-  height: 64.97px;
-  left: 464.63px;
-  top: 256.06px;
+  height: 64.97px; 
+  z-index: 50;
 }
-
 .pin .onScreenInstruction {
-  position: absolute;
-  box-sizing: content-box;
-  -ms-transform: rotate(0deg);
-  -webkit-transform: rotate(0deg);
-  transform: rotate(0deg);
-  -ms-transform-origin: center;
-  -webkit-transform-origin: center;
-  transform-origin: center;
-  opacity: 1;
-  cursor: default;
-  margin-top: 0px;
-  margin-right: 0px;
-  margin-bottom: 0px;
-  margin-left: 0px;
-  padding-top: 0px;
-  padding-right: 0px;
-  padding-bottom: 0px;
-  padding-left: 0px;
-  background-color: rgba(255, 255, 255, 0);
   text-align: center;
-  letter-spacing: 0px;
-  color: rgba(255, 255, 255, 1);
-  -webkit-text-stroke: 1px rgba(0, 0, 0, 0);
+  padding: 15px 0px;
   font-size: 20px;
   font-weight: 700;
   font-style: normal;
   font-family: montserrat_semibold, Arial;
-  text-decoration: none;
-  box-shadow: none;
-  overflow-x: unset;
-  overflow-y: unset;
-  white-space: pre;
-  width: 468px;
-  height: 24px;
-  left: 366px;
-  top: 354px;
 }
-
 .pin .onScreenInstruction .onScreenInstruction-1 {
   color: rgba(255, 255, 255, 1);
   font-weight: 700;
@@ -354,38 +174,32 @@ form {
   letter-spacing: 0;
   text-decoration: none;
 }
-
+.pin-form {
+  padding: 10px 0px;
+  text-align: center;
+}
 .pin .resetWallet:hover {
   cursor: pointer;
 }
 
 .pin .resetWallet {
-  box-sizing: content-box;
-  -ms-transform: rotate(0deg);
-  -webkit-transform: rotate(0deg);
-  transform: rotate(0deg);
-  -ms-transform-origin: center;
-  -webkit-transform-origin: center;
-  transform-origin: center;
   opacity: 0.4000000059604645;
-  cursor: default;
   margin: auto;
-  margin-top: 630px;
-  margin-left: 543px;
   background-color: rgba(255, 255, 255, 0);
   text-align: center;
   letter-spacing: 0px;
   color: rgba(255, 255, 255, 1);
-  -webkit-text-stroke: 1px rgba(0, 0, 0, 0);
   font-size: 16px;
   font-weight: 700;
   font-style: normal;
   font-family: montserrat_bold, Arial;
-  text-decoration: none;
-  box-shadow: none;
-  overflow-x: unset;
-  overflow-y: unset;
-  white-space: pre;
-  width: 138px;
-  height: 19px;
+  padding: 10px 0;
+}
+
+/* resetWalletModal css */
+.resetWalletModal {
+  height: auto;
+}
+.ui.modal>.content {
+  padding: 0 !important;
 }
