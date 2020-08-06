@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 
 import "./Market.global.css";
 
-class Marketplace extends React.Component {
+export default class Marketplace extends React.Component {
 
   constructor(props) {
       super(props);
@@ -32,17 +32,17 @@ class Marketplace extends React.Component {
         <div  className="marketImageCenter"></div>
         <div  className="marketImageBottom"></div>
         <div  className="stakingImageInnerLayer"></div>
-        <div  className="elhfowam">elhfo.wam</div>
+        <div  className="accountName">elhfo.wam</div>
         <svg  preserveAspectRatio="none" viewBox="0 0 10 6" className="changeUserDropdown">
             <path d="M 4.231778144836426 0.921865701675415 C 4.63157320022583 0.44211146235466 5.368425369262695 0.4421114325523376 5.768220901489258 0.9218655824661255 L 8.633179664611816 4.35981559753418 C 9.175951957702637 5.011142730712891 8.712796211242676 6 7.864957809448242 6 L 2.135040998458862 6 C 1.287203550338745 6 0.8240476250648499 5.011142730712891 1.366819858551025 4.359816074371338 Z"  />
         </svg>
-        <div  className="group222">            
+        <div  className="accountGroup">            
         <div className="waxLogoOuterLayer"></div>
         <div  className="waxPrimaryLogo"></div>
     </div>
         
     <div  className="appsGroup">            
-        <svg  preserveAspectRatio="none" viewBox="-1.5 -1.5 12 12" className="path667e8ebfc0">
+        <svg  preserveAspectRatio="none" viewBox="-1.5 -1.5 12 12" className="appsImage">
             <path d="M 2 0 L 7 0 C 8.104569435119629 0 9 0.8954304456710815 9 2 L 9 7 C 9 8.104569435119629 8.104569435119629 9 7 9 L 2 9 C 0.8954304456710815 9 0 8.104569435119629 0 7 L 0 2 C 0 0.8954304456710815 0.8954304456710815 0 2 0 Z"  />
         </svg>
             <div  className="appsImageTopRight"></div>
@@ -51,7 +51,7 @@ class Marketplace extends React.Component {
     </div>
         
     <div  className="homeGroup">            
-        <svg  preserveAspectRatio="none" viewBox="-1.5 -1.5 12 9" className="path66">
+        <svg  preserveAspectRatio="none" viewBox="-1.5 -1.5 12 9" className="homeImage">
             <path d="M 2 0 L 7 0 C 8.104569435119629 0 9 0.5969536304473877 9 1.333333373069763 L 9 4.666666507720947 C 9 5.403046607971191 8.104569435119629 6 7 6 L 2 6 C 0.8954304456710815 6 0 5.403046607971191 0 4.666666507720947 L 0 1.333333373069763 C 0 0.5969536304473877 0.8954304456710815 0 2 0 Z"  />
         </svg>
             <div  className="homeImageTopRight"></div>
@@ -60,7 +60,7 @@ class Marketplace extends React.Component {
     </div>
 
     <div>
-        <svg  preserveAspectRatio="none" viewBox="-0.75 -0.75 16.5 16.5" className="path72">
+        <svg  preserveAspectRatio="none" viewBox="-0.75 -0.75 16.5 16.5" className="guildImage">
             <path d="M 7.5 0 C 11.64213562011719 0 15 3.357864379882812 15 7.5 C 15 11.64213562011719 11.64213562011719 15 7.5 15 C 3.357864379882812 15 0 11.64213562011719 0 7.5 C 0 3.357864379882812 3.357864379882812 0 7.5 0 Z"  />
         </svg>
         <svg  preserveAspectRatio="none" viewBox="0 0 5 5" className="guildImageTop">
@@ -177,7 +177,7 @@ class Marketplace extends React.Component {
             <div  className="detailsaf0b050f">Details</div>
 
 
-    <div  className="group548">                
+    <div  className="midRowGroup">                
             <div  className="assAndCollectionsBoxLeftMidRow"></div>
             <div  className="assAndCollectionsBoxMidLeftMidRow"></div>
             <div  className="assAndCollectionsBoxMidRightMidRow"></div>
@@ -240,7 +240,7 @@ class Marketplace extends React.Component {
         <div  className="detailsb2d23e14">Details</div>
     </div>
     
-    <div className="group549">                
+    <div className="midRow2Group">                
     <div  className="assAndCollectionsBoxLeftMidRow2"></div>
         <div  className="assAndCollectionsBoxMidLeftMidRow2"></div>
         <div  className="assAndCollectionsBoxMidRightMidRow2"></div>
@@ -300,7 +300,7 @@ class Marketplace extends React.Component {
     </div>
             
             
-        <div className="group550">               
+        <div className="bottomRowGroup">               
         <div  className="assAndCollectionsBoxLeftBottomRow"></div>
         <div  className="assAndCollectionsBoxMidLeftBottomRow"></div>
         <div  className="assAndCollectionsBoxMidRightBottomRow"></div>
@@ -362,7 +362,7 @@ class Marketplace extends React.Component {
     </div>
     </div>
     
-    <div className="group561">            
+    <div className="waxDesktopImageGroup">            
             <div className="wax">WAX</div>
             <div className="desktop">DESKTOP</div>
             <div className="waxdesktopImgRight"></div>
@@ -385,5 +385,5 @@ Marketplace.defaultProps = {
 }
 
 
-export default Marketplace;
+
           
