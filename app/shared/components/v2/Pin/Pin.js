@@ -1,9 +1,9 @@
 import React from "react"
 import PropTypes from "prop-types"
+import { withSnackbar } from "react-simple-snackbar"
 import { Form, Input, Button } from "semantic-ui-react"
 
 import ResetWalletModal from "../ResetWallet/ResetWalletModal"
-import showSweetAlert from "../../../utils/SweetAlert"
 
 import "./Pin.global.css"
 
@@ -87,6 +87,7 @@ class Pin extends React.Component {
       const { value, confirmValue } = this.state[`pinInput_${i}`]
       pin += value
     }
+    
     return pin
   }
 
@@ -103,21 +104,17 @@ class Pin extends React.Component {
   onPinInput = e => {
     let { id, value } = e.target
     const { confirmPinScreen, [id]: pinInput, pinDigitsCount } = this.state
-    const { actions, onUserLogin, wallet } = this.props
+    const { actions, onUserLogin, wallet, openSnackbar } = this.props
     const enterPinScreen = wallet.pin !== ""
     value = value.slice(0, 1)
 
     const currentInputId = id.split("_")[1]
     if (currentInputId < 5 && value.length === 1)
       // Propagate focus to the next pin input
-      document.getElementById(`pinInput_${1 + +currentInputId}`).focus()
+      this.propagateFocus(1 + +currentInputId)
 
-    if (confirmPinScreen) {
-      this.setState(
-        {
-          [id]: { ...pinInput, confirmValue: value }
-        },
-        () => {
+    let cb = confirmPinScreen
+      ? () => {
           const allPinInputsFilled = this.checkAllPinInputsFilled()
           const confirmPinMatches = this.checkConfirmPinMatches()
 
@@ -129,18 +126,12 @@ class Pin extends React.Component {
             } else {
               // Go back to Create PIN when confirm pin doesn't match
               this.setState(initialState)
-              this.focusFirstInput()
-              showSweetAlert("error", "PINs don't match. Please try again.")
+              this.propagateFocus(0)
+              openSnackbar("PINs don't match. Please try again.", 1000)
             }
           }
         }
-      )
-    } else {
-      this.setState(
-        {
-          [id]: { ...pinInput, value }
-        },
-        () => {
+      : () => {
           const allPinInputsFilled = this.checkAllPinInputsFilled()
 
           if (allPinInputsFilled) {
@@ -149,20 +140,62 @@ class Pin extends React.Component {
                 onUserLogin()
               } else {
                 // Entered incorrect pin
-                this.focusFirstInput()
+                this.propagateFocus(0)
                 this.setState(initialState)
-                showSweetAlert(
-                  "error",
-                  "Incorrect PIN entered. Please try again."
-                )
+                openSnackbar("Incorrect PIN entered. Please try again.", 1000)
               }
             } else {
               // Render the confirm PIN screen
               this.setState({ confirmPinScreen: true })
-              this.focusFirstInput()
+              this.propagateFocus(0)
             }
           }
         }
+
+    this.updatePinInputValue(currentInputId, value, cb)
+  }
+
+  onKeyDown = ({ keyCode, target }) => {
+    // Backspace and delete key
+    if (keyCode === 8 || keyCode === 46) {
+      const currentInputId = target.id.split("_")[1]
+      const { confirmPinScreen } = this.state
+
+      if (target.value === "" && currentInputId > 0) {
+        const previousId = currentInputId - 1
+        const previousIdElement = `pinInput_${previousId}`
+
+        this.updatePinInputValue(previousId, "")
+        this.propagateFocus(previousId)
+      } else {
+        this.updatePinInputValue(currentInputId, "")
+      }
+    }
+  }
+
+  updatePinInputValue = (id, value, cb) => {
+    const { confirmPinScreen } = this.state
+    const inputBoxId = `pinInput_${id}`
+
+    if (confirmPinScreen) {
+      this.setState(
+        {
+          [inputBoxId]: {
+            ...this.state[inputBoxId],
+            confirmValue: value
+          }
+        },
+        cb
+      )
+    } else {
+      this.setState(
+        {
+          [inputBoxId]: {
+            ...this.state[inputBoxId],
+            value
+          }
+        },
+        cb
       )
     }
   }
@@ -180,6 +213,7 @@ class Pin extends React.Component {
 
       return (
         <Input
+          onKeyDown={this.onKeyDown}
           key={pinInputId}
           type="number"
           id={pinInputId}
@@ -194,18 +228,17 @@ class Pin extends React.Component {
   }
 
   componentDidMount() {
-    this.focusFirstInput()
+    this.propagateFocus(0)
   }
 
-  focusFirstInput() {
-    document.getElementById(`pinInput_0`).focus()
+  propagateFocus(id) {
+    document.getElementById(`pinInput_${id}`).focus()
   }
 
   toggleResetWalletModal = () => {
     const { resetWalletModal } = this.state
     this.setState({ resetWalletModal: !resetWalletModal }, () => {
-      if (!this.state.resetWalletModal)
-        this.focusFirstInput()
+      if (!this.state.resetWalletModal) this.propagateFocus(0)
     })
   }
 
@@ -256,4 +289,4 @@ Pin.propTypes = {}
 
 Pin.defaultProps = {}
 
-export default Pin
+export default withSnackbar(Pin)
