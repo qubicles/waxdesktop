@@ -14,6 +14,7 @@ import contracts from './contracts';
 import customtokens from './customtokens';
 import keys from './keys';
 import globals from './globals';
+import ledger from './hardware/ledger';
 import producers from './producers';
 import proposals from './proposals';
 import rex from './rex';
@@ -46,6 +47,7 @@ const rootReducer = combineReducers({
   router,
   settings,
   system,
+  ledger,
   tables,
   tfvoting,
   transaction,
