@@ -3,7 +3,64 @@ import React from "react"
 import PropTypes from "prop-types"
 
 import "./Dashboard.global.css"
-import { Divider } from "semantic-ui-react"
+import { Divider, Tab } from "semantic-ui-react"
+
+const panes = [
+	{
+	  menuItem: 'Tokens',
+	  render: () => <Tab.Pane attached={false}>
+		  				<div className="token-wrap">
+							<img src={require('../../../../renderer/assets/images/dashboard/ScrollGroup6.png')} />
+							<div className="token-des">
+								<div className="des-title">
+									<h3>WAX</h3>
+									<h5>1,468932.12</h5>
+								</div>
+								<div className="des-price">$5894.45</div>
+							</div>
+						</div>
+						<div className="token-wrap">
+							<img src={require('../../../../renderer/assets/images/dashboard/ScrollGroup7.png')} />
+							<div className="token-des">
+								<div className="des-title">
+									<h3>KARMAR</h3>
+									<h5>1,468932.12</h5>
+								</div>
+								<div className="des-price">$5894.45</div>
+							</div>
+						</div>
+						<div className="token-wrap">
+							<img src={require('../../../../renderer/assets/images/dashboard/ScrollGroup8.png')} />
+							<div className="token-des">
+								<div className="des-title">
+									<h3>BET</h3>
+									<h5>1,468932.12</h5>
+								</div>
+								<div className="des-price">$5894.45</div>
+							</div>
+						</div>
+						<div className="token-wrap">
+							<img src={require('../../../../renderer/assets/images/dashboard/ScrollGroup9.png')} />
+							<div className="token-des">
+								<div className="des-title">
+									<h3>GEM</h3>
+									<h5>1,468932.12</h5>
+								</div>
+								<div className="des-price">$5894.45</div>
+							</div>
+						</div>
+	  				</Tab.Pane>,
+	},
+	{
+	  menuItem: 'NFTS',
+	  render: () => <Tab.Pane attached={false}><b>Tab 2 Content</b></Tab.Pane>,
+	},
+]
+
+const TabExampleSecondaryPointing = () => (
+	<Tab menu={{ secondary: true, pointing: true }} panes={panes} />
+  )
+  
 
 class Home extends React.Component {
   constructor(props) {
@@ -20,11 +77,11 @@ class Home extends React.Component {
 			<div className="nav-section">
 				<div className="logo-section">
 					<div className="logo-img-wrap">
-						<div className="logo-rect1-wrap">
-							<div className="logo-rect1"></div>
-						</div>
 						<div className="logo-rect2-wrap">
 							<div className="logo-rect2"></div>
+						</div>
+						<div className="logo-rect1-wrap">
+							<div className="logo-rect1"></div>
 						</div>
 					</div>
 					<div className="logo-text-wrap">
@@ -72,7 +129,14 @@ class Home extends React.Component {
 				</div>
 				<div className="nav-select-section">
 					<select>
-						<option>Import Account</option>
+						<option 
+							style={{  
+								backgroundImage: "url(require('../../../../renderer/assets/images/dashboard/dashabord-advanced.png'))",
+								backgroundPosition: 'center',
+								backgroundSize: 'cover',
+								backgroundRepeat: 'no-repeat'
+							}}
+						> Import Account</option>
 						<option>Create Account</option>
 						<option>willquigley</option>
 						<option>dloyt.yes</option>
@@ -81,9 +145,161 @@ class Home extends React.Component {
 				</div>
 			</div>
 			<div className="dashboard-body-section">
-				
+				<div className="trending-assets-section">
+					<div className="trending-assets-header">
+						<div className="trending-assets-title">Trending Assets</div>
+						<div className="trending-assets-view">View Market</div>
+					</div>
+					<div className="trending-assets-body">
+						<div className="trending-assets-card">
+							<img src={require('../../../../renderer/assets/images/dashboard/dallas141.png')} />
+							<div className="t-card-title">King Kao</div>
+							<div className="t-card-author">theonlykarma</div>
+							<div className="t-card-price">
+								<img src={require('../../../../renderer/assets/images/dashboard/Group47.png')} />
+								<div className="t-card-des">
+									25,000 KARMAR
+								</div>
+							</div>
+							<button className="trending-view-button">View Market</button>
+						</div>
+						<div className="trending-assets-card">
+							<img src={require('../../../../renderer/assets/images/dashboard/dallas141.png')} />
+							<div className="t-card-title">King Kao</div>
+							<div className="t-card-author">theonlykarma</div>
+							<div className="t-card-price">
+								<img src={require('../../../../renderer/assets/images/dashboard/Group47.png')} />
+								<div className="t-card-des">
+									25,000 KARMAR
+								</div>
+							</div>
+							<button className="trending-view-button">View Market</button>
+						</div>
+						<div className="trending-assets-card">
+							<img src={require('../../../../renderer/assets/images/dashboard/dallas141.png')} />
+							<div className="t-card-title">King Kao</div>
+							<div className="t-card-author">theonlykarma</div>
+							<div className="t-card-price">
+								<img src={require('../../../../renderer/assets/images/dashboard/Group47.png')} />
+								<div className="t-card-des">
+									25,000 KARMAR
+								</div>
+							</div>
+							<button className="trending-view-button">View Market</button>
+						</div>
+						<div className="trending-assets-card">
+							<img src={require('../../../../renderer/assets/images/dashboard/dallas141.png')} />
+							<div className="t-card-title">King Kao</div>
+							<div className="t-card-author">theonlykarma</div>
+							<div className="t-card-price">
+								<img src={require('../../../../renderer/assets/images/dashboard/Group47.png')} />
+								<div className="t-card-des">
+									25,000 KARMAR
+								</div>
+							</div>
+							<button className="trending-view-button">View Market</button>
+						</div>
+						<div className="trending-assets-card">
+							<img src={require('../../../../renderer/assets/images/dashboard/dallas141.png')} />
+							<div className="t-card-title">King Kao</div>
+							<div className="t-card-author">theonlykarma</div>
+							<div className="t-card-price">
+								<img src={require('../../../../renderer/assets/images/dashboard/Group47.png')} />
+								<div className="t-card-des">
+									25,000 KARMAR
+								</div>
+							</div>
+							<button className="trending-view-button">View Market</button>
+						</div>
+					</div>
+				</div>
+				<div className="recommended-apps-section">
+					<div className="recommended-apps-header">
+						<div className="recommended-apps-title">Recommended Apps</div>
+						<img src={require('../../../../renderer/assets/images/dashboard/Group1737.png')} />
+					</div>
+					<div className="recommended-apps-body">
+						<div className="recommended-apps-card">
+							<img src={require('../../../../renderer/assets/images/dashboard/ScrollGroup1.png')} />
+							<div className="app-title">KARMAR</div>
+						</div>
+						<div className="recommended-apps-card">
+							<img src={require('../../../../renderer/assets/images/dashboard/ScrollGroup2.png')} />
+							<div className="app-title">Newdex</div>
+						</div>
+						<div className="recommended-apps-card">
+							<img src={require('../../../../renderer/assets/images/dashboard/ScrollGroup4.png')} />
+							<div className="app-title">KARMAR</div>
+						</div>
+						<div className="recommended-apps-card">
+							<img src={require('../../../../renderer/assets/images/dashboard/ScrollGroup5.png')} />
+							<div className="app-title">KARMAR</div>
+						</div>
+						<div className="recommended-apps-card">
+							<img src={require('../../../../renderer/assets/images/dashboard/Group209.png')} />
+							<div className="app-title">KARMAR</div>
+						</div>
+					</div>
+				</div>
+				<div className="token-ntfs-section">
+					<div className="right-badge">
+						<img src={require('../../../../renderer/assets/images/dashboard/Group1737.png')} />
+					</div>
+					<TabExampleSecondaryPointing />
+				</div>
 			</div>
-			<div className="balance-section"></div>
+			<div className="balance-section">
+				<div className="balance-chart-container">
+					<div className="balance-total">
+						<h4>Total Balance</h4>
+						<div className="balance-percent">
+							+3.49%
+						</div>
+					</div>
+					<h2>$12,184.62</h2>
+					<div className="chart-img">
+						<img src={require('../../../../renderer/assets/images/dashboard/Group1733.png')} />
+					</div>
+					<div className="chart-button-group">
+						<div className="chart-white-btn">1D</div>
+						<div className="chart-white-btn">1W</div>
+						<div className="chart-white-btn">1M</div>
+						<div className="chart-orange-btn">All</div>
+					</div>
+					<div className="send-btn-wrap">
+						<div className="dashboard-send-btn">
+							<h3>Send</h3>
+							<img src={require('../../../../renderer/assets/images/dashboard/arrow1.png')} />
+						</div>
+					</div>
+					<div className="send-btn-wrap">
+						<div className="dashboard-send-btn">
+							<h3>Receive</h3>
+							<img src={require('../../../../renderer/assets/images/dashboard/iconfinder263.png')} />
+						</div>
+					</div>
+				</div>
+				<div className="balance-button-group">
+					<div className="balance-button-wrap">
+						<div className="balance-button-title">
+							Buy WAX
+						</div>
+						<img src={require('../../../../renderer/assets/images/dashboard/credit-card2.png')} />
+					</div>
+					<div className="balance-button-wrap">
+						<div className="balance-button-title">
+							Swap Tokens
+						</div>
+						<img src={require('../../../../renderer/assets/images/dashboard/Group1734.png')} />
+					</div>
+					<div className="balance-button-wrap">
+						<div className="balance-button-title">
+							Resources
+						</div>
+						<img src={require('../../../../renderer/assets/images/dashboard/Group15.png')} />
+					</div>
+				</div>
+			</div>
 		</div>
 
 	)
