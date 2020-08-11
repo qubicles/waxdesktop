@@ -297,6 +297,9 @@
   align-items: center;
   border-radius: 30px;
 }
+.dashboard-send-btn:hover, .balance-button-wrap:hover {
+  cursor: pointer;
+}
 .dashboard-send-btn h3 {
   margin-bottom: 0px;
   margin-right: 5px;
