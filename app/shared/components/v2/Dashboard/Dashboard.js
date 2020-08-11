@@ -3,8 +3,34 @@ import React from "react"
 import PropTypes from "prop-types"
 
 import "./Dashboard.global.css"
-import { Divider, Tab } from "semantic-ui-react"
-
+import { Divider, Tab, Dropdown } from "semantic-ui-react"
+const accountOption = [
+	{
+	  text: 'Import Account',
+	  value: 'Import Account',
+	  image: { avatar: true, src: '../assets/images/dashboard/dashboard-import.png' },
+	},
+	{
+	  text: 'Create Account',
+	  value: 'Create Account',
+	  image: { avatar: true, src: '../assets/images/dashboard/dashboard-create.png' },
+	},
+	{
+	  text: 'willquigley',
+	  value: 'willquigley',
+	  image: { avatar: true, src: '../assets/images/dashboard/ScrollGroup6.png' },
+	},
+	{
+	  text: 'dloyt.yes',
+	  value: 'dloyt.yes',
+	  image: { avatar: true, src: '../assets/images/dashboard/ScrollGroup6.png' },
+	},
+	{
+	  text: 'elhfo.wam',
+	  value: 'elhfo.wam',
+	  image: { avatar: true, src: '../assets/images/dashboard/ScrollGroup6.png' },
+	},
+]
 const panes = [
 	{
 	  menuItem: 'Tokens',
@@ -59,8 +85,19 @@ const panes = [
 
 const TabExampleSecondaryPointing = () => (
 	<Tab menu={{ secondary: true, pointing: true }} panes={panes} />
-  )
-  
+)
+
+const DropdownExampleSelection = () => (
+	<Dropdown
+		placeholder='Select Account'
+		fluid
+		selection
+		scrolling
+		upward
+		options={accountOption}
+		className="left-nav-dropdown"
+	/>
+)
 
 class Home extends React.Component {
   constructor(props) {
@@ -128,20 +165,7 @@ class Home extends React.Component {
 					</div>
 				</div>
 				<div className="nav-select-section">
-					<select>
-						<option 
-							style={{  
-								backgroundImage: "url(require('../../../../renderer/assets/images/dashboard/dashabord-advanced.png'))",
-								backgroundPosition: 'center',
-								backgroundSize: 'cover',
-								backgroundRepeat: 'no-repeat'
-							}}
-						> Import Account</option>
-						<option>Create Account</option>
-						<option>willquigley</option>
-						<option>dloyt.yes</option>
-						<option>elhfo.wam</option>
-					</select>
+					<DropdownExampleSelection />
 				</div>
 			</div>
 			<div className="dashboard-body-section">
