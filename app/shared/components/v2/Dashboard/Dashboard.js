@@ -1,10 +1,12 @@
 
 import React from "react"
 import PropTypes from "prop-types"
+import { Divider, Tab, Dropdown } from "semantic-ui-react"
+import { connect } from 'react-redux';
 
 import DashboardTokenModal from "../TokenModal/DashboardTokenModal"
+import TabPanes from './TabPanes/TabPanes'
 import "./Dashboard.global.css"
-import { Divider, Tab, Dropdown } from "semantic-ui-react"
 
 const initialState = {
 	dashboardTokenModal: false,
@@ -36,61 +38,6 @@ const accountOption = [
 	  image: { avatar: true, src: '../assets/images/dashboard/ScrollGroup6.png' },
 	},
 ]
-const panes = [
-	{
-	  menuItem: 'Tokens',
-	  render: () => <Tab.Pane attached={false}>
-		  				<div className="token-wrap">
-							<img src={require('../../../../renderer/assets/images/dashboard/ScrollGroup6.png')} />
-							<div className="token-des">
-								<div className="des-title">
-									<h3>WAX</h3>
-									<h5>1,468932.12</h5>
-								</div>
-								<div className="des-price">$5894.45</div>
-							</div>
-						</div>
-						<div className="token-wrap">
-							<img src={require('../../../../renderer/assets/images/dashboard/ScrollGroup7.png')} />
-							<div className="token-des">
-								<div className="des-title">
-									<h3>KARMAR</h3>
-									<h5>1,468932.12</h5>
-								</div>
-								<div className="des-price">$5894.45</div>
-							</div>
-						</div>
-						<div className="token-wrap">
-							<img src={require('../../../../renderer/assets/images/dashboard/ScrollGroup8.png')} />
-							<div className="token-des">
-								<div className="des-title">
-									<h3>BET</h3>
-									<h5>1,468932.12</h5>
-								</div>
-								<div className="des-price">$5894.45</div>
-							</div>
-						</div>
-						<div className="token-wrap">
-							<img src={require('../../../../renderer/assets/images/dashboard/ScrollGroup9.png')} />
-							<div className="token-des">
-								<div className="des-title">
-									<h3>GEM</h3>
-									<h5>1,468932.12</h5>
-								</div>
-								<div className="des-price">$5894.45</div>
-							</div>
-						</div>
-	  				</Tab.Pane>,
-	},
-	{
-	  menuItem: 'NFTS',
-	  render: () => <Tab.Pane attached={false}><b>Tab 2 Content</b></Tab.Pane>,
-	},
-]
-
-const TabExampleSecondaryPointing = () => (
-	<Tab menu={{ secondary: true, pointing: true }} panes={panes} />
-)
 
 const DropdownExampleSelection = () => (
 	<Dropdown
@@ -117,7 +64,7 @@ class Home extends React.Component {
 
 	render() {
 		const { dashboardTokenModal } = this.state
-		const { wallet, actions, history, location } = this.props
+		const { wallet, actions, history, location, tokens } = this.props
 		return (
 			<div className="dashboard-container">
 				<div className="nav-section">
@@ -278,7 +225,7 @@ class Home extends React.Component {
 						<div className="right-badge">
 							<img src={require('../../../../renderer/assets/images/dashboard/Group1737.png')} />
 						</div>
-						<TabExampleSecondaryPointing />
+						<TabPanes tokens={tokens} />
 					</div>
 				</div>
 				<div className="balance-section">
@@ -354,5 +301,11 @@ Home.defaultProps = {
 
 }
 
+function mapStateToProps(state) {
+  return {
+    tokens: state.tokens
+  };
+}
 
-export default Home
+
+export default connect(mapStateToProps)(Home)
