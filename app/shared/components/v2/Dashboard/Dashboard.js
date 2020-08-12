@@ -148,10 +148,18 @@ class Home extends React.Component {
 		const { swapTokenModal } = this.state
 		this.setState({ swapTokenModal : !swapTokenModal })
 	}
+<<<<<<< HEAD
 	goStaking = () => {
 		this.props.history.push("/advanced")
 	}
 	
+=======
+	toggleImportAccountModal = () => {
+		const { importAccountModal } = this.state
+		this.setState({ importAccountModal : !importAccountModal })
+	}
+
+>>>>>>> finish importAccountModal
 	render() {
 		const { dashboardTokenModal, resourcesModal, delegateModal, cryptoModal, swapTokenModal, importAccountModal, buyWaxModal, createAccountModal, sellAssetModal } = this.state
 		const { wallet, actions, history, location, settings, balances, globals, accounts } = this.props
@@ -299,6 +307,13 @@ class Home extends React.Component {
 				<SwapTokenModal
 					closeModal={this.toggleSwapTokenModal}
 					modalOpen={swapTokenModal}
+					history={history}
+					actions={actions}
+					location={location}
+				/>
+				<ImportAccountModal
+					closeModal={this.toggleImportAccountModal}
+					modalOpen={importAccountModal}
 					history={history}
 					actions={actions}
 					location={location}
