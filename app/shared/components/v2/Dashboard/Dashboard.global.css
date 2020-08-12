@@ -201,7 +201,7 @@
   position: relative;
   height: 600px;
 }
-.token-ntfs-section a {
+.ui.secondary.pointing.menu a {
   font-size: 20px;
   color: white !important;
   font-weight: bold !important;
