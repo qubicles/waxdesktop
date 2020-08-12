@@ -8,12 +8,14 @@ import DashboardTokenModal from "./Modals/TokenModal/DashboardTokenModal"
 import TabPanes from './TabPanes/TabPanes'
 import ResourcesModal from "./Modals/ResourcesModal/ResourcesModal"
 import DelegateModal from "./Modals/DelegateModal/DelegateModal"
+import CryptoModal from "./Modals/CryptoModal/CryptoModal"
 import "./Dashboard.global.css"
 
 const initialState = {
 	dashboardTokenModal: false,
 	resourcesModal: false,
 	delegateModal: false,
+	cryptoModal: true,
 }
 const accountOption = [
 	{
@@ -75,9 +77,13 @@ class Home extends React.Component {
 		const { delegateModal } = this.state
 		this.setState({ delegateModal : !delegateModal })
 	}
+	toggleCryptoModal = () => {
+		const { cryptoModal } = this.state
+		this.setState({ cryptoModal : !cryptoModal })
+	}
 
 	render() {
-		const { dashboardTokenModal, resourcesModal, delegateModal } = this.state
+		const { dashboardTokenModal, resourcesModal, delegateModal, cryptoModal } = this.state
 		const { wallet, actions, history, location, tokens } = this.props
 		return (
 			<div className="dashboard-container">
@@ -311,6 +317,13 @@ class Home extends React.Component {
 				<DelegateModal
 					closeModal={this.toggleDelegateModal}
 					modalOpen={delegateModal}
+					history={history}
+					actions={actions}
+					location={location}
+				/>
+				<CryptoModal
+					closeModal={this.toggleCryptoModal}
+					modalOpen={cryptoModal}
 					history={history}
 					actions={actions}
 					location={location}
