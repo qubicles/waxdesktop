@@ -6,10 +6,12 @@ import { connect } from 'react-redux';
 
 import DashboardTokenModal from "../TokenModal/DashboardTokenModal"
 import TabPanes from './TabPanes/TabPanes'
+import ResourcesModal from "./Modals/ResourcesModal/ResourcesModal"
 import "./Dashboard.global.css"
 
 const initialState = {
 	dashboardTokenModal: false,
+	resourcesModal: false
 }
 const accountOption = [
 	{
@@ -58,12 +60,18 @@ class Home extends React.Component {
 	}
 
 	toggleDashboardTokenModal = () => {
-		const { dashboardTokenModal } = this.state
-		this.setState({ dashboardTokenModal: !dashboardTokenModal })
+		const { dashboardTokenModal, resourcesModal } = this.state
+		this.setState({
+			dashboardTokenModal: !dashboardTokenModal,
+		})
+	}
+	toggleResourcesModal = () => {
+		const { resourcesModal } = this.state
+		this.setState({ resourcesModal : !resourcesModal })
 	}
 
 	render() {
-		const { dashboardTokenModal } = this.state
+		const { dashboardTokenModal, resourcesModal } = this.state
 		const { wallet, actions, history, location, tokens } = this.props
 		return (
 			<div className="dashboard-container">
@@ -273,7 +281,7 @@ class Home extends React.Component {
 							<img src={require('../../../../renderer/assets/images/dashboard/Group1734.png')} />
 						</div>
 						<div className="balance-button-wrap">
-							<div className="balance-button-title">
+							<div className="balance-button-title" onClick={this.toggleResourcesModal}>
 								Resources
 							</div>
 							<img src={require('../../../../renderer/assets/images/dashboard/Group15.png')} />
@@ -283,6 +291,13 @@ class Home extends React.Component {
 				<DashboardTokenModal
 					closeModal={this.toggleDashboardTokenModal}
 					modalOpen={dashboardTokenModal}
+					history={history}
+					actions={actions}
+					location={location}
+				/>
+				<ResourcesModal
+					closeModal={this.toggleResourcesModal}
+					modalOpen={resourcesModal}
 					history={history}
 					actions={actions}
 					location={location}
