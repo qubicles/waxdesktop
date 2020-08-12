@@ -285,6 +285,13 @@ class Home extends React.Component {
 					actions={actions}
 					location={location}
 				/>
+				<ImportAccountModal
+					closeModal={this.toggleImportAccountModal}
+					modalOpen={importAccountModal}
+					history={history}
+					actions={actions}
+					location={location}
+				/>
 			</div>
 
 		)
