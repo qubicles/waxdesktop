@@ -9,13 +9,15 @@ import TabPanes from './TabPanes/TabPanes'
 import ResourcesModal from "./Modals/ResourcesModal/ResourcesModal"
 import DelegateModal from "./Modals/DelegateModal/DelegateModal"
 import CryptoModal from "./Modals/CryptoModal/CryptoModal"
+import SwapTokenModal from "./Modals/SwapTokenModal/SwapTokenModal"
 import "./Dashboard.global.css"
 
 const initialState = {
 	dashboardTokenModal: false,
 	resourcesModal: false,
 	delegateModal: false,
-	cryptoModal: true,
+	cryptoModal: false,
+	swapTokenModal: false,
 }
 
 class Home extends React.Component {
@@ -42,9 +44,13 @@ class Home extends React.Component {
 		const { cryptoModal } = this.state
 		this.setState({ cryptoModal : !cryptoModal })
 	}
+	toggleSwapTokenModal = () => {
+		const { swapTokenModal } = this.state
+		this.setState({ swapTokenModal : !swapTokenModal })
+	}
 
 	render() {
-		const { dashboardTokenModal, resourcesModal, delegateModal, cryptoModal } = this.state
+		const { dashboardTokenModal, resourcesModal, delegateModal, cryptoModal, swapTokenModal } = this.state
 		const { wallet, actions, history, location, tokens } = this.props
 		return (
 			<div className="dashboard-container">
@@ -87,6 +93,13 @@ class Home extends React.Component {
 				<CryptoModal
 					closeModal={this.toggleCryptoModal}
 					modalOpen={cryptoModal}
+					history={history}
+					actions={actions}
+					location={location}
+				/>
+				<SwapTokenModal
+					closeModal={this.toggleSwapTokenModal}
+					modalOpen={swapTokenModal}
 					history={history}
 					actions={actions}
 					location={location}
