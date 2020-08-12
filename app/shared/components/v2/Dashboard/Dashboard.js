@@ -9,13 +9,15 @@ import TabPanes from './TabPanes/TabPanes'
 import ResourcesModal from "./Modals/ResourcesModal/ResourcesModal"
 import DelegateModal from "./Modals/DelegateModal/DelegateModal"
 import CryptoModal from "./Modals/CryptoModal/CryptoModal"
+import SwapTokenModal from "./Modals/SwapTokenModal/SwapTokenModal"
 import "./Dashboard.global.css"
 
 const initialState = {
 	dashboardTokenModal: false,
 	resourcesModal: false,
 	delegateModal: false,
-	cryptoModal: true,
+	cryptoModal: false,
+	swapTokenModal: false,
 }
 const accountOption = [
 	{
@@ -81,9 +83,13 @@ class Home extends React.Component {
 		const { cryptoModal } = this.state
 		this.setState({ cryptoModal : !cryptoModal })
 	}
+	toggleSwapTokenModal = () => {
+		const { swapTokenModal } = this.state
+		this.setState({ swapTokenModal : !swapTokenModal })
+	}
 
 	render() {
-		const { dashboardTokenModal, resourcesModal, delegateModal, cryptoModal } = this.state
+		const { dashboardTokenModal, resourcesModal, delegateModal, cryptoModal, swapTokenModal } = this.state
 		const { wallet, actions, history, location, tokens } = this.props
 		return (
 			<div className="dashboard-container">
@@ -287,7 +293,7 @@ class Home extends React.Component {
 							<img src={require('../../../../renderer/assets/images/dashboard/credit-card2.png')} />
 						</div>
 						<div className="balance-button-wrap">
-							<div className="balance-button-title">
+							<div className="balance-button-title" onClick={this.toggleSwapTokenModal}>
 								Swap Tokens
 							</div>
 							<img src={require('../../../../renderer/assets/images/dashboard/Group1734.png')} />
@@ -324,6 +330,13 @@ class Home extends React.Component {
 				<CryptoModal
 					closeModal={this.toggleCryptoModal}
 					modalOpen={cryptoModal}
+					history={history}
+					actions={actions}
+					location={location}
+				/>
+				<SwapTokenModal
+					closeModal={this.toggleSwapTokenModal}
+					modalOpen={swapTokenModal}
 					history={history}
 					actions={actions}
 					location={location}

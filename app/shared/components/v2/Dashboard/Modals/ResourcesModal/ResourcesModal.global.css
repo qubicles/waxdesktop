@@ -8,7 +8,7 @@
   padding-left: 40px !important;
   padding-right: 40px !important;
 }
-.ui.tab.active, .ui.tab.open {
+.resourcesModal .ui.tab.active, .ui.tab.open {
   background-color: #242b39 !important;
 }
 /* resource-choose-section */
