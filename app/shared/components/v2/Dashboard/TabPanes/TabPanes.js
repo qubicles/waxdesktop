@@ -19,13 +19,13 @@ class TabPanes extends React.Component {
                       src={require(`../../../../../renderer/assets/images/dashboard/${token.img}`)}
                     />
                   </Table.Cell>
-                  <div className="token-des">
-                    <Table.Cell className="des-title">
-                      <Header as="h3">{token.name}</Header>
-                      <Header as="h5">{token.quant}</Header>
+                    <Table.Cell className="token-des">
+                      <div className="des-title">
+                        <Header as="h3">{token.name}</Header>
+                        <Header as="h5">{token.quant}</Header>
+                      </div>
                     </Table.Cell>
                     <Table.Cell className="des-price">{token.price}</Table.Cell>
-                  </div>
                 </Table.Row>
               ))}
             </Table.Body>

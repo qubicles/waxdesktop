@@ -1,0 +1,92 @@
+.nav-section {
+    width: 250px;
+    padding: 25px 10px;
+}
+.nav-section .pin-wax {
+    font-size: 20px;
+    margin-bottom: 2px !important;
+    height: auto !important;
+}
+.nav-section .pin-desktop {
+    font-size: 10px;
+    margin-top: 0 !important;
+}
+.nav-section .logo-rect1 {
+    width: 35px;
+    height: 35px;
+    border-width: 2px;
+    border-radius: 4px;
+}
+.nav-section .logo-rect2 {
+    width: 35px;
+    height: 35px;
+    border-radius: 4px;
+    z-index: unset !important;
+}
+.nav-section .logo-rect1-wrap {
+    padding-left: 0 !important;
+}
+.nav-section .logo-rect2-wrap {
+    left: 15px;
+    padding-left: 0 !important;
+    z-index: unset !important;
+}
+.nav-section .logo-text-wrap {
+    padding: 10px;
+    margin-left: 0 !important;
+    padding-left: 0 !important;
+}
+.nav-items-section {
+    padding: 20px 0;
+}
+.nav-item-wrap {
+    display: flex;
+    padding: 20px;
+}
+.nav-item-wrap img {
+    display: block;
+    width: 25px;
+    height: 25px;
+}
+.nav-item-title {
+    color: white;
+    font-size: 20px;
+    font-weight: 500;
+    margin-left: 20px;
+    display: flex;
+    align-items: center;
+}
+/* nav-bar-select */
+.nav-select-section {
+    padding-top: 200px;
+}
+/* left-nav-dropdown */
+.left-nav-dropdown .item {
+    color: white !important;
+    border: unset !important;
+}
+.left-nav-dropdown .item img{
+    border-radius: unset !important;
+}
+.left-nav-dropdown {
+    background-color: #191f28 !important;
+    border-radius: 15px !important;
+    color: white !important;
+    border: 1px solid rgba(234,241,248,.2) !important;
+    width: 100% !important;
+}
+.left-nav-dropdown .icon, .left-nav-dropdown .text {
+    color: white !important;
+}
+.left-nav-dropdown .visible {
+    font-weight: 100 !important;
+    background-color: #191f28 !important;
+    border-top-left-radius: 15px !important;
+    border-top-right-radius: 15px !important;
+    border: 1px solid rgba(234,241,248,.2) !important;
+}
+.ui.active.upward.selection.dropdown {
+    border: 1px solid rgba(234,241,248,.2) !important;
+    border-bottom-left-radius: 15px !important;
+    border-bottom-right-radius: 15px !important;
+}
