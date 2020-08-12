@@ -278,6 +278,13 @@ class Home extends React.Component {
 					actions={actions}
 					location={location}
 				/>
+				<SwapTokenModal
+					closeModal={this.toggleSwapTokenModal}
+					modalOpen={swapTokenModal}
+					history={history}
+					actions={actions}
+					location={location}
+				/>
 			</div>
 
 		)
