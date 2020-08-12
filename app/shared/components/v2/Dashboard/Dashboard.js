@@ -4,7 +4,7 @@ import PropTypes from "prop-types"
 import { Divider, Tab, Dropdown } from "semantic-ui-react"
 import { connect } from 'react-redux';
 
-import DashboardTokenModal from "../TokenModal/DashboardTokenModal"
+import DashboardTokenModal from "./Modals/TokenModal/DashboardTokenModal"
 import TabPanes from './TabPanes/TabPanes'
 import ResourcesModal from "./Modals/ResourcesModal/ResourcesModal"
 import DelegateModal from "./Modals/DelegateModal/DelegateModal"
