@@ -120,6 +120,7 @@ class Home extends React.Component {
 	goStaking = () => {
 		this.props.history.push("/advanced")
 	}
+<<<<<<< HEAD
 	goApps = () => {
 		this.props.history.push("/apps")
 	}
@@ -130,6 +131,13 @@ class Home extends React.Component {
 		this.props.history.push("/advanced")
 	}
 	
+=======
+	toggleSwapTokenModal = () => {
+		const { swapTokenModal } = this.state
+		this.setState({ swapTokenModal : !swapTokenModal })
+	}
+
+>>>>>>> finish swapTokenModal
 	render() {
 		const { dashboardTokenModal, resourcesModal, delegateModal, cryptoModal, swapTokenModal, importAccountModal, buyWaxModal, createAccountModal, sellAssetModal } = this.state
 		const { wallet, actions, history, location, settings, balances, globals, accounts } = this.props
