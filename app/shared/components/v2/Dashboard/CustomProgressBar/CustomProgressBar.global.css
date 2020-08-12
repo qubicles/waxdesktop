@@ -29,3 +29,13 @@
 .progressbar-container .progress .bar {
     border-radius: 20px;
 }
+
+.ui.red.progress .bar{
+    background-color: #ff886d;
+}
+.ui.yellow.progress .bar {
+    background-color: #ffc06c;
+}
+.ui.green.progress .bar {
+    background-color: #6dff9a;
+}

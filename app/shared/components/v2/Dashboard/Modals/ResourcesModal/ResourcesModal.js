@@ -22,7 +22,7 @@ const panes = [
 						/>
 		  				<CustomProgressBar 
 							label="NET"
-							statusColor="brown"
+							statusColor="yellow"
 							percent="51"
 						/>
 		  				<CustomProgressBar 
@@ -59,7 +59,7 @@ const panes = [
 						/>
 		  				<CustomProgressBar 
 							label="NET"
-							statusColor="brown"
+							statusColor="yellow"
 							percent="51"
 						/>
 		  				<CustomProgressBar 
