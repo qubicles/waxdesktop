@@ -139,6 +139,10 @@ class Home extends React.Component {
 		const { cryptoModal } = this.state
 		this.setState({ cryptoModal: !cryptoModal })
 	}
+	toggleSwapTokenModal = () => {
+		const { swapTokenModal } = this.state
+		this.setState({ swapTokenModal : !swapTokenModal })
+	}
 
 	render() {
 		const { dashboardTokenModal, resourcesModal, delegateModal, cryptoModal, swapTokenModal, importAccountModal, buyWaxModal, createAccountModal, sellAssetModal } = this.state
