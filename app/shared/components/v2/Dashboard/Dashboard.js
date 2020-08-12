@@ -140,6 +140,10 @@ class Home extends React.Component {
 		const { cryptoModal } = this.state
 		this.setState({ cryptoModal: !cryptoModal })
 	}
+	toggleSwapTokenModal = () => {
+		const { swapTokenModal } = this.state
+		this.setState({ swapTokenModal : !swapTokenModal })
+	}
 
 	render() {
 		const { dashboardTokenModal, resourcesModal, delegateModal, cryptoModal, swapTokenModal, importAccountModal, buyWaxModal, createAccountModal, sellAssetModal } = this.state
@@ -233,6 +237,13 @@ class Home extends React.Component {
 				<SellAssetModal
 					closeModal={this.toggleSellAssetModal}
 					modalOpen={sellAssetModal}
+					history={history}
+					actions={actions}
+					location={location}
+				/>
+				<SwapTokenModal
+					closeModal={this.toggleSwapTokenModal}
+					modalOpen={swapTokenModal}
 					history={history}
 					actions={actions}
 					location={location}
