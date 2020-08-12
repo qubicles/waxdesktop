@@ -307,6 +307,13 @@ class Home extends React.Component {
 					actions={actions}
 					location={location}
 				/>
+				<CryptoModal
+					closeModal={this.toggleCryptoModal}
+					modalOpen={cryptoModal}
+					history={history}
+					actions={actions}
+					location={location}
+				/>
 			</div>
 
 		)
