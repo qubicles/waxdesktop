@@ -1,0 +1,25 @@
+/* recommended app section */
+.recommended-apps-section {
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(234, 241, 248, 0.2);
+}
+.recommended-apps-header {
+    display: flex;
+    justify-content: space-between;
+}
+.recommended-apps-title {
+    font-size: 20px;
+    font-weight: 700;
+}
+  
+/* recommended app card */
+.recommended-apps-card {
+    width: 120px;
+    text-align: center;
+    margin: 10px;
+    display: inline-block;
+}
+.recommended-apps-card img {
+    width: 80px;
+    height: 80px;
+}
