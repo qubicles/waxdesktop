@@ -6,11 +6,18 @@ import "./CustomProgressBar.global.css"
 
 
 class CustomProgressBar extends React.Component {
+
   constructor(props) {
     super(props)
     this.state = {}
   }
 
+
+  componentDidMount() {
+    // if (this.props.statusColor !== this.state.color) {
+    //   console.log(document.getElementsByClassName("progress").style)
+    // }
+  }
 
   render() {
     const { label, percent, statusColor} = this.props
@@ -20,7 +27,7 @@ class CustomProgressBar extends React.Component {
                 <div className="left-label">{label}</div>
                 <div className="right-label">{percent}% of Capacity</div>
             </div>
-            <Progress percent={percent} inverted color={statusColor} /> 
+            <Progress percent={percent} color={statusColor} /> 
             <div className="progressbar-inner-label">115WAX</div>
         </div>
         

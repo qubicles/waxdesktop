@@ -4,12 +4,14 @@ import PropTypes from "prop-types"
 
 import DashboardTokenModal from "./Modals/TokenModal/DashboardTokenModal"
 import ResourcesModal from "./Modals/ResourcesModal/ResourcesModal"
+import DelegateModal from "./Modals/DelegateModal/DelegateModal"
 import "./Dashboard.global.css"
 import { Divider, Tab, Dropdown } from "semantic-ui-react"
 
 const initialState = {
 	dashboardTokenModal: false,
-	resourcesModal: false
+	resourcesModal: false,
+	delegateModal: false,
 }
 const accountOption = [
 	{
@@ -113,7 +115,7 @@ class Home extends React.Component {
 	}
 
 	toggleDashboardTokenModal = () => {
-		const { dashboardTokenModal, resourcesModal } = this.state
+		const { dashboardTokenModal } = this.state
 		this.setState({ 
 			dashboardTokenModal: !dashboardTokenModal,
 		})
@@ -122,9 +124,13 @@ class Home extends React.Component {
 		const { resourcesModal } = this.state
 		this.setState({ resourcesModal : !resourcesModal })
 	}
+	toggleDelegateModal = () => {
+		const { delegateModal } = this.state
+		this.setState({ delegateModal : !delegateModal })
+	}
 
 	render() {
-		const { dashboardTokenModal, resourcesModal } = this.state
+		const { dashboardTokenModal, resourcesModal, delegateModal } = this.state
 		const { wallet, actions, history, location } = this.props
 		return (
 			<div className="dashboard-container">
@@ -351,6 +357,13 @@ class Home extends React.Component {
 				<ResourcesModal
 					closeModal={this.toggleResourcesModal}
 					modalOpen={resourcesModal}
+					history={history}
+					actions={actions}
+					location={location}
+				/>
+				<DelegateModal
+					closeModal={this.toggleDelegateModal}
+					modalOpen={delegateModal}
 					history={history}
 					actions={actions}
 					location={location}
