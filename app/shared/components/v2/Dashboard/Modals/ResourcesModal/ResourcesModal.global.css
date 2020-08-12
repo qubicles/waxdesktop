@@ -4,12 +4,12 @@
 }
 .ui.modal>.icon:first-child+*, .ui.modal>:first-child:not(.icon) {
   border-radius: 20px !important;
-  background-color: #242b39 !important;
+  background-color: #191f28 !important;
   padding-left: 40px !important;
   padding-right: 40px !important;
 }
 .resourcesModal .ui.tab.active, .ui.tab.open {
-  background-color: #242b39 !important;
+  background-color: #191f28 !important;
 }
 /* resource-choose-section */
 .resource-choose-section {

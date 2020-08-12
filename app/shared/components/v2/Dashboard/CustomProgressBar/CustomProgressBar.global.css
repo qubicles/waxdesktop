@@ -23,6 +23,7 @@
 .progressbar-container .progress {
     border-radius: 20px;
     border: 1px solid #242b39;
+    background-color: #242b39;
     margin-top: 0px;
     margin-bottom: 15px;
 }
