@@ -11,6 +11,9 @@ import DelegateModal from "./Modals/DelegateModal/DelegateModal"
 import CryptoModal from "./Modals/CryptoModal/CryptoModal"
 import SwapTokenModal from "./Modals/SwapTokenModal/SwapTokenModal"
 import ImportAccountModal from "./Modals/ImportAccountModal/ImportAccountModal"
+import TrendingAssets from "./TrendingAssets/TrendingAssets"
+import RecommendedApps from "./RecommendedApps/RecommendedApps"
+import Balance from "./Balance/Balance"
 import "./Dashboard.global.css"
 
 const initialState = {
@@ -21,45 +24,6 @@ const initialState = {
 	swapTokenModal: false,
 	importAccountModal: false,
 }
-const accountOption = [
-	{
-	  text: 'Import Account',
-	  value: 'Import Account',
-	  image: { avatar: true, src: '../assets/images/dashboard/dashboard-import.png' },
-	},
-	{
-	  text: 'Create Account',
-	  value: 'Create Account',
-	  image: { avatar: true, src: '../assets/images/dashboard/dashboard-create.png' },
-	},
-	{
-	  text: 'willquigley',
-	  value: 'willquigley',
-	  image: { avatar: true, src: '../assets/images/dashboard/ScrollGroup6.png' },
-	},
-	{
-	  text: 'dloyt.yes',
-	  value: 'dloyt.yes',
-	  image: { avatar: true, src: '../assets/images/dashboard/ScrollGroup6.png' },
-	},
-	{
-	  text: 'elhfo.wam',
-	  value: 'elhfo.wam',
-	  image: { avatar: true, src: '../assets/images/dashboard/ScrollGroup6.png' },
-	},
-]
-
-const DropdownExampleSelection = () => (
-	<Dropdown
-		placeholder='Select Account'
-		fluid
-		selection
-		scrolling
-		upward
-		options={accountOption}
-		className="left-nav-dropdown"
-	/>
-)
 
 class Home extends React.Component {
 	constructor(props) {
@@ -75,11 +39,11 @@ class Home extends React.Component {
 	}
 	toggleResourcesModal = () => {
 		const { resourcesModal } = this.state
-		this.setState({ resourcesModal : !resourcesModal })
+		this.setState({ resourcesModal: !resourcesModal })
 	}
 	toggleDelegateModal = () => {
 		const { delegateModal } = this.state
-		this.setState({ delegateModal : !delegateModal })
+		this.setState({ delegateModal: !delegateModal })
 	}
 	toggleCryptoModal = () => {
 		const { cryptoModal } = this.state
@@ -99,160 +63,9 @@ class Home extends React.Component {
 		const { wallet, actions, history, location, tokens } = this.props
 		return (
 			<div className="dashboard-container">
-				<div className="nav-section">
-					<div className="logo-section">
-						<div className="logo-img-wrap">
-							<div className="logo-rect2-wrap">
-								<div className="logo-rect2"></div>
-							</div>
-							<div className="logo-rect1-wrap">
-								<div className="logo-rect1"></div>
-							</div>
-						</div>
-						<div className="logo-text-wrap">
-							<h3 className="pin-wax">WAX</h3>
-							<h4 className="pin-desktop">D E S K T O P</h4>
-						</div>
-					</div>
-					<div className="nav-items-section">
-						<div className="nav-item-wrap">
-							<img src={require('../../../../renderer/assets/images/dashboard/dashboard-home.png')} />
-							<div className="nav-item-title">
-								Home
-							</div>
-						</div>
-						<div className="nav-item-wrap">
-							<img src={require('../../../../renderer/assets/images/dashboard/dashboard-market.png')} />
-							<div className="nav-item-title">
-								Market
-							</div>
-						</div>
-						<div className="nav-item-wrap">
-							<img src={require('../../../../renderer/assets/images/dashboard/dashboard-apps.png')} />
-							<div className="nav-item-title">
-								Apps
-							</div>
-						</div>
-						<div className="nav-item-wrap">
-							<img src={require('../../../../renderer/assets/images/dashboard/dashboard-stacking.png')} />
-							<div className="nav-item-title">
-								Staking
-							</div>
-						</div>
-						<div className="nav-item-wrap">
-							<img src={require('../../../../renderer/assets/images/dashboard/dashboard-guilds.png')} />
-							<div className="nav-item-title">
-								Guilds
-							</div>
-						</div>
-						<div className="nav-item-wrap">
-							<img src={require('../../../../renderer/assets/images/dashboard/dashabord-advanced.png')} />
-							<div className="nav-item-title">
-								Advanced
-							</div>
-						</div>
-					</div>
-					<div className="nav-select-section">
-						<DropdownExampleSelection />
-					</div>
-				</div>
 				<div className="dashboard-body-section">
-					<div className="trending-assets-section">
-						<div className="trending-assets-header">
-							<div className="trending-assets-title">Trending Assets</div>
-							<div className="trending-assets-view">View Market</div>
-						</div>
-						<div className="trending-assets-body">
-							<div className="trending-assets-card">
-								<img src={require('../../../../renderer/assets/images/dashboard/dallas141.png')} />
-								<div className="t-card-title">King Kao</div>
-								<div className="t-card-author">theonlykarma</div>
-								<div className="t-card-price">
-									<img src={require('../../../../renderer/assets/images/dashboard/Group47.png')} />
-									<div className="t-card-des">
-										25,000 KARMAR
-									</div>
-								</div>
-								<button className="trending-view-button">View Market</button>
-							</div>
-							<div className="trending-assets-card">
-								<img src={require('../../../../renderer/assets/images/dashboard/dallas141.png')} />
-								<div className="t-card-title">King Kao</div>
-								<div className="t-card-author">theonlykarma</div>
-								<div className="t-card-price">
-									<img src={require('../../../../renderer/assets/images/dashboard/Group47.png')} />
-									<div className="t-card-des">
-										25,000 KARMAR
-									</div>
-								</div>
-								<button className="trending-view-button">View Market</button>
-							</div>
-							<div className="trending-assets-card">
-								<img src={require('../../../../renderer/assets/images/dashboard/dallas141.png')} />
-								<div className="t-card-title">King Kao</div>
-								<div className="t-card-author">theonlykarma</div>
-								<div className="t-card-price">
-									<img src={require('../../../../renderer/assets/images/dashboard/Group47.png')} />
-									<div className="t-card-des">
-										25,000 KARMAR
-									</div>
-								</div>
-								<button className="trending-view-button">View Market</button>
-							</div>
-							<div className="trending-assets-card">
-								<img src={require('../../../../renderer/assets/images/dashboard/dallas141.png')} />
-								<div className="t-card-title">King Kao</div>
-								<div className="t-card-author">theonlykarma</div>
-								<div className="t-card-price">
-									<img src={require('../../../../renderer/assets/images/dashboard/Group47.png')} />
-									<div className="t-card-des">
-										25,000 KARMAR
-									</div>
-								</div>
-								<button className="trending-view-button">View Market</button>
-							</div>
-							<div className="trending-assets-card">
-								<img src={require('../../../../renderer/assets/images/dashboard/dallas141.png')} />
-								<div className="t-card-title">King Kao</div>
-								<div className="t-card-author">theonlykarma</div>
-								<div className="t-card-price">
-									<img src={require('../../../../renderer/assets/images/dashboard/Group47.png')} />
-									<div className="t-card-des">
-										25,000 KARMAR
-									</div>
-								</div>
-								<button className="trending-view-button">View Market</button>
-							</div>
-						</div>
-					</div>
-					<div className="recommended-apps-section">
-						<div className="recommended-apps-header">
-							<div className="recommended-apps-title">Recommended Apps</div>
-							<img src={require('../../../../renderer/assets/images/dashboard/Group1737.png')} />
-						</div>
-						<div className="recommended-apps-body">
-							<div className="recommended-apps-card">
-								<img src={require('../../../../renderer/assets/images/dashboard/ScrollGroup1.png')} />
-								<div className="app-title">KARMAR</div>
-							</div>
-							<div className="recommended-apps-card">
-								<img src={require('../../../../renderer/assets/images/dashboard/ScrollGroup2.png')} />
-								<div className="app-title">Newdex</div>
-							</div>
-							<div className="recommended-apps-card">
-								<img src={require('../../../../renderer/assets/images/dashboard/ScrollGroup4.png')} />
-								<div className="app-title">KARMAR</div>
-							</div>
-							<div className="recommended-apps-card">
-								<img src={require('../../../../renderer/assets/images/dashboard/ScrollGroup5.png')} />
-								<div className="app-title">KARMAR</div>
-							</div>
-							<div className="recommended-apps-card">
-								<img src={require('../../../../renderer/assets/images/dashboard/Group209.png')} />
-								<div className="app-title">KARMAR</div>
-							</div>
-						</div>
-					</div>
+					<TrendingAssets />
+					<RecommendedApps />
 					<div className="token-ntfs-section">
 						<div className="right-badge">
 							<img src={require('../../../../renderer/assets/images/dashboard/Group1737.png')} />
@@ -312,6 +125,11 @@ class Home extends React.Component {
 						</div>
 					</div>
 				</div>
+				<Balance 
+					openTokenModal={this.toggleDashboardTokenModal} 
+					openResourcesModal={this.toggleResourcesModal}
+					openDelegateModal={this.toggleDelegateModal}	 
+				/>
 				<DashboardTokenModal
 					closeModal={this.toggleDashboardTokenModal}
 					modalOpen={dashboardTokenModal}
@@ -369,9 +187,9 @@ Home.defaultProps = {
 }
 
 function mapStateToProps(state) {
-  return {
-    tokens: state.tokens
-  };
+	return {
+		tokens: state.tokens
+	};
 }
 
 
