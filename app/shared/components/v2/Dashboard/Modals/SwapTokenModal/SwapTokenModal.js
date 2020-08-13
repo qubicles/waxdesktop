@@ -41,7 +41,6 @@ class CryptoModal extends React.Component {
     return (
         <Modal 
             onClose={closeModal}
-            className="" 
             size={"tiny"} 
             open={modalOpen}
         >
@@ -53,7 +52,7 @@ class CryptoModal extends React.Component {
                 </div>
                 <div className="modal-body">
                     <div className="input-custom-select">
-                        <div class="custom-input">
+                        <div className="custom-input">
                             <span>Send</span>
                             <input type="text" placeholder={'0.0'} />
                         </div>
@@ -67,7 +66,7 @@ class CryptoModal extends React.Component {
                         />
                     </div>
                     <div className="input-custom-select">
-                        <div class="custom-input">
+                        <div className="custom-input">
                             <span>Receive</span>
                             <input type="text" placeholder={'0.0'} />
                         </div>
@@ -87,7 +86,7 @@ class CryptoModal extends React.Component {
                         Confirm Transaction
                         <img src={require('../../../../../../renderer/assets/images/dashboard/correct3.png')} />
                     </div>
-                    <div class="s-change-btn">
+                    <div className="s-change-btn">
                         <img src={require('../../../../../../renderer/assets/images/dashboard/ScrollGroup2-1.png')} />
                     </div>
                 </div>
