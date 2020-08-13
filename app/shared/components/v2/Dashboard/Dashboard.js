@@ -154,6 +154,10 @@ class Home extends React.Component {
 		const { importAccountModal } = this.state
 		this.setState({ importAccountModal : !importAccountModal })
 	}
+	toggleBuyWaxModal = () => {
+		const { buyWaxModal } = this.state
+		this.setState({ buyWaxModal : !buyWaxModal })
+	}
 
 >>>>>>> finish importAccountModal
 	render() {
@@ -262,6 +266,13 @@ class Home extends React.Component {
 				<ImportAccountModal
 					closeModal={this.toggleImportAccountModal}
 					modalOpen={importAccountModal}
+					history={history}
+					actions={actions}
+					location={location}
+				/>
+				<BuyWaxModal
+					closeModal={this.toggleBuyWaxModal}
+					modalOpen={buyWaxModal}
 					history={history}
 					actions={actions}
 					location={location}
