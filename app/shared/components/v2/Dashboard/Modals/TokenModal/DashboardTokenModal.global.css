@@ -1,18 +1,18 @@
 
 
-.dashboard-token-body {
+.dashboardTokenModal-body {
   display: flex;
   padding-bottom: 50px;
 }
-.dashboard-token-body .token-img-wrap {
+.dashboardTokenModal .token-img-wrap {
   margin: auto;
   text-align: center;
 }
-.dashboard-token-body .token-title .left-title {
+.dashboardTokenModal .token-title .left-title {
   color: white;
   font-size: 20px;
 }
-.dashboard-token-body .token-title .right-title {
+.dashboardTokenModal .token-title .right-title {
   color: #ff886d;
   font-size: 18px;
 }

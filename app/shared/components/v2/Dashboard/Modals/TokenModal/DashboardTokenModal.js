@@ -17,17 +17,17 @@ class DashboardTokenModal extends React.Component {
 	return (
 		<Modal 
 			onClose={closeModal}
-			className="resetWalletModal dashboard-token-modal" 
+			className="dashboardTokenModal" 
 			size={"tiny"} 
 			open={modalOpen}
 		>
 			
-		<Modal.Header className="resetWallet">
-		  <span className="resetWallet-1">Receive </span>
-		  <span className="resetWallet-0"> Tokens</span>
-		</Modal.Header>
-		<Modal.Content className="modalInstructions">
-			<div className="dashboard-token-body">
+		<Modal.Content className="dashboardTokenModal-body">
+			<div className="modal-header">
+					<span>Receive </span>
+					<span> Tokens</span>
+				</div>
+			<div className="modal-body">
 				<div className="token-img-wrap">
 					<img src={require('../../../../../../renderer/assets/images/dashboard/qr-code3.png')} />
 					<div className="token-title">

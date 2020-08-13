@@ -102,9 +102,15 @@
   border: 1px solid rgba(234,241,248,.2) !important;
   border-bottom-left-radius: 15px !important;
   border-bottom-right-radius: 15px !important;
+  padding-left: 5px !important;
+  padding-right: 5px !important;
 }
-.ui.active.upward.selection.dropdown .menu{
-  width: 230px !important;
+.ui.fluid.dropdown {
+  padding-left: 5px !important;
+  padding-right: 5px !important;
+}
+.nav-select-section .ui.active.upward.selection.dropdown .menu{
+  width: 190px !important;
 }
 /* dashboard-body section */
 .dashboard-body-section {

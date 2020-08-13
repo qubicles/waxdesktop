@@ -12,6 +12,7 @@ import CryptoModal from "./Modals/CryptoModal/CryptoModal"
 import SwapTokenModal from "./Modals/SwapTokenModal/SwapTokenModal"
 import ImportAccountModal from "./Modals/ImportAccountModal/ImportAccountModal"
 import BuyWaxModal from "./Modals/BuyWaxModal/BuyWaxModal"
+import CreateAccountModal from "./Modals/CreateAccountModal/CreateAccountModal"
 import TrendingAssets from "./TrendingAssets/TrendingAssets"
 import RecommendedApps from "./RecommendedApps/RecommendedApps"
 import Balance from "./Balance/Balance"
@@ -25,6 +26,7 @@ const initialState = {
 	swapTokenModal: false,
 	importAccountModal: false,
 	buyWaxModal: false,
+	createAccountModal: false,
 }
 
 class Home extends React.Component {
@@ -63,9 +65,13 @@ class Home extends React.Component {
 		const { buyWaxModal } = this.state
 		this.setState({ buyWaxModal : !buyWaxModal })
 	}
+	toggleCreateAccountModal = () => {
+		const { createAccountModal } = this.state
+		this.setState({ createAccountModal : !createAccountModal })
+	}
 
 	render() {
-		const { dashboardTokenModal, resourcesModal, delegateModal, cryptoModal, swapTokenModal, importAccountModal, buyWaxModal } = this.state
+		const { dashboardTokenModal, resourcesModal, delegateModal, cryptoModal, swapTokenModal, importAccountModal, buyWaxModal, createAccountModal } = this.state
 		const { wallet, actions, history, location, tokens } = this.props
 		return (
 			<div className="dashboard-container">
@@ -181,6 +187,13 @@ class Home extends React.Component {
 				<BuyWaxModal
 					closeModal={this.toggleBuyWaxModal}
 					modalOpen={buyWaxModal}
+					history={history}
+					actions={actions}
+					location={location}
+				/>
+				<CreateAccountModal
+					closeModal={this.toggleCreateAccountModal}
+					modalOpen={createAccountModal}
 					history={history}
 					actions={actions}
 					location={location}
