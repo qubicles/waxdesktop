@@ -7,7 +7,7 @@
 
 }
 .input-custom-select .custom-input {
-    width: 65%;
+    width: 70%;
 }
 .input-custom-select input {
     background-color: transparent !important;
@@ -22,7 +22,7 @@
     color: white;
 }
 .swapTokenModal-body .swap-dropdown {
-    width: 35% !important;
+    width: 30% !important;
     background-color: transparent !important;
     color: white !important;
     border: none !important;
