@@ -14,7 +14,10 @@ import SwapTokenModal from "./Modals/SwapTokenModal/SwapTokenModal"
 import ImportAccountModal from "./Modals/ImportAccountModal/ImportAccountModal"
 import BuyWaxModal from "./Modals/BuyWaxModal/BuyWaxModal"
 import CreateAccountModal from "./Modals/CreateAccountModal/CreateAccountModal"
+<<<<<<< HEAD
 import SellAssetModal from "./Modals/SellAssetModal/SellAssetModal"
+=======
+>>>>>>> finish createAccountModal
 import TrendingAssets from "./TrendingAssets/TrendingAssets"
 import RecommendedApps from "./RecommendedApps/RecommendedApps"
 import Balance from "./Balance/Balance"
@@ -36,7 +39,10 @@ const initialState = {
 	importAccountModal: false,
 	buyWaxModal: false,
 	createAccountModal: false,
+<<<<<<< HEAD
 	sellAssetModal: false,
+=======
+>>>>>>> finish createAccountModal
 }
 
 class Home extends React.Component {
@@ -162,14 +168,23 @@ class Home extends React.Component {
 		const { buyWaxModal } = this.state
 		this.setState({ buyWaxModal : !buyWaxModal })
 	}
+	toggleCreateAccountModal = () => {
+		const { createAccountModal } = this.state
+		this.setState({ createAccountModal : !createAccountModal })
+	}
 
 >>>>>>> finish importAccountModal
 	render() {
+<<<<<<< HEAD
 		const { dashboardTokenModal, resourcesModal, delegateModal, cryptoModal, swapTokenModal, importAccountModal, buyWaxModal, createAccountModal, sellAssetModal } = this.state
 		const { wallet, actions, history, location, settings, balances, globals, accounts } = this.props
 
 		const statsFetcher = new StatsFetcher(settings.account, balances, settings, null, null);
 
+=======
+		const { dashboardTokenModal, resourcesModal, delegateModal, cryptoModal, swapTokenModal, importAccountModal, buyWaxModal, createAccountModal } = this.state
+		const { wallet, actions, history, location, tokens } = this.props
+>>>>>>> finish createAccountModal
 		return (
 			<div className="dashboard-container">
 				<div className="dashboard-body-section">
@@ -325,6 +340,13 @@ class Home extends React.Component {
 				<BuyWaxModal
 					closeModal={this.toggleBuyWaxModal}
 					modalOpen={buyWaxModal}
+					history={history}
+					actions={actions}
+					location={location}
+				/>
+				<CreateAccountModal
+					closeModal={this.toggleCreateAccountModal}
+					modalOpen={createAccountModal}
 					history={history}
 					actions={actions}
 					location={location}
