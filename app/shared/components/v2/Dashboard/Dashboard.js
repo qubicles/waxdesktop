@@ -128,7 +128,6 @@ class Home extends React.Component {
 		const { wallet, actions, history, location, settings, balances, globals, accounts } = this.props
 
 		const statsFetcher = new StatsFetcher(settings.account, balances, settings, null, null);
-
 		return (
 			<div className="dashboard-container">
 				<div className="dashboard-body-section">
