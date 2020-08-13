@@ -11,6 +11,10 @@ import DelegateModal from "./Modals/DelegateModal/DelegateModal"
 import CryptoModal from "./Modals/CryptoModal/CryptoModal"
 import SwapTokenModal from "./Modals/SwapTokenModal/SwapTokenModal"
 import ImportAccountModal from "./Modals/ImportAccountModal/ImportAccountModal"
+import BuyWaxModal from "./Modals/BuyWaxModal/BuyWaxModal"
+import TrendingAssets from "./TrendingAssets/TrendingAssets"
+import RecommendedApps from "./RecommendedApps/RecommendedApps"
+import Balance from "./Balance/Balance"
 import "./Dashboard.global.css"
 
 const initialState = {
@@ -20,6 +24,7 @@ const initialState = {
 	cryptoModal: false,
 	swapTokenModal: false,
 	importAccountModal: false,
+	buyWaxModal: false,
 }
 
 class Home extends React.Component {
@@ -54,9 +59,13 @@ class Home extends React.Component {
 		const { importAccountModal } = this.state
 		this.setState({ importAccountModal : !importAccountModal })
 	}
+	toggleBuyWaxModal = () => {
+		const { buyWaxModal } = this.state
+		this.setState({ buyWaxModal : !buyWaxModal })
+	}
 
 	render() {
-		const { dashboardTokenModal, resourcesModal, delegateModal, cryptoModal, swapTokenModal, importAccountModal } = this.state
+		const { dashboardTokenModal, resourcesModal, delegateModal, cryptoModal, swapTokenModal, importAccountModal, buyWaxModal } = this.state
 		const { wallet, actions, history, location, tokens } = this.props
 		return (
 			<div className="dashboard-container">
@@ -68,6 +77,58 @@ class Home extends React.Component {
 							<img src={require('../../../../renderer/assets/images/dashboard/Group1737.png')} />
 						</div>
 						<TabPanes tokens={tokens} />
+					</div>
+				</div>
+				<div className="balance-section">
+					<div className="balance-chart-container">
+						<div className="balance-total">
+							<h4>Total Balance</h4>
+							<div className="balance-percent">
+								+3.49%
+							</div>
+						</div>
+						<h2>$12,184.62</h2>
+						<div className="chart-img">
+							<img src={require('../../../../renderer/assets/images/dashboard/Group1733.png')} />
+						</div>
+						<div className="chart-button-group">
+							<div className="chart-white-btn">1D</div>
+							<div className="chart-white-btn">1W</div>
+							<div className="chart-white-btn">1M</div>
+							<div className="chart-orange-btn">All</div>
+						</div>
+						<div className="send-btn-wrap">
+							<div className="dashboard-send-btn">
+								<h3>Send</h3>
+								<img src={require('../../../../renderer/assets/images/dashboard/arrow1.png')} />
+							</div>
+						</div>
+						<div className="send-btn-wrap">
+							<div className="dashboard-send-btn" onClick={this.toggleDashboardTokenModal}>
+								<h3>Receive</h3>
+								<img src={require('../../../../renderer/assets/images/dashboard/iconfinder263.png')} />
+							</div>
+						</div>
+					</div>
+					<div className="balance-button-group">
+						<div className="balance-button-wrap">
+							<div className="balance-button-title" onClick={this.toggleBuyWaxModal}>
+								Buy WAX
+							</div>
+							<img src={require('../../../../renderer/assets/images/dashboard/credit-card2.png')} />
+						</div>
+						<div className="balance-button-wrap">
+							<div className="balance-button-title" onClick={this.toggleSwapTokenModal}>
+								Swap Tokens
+							</div>
+							<img src={require('../../../../renderer/assets/images/dashboard/Group1734.png')} />
+						</div>
+						<div className="balance-button-wrap">
+							<div className="balance-button-title" onClick={this.toggleResourcesModal}>
+								Resources
+							</div>
+							<img src={require('../../../../renderer/assets/images/dashboard/Group15.png')} />
+						</div>
 					</div>
 				</div>
 				<Balance 
@@ -113,6 +174,13 @@ class Home extends React.Component {
 				<ImportAccountModal
 					closeModal={this.toggleImportAccountModal}
 					modalOpen={importAccountModal}
+					history={history}
+					actions={actions}
+					location={location}
+				/>
+				<BuyWaxModal
+					closeModal={this.toggleBuyWaxModal}
+					modalOpen={buyWaxModal}
 					history={history}
 					actions={actions}
 					location={location}
