@@ -23,7 +23,6 @@ class CryptoModal extends React.Component {
     return (
         <Modal 
             onClose={closeModal}
-            className="" 
             size={"tiny"} 
             open={modalOpen}
         >
