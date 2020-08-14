@@ -148,30 +148,10 @@ class Home extends React.Component {
 		const { swapTokenModal } = this.state
 		this.setState({ swapTokenModal : !swapTokenModal })
 	}
-<<<<<<< HEAD
 	goStaking = () => {
 		this.props.history.push("/advanced")
 	}
 	
-=======
-	toggleImportAccountModal = () => {
-		const { importAccountModal } = this.state
-		this.setState({ importAccountModal : !importAccountModal })
-	}
-	toggleBuyWaxModal = () => {
-		const { buyWaxModal } = this.state
-		this.setState({ buyWaxModal : !buyWaxModal })
-	}
-	toggleCreateAccountModal = () => {
-		const { createAccountModal } = this.state
-		this.setState({ createAccountModal : !createAccountModal })
-	}
-	toggleSellAssetModal = () => {
-		const { sellAssetModal } = this.state
-		this.setState({ sellAssetModal  : !sellAssetModal })
-	}
-
->>>>>>> finish importAccountModal
 	render() {
 		const { dashboardTokenModal, resourcesModal, delegateModal, cryptoModal, swapTokenModal, importAccountModal, buyWaxModal, createAccountModal, sellAssetModal } = this.state
 		const { wallet, actions, history, location, settings, balances, globals, accounts } = this.props
