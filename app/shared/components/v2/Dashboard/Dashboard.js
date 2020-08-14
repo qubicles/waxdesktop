@@ -179,16 +179,26 @@ class Home extends React.Component {
 						<TabPanes statsFetcher={statsFetcher} actions={actions}/>
 					</div>
 				</div>
+<<<<<<< HEAD
 
 				<Balance
 					globals={globals}
 					settings={settings}
 					statsFetcher={statsFetcher}
 					openTokenModal={this.toggleDashboardTokenModal}
+=======
+				
+				<Balance 
+					openTokenModal={this.toggleDashboardTokenModal} 
+>>>>>>> remote balance section for design
 					openResourcesModal={this.toggleResourcesModal}
 					openDelegateModal={this.toggleDelegateModal}
 					toggleCryptoModal={this.toggleCryptoModal}
 				/>
+<<<<<<< HEAD
+=======
+				
+>>>>>>> remote balance section for design
 				<DashboardTokenModal
 					closeModal={this.toggleDashboardTokenModal}
 					modalOpen={dashboardTokenModal}
