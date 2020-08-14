@@ -16,12 +16,16 @@ class TrendingAssets extends React.Component {
         const { trendingAssets: { trendingAssetsList } } = this.props;
 
         const TrendingAssetCard = () => {
-            return ([1, 2, 3, 4, 5].map(item => (
-                <Card className="trending-assets-card" key={item}>
-                    <Image src={require('../../../../../renderer/assets/images/dashboard/dallas141.png')} />
-                    <Card.Header className="t-card-title">Methews</Card.Header>
+            if (!trendingAssetsList) {
+                return null;
+            }
+
+            return (trendingAssetsList.data.map(item => (
+                <Card className="trending-assets-card" key={item.asset_id}>
+                    <Image src={`https://ipfs.io/ipfs/${item.data.img}`} />
+                    <Card.Header className="t-card-title">{item.data.name}</Card.Header>
                     <Card.Meta>
-                        <div className="t-card-author">theonlykarma</div>
+                        <div className="t-card-author">{item.owner}</div>
                         <div className="t-card-price">
                             <Image src={require('../../../../../renderer/assets/images/dashboard/Group47.png')} />
                             <div className="t-card-des">
