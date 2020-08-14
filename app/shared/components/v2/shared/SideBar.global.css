@@ -1,6 +1,7 @@
 .nav-section {
     width: 250px;
     padding: 25px 10px;
+    position: relative;
 }
 .nav-section .pin-wax {
     font-size: 20px;
@@ -51,14 +52,18 @@
 .nav-item-title {
     color: white;
     font-size: 20px;
-    font-weight: 500;
+    font-weight: 700;
     margin-left: 20px;
     display: flex;
     align-items: center;
 }
 /* nav-bar-select */
 .nav-select-section {
-    padding-top: 200px;
+    margin-bottom: 20px;
+    position: absolute;
+    bottom: 30px;
+    left: 20px;
+    width: 170px;
 }
 /* left-nav-dropdown */
 .left-nav-dropdown .item {
