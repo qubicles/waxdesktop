@@ -152,6 +152,22 @@ class Home extends React.Component {
 					openCryptoModal={this.toggleCryptoModal}
 					openSwapTokenModal={this.toggleSwapTokenModal}
 					openBuyWaxModal={this.toggleBuyWaxModal}
+					toggleCryptoModal={this.toggleCryptoModal}
+				/>
+				<DashboardTokenModal
+					closeModal={this.toggleDashboardTokenModal}
+					modalOpen={dashboardTokenModal}
+					history={history}
+					actions={actions}
+					location={location}
+				/>
+				<ResourcesModal
+					closeModal={this.toggleResourcesModal}
+					modalOpen={resourcesModal}
+					history={history}
+					actions={actions}
+					location={location}
+
 				/>
 				{dashboardTokenModal &&
 					<DashboardTokenModal
