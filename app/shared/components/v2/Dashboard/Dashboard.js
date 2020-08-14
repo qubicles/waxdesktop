@@ -306,6 +306,13 @@ class Home extends React.Component {
 					actions={actions}
 					location={location}
 				/>
+				<SellAssetModal
+					closeModal={this.toggleSellAssetModal}
+					modalOpen={sellAssetModal}
+					history={history}
+					actions={actions}
+					location={location}
+				/>
 			</div>
 
 		)
