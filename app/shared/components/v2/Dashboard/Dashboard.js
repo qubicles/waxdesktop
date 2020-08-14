@@ -189,7 +189,6 @@ class Home extends React.Component {
 					openDelegateModal={this.toggleDelegateModal}
 					toggleCryptoModal={this.toggleCryptoModal}
 				/>
-
 				<DashboardTokenModal
 					closeModal={this.toggleDashboardTokenModal}
 					modalOpen={dashboardTokenModal}
