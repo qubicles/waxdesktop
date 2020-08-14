@@ -1,22 +1,15 @@
 import * as types from "./types";
+import axios from "axios";
 
 export const getTrendingAssets = () => {
     return (dispatch: () => void) => {
-        const payload = [];
-        for (let i = 0; i < 5; i++) {
-            const data = {
-                id: i,
-                title: "Methews",
-                author: "theonlykarma",
-                price: "25,000 KARMAR"
-            }
-            payload.push(data);
-        };
-
-        dispatch({
-            type: types.TRENDING_ASSETS_LIST,
-            payload
-        });
+        return axios.get(`https://wax.api.atomicassets.io/atomicassets/v1/assets?page=1&limit=5&order=desc&sort=minted`)
+            .then(res => {
+                dispatch({
+                    type: types.TRENDING_ASSETS_LIST,
+                    payload: res.data
+                });
+            })
     };
 }
 
