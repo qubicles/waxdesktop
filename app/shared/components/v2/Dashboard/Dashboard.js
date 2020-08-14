@@ -178,7 +178,6 @@ class Home extends React.Component {
 					openResourcesModal={this.toggleResourcesModal}
 					openDelegateModal={this.toggleDelegateModal}
 				/>
-
 				<DashboardTokenModal
 					closeModal={this.toggleDashboardTokenModal}
 					modalOpen={dashboardTokenModal}
