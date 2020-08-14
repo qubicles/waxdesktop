@@ -110,7 +110,7 @@
   padding-right: 5px !important;
 }
 .nav-select-section .ui.active.upward.selection.dropdown .menu{
-  width: 190px !important;
+  width: 170px !important;
 }
 /* dashboard-body section */
 .dashboard-body-section {
@@ -140,6 +140,8 @@
 }
 .trending-assets-section .trending-assets-view {
   color: #ff886d;
+  font-size: 17px;
+  font-weight: 700;
 }
 .trending-assets-body {
   padding: 35px 20px 25px 20px;
@@ -164,6 +166,7 @@
 }
 .trending-assets-card .t-card-title {
   font-size: 15px;
+  font-weight: 500;
 }
 .trending-assets-card .t-card-author {
   padding-bottom: 8px;
@@ -287,6 +290,6 @@
 /* responsive */
 @media only screen and (max-width: 1050px) {
   .trending-assets-body {
-    height: 274px !important;
+    height: 285px !important;
   }
 }

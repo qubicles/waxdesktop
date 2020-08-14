@@ -31,9 +31,11 @@
     padding: 10px !important;
     display: inline-block !important;
 }
-.trending-assets-card img{
+.trending-assets-card>img{
     margin: auto !important;
     background: transparent !important;
+    width: 100px;
+    height: 110px;
 }
 .trending-assets-card .t-card-price {
     display: flex;

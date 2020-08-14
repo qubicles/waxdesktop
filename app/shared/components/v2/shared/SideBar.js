@@ -33,13 +33,13 @@ export default () => {
     ];
     const DropdownExampleSelection = () => (
         <Dropdown
-            placeholder='Select Account'
             fluid
             selection
             scrolling
             upward
             options={accountOption}
             className="left-nav-dropdown"
+            defaultValue="elhfo.wam"
         />
     );
     const menuOption = [
