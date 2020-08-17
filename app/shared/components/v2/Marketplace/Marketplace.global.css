@@ -1,0 +1,169 @@
+.market-search-section {
+    display: flex;
+    justify-content: space-between;
+}
+.round-search-bar {
+    position: relative;
+    width: 60%;
+}
+.round-dropdown {
+    padding: 2px;
+}
+.round-input {
+    background-color: transparent;
+    border: none;
+    outline: none;
+    color: white;
+    border-radius: 30px;
+    height: 40px;
+    width: 100%;
+    border: 2px solid #ff886d;
+    font-size: 23px;
+}
+.round-search-btn {
+    position: absolute;
+    background-color: #ff886d;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    right: 0;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.market-search-section .round-dropdown {
+    min-width: 120px !important;
+    border-radius: 20px !important;
+    background-color: #ff886d !important;
+    color: white !important;
+    border: 1px solid #ff886d !important;
+}
+.market-search-section .round-dropdown .text {
+    margin-bottom: 0 !important;
+}
+.market-search-section .round-dropdown .menu {
+    background-color: #ff886d;
+    border-bottom-left-radius: 20px !important;
+    border-bottom-right-radius: 20px !important;
+    border: none !important;
+}
+.market-search-section .round-dropdown .menu .item{
+    border: none !important;
+}
+.marketplace-card-section {
+    padding-top: 30px;
+}
+.marketplace-card-section .card-btn-group {
+    display: flex;
+}
+.card-btn-group .card-detail-btn {
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+    font-size: 14px !important;
+    width: 70px;
+}
+.card-btn-group .card-buy-btn {
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+    font-size: 14px !important;
+    width: 70px;
+    background-color: #ff886d !important;
+    color: white !important;
+}
+.balance-section .title {
+    font-size: 20px;
+    font-weight: 700;
+}
+.marketplace-currency-section .currency-btn-group {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    display: flex;
+}
+.currency-btn-group .currency-btn-wax {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px;
+    background-color: rgba(255, 136, 109, 0.2) !important;
+    color: #ff886d;
+}
+.currency-btn-group .currency-btn-usd {
+    padding: 10px 20px;
+    border: 1px solid #707070;
+    border-radius: 10px;
+    background-color: transparent;
+    color: #707070;
+    margin-left: 20px;
+}
+.marketplace-filter-section .price-filter-wrap {
+    display: flex;
+    border: 1px solid #707070;
+    padding: 10px;
+    border-radius: 10px;
+    margin-top: 15px;
+    color: #707070;
+    justify-content: space-around;
+}
+.marketplace-filter-section .price-filter-wrap::after {
+    content: '';
+    position: absolute;
+    height: 20px;
+    border: 1px solid #707070;
+}
+.marketplce-collections-section {
+    padding-top: 20px;
+}
+.radio-btn-wrap {
+    padding: 10px;
+}
+.common-radio {
+    height: 30px;
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    position: relative;
+}
+.common-radio input[type="radio"] {
+    display: none;
+}
+.common-radio input[type="radio"]+label:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -5px;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: rgba(255, 136, 109, 0.2);
+}
+.common-radio input[type="radio"]:checked+label:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -5px;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: #ff886d;
+}
+.common-radio label {
+    margin-left: 40px;
+    font-weight: 700;
+}
+/* search bar responsive */
+@media only screen and (min-width: 1050px) {
+    .round-search-bar  {
+       width: 75%;
+    }
+}
+@media only screen and (min-width: 1400px) {
+    .round-search-bar  {
+       width: 80%;
+    }
+}
+@media only screen and (min-width: 1700px) {
+    .round-search-bar  {
+       width: 85%;
+    }
+}

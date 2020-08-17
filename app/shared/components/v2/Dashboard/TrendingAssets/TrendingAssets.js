@@ -11,6 +11,10 @@ class TrendingAssets extends React.Component {
         const { actions: { getTrendingAssets } } = this.props;
         getTrendingAssets();
     }
+    goMarketplace = () => {
+		const { actions, history, location } = this.props
+		history.push("/marketplace")
+	}
 
     render() {
         const { trendingAssets: { trendingAssetsList } } = this.props;
@@ -28,7 +32,7 @@ class TrendingAssets extends React.Component {
                                 25,000 KARMAR
                             </div>
                         </div>
-                        <Button className="trending-view-button">View Market</Button>
+                        <Button className="trending-view-button" onClick={this.goMarketplace}>View Market</Button>
                     </Card.Meta>
                 </Card>))
             )
@@ -38,7 +42,7 @@ class TrendingAssets extends React.Component {
             <div className="trending-assets-section">
                 <div className="trending-assets-header">
                     <div className="trending-assets-title">Trending Assets</div>
-                    <div className="trending-assets-view">View Market</div>
+                    <div className="trending-assets-view" onClick={this.goMarketplace}>View Market</div>
                 </div>
                 <div className="trending-assets-body">
                     <TrendingAssetCard />
