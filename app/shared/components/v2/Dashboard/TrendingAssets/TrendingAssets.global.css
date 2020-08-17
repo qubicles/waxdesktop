@@ -16,6 +16,9 @@
 .trending-assets-section .trending-assets-view {
     color: #ff886d;
 }
+.trending-assets-section .trending-assets-view:hover{
+    cursor: pointer;
+}
 .trending-assets-body {
     padding: 35px 20px 25px 20px;
 }

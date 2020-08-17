@@ -86,7 +86,7 @@ class Home extends React.Component {
 		return (
 			<div className="dashboard-container">
 				<div className="dashboard-body-section">
-					<TrendingAssets />
+					<TrendingAssets history={history} />
 					<RecommendedApps />
 					<div className="token-ntfs-section">
 						<div className="right-badge">
