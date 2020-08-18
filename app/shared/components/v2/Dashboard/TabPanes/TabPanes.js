@@ -33,9 +33,9 @@ class TabPanes extends React.Component {
   }
 
   render() {
-    return (
-      <Tab menu={{ secondary: true, pointing: true }} panes={this.getPanes()} />
-    );
+	return (
+	  <Tab menu={{ secondary: true, pointing: true }} panes={this.getPanes()} />
+	);
   }
 }
 
