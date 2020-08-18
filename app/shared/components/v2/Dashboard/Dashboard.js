@@ -151,11 +151,7 @@ class Home extends React.Component {
 		const { sellAssetModal } = this.state
 		this.setState({ sellAssetModal  : !sellAssetModal })
 	}
-	goApps = () => {
-		
-		this.props.history.push("/apps")
-	}
-
+	
 	render() {
 		const { dashboardTokenModal, resourcesModal, delegateModal, cryptoModal, swapTokenModal, importAccountModal, buyWaxModal, createAccountModal, sellAssetModal } = this.state
 		const { wallet, actions, history, location, settings, balances, globals } = this.props
@@ -168,7 +164,7 @@ class Home extends React.Component {
 					<RecommendedApps />
 					<div className="token-ntfs-section">
 						<div className="right-badge">
-							<img src={require('../../../../renderer/assets/images/dashboard/Group1737.png')} onClick={ this.goApps } />
+							<img src={require('../../../../renderer/assets/images/dashboard/Group1737.png')} />
 						</div>
 						<TabPanes statsFetcher={statsFetcher} />
 					</div>

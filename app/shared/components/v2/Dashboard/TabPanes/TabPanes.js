@@ -3,6 +3,7 @@ import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import { Tab, Table, Image, Header } from "semantic-ui-react";
 import { forEach } from 'lodash';
+import { Card, Button, Tab, Table, Image, Header } from "semantic-ui-react";
 
 import "./TabPanes.global.css";
 
@@ -19,21 +20,88 @@ class TabPanes extends React.Component {
       )
     };
 
-    const nftsPane = {
-      menuItem: "NFTS",
-      render: () => (
-        <Tab.Pane attached={false}>
-          <b>Tab 2 Content</b>
-        </Tab.Pane>
-      )
-    };
-    return [tokensPane, nftsPane];
+	const nftsPane = {
+	  menuItem: "NFTS",
+	  render: () => (
+		<Tab.Pane attached={false}>
+			<Card className="trending-assets-card" >
+				<Image src={require('../../../../../renderer/assets/images/dashboard/dallas141.png')} />
+				<Card.Header className="t-card-title">Methews</Card.Header>
+				<Card.Meta>
+					<div className="t-card-author">theonlykarma</div>
+					<div className="t-card-price">
+						<Image src={require('../../../../../renderer/assets/images/dashboard/Group47.png')} />
+						<div className="t-card-des">
+							25,000 KARMAR
+						</div>
+					</div>
+					<div className="card-btn-group">
+						<Button className="card-detail-btn">Details</Button>
+						<Button className="card-buy-btn">Buy</Button>
+					</div>
+				</Card.Meta>
+			</Card>
+			<Card className="trending-assets-card" >
+				<Image src={require('../../../../../renderer/assets/images/dashboard/dallas141.png')} />
+				<Card.Header className="t-card-title">Methews</Card.Header>
+				<Card.Meta>
+					<div className="t-card-author">theonlykarma</div>
+					<div className="t-card-price">
+						<Image src={require('../../../../../renderer/assets/images/dashboard/Group47.png')} />
+						<div className="t-card-des">
+							25,000 KARMAR
+						</div>
+					</div>
+					<div className="card-btn-group">
+						<Button className="card-detail-btn">Details</Button>
+						<Button className="card-buy-btn">Buy</Button>
+					</div>
+				</Card.Meta>
+			</Card>
+			<Card className="trending-assets-card" >
+				<Image src={require('../../../../../renderer/assets/images/dashboard/dallas141.png')} />
+				<Card.Header className="t-card-title">Methews</Card.Header>
+				<Card.Meta>
+					<div className="t-card-author">theonlykarma</div>
+					<div className="t-card-price">
+						<Image src={require('../../../../../renderer/assets/images/dashboard/Group47.png')} />
+						<div className="t-card-des">
+							25,000 KARMAR
+						</div>
+					</div>
+					<div className="card-btn-group">
+						<Button className="card-detail-btn">Details</Button>
+						<Button className="card-buy-btn">Buy</Button>
+					</div>
+				</Card.Meta>
+			</Card>
+			<Card className="trending-assets-card" >
+				<Image src={require('../../../../../renderer/assets/images/dashboard/dallas141.png')} />
+				<Card.Header className="t-card-title">Methews</Card.Header>
+				<Card.Meta>
+					<div className="t-card-author">theonlykarma</div>
+					<div className="t-card-price">
+						<Image src={require('../../../../../renderer/assets/images/dashboard/Group47.png')} />
+						<div className="t-card-des">
+							25,000 KARMAR
+						</div>
+					</div>
+					<div className="card-btn-group">
+						<Button className="card-detail-btn">Details</Button>
+						<Button className="card-buy-btn">Buy</Button>
+					</div>
+				</Card.Meta>
+			</Card>
+		</Tab.Pane>
+	  )
+	};
+	return [tokensPane, nftsPane];
   }
 
   render() {
-    return (
-      <Tab menu={{ secondary: true, pointing: true }} panes={this.getPanes()} />
-    );
+	return (
+	  <Tab menu={{ secondary: true, pointing: true }} panes={this.getPanes()} />
+	);
   }
 }
 
