@@ -12,7 +12,6 @@ import Welcome from '../../shared/containers/Welcome'
 import Dashboard from '../../shared/components/v2/Dashboard/Dashboard'
 import MarketPlace from '../../shared/components/v2/Marketplace/Marketplace'
 import Apps from '../../shared/components/v2/Apps/Apps'
-<<<<<<< HEAD
 import Staking from '../../shared/components/v2/Staking/Staking'
 import Guilds from '../../shared/components/v2/Guilds/Guilds'
 import Advanced from '../../shared/components/v2/Advanced/Advanced'
@@ -23,8 +22,6 @@ import DelegatedResources from '../../shared/components/v2/Advanced/DelegatedRes
 import SmartContractAccount from '../../shared/components/v2/Advanced/SmartContract/SmartContractAccount/SmartContractAccount'
 import SmartContractActions from '../../shared/components/v2/Advanced/SmartContract/SmartContractActions/SmartContractActions'
 import ConnectLedger from '../../shared/components/v2/Advanced/ConnectLedger/ConnectLedger'
-=======
->>>>>>> finish apps page
 import { withSideBar } from '../../shared/components/v2/hoc/withSideBar'
 
 export default () => (
