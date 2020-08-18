@@ -119,39 +119,16 @@ class Home extends React.Component {
 	}
 	toggleSwapTokenModal = () => {
 		const { swapTokenModal } = this.state
-		this.setState({ swapTokenModal: !swapTokenModal })
-	}
-	toggleImportAccountModal = () => {
-		const { importAccountModal } = this.state
-		this.setState({ importAccountModal: !importAccountModal })
-	}
-	toggleBuyWaxModal = () => {
-		const { buyWaxModal } = this.state
-		this.setState({ buyWaxModal: !buyWaxModal })
-	}
-	toggleCreateAccountModal = () => {
-		const { createAccountModal } = this.state
-		this.setState({ createAccountModal: !createAccountModal })
-	}
-	toggleSellAssetModal = () => {
-		const { sellAssetModal } = this.state
-		this.setState({ sellAssetModal: !sellAssetModal })
-	}
-	goApps = () => {
-
-		this.props.history.push("/apps")
-	}
-	goStaking = () => {
-		this.props.history.push("/advanced")
-	}
-	toggleSwapTokenModal = () => {
-		const { swapTokenModal } = this.state
 		this.setState({ swapTokenModal : !swapTokenModal })
 	}
 	goStaking = () => {
 		this.props.history.push("/advanced")
 	}
-	
+	goApps = () => {
+		
+		this.props.history.push("/apps")
+	}
+
 	render() {
 		const { dashboardTokenModal, resourcesModal, delegateModal, cryptoModal, swapTokenModal, importAccountModal, buyWaxModal, createAccountModal, sellAssetModal } = this.state
 		const { wallet, actions, history, location, settings, balances, globals, accounts } = this.props
@@ -167,11 +144,7 @@ class Home extends React.Component {
 						<div className="right-badge">
 							<img src={require('../../../../renderer/assets/images/dashboard/Group1737.png')} onClick={this.goStaking} />
 						</div>
-<<<<<<< HEAD
 						<TabPanes statsFetcher={statsFetcher} actions={actions} />
-=======
-						<TabPanes statsFetcher={statsFetcher} actions={actions}/>
->>>>>>> Refactored the code
 					</div>
 				</div>
 
