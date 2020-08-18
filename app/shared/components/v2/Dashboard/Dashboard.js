@@ -174,7 +174,7 @@ class Home extends React.Component {
 					<RecommendedApps />
 					<div className="token-ntfs-section">
 						<div className="right-badge">
-							<img src={require('../../../../renderer/assets/images/dashboard/Group1737.png')} onClick={ this.goApps } />
+							<img src={require('../../../../renderer/assets/images/dashboard/Group1737.png')} />
 						</div>
 						<TabPanes statsFetcher={statsFetcher} actions={actions}/>
 					</div>
