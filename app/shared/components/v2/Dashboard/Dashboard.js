@@ -136,10 +136,6 @@ class Home extends React.Component {
 		const { sellAssetModal } = this.state
 		this.setState({ sellAssetModal: !sellAssetModal })
 	}
-	toggleCryptoModal = () => {
-		const { cryptoModal } = this.state
-		this.setState({ cryptoModal: !cryptoModal })
-	}
 	toggleSwapTokenModal = () => {
 		const { swapTokenModal } = this.state
 		this.setState({ swapTokenModal : !swapTokenModal })
@@ -160,6 +156,10 @@ class Home extends React.Component {
 		const { sellAssetModal } = this.state
 		this.setState({ sellAssetModal  : !sellAssetModal })
 	}
+	goApps = () => {
+		
+		this.props.history.push("/apps")
+	}
 
 	render() {
 		const { dashboardTokenModal, resourcesModal, delegateModal, cryptoModal, swapTokenModal, importAccountModal, buyWaxModal, createAccountModal, sellAssetModal } = this.state
@@ -174,31 +174,21 @@ class Home extends React.Component {
 					<RecommendedApps />
 					<div className="token-ntfs-section">
 						<div className="right-badge">
-							<img src={require('../../../../renderer/assets/images/dashboard/Group1737.png')} />
+							<img src={require('../../../../renderer/assets/images/dashboard/Group1737.png')} onClick={ this.goApps } />
 						</div>
 						<TabPanes statsFetcher={statsFetcher} actions={actions}/>
 					</div>
 				</div>
-<<<<<<< HEAD
 
 				<Balance
 					globals={globals}
 					settings={settings}
 					statsFetcher={statsFetcher}
 					openTokenModal={this.toggleDashboardTokenModal}
-=======
-				
-				<Balance 
-					openTokenModal={this.toggleDashboardTokenModal} 
->>>>>>> remote balance section for design
 					openResourcesModal={this.toggleResourcesModal}
 					openDelegateModal={this.toggleDelegateModal}
 					toggleCryptoModal={this.toggleCryptoModal}
 				/>
-<<<<<<< HEAD
-=======
-				
->>>>>>> remote balance section for design
 				<DashboardTokenModal
 					closeModal={this.toggleDashboardTokenModal}
 					modalOpen={dashboardTokenModal}
