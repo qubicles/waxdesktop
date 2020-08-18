@@ -1,0 +1,44 @@
+.decentralized-apps-container {
+    padding: 20px;
+}
+.decentralized-apps-container .decentralized-apps-header {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+.decentralized-apps-container .decentralized-apps-body {
+    padding: 20px 0;
+    border-bottom: 1px solid #707070;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.decentralized-apps-body .dec-left-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.dec-left-section img {
+    width: 80px;
+    height: 80px;
+    margin-right: 10px;
+    object-fit: contain;
+}
+.dec-left-section .dec-des div:first-child {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+.decentralized-apps-body .dec-right-section {
+    padding: 5px 15px;
+    color: #ff886d;
+    background-color: #242b39;
+    border-radius: 18px;
+}
+/* responsive */
+@media only screen and (max-width: 1050px) {
+    .dec-left-section img {
+        width: 50px;
+        height: 50px;
+    }    
+}
