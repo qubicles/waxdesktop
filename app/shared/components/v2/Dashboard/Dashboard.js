@@ -138,17 +138,13 @@ class Home extends React.Component {
 	}
 	toggleSwapTokenModal = () => {
 		const { swapTokenModal } = this.state
-		this.setState({ swapTokenModal : !swapTokenModal })
+		this.setState({ swapTokenModal: !swapTokenModal })
 	}
 	goStaking = () => {
 		this.props.history.push("/advanced")
 	}
 	goApps = () => {
-		
 		this.props.history.push("/apps")
-	}
-	goStaking = () => {
-		this.props.history.push("/advanced")
 	}
 	
 	render() {
