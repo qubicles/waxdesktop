@@ -18,34 +18,29 @@ const initialState = {
   // Support multiple chains
   blockchains: [
     {
-      blockchain:'Telos Mainnet', 
-      tokenSymbol:'TLOS',
-      node:'https://api.eos.miami',
-      chainId: '4667b205c6838ef70ff7988f6e8257e8be0e1284a2f59699054a018f743b1d11'
-    },{
-      blockchain:'Telos Testnet', 
-      tokenSymbol:'TLOS',
-      node:'https://testnet.eos.miami',
-      chainId: 'e17615decaecd202a365f4c029f206eee98511979de8a5756317e2469f2289e3'
-    },
-    {
-      blockchain:'EOS Mainnet', 
-      tokenSymbol:'EOS',
-      node:'https://eos.greymass.com',
-      chainId: 'aca376f206b8fc25a6ed44dbdc66547c36c6c33e3a119ffbeaef943642f0e906'
-    },
-    {
-      blockchain:'EOS Testnet',
-      tokenSymbol:'EOS',
-      node:'https://jungle2.cryptolions.io',
-      chainId:'038f4b0fc8ff18a4f0842a8f0564611f6e96e8535901dd45e43ac8691a1c4dca'
-    },
-    {
-      blockchain:'WAX Mainnet', 
+      blockchain:'WAX Mainnet - Hawaii', 
       tokenSymbol:'WAX',
-      node:'https://chain.wax.io',
+      node:'https://api.wax.alohaeos.com',
       chainId: '1064487b3cd1a897ce03ae5b6a865651747e2e152090f99c1d19d44e01aea5a4'
     },
+    {
+      blockchain:'WAX Mainnet - Sweden', 
+      tokenSymbol:'WAX',
+      node:'https://api.waxsweden.org',
+      chainId: '1064487b3cd1a897ce03ae5b6a865651747e2e152090f99c1d19d44e01aea5a4'
+    },
+    {
+      blockchain:'WAX Testnet - Hawaii', 
+      tokenSymbol:'WAX',
+      node:'https://api.waxtest.alohaeos.com',
+      chainId: 'f16b1833c747c43682f4386fca9cbb327929334a762755ebec17f6f23c9b8a12'
+    },
+    {
+      blockchain:'WAX Testnet - Sweden', 
+      tokenSymbol:'WAX',
+      node:'https://testnet.waxsweden.org',
+      chainId: 'f16b1833c747c43682f4386fca9cbb327929334a762755ebec17f6f23c9b8a12'
+    }
   ],
   // WAX chain
   autoRefreshVote: false,

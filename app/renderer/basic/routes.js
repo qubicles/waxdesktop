@@ -10,7 +10,7 @@ import BasicVoter from '../../shared/containers/BasicVoter'
 import ColdWallet from '../../shared/containers/ColdWallet'
 import Welcome from '../../shared/containers/Welcome'
 import Dashboard from '../../shared/components/v2/Dashboard/Dashboard'
-import MarketPlace from '../../shared/components/v2/MarketPlace/Marketplace'
+// import MarketPlace from '../../shared/components/v2/MarketPlace/Marketplace'
 import { withSideBar } from '../../shared/components/v2/hoc/withSideBar'
 
 export default () => (
@@ -18,7 +18,7 @@ export default () => (
     <Switch>
       <Route exact path="/" component={Welcome} />
       <Route exact path="/dashboard" component={withSideBar(Dashboard)} />
-      <Route exact path="/marketplace" component={withSideBar(MarketPlace)} />
+      {/* <Route exact path="/marketplace" component={withSideBar(MarketPlace)} /> */}
       <Route exact path="/coldwallet" component={ColdWallet} />
       <Route exact path="/voter" component={BasicVoter} />
     </Switch>

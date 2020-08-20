@@ -3,6 +3,7 @@ import React from "react"
 import PropTypes from "prop-types"
 import { Divider, Tab, Dropdown } from "semantic-ui-react"
 import { connect } from 'react-redux';
+import { bindActionCreators } from "redux";
 
 import DashboardTokenModal from "./Modals/TokenModal/DashboardTokenModal"
 import TabPanes from './TabPanes/TabPanes'
@@ -17,6 +18,12 @@ import SellAssetModal from "./Modals/SellAssetModal/SellAssetModal"
 import TrendingAssets from "./TrendingAssets/TrendingAssets"
 import RecommendedApps from "./RecommendedApps/RecommendedApps"
 import Balance from "./Balance/Balance"
+
+import * as GlobalsActions from "../../../actions/globals";
+import * as AccountActions from "../../../actions/accounts";
+import * as SettingsActions from '../../../actions/settings';
+import StatsFetcher from "../../../utils/StatsFetcher";
+import { isArray } from 'util';
 import "./Dashboard.global.css"
 
 const initialState = {
@@ -37,6 +44,59 @@ class Home extends React.Component {
 		this.state = initialState
 	}
 
+	componentDidMount = async () => {
+		const {
+			actions,
+			settings
+		} = this.props;
+
+		const {
+			addCustomToken,
+			getCustomTokensRemote,
+			getCurrencyBalance
+		} = actions;
+
+		const remoteTokensResult = await getCustomTokensRemote();
+		if (remoteTokensResult && remoteTokensResult.payload && isArray(remoteTokensResult.payload)) {
+			for (var i = 0; i < remoteTokensResult.payload.length; i++) {
+				const remoteToken = remoteTokensResult.payload[i];
+				if (remoteToken.chain.toUpperCase() == settings.blockchain.tokenSymbol) {
+					const tokenTracked = settings.customTokens.filter((t) => t.split(':')[0] == remoteToken.account)[0];
+					if (!tokenTracked) {
+						await addCustomToken(remoteToken.account, remoteToken.symbol);
+					}
+				}
+			};
+		}
+
+		getCurrencyBalance(settings.account)
+
+		this.tick();
+		this.interval = setInterval(this.tick.bind(this), 30000);
+	}
+
+	componentWillUnmount() {
+		clearInterval(this.interval);
+	}
+
+	tick() {
+		const {
+			actions,
+			settings
+		} = this.props;
+		const {
+			getPriceFeed,
+			getPriceFeedGecko,
+		} = actions;
+
+		if (settings.blockchain.tokenSymbol === "WAX") {
+			getPriceFeedGecko("WAX", "USD", settings.blockchain.tokenSymbol);
+		}
+		else {
+			getPriceFeedGecko(settings.blockchain.tokenSymbol, "USD");
+		}
+	}
+
 	toggleDashboardTokenModal = () => {
 		const { dashboardTokenModal, resourcesModal } = this.state
 		this.setState({
@@ -53,36 +113,38 @@ class Home extends React.Component {
 	}
 	toggleCryptoModal = () => {
 		const { cryptoModal } = this.state
-		this.setState({ cryptoModal : !cryptoModal })
+		this.setState({ cryptoModal: !cryptoModal })
 	}
 	toggleSwapTokenModal = () => {
 		const { swapTokenModal } = this.state
-		this.setState({ swapTokenModal : !swapTokenModal })
+		this.setState({ swapTokenModal: !swapTokenModal })
 	}
 	toggleImportAccountModal = () => {
 		const { importAccountModal } = this.state
-		this.setState({ importAccountModal : !importAccountModal })
+		this.setState({ importAccountModal: !importAccountModal })
 	}
 	toggleBuyWaxModal = () => {
 		const { buyWaxModal } = this.state
-		this.setState({ buyWaxModal : !buyWaxModal })
+		this.setState({ buyWaxModal: !buyWaxModal })
 	}
 	toggleCreateAccountModal = () => {
 		const { createAccountModal } = this.state
-		this.setState({ createAccountModal : !createAccountModal })
+		this.setState({ createAccountModal: !createAccountModal })
 	}
 	toggleSellAssetModal = () => {
 		const { sellAssetModal } = this.state
-		this.setState({ sellAssetModal  : !sellAssetModal })
+		this.setState({ sellAssetModal: !sellAssetModal })
 	}
 	toggleCryptoModal = () => {
 		const { cryptoModal } = this.state
-		this.setState({ cryptoModal : !cryptoModal })
+		this.setState({ cryptoModal: !cryptoModal })
 	}
 
 	render() {
-		const { dashboardTokenModal, resourcesModal, delegateModal, cryptoModal, swapTokenModal, importAccountModal, buyWaxModal, createAccountModal, sellAssetModal  } = this.state
-		const { wallet, actions, history, location, tokens } = this.props
+		const { dashboardTokenModal, resourcesModal, delegateModal, cryptoModal, swapTokenModal, importAccountModal, buyWaxModal, createAccountModal, sellAssetModal } = this.state
+		const { wallet, actions, history, location, settings, balances, globals } = this.props
+		const statsFetcher = new StatsFetcher(settings.account, balances, settings, null, null);
+
 		return (
 			<div className="dashboard-container">
 				<div className="dashboard-body-section">
@@ -92,16 +154,19 @@ class Home extends React.Component {
 						<div className="right-badge">
 							<img src={require('../../../../renderer/assets/images/dashboard/Group1737.png')} />
 						</div>
-						<TabPanes tokens={tokens} />
+						<TabPanes statsFetcher={statsFetcher} />
 					</div>
 				</div>
-				
-				<Balance 
-					openTokenModal={this.toggleDashboardTokenModal} 
+
+				<Balance
+					globals={globals}
+					settings={settings}
+					statsFetcher={statsFetcher}
+					openTokenModal={this.toggleDashboardTokenModal}
 					openResourcesModal={this.toggleResourcesModal}
-					openDelegateModal={this.toggleDelegateModal}	 
+					openDelegateModal={this.toggleDelegateModal}
 				/>
-				
+
 				<DashboardTokenModal
 					closeModal={this.toggleDashboardTokenModal}
 					modalOpen={dashboardTokenModal}
@@ -179,11 +244,25 @@ Home.defaultProps = {
 
 }
 
-function mapStateToProps(state) {
+const mapStateToProps = (state) => {
 	return {
-		tokens: state.tokens
+		balances: state.balances,
+		settings: state.settings,
+		globals: state.globals
 	};
 }
 
+const mapDispatchToProps = (dispatch) => {
+	return {
+		actions: bindActionCreators({
+			...AccountActions,
+			...GlobalsActions,
+			...SettingsActions
+		}, dispatch)
+	};
+}
 
-export default connect(mapStateToProps)(Home)
+export default connect(mapStateToProps, mapDispatchToProps)(Home);
+
+
+// export default connect(mapStateToProps)(Home)
