@@ -22,7 +22,10 @@ import Balance from "./Balance/Balance"
 import * as GlobalsActions from "../../../actions/globals";
 import * as AccountActions from "../../../actions/accounts";
 import * as SettingsActions from '../../../actions/settings';
+<<<<<<< HEAD
 import * as TransferActions from '../../../actions/transfer';
+=======
+>>>>>>> Worked on the tokens balance tab
 import StatsFetcher from "../../../utils/StatsFetcher";
 import { isArray } from 'util';
 import "./Dashboard.global.css"
@@ -138,23 +141,23 @@ class Home extends React.Component {
 	}
 	toggleSwapTokenModal = () => {
 		const { swapTokenModal } = this.state
-		this.setState({ swapTokenModal : !swapTokenModal })
+		this.setState({ swapTokenModal: !swapTokenModal })
 	}
 	toggleImportAccountModal = () => {
 		const { importAccountModal } = this.state
-		this.setState({ importAccountModal : !importAccountModal })
+		this.setState({ importAccountModal: !importAccountModal })
 	}
 	toggleBuyWaxModal = () => {
 		const { buyWaxModal } = this.state
-		this.setState({ buyWaxModal : !buyWaxModal })
+		this.setState({ buyWaxModal: !buyWaxModal })
 	}
 	toggleCreateAccountModal = () => {
 		const { createAccountModal } = this.state
-		this.setState({ createAccountModal : !createAccountModal })
+		this.setState({ createAccountModal: !createAccountModal })
 	}
 	toggleSellAssetModal = () => {
 		const { sellAssetModal } = this.state
-		this.setState({ sellAssetModal  : !sellAssetModal })
+		this.setState({ sellAssetModal: !sellAssetModal })
 	}
 	goApps = () => {
 		
