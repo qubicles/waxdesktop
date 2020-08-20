@@ -1,0 +1,73 @@
+/* customize semantic UI tab  */
+.ui.tab.active, .ui.tab.open {
+    background-color: #191f28;
+}
+.ui.secondary.pointing.menu .item {
+    color: #707070;
+    font-size: 20px;
+    font-weight: 700;
+}
+.ui.secondary.pointing.menu .active.item {
+    color: white;
+}
+.guilds-tab-body {
+    display: flex;
+    flex: auto;
+}
+.guilds-tab-body .guilds-list-section {
+    min-width: 500px;
+    overflow-x: visible;
+}
+.guilds-list-wrap {
+    display: flex;
+    align-items: center;
+    padding: 10px 0;
+}
+.guilds-list-wrap .list-index {
+    font-size: 20px;
+}
+.guilds-list-wrap .list-logo {
+    width: 30px;
+    height: 30px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+.guilds-list-wrap .list-title {
+    font-size: 16px;
+    font-weight: 700;
+}
+.guilds-list-wrap .list-btn {
+    background-color: #473436;
+    color: #ff886d;
+    padding: 6px 10px;
+    border-radius: 6px;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+.guilds-list-wrap .list-img-group {
+    display: flex;
+    align-items: center;
+}
+.guilds-list-wrap .list-img-group img {
+    margin-right: 10px;
+}
+.guilds-list-wrap .list-number {
+    font-size: 16px;
+}
+.guilds-list-wrap .common-checkbox {
+    margin-left: 20px;
+}
+/* common-checkbox */
+.ui.checkbox .box:before, .ui.checkbox label:before {
+    border: 2px solid #ff886d !important;
+    background-color: #473436 !important;
+}
+.ui.checkbox .box:after, .ui.checkbox label:after {
+    background-color: #473436 !important;
+    border: 2px solid #ff886d !important;
+    color: #ff886d !important;
+}
+.ui.checkbox input:checked~.box:after, .ui.checkbox input:checked~label:after {
+    border-radius: .21428571rem !important;
+}
+
