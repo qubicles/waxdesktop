@@ -157,7 +157,7 @@ class Home extends React.Component {
 		this.setState({ sellAssetModal  : !sellAssetModal })
 	}
 	goStaking = () => {
-		this.props.history.push("/staking")
+		this.props.history.push("/guilds")
 	}
 	
 	render() {
