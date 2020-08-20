@@ -37,9 +37,7 @@ class ResetWalletModal extends React.Component {
         </Modal.Header>
         <Modal.Content className="modalInstructions">
           <p className="basicInstruction">
-            This will clear out all your local settings
-            <br />
-            and reset the entire wallet.
+            This will clear out all your local settings and reset the entire wallet.
           </p>
           <p className="doubleConfirm">Are you sure you want to continue? </p>
         </Modal.Content>
