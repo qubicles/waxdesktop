@@ -160,7 +160,7 @@ class Home extends React.Component {
 		this.props.history.push("/advanced")
 	}
 	goStaking = () => {
-		this.props.history.push("/staking")
+		this.props.history.push("/guilds")
 	}
 	
 	render() {
