@@ -13,6 +13,7 @@ import Dashboard from '../../shared/components/v2/Dashboard/Dashboard'
 import MarketPlace from '../../shared/components/v2/MarketPlace/Marketplace'
 import Apps from '../../shared/components/v2/Apps/Apps'
 import Staking from '../../shared/components/v2/Staking/Staking'
+import Guilds from '../../shared/components/v2/Guilds/Guilds'
 import { withSideBar } from '../../shared/components/v2/hoc/withSideBar'
 
 export default () => (
@@ -23,6 +24,7 @@ export default () => (
       <Route exact path="/apps" component={withSideBar(Apps)} />
       <Route exact path="/marketplace" component={withSideBar(MarketPlace)} />
       <Route exact path="/staking" component={withSideBar(Staking)} />
+      <Route exact path="/guilds" component={withSideBar(Guilds)} />
       <Route exact path="/coldwallet" component={ColdWallet} />
       <Route exact path="/voter" component={BasicVoter} />
     </Switch>
