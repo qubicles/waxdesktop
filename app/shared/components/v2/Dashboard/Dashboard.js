@@ -22,10 +22,7 @@ import Balance from "./Balance/Balance"
 import * as GlobalsActions from "../../../actions/globals";
 import * as AccountActions from "../../../actions/accounts";
 import * as SettingsActions from '../../../actions/settings';
-<<<<<<< HEAD
 import * as TransferActions from '../../../actions/transfer';
-=======
->>>>>>> Worked on the tokens balance tab
 import StatsFetcher from "../../../utils/StatsFetcher";
 import { isArray } from 'util';
 import "./Dashboard.global.css"
