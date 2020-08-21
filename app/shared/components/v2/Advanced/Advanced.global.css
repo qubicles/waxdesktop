@@ -16,6 +16,9 @@
     width: 300px;
     height: 105px;
 }
+.advanced-card:hover {
+    cursor: pointer;
+}
 .advanced-card-title {
     display: flex;
     align-items: center;
