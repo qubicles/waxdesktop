@@ -22,6 +22,7 @@ import Balance from "./Balance/Balance"
 import * as GlobalsActions from "../../../actions/globals";
 import * as AccountActions from "../../../actions/accounts";
 import * as SettingsActions from '../../../actions/settings';
+import * as TransferActions from '../../../actions/transfer';
 import StatsFetcher from "../../../utils/StatsFetcher";
 import { isArray } from 'util';
 import "./Dashboard.global.css"
@@ -161,6 +162,7 @@ class Home extends React.Component {
 	render() {
 		const { dashboardTokenModal, resourcesModal, delegateModal, cryptoModal, swapTokenModal, importAccountModal, buyWaxModal, createAccountModal, sellAssetModal } = this.state
 		const { wallet, actions, history, location, settings, balances, globals } = this.props
+		
 		const statsFetcher = new StatsFetcher(settings.account, balances, settings, null, null);
 
 		return (
@@ -172,7 +174,7 @@ class Home extends React.Component {
 						<div className="right-badge">
 							<img src={require('../../../../renderer/assets/images/dashboard/Group1737.png')} onClick={this.goStaking} />
 						</div>
-						<TabPanes statsFetcher={statsFetcher} />
+						<TabPanes statsFetcher={statsFetcher} actions={actions}/>
 					</div>
 				</div>
 
@@ -183,6 +185,7 @@ class Home extends React.Component {
 					openTokenModal={this.toggleDashboardTokenModal}
 					openResourcesModal={this.toggleResourcesModal}
 					openDelegateModal={this.toggleDelegateModal}
+					toggleCryptoModal={this.toggleCryptoModal}
 				/>
 				
 				<DashboardTokenModal
@@ -206,13 +209,17 @@ class Home extends React.Component {
 					actions={actions}
 					location={location}
 				/>
-				<CryptoModal
+				{cryptoModal && <CryptoModal
+					actions={actions}
+					settings={settings}
+					balances={balances}
+					globals={globals}
 					closeModal={this.toggleCryptoModal}
 					modalOpen={cryptoModal}
 					history={history}
 					actions={actions}
 					location={location}
-				/>
+				/>}
 				<SwapTokenModal
 					closeModal={this.toggleSwapTokenModal}
 					modalOpen={swapTokenModal}
@@ -275,7 +282,8 @@ const mapDispatchToProps = (dispatch) => {
 		actions: bindActionCreators({
 			...AccountActions,
 			...GlobalsActions,
-			...SettingsActions
+			...SettingsActions,
+			...TransferActions
 		}, dispatch)
 	};
 }

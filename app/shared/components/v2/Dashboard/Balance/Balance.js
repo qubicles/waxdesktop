@@ -11,7 +11,9 @@ export default class Balance extends Component {
             settings,
             statsFetcher,
             openResourcesModal,
-            openTokenModal
+            openTokenModal,
+            openDelegateModal,
+            toggleCryptoModal
         } = this.props;
         const {
             tokens,
@@ -48,7 +50,7 @@ export default class Balance extends Component {
                         <div className="chart-white-btn">1M</div>
                         <div className="chart-orange-btn">All</div>
                     </div>
-                    <div className="send-btn-wrap">
+                    <div className="send-btn-wrap" onClick={toggleCryptoModal}>
                         <div className="dashboard-send-btn">
                             <h3>Send</h3>
                             <Image src={require('../../../../../renderer/assets/images/dashboard/arrow1.png')} />

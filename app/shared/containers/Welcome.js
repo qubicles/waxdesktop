@@ -16,8 +16,11 @@ class WelcomeContainer extends Component {
     const { actions } = this.props
     actions.setSetting('node', 'https://api.wax.alohaeos.com');
     actions.setSetting('account', 'mj1ai.wam');
-    actions.setSetting('blockchain', { tokenSymbol: "WAX" });
     actions.validateNode('https://api.wax.alohaeos.com');
+    // actions.setSetting('node', 'https://api.eos.miami');
+    // actions.setSetting('account', 'rakeshs12345');
+    // actions.validateNode('https://api.eos.miami');
+    actions.setSetting('blockchain', { tokenSymbol: "WAX" });
   }
 
   onUserLogin = () => {
