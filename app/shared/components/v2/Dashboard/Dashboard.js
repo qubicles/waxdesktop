@@ -124,7 +124,7 @@ class Home extends React.Component {
 		this.props.history.push("/apps")
 	}
 	goStaking = () => {
-		this.props.history.push("/guilds")
+		this.props.history.push("/advanced")
 	}
 	
 	render() {
