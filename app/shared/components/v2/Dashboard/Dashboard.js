@@ -178,7 +178,11 @@ class Home extends React.Component {
 						<div className="right-badge">
 							<img src={require('../../../../renderer/assets/images/dashboard/Group1737.png')} onClick={this.goStaking} />
 						</div>
+<<<<<<< HEAD
 						<TabPanes statsFetcher={statsFetcher} actions={actions} />
+=======
+						<TabPanes statsFetcher={statsFetcher} actions={actions}/>
+>>>>>>> Refactored the code
 					</div>
 				</div>
 
@@ -267,7 +271,7 @@ class Home extends React.Component {
 					history={history}
 					actions={actions}
 					location={location}
-				/>
+				/>}
 				<SwapTokenModal
 					closeModal={this.toggleSwapTokenModal}
 					modalOpen={swapTokenModal}
