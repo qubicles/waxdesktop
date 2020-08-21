@@ -15,6 +15,9 @@ class Advanced extends React.Component {
     goStaking = () => {
 		this.props.history.push("/walletSettings")
     }
+    goCustomPermissions = () => {
+		this.props.history.push("/customPermissions")
+    }
     
 	render() {
 		return (
@@ -28,7 +31,7 @@ class Advanced extends React.Component {
                                     <div>Wallet Settings</div>
                                 </div>
                             </div>
-                            <div className="advanced-card" style={{backgroundImage:"url('../../renderer/assets/images/marketplace/ScrollGroup2.png')"}}>
+                            <div className="advanced-card" style={{backgroundImage:"url('../../renderer/assets/images/marketplace/ScrollGroup2.png')"}} onClick={this.goCustomPermissions}>
                                 <div className="advanced-card-title">
                                     <div>Custom Permissions</div>
                                 </div>
