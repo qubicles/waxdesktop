@@ -1,60 +1,164 @@
 import React from "react"
 import PropTypes from "prop-types"
-import { Dropdown, Modal } from "semantic-ui-react"
+import { Dropdown, Modal, Form, Input, Button } from "semantic-ui-react";
+import { find } from 'lodash';
 
 import "./CryptoModal.global.css"
 
-const options = [
-    { key: 1, text: 'CPU', value: 1 },
-    { key: 2, text: 'Net', value: 2 },
-    { key: 3, text: 'RAM', value: 3 },
-]
-
 class CryptoModal extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = {
+    constructor(props) {
+        super(props);
+
+        const { settings } = props;
+        this.state = {
+            asset: settings.blockchain.tokenSymbol,
+            confirming: false,
+            formError: false,
+            from: settings.account,
+            memo: '',
+            memoValid: true,
+            quantity: '',
+            submitDisabled: true,
+            to: '',
+            toValid: true,
+            waiting: false,
+            waitingStarted: 0
+        };
     }
-  }
 
+    onConfirm = () => {
+        const {
+            from,
+            memo,
+            quantity,
+            asset,
+            to
+        } = this.state;
+        console.log("onConfirm", to, from, memo, quantity, asset)
+        // this.setState({ confirming: false }, () => {
+        //     this.props.actions.transfer(from, to, quantity, memo, asset);
+        // });
+    }
 
-  render() {
-    const { modalOpen, closeModal} = this.props
-    return (
-        <Modal 
-            onClose={closeModal}
-            size={"tiny"} 
-            open={modalOpen}
-        >
+    onChange = (e, { name, value, valid }) => {
+        const newState = { [name]: value };
 
-            <Modal.Content className="cryptoModal-body">
-                <div className="modal-header">
-                    <span>Send </span>
-                    <span> Crypto</span>
-                </div>
-                <div className="modal-body">
-                    <input type="text" className="common-input" placeholder="Account Name" />
-                    <input type="text" className="common-input" placeholder="Memo" />
-                    <div className="input-select">
-                        <input type="text" className="common-input" placeholder="0.0000 WAX" /> 
-                        <Dropdown
-                            defaultValue="CPU"
-                            selection
-                            options={options}
-                            className="resource-choose-dropdown"
-                        />
+        this.setState(newState);
+    }
+
+    render() {
+        const { modalOpen, closeModal, settings, balances, globals } = this.props;
+        const {
+            from,
+            memo,
+            quantity,
+            asset,
+            to
+        } = this.state;
+
+        const assets = balances && Object.keys(balances[settings.account]);
+        const { customTokens } = settings;
+        const trackedTokens = (customTokens) ? customTokens.map((tokenName) => {
+            const [contract, symbol] = tokenName.split(':');
+
+            // find logo
+            const tokenInfo = globals && globals.remotetokens
+                && globals.remotetokens.filter((token) => token.account == contract && token.symbol == symbol)[0];
+
+            return {
+                contract,
+                symbol,
+                logo: tokenInfo ? tokenInfo.logo : null
+            };
+        }) : [{
+            contract: 'eosio',
+            symbol: settings.blockchain.tokenSymbol,
+            logo: null
+        }];
+        const options = [];
+        // Iterate assets and build the options list based on tracked tokens
+        assets.forEach((asset) => {
+            const assetDetails = find(trackedTokens, { symbol: asset });
+            if (assetDetails) {
+                const { contract, symbol, logo } = find(trackedTokens, { symbol: asset });
+                if (
+                    (contract && symbol)
+                    && (balances[settings.account] && balances[settings.account][asset] > 0)
+                ) {
+                    options.push({
+                        key: asset,
+                        image: logo,
+                        text: `${symbol}`,
+                        value: asset
+                    });
+                }
+            }
+        });
+
+        return (
+            <Modal
+                onClose={closeModal}
+                size={"tiny"}
+                open={modalOpen}
+            >
+
+                <Modal.Content className="cryptoModal-body">
+                    <div className="modal-header">
+                        <span>Send </span>
+                        <span> Crypto</span>
                     </div>
-                    <div className="delegate-btn">
-                        Confirm Transaction
-                        <img src={require('../../../../../../renderer/assets/images/dashboard/correct3.png')} />
+                    <div className="modal-body">
+                        <Form
+                            onKeyPress={this.onKeyPress}
+                            onSubmit={this.onConfirm}
+                        >
+                            <Form.Field
+                                className="ui-common-input"
+                                placeholder="Account Name"
+                                autoFocus
+                                control={Input}
+                                name="to"
+                                onChange={this.onChange}
+                                value={to}
+                            />
+                            <Form.Field
+                                className="ui-common-input"
+                                placeholder="Memo"
+                                control={Input}
+                                name="memo"
+                                onChange={this.onChange}
+                                value={memo}
+                            />
+                            <div className="input-select">
+                                <Form.Field
+                                    className="ui-common-input"
+                                    placeholder="0.0000 WAX"
+                                    control={Input}
+                                    name="quantity"
+                                    onChange={this.onChange}
+                                    value={quantity}
+                                />
+                                <Dropdown
+                                    value={this.state.asset || settings.blockchain.tokenSymbol}
+                                    name="asset"
+                                    onChange={this.onChange}
+                                    options={options}
+                                    selection
+                                    className="resource-choose-dropdown"
+                                />
+                            </div>
+                            <Button fluid className="delegate-btn">
+                                Confirm Transaction
+                                <img src={require('../../../../../../renderer/assets/images/dashboard/correct3.png')} />
+                            </Button>
+                        </Form>
                     </div>
-                </div>
 
-            </Modal.Content>
-        
-      </Modal>
-    )
-  }
+                </Modal.Content>
+
+            </Modal>
+        )
+    }
 }
 
 CryptoModal.propTypes = {}

@@ -63,21 +63,21 @@
 }
 /* common-input section */
 .common-input {
-  background-color: rgba(255,255,255,.08);
-  border: 0;
-  height: 50px;
-  width: 100%;
-  border-radius: 30px;
-  color: white;
-  font-size: 20px;
+  background-color: rgba(255,255,255,.08) !important;
+  border: 0 !important;
+  height: 50px !important;
+  width: 100% !important;
+  border-radius: 30px !important;
+  color: white !important;
+  font-size: 20px !important;
 }
 .common-input:focus {
-  outline: none;
+  outline: none !important;
 }
 .common-input::placeholder {
-  color: white;
-  font-size: 20px;
-  padding-left: 20px;
+  color: white !important;
+  font-size: 20px !important;
+  padding-left: 20px !important;
 }
 /* resources-delegate-link */
 .resources-delegate-link {

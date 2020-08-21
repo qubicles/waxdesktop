@@ -50,8 +50,9 @@ class TokenBalance extends React.Component {
       coreTokenInfo = { logo: null };
 
     const coreTokenBalance = tokens[settings.account] ? tokens[settings.account][settings.blockchain.tokenSymbol] : 0;
-    const coreTokenUSDBalance = 1 * (globals.pricefeed ? globals.pricefeed.CUSD.price : 0);
+    const coreTokenUSDBalance = coreTokenBalance * (globals.pricefeed ? globals.pricefeed.CUSD.price : 0);
 
+    console.log("jjj", globals)
     const rows = [
       (
         <Table.Row className="token-wrap" key={settings.blockchain.tokenSymbol}>
@@ -63,10 +64,10 @@ class TokenBalance extends React.Component {
           <Table.Cell className="token-des">
             <div className="des-title">
               <Header as="h3">{coreTokenName}</Header>
-              <Header as="h5">{coreTokenBalance.toFixed(4)}</Header>
+              <Header as="h5">{coreTokenBalance && coreTokenBalance.toFixed(4)}</Header>
             </div>
           </Table.Cell>
-          <Table.Cell className="des-price">${coreTokenUSDBalance.toFixed(4)}</Table.Cell>
+          <Table.Cell className="des-price">${coreTokenUSDBalance && coreTokenUSDBalance.toFixed(4)}</Table.Cell>
         </Table.Row>
       )];
 
@@ -74,7 +75,8 @@ class TokenBalance extends React.Component {
 
     forEach(tokens[settings.account], (amount, token) => {
       if (token.toUpperCase() === settings.blockchain.tokenSymbol || watchedTokens.indexOf(token) === -1 || amount < 0.0002) return;
-      let tokenInfo = globals.remotetokens && globals.remotetokens.filter((t) => t.symbol == token && t.chain.toUpperCase() == settings.blockchain.tokenSymbol)[0];
+      // let tokenInfo = globals.remotetokens && globals.remotetokens.filter((t) => t.symbol == token && t.chain.toUpperCase() == settings.blockchain.tokenSymbol)[0];
+      let tokenInfo = globals.remotetokens && globals.remotetokens.filter((t) => t.symbol == token)[0];
 
       let tokenName = token;
       let contract = 'unknown';
@@ -98,7 +100,7 @@ class TokenBalance extends React.Component {
             <Header as="h5">{amount}</Header>
           </div>
         </Table.Cell>
-        <Table.Cell className="des-price"></Table.Cell>
+        <Table.Cell className="des-price">$0</Table.Cell>
       </Table.Row>))
 
     })
