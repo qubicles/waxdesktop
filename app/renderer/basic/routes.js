@@ -17,6 +17,7 @@ import Guilds from '../../shared/components/v2/Guilds/Guilds'
 import Advanced from '../../shared/components/v2/Advanced/Advanced'
 import WalletSettings from '../../shared/components/v2/Advanced/WalletSettings/WalletSettings'
 import CustomPermissions from '../../shared/components/v2/Advanced/CustomPermissions/CustomPermissions'
+import WhiteListedApps from '../../shared/components/v2/Advanced/WhiteListedApps/WhiteListedApps'
 import { withSideBar } from '../../shared/components/v2/hoc/withSideBar'
 
 export default () => (
@@ -31,6 +32,7 @@ export default () => (
       <Route exact path="/advanced" component={withSideBar(Advanced)} />
       <Route exact path="/walletSettings" component={withSideBar(WalletSettings)} />
       <Route exact path="/customPermissions" component={withSideBar(CustomPermissions)} />
+      <Route exact path="/whiteListedApps" component={withSideBar(WhiteListedApps)} />
       <Route exact path="/coldwallet" component={ColdWallet} />
       <Route exact path="/voter" component={BasicVoter} />
     </Switch>

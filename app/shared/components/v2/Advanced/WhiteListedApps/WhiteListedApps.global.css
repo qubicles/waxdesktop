@@ -1,0 +1,20 @@
+.whiteListedApps-body {
+    padding-top: 30px;
+}
+.whiteListedApps-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.whiteListedApps-header .delegate-btn {
+    padding: 8px 15px !important;
+    background-color: rgba(255, 136, 109, 0.3);
+    color: rgba(170, 148, 147, 1);
+    font-size: 16px;
+    font-weight: 700;
+}
+.whiteListedApps-body .w-title {
+    color: #ff886d;
+    font-size: 20px;
+    font-weight: 700;
+}
