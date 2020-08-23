@@ -92,11 +92,15 @@ class WhiteListedApps extends React.Component {
 }
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 
 >>>>>>> d0a8795b... build architechure for whitelisted apps page
 =======
 >>>>>>> 8f7638a9... finish WhiteListed apps page
+=======
+
+>>>>>>> d0a8795b... build architechure for whitelisted apps page
 WhiteListedApps.propTypes = {
 
 }
