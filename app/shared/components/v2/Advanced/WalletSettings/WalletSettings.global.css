@@ -5,9 +5,9 @@
     justify-content: space-between;
 }
 .walletSettings-header .delegate-btn {
-    padding: 8px 5px !important;
+    padding: 8px 15px !important;
     background-color: rgba(255, 136, 109, 0.3);
-    color: #707070;
+    color: rgba(170, 148, 147, 1);
     font-size: 16px;
     font-weight: 700;
 }
