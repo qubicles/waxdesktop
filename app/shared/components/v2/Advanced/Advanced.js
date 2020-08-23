@@ -18,6 +18,9 @@ class Advanced extends React.Component {
     goCustomPermissions = () => {
 		this.props.history.push("/customPermissions")
     }
+    goWhiteListedApps = () => {
+		this.props.history.push("/whiteListedApps")
+    }
     
 	render() {
 		return (
@@ -36,7 +39,7 @@ class Advanced extends React.Component {
                                     <div>Custom Permissions</div>
                                 </div>
                             </div>
-                            <div className="advanced-card" style={{backgroundImage:"url('../../renderer/assets/images/marketplace/ScrollGroup13.png')"}}>
+                            <div className="advanced-card" style={{backgroundImage:"url('../../renderer/assets/images/marketplace/ScrollGroup13.png')"}} onClick={this.goWhiteListedApps}>
                                 <div className="advanced-card-title">
                                     <div>Whitelisted Apps</div>
                                 </div>
