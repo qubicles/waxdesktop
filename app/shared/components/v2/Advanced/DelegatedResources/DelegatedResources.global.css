@@ -1,0 +1,73 @@
+.DelegatedResources-body {
+    padding-top: 30px;
+    max-width: 1000px;
+    margin: auto;
+    min-width: 570px;
+}
+.DelegatedResources-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.DelegatedResources-body .w-title {
+    color: #ff886d;
+    font-size: 20px;
+    font-weight: 700;
+}
+.DelegatedResources-body .del-table {
+    padding-top: 30px;
+}
+.del-table-header div {
+    display: inline-block;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+}
+.del-table-header .header-account, .del-table-header .header-amount {
+    width: 30%;
+}
+.del-table-header .header-action, .del-table-header .header-type {
+    width: 20%;
+}
+.del-table-body{
+    padding: 15px 0;
+}
+.del-table-row {
+    background-color: #242b39;
+    padding: 15px;
+    border-radius: 20px;
+    border-left: 5px solid #ff886d;
+    margin: 20px 0;
+}
+.del-yellow-border {
+    border-left: 5px solid #ffc06c !important;
+}
+.del-table-row div {
+    display: inline-block;
+    text-align: center;
+    font-size: 16px;
+    font-weight: bold;
+}
+.del-table-row .body-account {
+    width: 30%;
+}
+.del-table-row .body-amount {
+    width: 30%;
+}
+.del-table-row .body-type {
+    width: 20%;
+}
+.del-table-row .body-action {
+    width: 20%;
+    background-color: #473436;
+    font-size: 12px;
+    font-weight: 600;
+    color: #ff886d;
+    padding: 5px 15px;
+    max-width: 90px;
+    border-radius: 8px;
+    margin: auto;
+}
+.DelegatedResources-body .new-permission-btn {
+    margin: 0 !important;
+}
