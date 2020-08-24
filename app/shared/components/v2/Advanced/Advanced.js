@@ -21,6 +21,9 @@ class Advanced extends React.Component {
     goWhiteListedApps = () => {
 		this.props.history.push("/whiteListedApps")
     }
+    goDelegatedResources = () => {
+		this.props.history.push("/DelegatedResources")
+    }
     
 	render() {
 		return (
@@ -44,7 +47,7 @@ class Advanced extends React.Component {
                                     <div>Whitelisted Apps</div>
                                 </div>
                             </div>
-                            <div className="advanced-card" style={{backgroundImage:"url('../../renderer/assets/images/marketplace/ScrollGroup4.png')"}}>
+                            <div className="advanced-card" style={{backgroundImage:"url('../../renderer/assets/images/marketplace/ScrollGroup4.png')"}} onClick={this.goDelegatedResources}>
                                 <div className="advanced-card-title">
                                     <div>Delegated Resources</div>
                                 </div>
