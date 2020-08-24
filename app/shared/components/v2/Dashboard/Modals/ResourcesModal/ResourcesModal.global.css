@@ -70,6 +70,7 @@
   border-radius: 30px;
   color: white;
   font-size: 20px;
+  padding-left: 20px;
 }
 .common-input:focus {
   outline: none;

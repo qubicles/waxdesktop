@@ -24,6 +24,9 @@ class Advanced extends React.Component {
     goDelegatedResources = () => {
 		this.props.history.push("/DelegatedResources")
     }
+    goSmartContractAccount = () => {
+        this.props.history.push("/smartContractAccount")
+    }
     
 	render() {
 		return (
@@ -52,7 +55,7 @@ class Advanced extends React.Component {
                                     <div>Delegated Resources</div>
                                 </div>
                             </div>
-                            <div className="advanced-card" style={{backgroundImage:"url('../../renderer/assets/images/marketplace/ScrollGroup5.png')"}}>
+                            <div className="advanced-card" style={{backgroundImage:"url('../../renderer/assets/images/marketplace/ScrollGroup5.png')"}} onClick={this.goSmartContractAccount}>
                                 <div className="advanced-card-title">
                                     <div>Smart Contracts</div>
                                 </div>
