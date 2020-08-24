@@ -19,6 +19,8 @@ import WalletSettings from '../../shared/components/v2/Advanced/WalletSettings/W
 import CustomPermissions from '../../shared/components/v2/Advanced/CustomPermissions/CustomPermissions'
 import WhiteListedApps from '../../shared/components/v2/Advanced/WhiteListedApps/WhiteListedApps'
 import DelegatedResources from '../../shared/components/v2/Advanced/DelegatedResources/DelegatedResources'
+import SmartContractAccount from '../../shared/components/v2/Advanced/SmartContract/SmartContractAccount/SmartContractAccount'
+import SmartContractActions from '../../shared/components/v2/Advanced/SmartContract/SmartContractActions/SmartContractActions'
 import { withSideBar } from '../../shared/components/v2/hoc/withSideBar'
 
 export default () => (
@@ -35,6 +37,8 @@ export default () => (
       <Route exact path="/customPermissions" component={withSideBar(CustomPermissions)} />
       <Route exact path="/whiteListedApps" component={withSideBar(WhiteListedApps)} />
       <Route exact path="/delegatedResources" component={withSideBar(DelegatedResources)} />
+      <Route exact path="/smartContractAccount" component={withSideBar(SmartContractAccount)} />
+      <Route exact path="/smartContractActions" component={withSideBar(SmartContractActions)} />
       <Route exact path="/coldwallet" component={ColdWallet} />
       <Route exact path="/voter" component={BasicVoter} />
     </Switch>
