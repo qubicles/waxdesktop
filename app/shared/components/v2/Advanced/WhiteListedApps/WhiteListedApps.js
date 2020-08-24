@@ -90,7 +90,6 @@ class WhiteListedApps extends React.Component {
 		)
 	}
 }
-
 WhiteListedApps.propTypes = {
 
 }
