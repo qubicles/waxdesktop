@@ -40,7 +40,10 @@ export default () => (
       <Route exact path="/delegatedResources" component={withSideBar(DelegatedResources)} />
       <Route exact path="/smartContractAccount" component={withSideBar(SmartContractAccount)} />
       <Route exact path="/smartContractActions" component={withSideBar(SmartContractActions)} />
+<<<<<<< HEAD
       <Route exact path="/connectLedger" component={withSideBar(ConnectLedger)} />
+=======
+>>>>>>> Finish Advanced-smartContractAccount page
       <Route exact path="/coldwallet" component={ColdWallet} />
       <Route exact path="/voter" component={BasicVoter} />
     </Switch>
