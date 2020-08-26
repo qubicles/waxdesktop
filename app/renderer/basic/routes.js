@@ -21,6 +21,7 @@ import WhiteListedApps from '../../shared/components/v2/Advanced/WhiteListedApps
 import DelegatedResources from '../../shared/components/v2/Advanced/DelegatedResources/DelegatedResources'
 import SmartContractAccount from '../../shared/components/v2/Advanced/SmartContract/SmartContractAccount/SmartContractAccount'
 import SmartContractActions from '../../shared/components/v2/Advanced/SmartContract/SmartContractActions/SmartContractActions'
+import ConnectLedger from '../../shared/components/v2/Advanced/ConnectLedger/ConnectLedger'
 import { withSideBar } from '../../shared/components/v2/hoc/withSideBar'
 
 export default () => (
@@ -39,6 +40,7 @@ export default () => (
       <Route exact path="/delegatedResources" component={withSideBar(DelegatedResources)} />
       <Route exact path="/smartContractAccount" component={withSideBar(SmartContractAccount)} />
       <Route exact path="/smartContractActions" component={withSideBar(SmartContractActions)} />
+      <Route exact path="/connectLedger" component={withSideBar(ConnectLedger)} />
       <Route exact path="/coldwallet" component={ColdWallet} />
       <Route exact path="/voter" component={BasicVoter} />
     </Switch>
