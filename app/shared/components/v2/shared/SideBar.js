@@ -1,5 +1,5 @@
 import React from "react";
-
+import { Link } from 'react-router-dom'
 import "./SideBar.global.css";
 import { Dropdown } from "semantic-ui-react";
 
@@ -45,12 +45,12 @@ export default () => {
     const menuOption = [
         {
             text: 'Home',
-            value: 'home',
+            value: 'dashboard',
             image: require('../../../../renderer/assets/images/dashboard/dashboard-home.png'),
         },
         {
             text: 'Market',
-            value: 'market',
+            value: 'marketplace',
             image: require('../../../../renderer/assets/images/dashboard/dashboard-market.png'),
         },
         {
@@ -76,12 +76,14 @@ export default () => {
     ]
 
     const menuSection = (menuOption.map(item => (
-        <div className="nav-item-wrap" key={item.value}>
-            <img src={item.image} />
-            <div className="nav-item-title">
-                {item.text}
+        <Link to={`/${item.value}`} key={item.value}>
+            <div className="nav-item-wrap" >
+                <img src={item.image} />
+                <div className="nav-item-title">
+                    {item.text}
+                </div>
             </div>
-        </div>
+        </Link>
     )))
 
     return (
