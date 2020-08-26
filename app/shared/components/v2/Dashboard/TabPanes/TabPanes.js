@@ -1,7 +1,6 @@
 import React from "react";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
-import { Tab, Table, Image, Header } from "semantic-ui-react";
 import { forEach } from 'lodash';
 import { Card, Button, Tab, Table, Image, Header } from "semantic-ui-react";
 
