@@ -13,7 +13,10 @@ class SmartContractAccount extends React.Component {
     }
     goBack = () => {
 		this.props.history.push("/advanced")
-	}
+    }
+    goSmartContracts = () => {
+        this.props.history.push("/smartContractActions")
+    }
 	render() {
 		return (
 			<div className="dashboard-container">
@@ -30,7 +33,7 @@ class SmartContractAccount extends React.Component {
                                 <div className="input-title">Contract Account Name</div>
                                 <input type="text" className="common-input" placeholder="Enter contract name here" />
                             </div>
-                            <div className="delegate-btn">
+                            <div className="delegate-btn" onClick={this.goSmartContracts}>
                                 Load Contract
                                 <img src={require('../../../../../../renderer/assets/images/advanced/correct2.png')} />
                             </div>
