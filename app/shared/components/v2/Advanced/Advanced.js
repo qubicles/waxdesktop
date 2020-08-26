@@ -27,7 +27,10 @@ class Advanced extends React.Component {
     goSmartContractAccount = () => {
         this.props.history.push("/smartContractAccount")
     }
-    
+    goConnectLedger = () => {
+        this.props.history.push("/connectLedger")
+    } 
+
 	render() {
 		return (
 			<div className="dashboard-container">
@@ -60,7 +63,7 @@ class Advanced extends React.Component {
                                     <div>Smart Contracts</div>
                                 </div>
                             </div>
-                            <div className="advanced-card" style={{backgroundImage:"url('../../renderer/assets/images/marketplace/Group1732.png')"}}>
+                            <div className="advanced-card" style={{backgroundImage:"url('../../renderer/assets/images/marketplace/Group1732.png')"}} onClick={this.goConnectLedger}>
                                 <div className="advanced-card-title">
                                     <div>Connect Ledger</div>
                                 </div>
