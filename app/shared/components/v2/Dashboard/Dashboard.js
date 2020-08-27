@@ -54,8 +54,13 @@ class Home extends React.Component {
 		const {
 			addCustomToken,
 			getCustomTokensRemote,
-			getCurrencyBalance
+			getCurrencyBalance,
+			getAccount
 		} = actions;
+
+		if (settings.account) {
+			getAccount(settings.account);
+		}
 
 		const remoteTokensResult = await getCustomTokensRemote();
 		if (remoteTokensResult && remoteTokensResult.payload && isArray(remoteTokensResult.payload)) {
@@ -72,30 +77,6 @@ class Home extends React.Component {
 
 		getCurrencyBalance(settings.account)
 
-		this.tick();
-		this.interval = setInterval(this.tick.bind(this), 30000);
-	}
-
-	componentWillUnmount() {
-		clearInterval(this.interval);
-	}
-
-	tick() {
-		const {
-			actions,
-			settings
-		} = this.props;
-		const {
-			getPriceFeed,
-			getPriceFeedGecko,
-		} = actions;
-
-		if (settings.blockchain.tokenSymbol === "WAX") {
-			getPriceFeedGecko("WAX", "USD", settings.blockchain.tokenSymbol);
-		}
-		else {
-			getPriceFeedGecko(settings.blockchain.tokenSymbol, "USD");
-		}
 	}
 
 	toggleDashboardTokenModal = () => {
@@ -149,8 +130,8 @@ class Home extends React.Component {
 	
 	render() {
 		const { dashboardTokenModal, resourcesModal, delegateModal, cryptoModal, swapTokenModal, importAccountModal, buyWaxModal, createAccountModal, sellAssetModal } = this.state
-		const { wallet, actions, history, location, settings, balances, globals } = this.props
-		
+		const { wallet, actions, history, location, settings, balances, globals, accounts } = this.props
+
 		const statsFetcher = new StatsFetcher(settings.account, balances, settings, null, null);
 
 		return (
@@ -162,7 +143,7 @@ class Home extends React.Component {
 						<div className="right-badge">
 							<img src={require('../../../../renderer/assets/images/dashboard/Group1737.png')} onClick={this.goStaking} />
 						</div>
-						<TabPanes statsFetcher={statsFetcher} actions={actions}/>
+						<TabPanes statsFetcher={statsFetcher} actions={actions} />
 					</div>
 				</div>
 
@@ -173,22 +154,29 @@ class Home extends React.Component {
 					openTokenModal={this.toggleDashboardTokenModal}
 					openResourcesModal={this.toggleResourcesModal}
 					openDelegateModal={this.toggleDelegateModal}
-					toggleCryptoModal={this.toggleCryptoModal}
+					openCryptoModal={this.toggleCryptoModal}
+					openSwapTokenModal={this.toggleSwapTokenModal}
+					openBuyWaxModal={this.toggleBuyWaxModal}
 				/>
-				<DashboardTokenModal
-					closeModal={this.toggleDashboardTokenModal}
-					modalOpen={dashboardTokenModal}
-					history={history}
-					actions={actions}
-					location={location}
-				/>
-				<ResourcesModal
-					closeModal={this.toggleResourcesModal}
-					modalOpen={resourcesModal}
-					history={history}
-					actions={actions}
-					location={location}
-				/>
+				{dashboardTokenModal &&
+					<DashboardTokenModal
+						closeModal={this.toggleDashboardTokenModal}
+						modalOpen={dashboardTokenModal}
+						history={history}
+						actions={actions}
+						location={location}
+						settings={settings}
+					/>}
+				{resourcesModal && 
+					<ResourcesModal
+						closeModal={this.toggleResourcesModal}
+						modalOpen={resourcesModal}
+						history={history}
+						actions={actions}
+						location={location}
+						accounts={accounts}
+						settings={settings}
+					/>}
 				<DelegateModal
 					closeModal={this.toggleDelegateModal}
 					modalOpen={delegateModal}
@@ -196,24 +184,26 @@ class Home extends React.Component {
 					actions={actions}
 					location={location}
 				/>
-				{cryptoModal && <CryptoModal
-					actions={actions}
-					settings={settings}
-					balances={balances}
-					globals={globals}
-					closeModal={this.toggleCryptoModal}
-					modalOpen={cryptoModal}
-					history={history}
-					actions={actions}
-					location={location}
-				/>}
-				<SwapTokenModal
-					closeModal={this.toggleSwapTokenModal}
-					modalOpen={swapTokenModal}
-					history={history}
-					actions={actions}
-					location={location}
-				/>
+				{cryptoModal &&
+					<CryptoModal
+						actions={actions}
+						settings={settings}
+						balances={balances}
+						globals={globals}
+						closeModal={this.toggleCryptoModal}
+						modalOpen={cryptoModal}
+						history={history}
+						actions={actions}
+						location={location}
+					/>}
+				{swapTokenModal &&
+					<SwapTokenModal
+						closeModal={this.toggleSwapTokenModal}
+						modalOpen={swapTokenModal}
+						history={history}
+						actions={actions}
+						location={location}
+					/>}
 				<ImportAccountModal
 					closeModal={this.toggleImportAccountModal}
 					modalOpen={importAccountModal}
@@ -221,13 +211,14 @@ class Home extends React.Component {
 					actions={actions}
 					location={location}
 				/>
-				<BuyWaxModal
-					closeModal={this.toggleBuyWaxModal}
-					modalOpen={buyWaxModal}
-					history={history}
-					actions={actions}
-					location={location}
-				/>
+				{buyWaxModal &&
+					<BuyWaxModal
+						closeModal={this.toggleBuyWaxModal}
+						modalOpen={buyWaxModal}
+						history={history}
+						actions={actions}
+						location={location}
+					/>}
 				<CreateAccountModal
 					closeModal={this.toggleCreateAccountModal}
 					modalOpen={createAccountModal}
@@ -295,7 +286,8 @@ const mapStateToProps = (state) => {
 	return {
 		balances: state.balances,
 		settings: state.settings,
-		globals: state.globals
+		globals: state.globals,
+		accounts: state.accounts
 	};
 }
 

@@ -1,6 +1,7 @@
 import React from "react"
 import PropTypes from "prop-types"
 import { Modal, Button } from "semantic-ui-react"
+import QRCode from "qrcode.react";
 
 import "./DashboardTokenModal.global.css"
 
@@ -13,7 +14,7 @@ class DashboardTokenModal extends React.Component {
 
 
   render() {
-	const { modalOpen, closeModal} = this.props
+	const { modalOpen, closeModal, settings} = this.props
 	return (
 		<Modal 
 			onClose={closeModal}
@@ -29,10 +30,11 @@ class DashboardTokenModal extends React.Component {
 				</div>
 			<div className="modal-body">
 				<div className="token-img-wrap">
-					<img src={require('../../../../../../renderer/assets/images/dashboard/qr-code3.png')} />
+					{/* <img src={require('../../../../../../renderer/assets/images/dashboard/qr-code3.png')} /> */}
+					<QRCode value={settings.account} />
 					<div className="token-title">
 						<span className="left-title">WAX Account: </span>
-						<span className="right-title">exodl.wam</span>
+						<span className="right-title">{settings.account}</span>
 					</div>
 				</div>
 			</div>

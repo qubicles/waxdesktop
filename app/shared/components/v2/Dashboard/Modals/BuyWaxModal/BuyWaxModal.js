@@ -6,36 +6,42 @@ import "./BuyWaxModal.global.css"
 
 
 class BuyWaxModal extends React.Component {
-  constructor(props) {
-	super(props)
-	this.state = {
+	constructor(props) {
+		super(props)
+		this.state = {
+		}
 	}
-  }
 
 
-  render() {
-	const { modalOpen, closeModal} = this.props
-	return (
-		<Modal 
-			onClose={closeModal}
-			size={"tiny"} 
-			open={modalOpen}
-		>
+	render() {
+		const { modalOpen, closeModal } = this.props
+		return (
+			<Modal
+				onClose={closeModal}
+				size={"tiny"}
+				open={modalOpen}
+			>
 
-			<Modal.Content className="BuyWaxModal-body">
-				<div className="modal-header">
-					<span>Buy </span>
-					<span> Wax</span>
-				</div>
-				<div className="modal-body">
-					<div className="buy-wax-link">
-						<a href="https://buy.moonpay.io/?currencyCode=WAXP">https://buy.moonpay.io/?currencyCode=WAXP</a>
+				<Modal.Content className="BuyWaxModal-body">
+					<div className="modal-header">
+						<span>Buy </span>
+						<span> Wax</span>
 					</div>
-				</div>
-			</Modal.Content>
-	  </Modal>
-	)
-  }
+					<div className="modal-body">
+						<div className="buy-wax-link">
+						<iframe
+							allowtransparency="true" 
+							src="https://buy.moonpay.io/?currencyCode=WAXP" 
+							title="Buy WAXP"/>
+						</div>
+						{/* <div className="buy-wax-link">
+							<a href="https://buy.moonpay.io/?currencyCode=WAXP">https://buy.moonpay.io/?currencyCode=WAXP</a>
+						</div> */}
+					</div>
+				</Modal.Content>
+			</Modal>
+		)
+	}
 }
 
 BuyWaxModal.propTypes = {}

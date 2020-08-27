@@ -3,8 +3,19 @@ import React, { Component } from "react";
 // import "./Balance.global.css";
 import { Image, Header } from "semantic-ui-react";
 import { Decimal } from 'decimal.js';
+import { forEach } from 'lodash';
 
 export default class Balance extends Component {
+    getBalance = (base) => {
+        const {
+            globals
+        } = this.props;
+
+        if (globals.pricefeed && globals.pricefeed.CUSD) {
+            const tokenPrice = globals.pricefeed.CUSD.find(item => item.base === base);
+            return tokenPrice ? tokenPrice.price : 0;
+        }
+    }
     render() {
         const {
             globals,
@@ -13,23 +24,24 @@ export default class Balance extends Component {
             openResourcesModal,
             openTokenModal,
             openDelegateModal,
-            toggleCryptoModal
+            openCryptoModal,
+            openSwapTokenModal,
+            openBuyWaxModal
         } = this.props;
         const {
             tokens,
             totalTokens
         } = statsFetcher.fetchAll();
 
-        let totalUSDValue = 0;
-        let usdPrice = 0;
-        const totalBalance = totalTokens.toFixed(4);
-        if (globals.pricefeed
-            && globals.pricefeed.CUSD
-            && globals.pricefeed.CUSD.price
-            && globals.pricefeed.CUSD.base == settings.blockchain.tokenSymbol) {
-            usdPrice = Decimal(globals.pricefeed.CUSD.price).toFixed(4);
-            totalUSDValue = usdPrice * totalBalance;
+        const coreTokenBalance = tokens[settings.account] ? tokens[settings.account][settings.blockchain.tokenSymbol] : 0;
+        let totalBalance = 0;
+        if (coreTokenBalance) {
+            totalBalance = coreTokenBalance * this.getBalance(settings.blockchain.tokenSymbol);
         }
+
+        forEach(tokens[settings.account], (amount, token) => {
+            totalBalance = totalBalance + amount * this.getBalance(token.symbol);
+        });
 
         return (
             <div className="balance-section">
@@ -40,7 +52,7 @@ export default class Balance extends Component {
                             +3.49%
                         </div>
                     </div>
-                    <h2>${usdPrice}</h2>
+                    <h2>${totalBalance.toFixed(2)}</h2>
                     <div className="chart-img">
                         <Image src={require('../../../../../renderer/assets/images/dashboard/Group1733.png')} />
                     </div>
@@ -50,8 +62,8 @@ export default class Balance extends Component {
                         <div className="chart-white-btn">1M</div>
                         <div className="chart-orange-btn">All</div>
                     </div>
-                    <div className="send-btn-wrap" onClick={toggleCryptoModal}>
-                        <div className="dashboard-send-btn">
+                    <div className="send-btn-wrap">
+                        <div className="dashboard-send-btn" onClick={openCryptoModal}>
                             <h3>Send</h3>
                             <Image src={require('../../../../../renderer/assets/images/dashboard/arrow1.png')} />
                         </div>
@@ -64,14 +76,14 @@ export default class Balance extends Component {
                     </div>
                 </div>
                 <div className="balance-button-group">
-                    <div className="balance-button-wrap">
+                    <div className="balance-button-wrap" onClick={openBuyWaxModal}>
                         <div className="balance-button-title">
                             Buy WAX
                     </div>
                         <Image src={require('../../../../../renderer/assets/images/dashboard/credit-card2.png')} />
                     </div>
                     <div className="balance-button-wrap">
-                        <div className="balance-button-title">
+                        <div className="balance-button-title" onClick={openSwapTokenModal}>
                             Swap Tokens
                         </div>
                         <Image src={require('../../../../../renderer/assets/images/dashboard/Group1734.png')} />

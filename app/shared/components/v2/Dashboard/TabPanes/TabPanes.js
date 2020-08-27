@@ -1,11 +1,11 @@
 import React from "react";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
-import { Tab, Table, Image, Header } from "semantic-ui-react";
+import { Tab, Table, Image, Header, Card, Button } from "semantic-ui-react";
 import { forEach } from 'lodash';
-import { Card, Button, Tab, Table, Image, Header } from "semantic-ui-react";
 
 import "./TabPanes.global.css";
+import { access } from "fs";
 
 class TabPanes extends React.Component {
   getPanes() {
@@ -20,92 +20,103 @@ class TabPanes extends React.Component {
       )
     };
 
-	const nftsPane = {
-	  menuItem: "NFTS",
-	  render: () => (
-		<Tab.Pane attached={false}>
-			<Card className="trending-assets-card" >
-				<Image src={require('../../../../../renderer/assets/images/dashboard/dallas141.png')} />
-				<Card.Header className="t-card-title">Methews</Card.Header>
-				<Card.Meta>
-					<div className="t-card-author">theonlykarma</div>
-					<div className="t-card-price">
-						<Image src={require('../../../../../renderer/assets/images/dashboard/Group47.png')} />
-						<div className="t-card-des">
-							25,000 KARMAR
+    const nftsPane = {
+      menuItem: "NFTS",
+      render: () => (
+        <Tab.Pane attached={false}>
+          <Card className="trending-assets-card" >
+            <Image src={require('../../../../../renderer/assets/images/dashboard/dallas141.png')} />
+            <Card.Header className="t-card-title">Methews</Card.Header>
+            <Card.Meta>
+              <div className="t-card-author">theonlykarma</div>
+              <div className="t-card-price">
+                <Image src={require('../../../../../renderer/assets/images/dashboard/Group47.png')} />
+                <div className="t-card-des">
+                  25,000 KARMAR
 						</div>
-					</div>
-					<div className="card-btn-group">
-						<Button className="card-detail-btn">Details</Button>
-						<Button className="card-buy-btn">Buy</Button>
-					</div>
-				</Card.Meta>
-			</Card>
-			<Card className="trending-assets-card" >
-				<Image src={require('../../../../../renderer/assets/images/dashboard/dallas141.png')} />
-				<Card.Header className="t-card-title">Methews</Card.Header>
-				<Card.Meta>
-					<div className="t-card-author">theonlykarma</div>
-					<div className="t-card-price">
-						<Image src={require('../../../../../renderer/assets/images/dashboard/Group47.png')} />
-						<div className="t-card-des">
-							25,000 KARMAR
+              </div>
+              <div className="card-btn-group">
+                <Button className="card-detail-btn">Details</Button>
+                <Button className="card-buy-btn">Buy</Button>
+              </div>
+            </Card.Meta>
+          </Card>
+          <Card className="trending-assets-card" >
+            <Image src={require('../../../../../renderer/assets/images/dashboard/dallas141.png')} />
+            <Card.Header className="t-card-title">Methews</Card.Header>
+            <Card.Meta>
+              <div className="t-card-author">theonlykarma</div>
+              <div className="t-card-price">
+                <Image src={require('../../../../../renderer/assets/images/dashboard/Group47.png')} />
+                <div className="t-card-des">
+                  25,000 KARMAR
 						</div>
-					</div>
-					<div className="card-btn-group">
-						<Button className="card-detail-btn">Details</Button>
-						<Button className="card-buy-btn">Buy</Button>
-					</div>
-				</Card.Meta>
-			</Card>
-			<Card className="trending-assets-card" >
-				<Image src={require('../../../../../renderer/assets/images/dashboard/dallas141.png')} />
-				<Card.Header className="t-card-title">Methews</Card.Header>
-				<Card.Meta>
-					<div className="t-card-author">theonlykarma</div>
-					<div className="t-card-price">
-						<Image src={require('../../../../../renderer/assets/images/dashboard/Group47.png')} />
-						<div className="t-card-des">
-							25,000 KARMAR
+              </div>
+              <div className="card-btn-group">
+                <Button className="card-detail-btn">Details</Button>
+                <Button className="card-buy-btn">Buy</Button>
+              </div>
+            </Card.Meta>
+          </Card>
+          <Card className="trending-assets-card" >
+            <Image src={require('../../../../../renderer/assets/images/dashboard/dallas141.png')} />
+            <Card.Header className="t-card-title">Methews</Card.Header>
+            <Card.Meta>
+              <div className="t-card-author">theonlykarma</div>
+              <div className="t-card-price">
+                <Image src={require('../../../../../renderer/assets/images/dashboard/Group47.png')} />
+                <div className="t-card-des">
+                  25,000 KARMAR
 						</div>
-					</div>
-					<div className="card-btn-group">
-						<Button className="card-detail-btn">Details</Button>
-						<Button className="card-buy-btn">Buy</Button>
-					</div>
-				</Card.Meta>
-			</Card>
-			<Card className="trending-assets-card" >
-				<Image src={require('../../../../../renderer/assets/images/dashboard/dallas141.png')} />
-				<Card.Header className="t-card-title">Methews</Card.Header>
-				<Card.Meta>
-					<div className="t-card-author">theonlykarma</div>
-					<div className="t-card-price">
-						<Image src={require('../../../../../renderer/assets/images/dashboard/Group47.png')} />
-						<div className="t-card-des">
-							25,000 KARMAR
+              </div>
+              <div className="card-btn-group">
+                <Button className="card-detail-btn">Details</Button>
+                <Button className="card-buy-btn">Buy</Button>
+              </div>
+            </Card.Meta>
+          </Card>
+          <Card className="trending-assets-card" >
+            <Image src={require('../../../../../renderer/assets/images/dashboard/dallas141.png')} />
+            <Card.Header className="t-card-title">Methews</Card.Header>
+            <Card.Meta>
+              <div className="t-card-author">theonlykarma</div>
+              <div className="t-card-price">
+                <Image src={require('../../../../../renderer/assets/images/dashboard/Group47.png')} />
+                <div className="t-card-des">
+                  25,000 KARMAR
 						</div>
-					</div>
-					<div className="card-btn-group">
-						<Button className="card-detail-btn">Details</Button>
-						<Button className="card-buy-btn">Buy</Button>
-					</div>
-				</Card.Meta>
-			</Card>
-		</Tab.Pane>
-	  )
-	};
-	return [tokensPane, nftsPane];
+              </div>
+              <div className="card-btn-group">
+                <Button className="card-detail-btn">Details</Button>
+                <Button className="card-buy-btn">Buy</Button>
+              </div>
+            </Card.Meta>
+          </Card>
+        </Tab.Pane>
+      )
+    };
+    return [tokensPane, nftsPane];
   }
 
   render() {
-	return (
-	  <Tab menu={{ secondary: true, pointing: true }} panes={this.getPanes()} />
-	);
+    return (
+      <Tab menu={{ secondary: true, pointing: true }} panes={this.getPanes()} />
+    );
   }
 }
 
 class TokenBalance extends React.Component {
+  getBalance = (base) => {
+    const {
+      globals
+    } = this.props;
+
+    if (globals.pricefeed && globals.pricefeed.CUSD) {
+      const tokenPrice = globals.pricefeed.CUSD.find(item => item.base === base);
+      return tokenPrice ? tokenPrice.price : 0;
+    }
+  }
+
   render() {
     const { settings, globals, balances, statsFetcher } = this.props;
     const { tokens, totalTokens } = statsFetcher.fetchAll();
@@ -118,9 +129,8 @@ class TokenBalance extends React.Component {
       coreTokenInfo = { logo: null };
 
     const coreTokenBalance = tokens[settings.account] ? tokens[settings.account][settings.blockchain.tokenSymbol] : 0;
-    const coreTokenUSDBalance = coreTokenBalance * (globals.pricefeed ? globals.pricefeed.CUSD.price : 0);
+    const coreTokenUSDBalance = coreTokenBalance * this.getBalance(settings.blockchain.tokenSymbol);
 
-    console.log("jjj", globals)
     const rows = [
       (
         <Table.Row className="token-wrap" key={settings.blockchain.tokenSymbol}>
@@ -132,10 +142,10 @@ class TokenBalance extends React.Component {
           <Table.Cell className="token-des">
             <div className="des-title">
               <Header as="h3">{coreTokenName}</Header>
-              <Header as="h5">{coreTokenBalance && coreTokenBalance.toFixed(4)}</Header>
+              <Header as="h5">{coreTokenBalance && coreTokenBalance.toFixed(2)}</Header>
             </div>
           </Table.Cell>
-          <Table.Cell className="des-price">${coreTokenUSDBalance && coreTokenUSDBalance.toFixed(4)}</Table.Cell>
+          <Table.Cell className="des-price">${coreTokenUSDBalance.toFixed(2)}</Table.Cell>
         </Table.Row>
       )];
 
@@ -155,6 +165,7 @@ class TokenBalance extends React.Component {
         tokenName = tokenInfo.name;
       else
         tokenInfo = { logo: null };
+      const tokenBalance = amount * this.getBalance(token.symbol);
 
       rows.push((<Table.Row className="token-wrap" key={token}>
         <Table.Cell>
@@ -168,7 +179,7 @@ class TokenBalance extends React.Component {
             <Header as="h5">{amount}</Header>
           </div>
         </Table.Cell>
-        <Table.Cell className="des-price">$0</Table.Cell>
+        <Table.Cell className="des-price">${tokenBalance.toFixed(2)}</Table.Cell>
       </Table.Row>))
 
     })
