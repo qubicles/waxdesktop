@@ -130,7 +130,7 @@ class TokenBalance extends React.Component {
           <Table.Cell className="token-des">
             <div className="des-title">
               <Header as="h3">{coreTokenName}</Header>
-              <Header as="h5">{coreTokenBalance.toFixed(4)}</Header>
+              {/* <Header as="h5">{coreTokenBalance.toFixed(4)}</Header> */}
             </div>
           </Table.Cell>
           <Table.Cell className="des-price">${coreTokenUSDBalance.toFixed(4)}</Table.Cell>
