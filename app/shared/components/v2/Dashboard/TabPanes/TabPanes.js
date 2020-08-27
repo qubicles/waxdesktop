@@ -8,6 +8,7 @@ import { Decimal } from 'decimal.js';
 import NFTPane from "./NFTPanes";
 
 import "./TabPanes.global.css";
+import { access } from "fs";
 
 class TabPanes extends React.Component {
   getPanes() {
@@ -31,9 +32,9 @@ class TabPanes extends React.Component {
   }
 
   render() {
-	return (
-	  <Tab menu={{ secondary: true, pointing: true }} panes={this.getPanes()} />
-	);
+    return (
+      <Tab menu={{ secondary: true, pointing: true }} panes={this.getPanes()} />
+    );
   }
 }
 
@@ -63,7 +64,6 @@ class TokenBalance extends React.Component {
     const coreTokenBalance = tokens[settings.account] ? tokens[settings.account][settings.blockchain.tokenSymbol] : 0;
     const coreTokenUSDBalance = coreTokenBalance * this.getBalance(settings.blockchain.tokenSymbol);
 
-    console.log("jjj", globals)
     const rows = [
       (
         <Table.Row className="token-wrap" key={settings.blockchain.tokenSymbol}>
@@ -75,7 +75,7 @@ class TokenBalance extends React.Component {
           <Table.Cell className="token-des">
             <div className="des-title">
               <Header as="h3">{coreTokenName}</Header>
-              <Header as="h5">{coreTokenBalance && coreTokenBalance.toFixed(4)}</Header>
+              <Header as="h5">{coreTokenBalance && coreTokenBalance.toFixed(2)}</Header>
             </div>
           </Table.Cell>
           <Table.Cell className="des-price">${coreTokenUSDBalance && coreTokenUSDBalance.toFixed(2)}</Table.Cell>
