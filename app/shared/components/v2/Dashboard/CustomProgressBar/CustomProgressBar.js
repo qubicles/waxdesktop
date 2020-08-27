@@ -20,7 +20,7 @@ class CustomProgressBar extends React.Component {
   }
 
   render() {
-    const { label, percent, statusColor} = this.props
+    const { label, percent, statusColor, innerLabel, settings} = this.props
     return (
         <div className="progressbar-container">
             <div className="progressbar-label">
@@ -28,7 +28,7 @@ class CustomProgressBar extends React.Component {
                 <div className="right-label">{percent}% of Capacity</div>
             </div>
             <Progress percent={percent} color={statusColor} /> 
-            <div className="progressbar-inner-label">115WAX</div>
+            <div className="progressbar-inner-label">{innerLabel} {settings.blockchain.tokenSymbol}</div>
         </div>
         
     )

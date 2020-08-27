@@ -5,7 +5,7 @@ import eos from './helpers/eos';
 import eos2 from './helpers/eos2';
 import { getRexBalance } from './rex';
 import EOSAccount from '../utils/EOS/Account';
-import { getContactByPublicKey } from './globals';
+import { getContactByPublicKey, getPriceFeedGecko } from './globals';
 const ecc = require('eosjs-ecc');
 import { payforcpunet } from './helpers/eos';
 
@@ -331,7 +331,13 @@ export function getCurrencyBalance(account, requestedTokens = false) {
       });
       forEach(selectedTokens, (namespace) => {
         const [contract, symbol] = namespace.split(':');
-        eos(connection).getCurrencyBalance(contract, account, symbol).then((results) =>
+        eos(connection).getCurrencyBalance(contract, account, symbol).then((results) =>{
+          if (settings.blockchain.tokenSymbol === symbol) {
+            dispatch(getPriceFeedGecko("WAX", "USD", settings.blockchain.tokenSymbol));
+          } else {
+            dispatch(getPriceFeedGecko(symbol, "USD"));
+          }
+          
           dispatch({
             type: types.GET_ACCOUNT_BALANCE_SUCCESS,
             payload: {
@@ -341,7 +347,8 @@ export function getCurrencyBalance(account, requestedTokens = false) {
               symbol,
               tokens: formatBalances(results, symbol)
             }
-          }))
+          })}
+          )
           .catch((err) => dispatch({
             type: types.GET_ACCOUNT_BALANCE_FAILURE,
             payload: { err, account_name: account }

@@ -115,6 +115,7 @@ class CryptoModal extends React.Component {
                             <Form.Field
                                 className="ui-common-input"
                                 placeholder="Account Name"
+                                required
                                 autoFocus
                                 control={Input}
                                 name="to"
@@ -124,6 +125,7 @@ class CryptoModal extends React.Component {
                             <Form.Field
                                 className="ui-common-input"
                                 placeholder="Memo"
+                                required
                                 control={Input}
                                 name="memo"
                                 onChange={this.onChange}
@@ -133,6 +135,7 @@ class CryptoModal extends React.Component {
                                 <Form.Field
                                     className="ui-common-input"
                                     placeholder="0.0000 WAX"
+                                    required
                                     control={Input}
                                     name="quantity"
                                     onChange={this.onChange}
