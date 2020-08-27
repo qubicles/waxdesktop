@@ -247,13 +247,14 @@ class Home extends React.Component {
 					actions={actions}
 					location={location}
 				/>
-				<BuyWaxModal
-					closeModal={this.toggleBuyWaxModal}
-					modalOpen={buyWaxModal}
-					history={history}
-					actions={actions}
-					location={location}
-				/>
+				{buyWaxModal &&
+					<BuyWaxModal
+						closeModal={this.toggleBuyWaxModal}
+						modalOpen={buyWaxModal}
+						history={history}
+						actions={actions}
+						location={location}
+					/>}
 				<CreateAccountModal
 					closeModal={this.toggleCreateAccountModal}
 					modalOpen={createAccountModal}

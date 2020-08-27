@@ -100,9 +100,9 @@ class TabPanes extends React.Component {
   }
 
   render() {
-	return (
-	  <Tab menu={{ secondary: true, pointing: true }} panes={this.getPanes()} />
-	);
+    return (
+      <Tab menu={{ secondary: true, pointing: true }} panes={this.getPanes()} />
+    );
   }
 }
 
@@ -132,7 +132,6 @@ class TokenBalance extends React.Component {
     const coreTokenBalance = tokens[settings.account] ? tokens[settings.account][settings.blockchain.tokenSymbol] : 0;
     const coreTokenUSDBalance = coreTokenBalance * this.getBalance(settings.blockchain.tokenSymbol);
 
-    console.log("jjj", globals)
     const rows = [
       (
         <Table.Row className="token-wrap" key={settings.blockchain.tokenSymbol}>
