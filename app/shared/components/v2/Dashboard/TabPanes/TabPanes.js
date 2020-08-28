@@ -7,8 +7,6 @@ import { Decimal } from 'decimal.js';
 
 import NFTPane from "./NFTPanes";
 
-import NFTPane from "./NFTPanes";
-
 import "./TabPanes.global.css";
 
 class TabPanes extends React.Component {
