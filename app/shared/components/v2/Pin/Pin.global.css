@@ -4,7 +4,7 @@ html {
 }
 
 body {
-  font-family: Montserrat;
+  font-family: montserrat;
   margin: 0;
   padding: 0;
   height: 100%;
@@ -13,7 +13,10 @@ body {
   overflow: -moz-scrollbars-none;
   -ms-overflow-style: none;
 }
-
+@font-face {
+  font-family: montserrat;
+  src: url(../../../../renderer/assets/fonts/Montserrat-Regular.ttf);
+}
 @font-face {
   font-family: montserrat_semibold;
   src: url(../../../../renderer/assets/fonts/Montserrat-Bold.ttf);
