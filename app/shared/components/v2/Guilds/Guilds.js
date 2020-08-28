@@ -122,7 +122,7 @@ class Guilds extends React.Component {
                         </div>
                     </div>
                 </div>
-                <Balance />
+                {/* <Balance /> */}
             </div>
 		)
 	}

@@ -72,7 +72,7 @@ class DelegatedResources extends React.Component {
                         </div>
                     </div>
                 </div>
-                <Balance />
+                {/* <Balance /> */}
                 <DelegateModal
 					closeModal={this.toggleDelegateModal}
 					modalOpen={delegateModal}

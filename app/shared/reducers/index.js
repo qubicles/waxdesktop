@@ -27,7 +27,7 @@ import validate from './validate';
 import wallet from './wallet';
 import wallets from './wallets';
 import wapii from '../../wallet-integration/wapii.reducer';
-import trendingAssets from './trendingassets';
+import assets from './assets';
 
 const rootReducer = combineReducers({
   accounts,
@@ -56,7 +56,7 @@ const rootReducer = combineReducers({
   wallet,
   wallets,
   wapii,
-  trendingAssets
+  assets
 });
 
 export default rootReducer;
