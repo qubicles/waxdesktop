@@ -3,6 +3,7 @@ import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import { Tab, Table, Image, Header, Card, Button } from "semantic-ui-react";
 import { forEach } from 'lodash';
+import { Decimal } from 'decimal.js';
 
 import NFTPane from "./NFTPanes";
 
@@ -62,6 +63,7 @@ class TokenBalance extends React.Component {
     const coreTokenBalance = tokens[settings.account] ? tokens[settings.account][settings.blockchain.tokenSymbol] : 0;
     const coreTokenUSDBalance = coreTokenBalance * this.getBalance(settings.blockchain.tokenSymbol);
 
+    console.log("jjj", globals)
     const rows = [
       (
         <Table.Row className="token-wrap" key={settings.blockchain.tokenSymbol}>
@@ -73,10 +75,10 @@ class TokenBalance extends React.Component {
           <Table.Cell className="token-des">
             <div className="des-title">
               <Header as="h3">{coreTokenName}</Header>
-              <Header as="h5">{coreTokenBalance.toFixed(4)}</Header>
+              <Header as="h5">{coreTokenBalance && coreTokenBalance.toFixed(2)}</Header>
             </div>
           </Table.Cell>
-          <Table.Cell className="des-price">${coreTokenUSDBalance.toFixed(2)}</Table.Cell>
+          <Table.Cell className="des-price">${coreTokenUSDBalance && coreTokenUSDBalance.toFixed(2)}</Table.Cell>
         </Table.Row>
       )];
 

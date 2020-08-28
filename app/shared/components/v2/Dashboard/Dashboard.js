@@ -123,12 +123,6 @@ class Home extends React.Component {
 	goApps = () => {
 		this.props.history.push("/apps")
 	}
-	goStaking = () => {
-		this.props.history.push("/advanced")
-	}
-	goStaking = () => {
-		this.props.history.push("/advanced")
-	}
 	
 	render() {
 		const { dashboardTokenModal, resourcesModal, delegateModal, cryptoModal, swapTokenModal, importAccountModal, buyWaxModal, createAccountModal, sellAssetModal } = this.state

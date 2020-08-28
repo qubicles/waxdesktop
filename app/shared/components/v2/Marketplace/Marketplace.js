@@ -71,7 +71,7 @@ class Marketplace extends React.Component {
         }
 
         if (assetsList && assetsList.data.length === 0) {
-            return <div>No data found with "<b>{owner}</b>", Please provide correct owner names</div>
+            return <div>No data found for "<b>{owner}</b>", Please try again!</div>
         }
 
         return assetsList && assetsList.data.map(asset =>

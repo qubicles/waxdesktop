@@ -24,7 +24,7 @@ export const getAssets = ({ owner, page = 1, limit = 100, order = "desc", sort =
         dispatch({
             type: types.ASSETS_LIST_REQUEST,
         });
-        return axios.get(`https://wax.api.atomicassets.io/atomicassets/v1/assets?owner=${owner}&page=${page}&limit=${limit}&order=${order}&sort=${sort}`)
+        return axios.get(`https://wax.api.atomicassets.io/atomicassets/v1/assets?match=${owner}&page=${page}&limit=${limit}&order=${order}&sort=${sort}`)
             .then(res => {
                 dispatch({
                     type: types.ASSETS_LIST_SUCCESS,
