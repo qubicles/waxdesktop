@@ -234,42 +234,6 @@ class Home extends React.Component {
 					history={history}
 					actions={actions}
 					location={location}
-				/>}
-				<SwapTokenModal
-					closeModal={this.toggleSwapTokenModal}
-					modalOpen={swapTokenModal}
-					history={history}
-					actions={actions}
-					location={location}
-				/>
-				<ImportAccountModal
-					closeModal={this.toggleImportAccountModal}
-					modalOpen={importAccountModal}
-					history={history}
-					actions={actions}
-					location={location}
-				/>
-				{buyWaxModal &&
-					<BuyWaxModal
-						closeModal={this.toggleBuyWaxModal}
-						modalOpen={buyWaxModal}
-						history={history}
-						actions={actions}
-						location={location}
-					/>}
-				<CreateAccountModal
-					closeModal={this.toggleCreateAccountModal}
-					modalOpen={createAccountModal}
-					history={history}
-					actions={actions}
-					location={location}
-				/>
-				<SellAssetModal
-					closeModal={this.toggleSellAssetModal}
-					modalOpen={sellAssetModal}
-					history={history}
-					actions={actions}
-					location={location}
 				/>
 			</div>
 
