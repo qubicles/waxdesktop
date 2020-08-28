@@ -15,7 +15,7 @@ class WelcomeContainer extends Component {
   componentDidMount() {
     const { actions } = this.props
     actions.setSetting('node', 'https://api.wax.alohaeos.com');
-    actions.setSetting('account', 'mj1ai.wam');
+    actions.setSetting('account', 'mj1ai.waa');
     actions.validateNode('https://api.wax.alohaeos.com');
     // actions.setSetting('node', 'https://api.eos.miami');
     // actions.setSetting('account', 'rakeshs12345');
