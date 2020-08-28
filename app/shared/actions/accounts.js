@@ -519,6 +519,22 @@ export function claimVotingRewards() {
   };
 }
 
+export function getNFTBalance(account, contract) {
+  return (dispatch: () => void, getState) => {
+    const {
+      connection,
+      settings
+    } = getState();
+    if (account && (settings.node || settings.node.length !== 0)) {
+        const symbol = settings.blockchain.tokenSymbol;
+        eos(connection).getCurrencyBalance(contract, account, symbol).then((results) =>{
+          console.log("kkkk", results)
+        })
+        .catch((err) => err);
+    }
+  };
+}
+
 export default {
   checkAccountAvailability,
   checkAccountExists,
@@ -530,5 +546,6 @@ export default {
   getAccountByKey,
   getActions,
   getCurrencyBalance,
-  refreshAccountBalances
+  refreshAccountBalances,
+  getNFTBalance
 };

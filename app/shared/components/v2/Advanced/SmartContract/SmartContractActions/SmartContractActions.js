@@ -134,7 +134,7 @@ class SmartContractActions extends React.Component {
                         </div>
                     </div>
                 </div>
-                <Balance />
+                {/* <Balance /> */}
             </div>
 		)
 	}
