@@ -161,17 +161,20 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  font-weight: 800;
 }
 .trending-assets-card .t-card-des {
   margin-left: 6px;
 }
 .trending-assets-card .t-card-title {
   font-size: 15px;
-  font-weight: 500;
+  font-weight: 800;
+  padding: 5px 0;
 }
 .trending-assets-card .t-card-author {
   padding-bottom: 8px;
   color: #ff886d;
+  font-weight: bold;
 }
 .trending-assets-card button {
   padding: 9px 30px;
@@ -291,7 +294,7 @@
 /* responsive */
 @media only screen and (max-width: 1050px) {
   .trending-assets-body {
-    height: 285px !important;
+    height: 290px !important;
   }
   
 }
