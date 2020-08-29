@@ -127,15 +127,7 @@ class Home extends React.Component {
 	goApps = () => {
 		this.props.history.push("/apps")
 	}
-	goStaking = () => {
-		this.props.history.push("/advanced")
-	}
-	goStaking = () => {
-		this.props.history.push("/advanced")
-	}
-	goStaking = () => {
-		this.props.history.push("/advanced")
-	}
+	
 	
 	render() {
 		const { dashboardTokenModal, resourcesModal, delegateModal, cryptoModal, swapTokenModal, importAccountModal, buyWaxModal, createAccountModal, sellAssetModal } = this.state
@@ -242,83 +234,7 @@ class Home extends React.Component {
 					actions={actions}
 					location={location}
 				/>
-				<SwapTokenModal
-					closeModal={this.toggleSwapTokenModal}
-					modalOpen={swapTokenModal}
-					history={history}
-					actions={actions}
-					location={location}
-				/>
-				<ImportAccountModal
-					closeModal={this.toggleImportAccountModal}
-					modalOpen={importAccountModal}
-					history={history}
-					actions={actions}
-					location={location}
-				/>
-				<BuyWaxModal
-					closeModal={this.toggleBuyWaxModal}
-					modalOpen={buyWaxModal}
-					history={history}
-					actions={actions}
-					location={location}
-				/>
-				<CreateAccountModal
-					closeModal={this.toggleCreateAccountModal}
-					modalOpen={createAccountModal}
-					history={history}
-					actions={actions}
-					location={location}
-				/>
-				<SellAssetModal
-					closeModal={this.toggleSellAssetModal}
-					modalOpen={sellAssetModal}
-					history={history}
-					actions={actions}
-					location={location}
-				/>
-				<CryptoModal
-					closeModal={this.toggleCryptoModal}
-					modalOpen={cryptoModal}
-					history={history}
-					actions={actions}
-					location={location}
-				/>
-				<SwapTokenModal
-					closeModal={this.toggleSwapTokenModal}
-					modalOpen={swapTokenModal}
-					history={history}
-					actions={actions}
-					location={location}
-				/>
-				<ImportAccountModal
-					closeModal={this.toggleImportAccountModal}
-					modalOpen={importAccountModal}
-					history={history}
-					actions={actions}
-					location={location}
-				/>
-				<BuyWaxModal
-					closeModal={this.toggleBuyWaxModal}
-					modalOpen={buyWaxModal}
-					history={history}
-					actions={actions}
-					location={location}
-				/>
-				<CreateAccountModal
-					closeModal={this.toggleCreateAccountModal}
-					modalOpen={createAccountModal}
-					history={history}
-					actions={actions}
-					location={location}
-				/>
-				<SellAssetModal
-					closeModal={this.toggleSellAssetModal}
-					modalOpen={sellAssetModal}
-					history={history}
-					actions={actions}
-					location={location}
-				/>
+				
 			</div>
 
 		)

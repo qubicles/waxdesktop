@@ -77,7 +77,7 @@ class Staking extends React.Component {
                         </div>
                     </div>
                 </div>
-                <Balance />
+                {/* <Balance /> */}
             </div>
 
 		)

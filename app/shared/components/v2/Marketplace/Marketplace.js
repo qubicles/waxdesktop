@@ -4,6 +4,8 @@ import PropTypes from "prop-types"
 import { Card, Image, Divider, Tab, Button, Dropdown } from "semantic-ui-react"
 import { connect } from 'react-redux';
 import "./Marketplace.global.css"
+import MarketplaceCards from "./MarketplaceCards/MarketplaceCards"
+
 
 const options = [
     { key: 1, text: 'Most Recent', value: 1 },
@@ -42,7 +44,7 @@ class Marketplace extends React.Component {
 				<div className="dashboard-body-section">
 					<div className="market-search-section">
                         <div className="round-search-bar">
-                            <input type="text" className="round-input" />
+                            <input type="text" className="round-input" placeholder="Search Assets & Collections" />
                             <div className="round-search-btn">
                                 <img src={require('../../../../renderer/assets/images/marketplace/Group543.png')} />
                             </div>
@@ -51,155 +53,7 @@ class Marketplace extends React.Component {
                     </div>
                     <div className="marketplace-card-section">
                         <div className="card-wrap">
-                            <Card className="trending-assets-card" >
-                                <Image src={require('../../../../renderer/assets/images/dashboard/dallas141.png')} />
-                                <Card.Header className="t-card-title">Methews</Card.Header>
-                                <Card.Meta>
-                                    <div className="t-card-author">theonlykarma</div>
-                                    <div className="t-card-price">
-                                        <Image src={require('../../../../renderer/assets/images/dashboard/Group47.png')} />
-                                        <div className="t-card-des">
-                                            25,000 KARMAR
-                                        </div>
-                                    </div>
-                                    <div className="card-btn-group">
-                                        <Button className="card-detail-btn">Details</Button>
-                                        <Button className="card-buy-btn">Buy</Button>
-                                    </div>
-                                </Card.Meta>
-                            </Card>
-                            <Card className="trending-assets-card" >
-                                <Image src={require('../../../../renderer/assets/images/dashboard/dallas141.png')} />
-                                <Card.Header className="t-card-title">Methews</Card.Header>
-                                <Card.Meta>
-                                    <div className="t-card-author">theonlykarma</div>
-                                    <div className="t-card-price">
-                                        <Image src={require('../../../../renderer/assets/images/dashboard/Group47.png')} />
-                                        <div className="t-card-des">
-                                            25,000 KARMAR
-                                        </div>
-                                    </div>
-                                    <div className="card-btn-group">
-                                        <Button className="card-detail-btn">Details</Button>
-                                        <Button className="card-buy-btn">Buy</Button>
-                                    </div>
-                                </Card.Meta>
-                            </Card>
-                            <Card className="trending-assets-card" >
-                                <Image src={require('../../../../renderer/assets/images/dashboard/dallas141.png')} />
-                                <Card.Header className="t-card-title">Methews</Card.Header>
-                                <Card.Meta>
-                                    <div className="t-card-author">theonlykarma</div>
-                                    <div className="t-card-price">
-                                        <Image src={require('../../../../renderer/assets/images/dashboard/Group47.png')} />
-                                        <div className="t-card-des">
-                                            25,000 KARMAR
-                                        </div>
-                                    </div>
-                                    <div className="card-btn-group">
-                                        <Button className="card-detail-btn">Details</Button>
-                                        <Button className="card-buy-btn">Buy</Button>
-                                    </div>
-                                </Card.Meta>
-                            </Card>
-                            <Card className="trending-assets-card" >
-                                <Image src={require('../../../../renderer/assets/images/dashboard/dallas141.png')} />
-                                <Card.Header className="t-card-title">Methews</Card.Header>
-                                <Card.Meta>
-                                    <div className="t-card-author">theonlykarma</div>
-                                    <div className="t-card-price">
-                                        <Image src={require('../../../../renderer/assets/images/dashboard/Group47.png')} />
-                                        <div className="t-card-des">
-                                            25,000 KARMAR
-                                        </div>
-                                    </div>
-                                    <div className="card-btn-group">
-                                        <Button className="card-detail-btn">Details</Button>
-                                        <Button className="card-buy-btn">Buy</Button>
-                                    </div>
-                                </Card.Meta>
-                            </Card>
-                            <Card className="trending-assets-card" >
-                                <Image src={require('../../../../renderer/assets/images/dashboard/dallas141.png')} />
-                                <Card.Header className="t-card-title">Methews</Card.Header>
-                                <Card.Meta>
-                                    <div className="t-card-author">theonlykarma</div>
-                                    <div className="t-card-price">
-                                        <Image src={require('../../../../renderer/assets/images/dashboard/Group47.png')} />
-                                        <div className="t-card-des">
-                                            25,000 KARMAR
-                                        </div>
-                                    </div>
-                                    <div className="card-btn-group">
-                                        <Button className="card-detail-btn">Details</Button>
-                                        <Button className="card-buy-btn">Buy</Button>
-                                    </div>
-                                </Card.Meta>
-                            </Card><Card className="trending-assets-card" >
-                                <Image src={require('../../../../renderer/assets/images/dashboard/dallas141.png')} />
-                                <Card.Header className="t-card-title">Methews</Card.Header>
-                                <Card.Meta>
-                                    <div className="t-card-author">theonlykarma</div>
-                                    <div className="t-card-price">
-                                        <Image src={require('../../../../renderer/assets/images/dashboard/Group47.png')} />
-                                        <div className="t-card-des">
-                                            25,000 KARMAR
-                                        </div>
-                                    </div>
-                                    <div className="card-btn-group">
-                                        <Button className="card-detail-btn">Details</Button>
-                                        <Button className="card-buy-btn">Buy</Button>
-                                    </div>
-                                </Card.Meta>
-                            </Card><Card className="trending-assets-card" >
-                                <Image src={require('../../../../renderer/assets/images/dashboard/dallas141.png')} />
-                                <Card.Header className="t-card-title">Methews</Card.Header>
-                                <Card.Meta>
-                                    <div className="t-card-author">theonlykarma</div>
-                                    <div className="t-card-price">
-                                        <Image src={require('../../../../renderer/assets/images/dashboard/Group47.png')} />
-                                        <div className="t-card-des">
-                                            25,000 KARMAR
-                                        </div>
-                                    </div>
-                                    <div className="card-btn-group">
-                                        <Button className="card-detail-btn">Details</Button>
-                                        <Button className="card-buy-btn">Buy</Button>
-                                    </div>
-                                </Card.Meta>
-                            </Card><Card className="trending-assets-card" >
-                                <Image src={require('../../../../renderer/assets/images/dashboard/dallas141.png')} />
-                                <Card.Header className="t-card-title">Methews</Card.Header>
-                                <Card.Meta>
-                                    <div className="t-card-author">theonlykarma</div>
-                                    <div className="t-card-price">
-                                        <Image src={require('../../../../renderer/assets/images/dashboard/Group47.png')} />
-                                        <div className="t-card-des">
-                                            25,000 KARMAR
-                                        </div>
-                                    </div>
-                                    <div className="card-btn-group">
-                                        <Button className="card-detail-btn">Details</Button>
-                                        <Button className="card-buy-btn">Buy</Button>
-                                    </div>
-                                </Card.Meta>
-                            </Card><Card className="trending-assets-card" >
-                                <Image src={require('../../../../renderer/assets/images/dashboard/dallas141.png')} />
-                                <Card.Header className="t-card-title">Methews</Card.Header>
-                                <Card.Meta>
-                                    <div className="t-card-author">theonlykarma</div>
-                                    <div className="t-card-price">
-                                        <Image src={require('../../../../renderer/assets/images/dashboard/Group47.png')} />
-                                        <div className="t-card-des">
-                                            25,000 KARMAR
-                                        </div>
-                                    </div>
-                                    <div className="card-btn-group">
-                                        <Button className="card-detail-btn">Details</Button>
-                                        <Button className="card-buy-btn">Buy</Button>
-                                    </div>
-                                </Card.Meta>
-                            </Card>
+                            <MarketplaceCards />
                         </div>
                     </div>
                 </div>
