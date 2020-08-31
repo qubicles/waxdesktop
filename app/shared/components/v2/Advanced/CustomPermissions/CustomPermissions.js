@@ -63,7 +63,7 @@ class CustomPermissions extends React.Component {
                         </div>
                     </div>
                 </div>
-                <Balance />
+                {/* <Balance /> */}
             </div>
 		)
 	}

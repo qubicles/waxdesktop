@@ -1,8 +1,12 @@
 
 import React from "react"
 import PropTypes from "prop-types"
-import { Card, Image, Divider, Tab, Button, Dropdown } from "semantic-ui-react"
-import { connect } from 'react-redux';
+import { Card, Image, Divider, Tab, Button, Dropdown, Form, Input } from "semantic-ui-react"
+import { bindActionCreators } from "redux";
+import { connect } from "react-redux";
+import debounce from 'lodash/debounce';
+
+import * as AssetsActions from "../../../actions/assets";
 import "./Marketplace.global.css"
 import MarketplaceCards from "./MarketplaceCards/MarketplaceCards"
 
@@ -14,37 +18,94 @@ const options = [
 ]
 
 const MarketplaceDropdown = () => (
-    <Dropdown 
-        clearable 
-        options={options} 
+    <Dropdown
+        clearable
+        options={options}
         defaultValue={1}
         selection
         className="round-dropdown"
     />
 )
 
-  
+
 class Marketplace extends React.Component {
-	constructor(props) {
-		super(props)
-		this.state = {}
+    constructor(props) {
+        super(props);
+        this.state = {
+            owner: "",
+            page: 1,
+            limit: 100,
+            order: "desc",
+            sort: "asset_id"
+        }
     }
-    
+
+    componentDidMount() {
+        this.getAllAssets();
+    }
+
+    getAllAssets = () => {
+        const { actions: { getAssets } } = this.props;
+        const { owner, page, limit, order, sort } = this.state;
+        getAssets({ owner, page, limit, order, sort });
+    }
+
+    onChange = debounce((e, { name, value }) => {
+        this.setState({
+            owner: value
+        }, () => {
+            this.getAllAssets();
+        });
+    }, 300)
+
     toggleRadio = () => {
-		const { radioChange } = this.state
-		this.setState({
-			radioChange: !radioChange,
-		})
+        const { radioChange } = this.state
+        this.setState({
+            radioChange: !radioChange,
+        })
     }
-    
-	render() {
-        const { radioChange  } = this.state
-		return (
-			<div className="dashboard-container">
-				<div className="dashboard-body-section">
-					<div className="market-search-section">
+
+    renderAssets = () => {
+        const { owner } = this.state;
+        const { assets: { isAssetsLoading, assetsList } } = this.props;
+        if (isAssetsLoading) {
+            return <div>Loading...</div>
+        }
+
+        if (assetsList && assetsList.data.length === 0) {
+            return <div>No data found for "<b>{owner}</b>", Please try again!</div>
+        }
+
+        return assetsList && assetsList.data.map(asset =>
+            <Card className="trending-assets-card" key={`assets-${asset.asset_id}`}>
+                <Image src={`https://ipfs.io/ipfs/${asset.data.img}`} />
+                <Card.Header className="t-card-title">{asset.name}</Card.Header>
+                <Card.Meta>
+                    <div className="t-card-author">{asset.owner}</div>
+                    <div className="t-card-price">
+                        <Image src={require('../../../../renderer/assets/images/dashboard/Group47.png')} />
+                        <div className="t-card-des">
+                            25,000 KARMAR
+                        </div>
+                    </div>
+                    <div className="card-btn-group">
+                        <Button className="card-detail-btn">Details</Button>
+                        <Button className="card-buy-btn">Buy</Button>
+                    </div>
+                </Card.Meta>
+            </Card>)
+
+    }
+
+    render() {
+        const { radioChange, owner } = this.state;
+        const displayAssets = this.renderAssets();
+
+        return (
+            <div className="dashboard-container">
+                <div className="dashboard-body-section">
+                    <div className="market-search-section">
                         <div className="round-search-bar">
-                            <input type="text" className="round-input" placeholder="Search Assets & Collections" />
                             <div className="round-search-btn">
                                 <img src={require('../../../../renderer/assets/images/marketplace/Group543.png')} />
                             </div>
@@ -54,6 +115,7 @@ class Marketplace extends React.Component {
                     <div className="marketplace-card-section">
                         <div className="card-wrap">
                             <MarketplaceCards />
+                            {displayAssets}
                         </div>
                     </div>
                 </div>
@@ -92,10 +154,10 @@ class Marketplace extends React.Component {
                         </div>
                     </div>
                 </div>
-			</div>
+            </div>
 
-		)
-	}
+        )
+    }
 }
 
 Marketplace.propTypes = {
@@ -105,5 +167,18 @@ Marketplace.propTypes = {
 Marketplace.defaultProps = {
 
 }
+const mapStateToProps = (state) => {
+    return {
+        assets: state.assets
+    };
+}
 
-export default Marketplace
+const mapDispatchToProps = (dispatch) => {
+    return {
+        actions: bindActionCreators({
+            ...AssetsActions,
+        }, dispatch)
+    };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Marketplace);

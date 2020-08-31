@@ -117,17 +117,12 @@ class Home extends React.Component {
 		const { sellAssetModal } = this.state
 		this.setState({ sellAssetModal: !sellAssetModal })
 	}
-	toggleSwapTokenModal = () => {
-		const { swapTokenModal } = this.state
-		this.setState({ swapTokenModal: !swapTokenModal })
-	}
 	goStaking = () => {
 		this.props.history.push("/advanced")
 	}
 	goApps = () => {
 		this.props.history.push("/apps")
 	}
-	
 	
 	render() {
 		const { dashboardTokenModal, resourcesModal, delegateModal, cryptoModal, swapTokenModal, importAccountModal, buyWaxModal, createAccountModal, sellAssetModal } = this.state
@@ -234,7 +229,6 @@ class Home extends React.Component {
 					actions={actions}
 					location={location}
 				/>
-				
 			</div>
 
 		)

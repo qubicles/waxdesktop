@@ -9,17 +9,16 @@
 .round-dropdown {
     padding: 2px;
 }
-.round-input {
-    background-color: transparent;
-    border: none;
-    outline: none;
-    color: white;
-    border-radius: 30px;
-    height: 40px;
-    width: 100%;
-    border: 2px solid #ff886d;
-    font-size: 20px;
-    padding-left: 20px;
+.round-input input {
+    background-color: transparent !important;
+    border: none !important;
+    outline: none !important;
+    color: white !important;
+    border-radius: 30px !important;
+    height: 40px !important;
+    width: 100% !important;
+    border: 2px solid #ff886d !important;
+    font-size: 23px !important;
 }
 .round-search-btn {
     position: absolute;
