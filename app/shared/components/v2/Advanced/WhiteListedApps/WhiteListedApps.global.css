@@ -20,50 +20,7 @@
     font-size: 20px;
     font-weight: 700;
 }
-.whiteListedApps-body .item-list-wrap {
-    padding: 30px 0;
-}
-.whiteListedApps-body .item-list-body {
-    background-color: #242b39;
-    border-radius: 20px;
-}
-.whiteListedApps-body .item-parent-wrap {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 15px;
-    border-radius: 20px;
-    box-shadow: 0px 3px rgba(0, 0, 0, 0.1);
-}
-.whiteListedApps-body .item-parent-left {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-.whiteListedApps-body .item-parent-right {
-    margin-right: 10px;
-}
-.whiteListedApps-body .item-parent-left:hover {
-    cursor: pointer;
-}
-.whiteListedApps-body .item-parent-left img {
-    width: 70px;
-    height: 70px;
-    margin-right: 20px;
-}
-.whiteListedApps-body .item-parent-left div:first-child {
-    font-size: 20px;
-    font-weight: bold;
-}
-.whiteListedApps-body .item-child-wrap {
-    padding: 15px;
-}
-.item-child-inner .item-child-group {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin: 10px 0;
-}
+
 /* customize round-checkbox */
 .round-checkbox .ui.checkbox .box:before, .round-checkbox .ui.checkbox label:before {
     border: 2px solid #ff886d !important;
