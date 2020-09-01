@@ -12,6 +12,9 @@
 }
 .guilds-section {
     position: relative;
+    padding-bottom: 600px;
+    max-width: 1000px;
+    margin: auto;
 }
 .guilds-section .right-badge {
     position: absolute;
@@ -26,45 +29,7 @@
     min-width: 500px;
     overflow-x: visible;
 }
-.guilds-list-wrap {
-    display: flex;
-    align-items: center;
-    padding: 10px 0;
-}
-.guilds-list-wrap .list-index {
-    font-size: 20px;
-}
-.guilds-list-wrap .list-logo {
-    width: 30px;
-    height: 30px;
-    margin-left: 10px;
-    margin-right: 10px;
-}
-.guilds-list-wrap .list-title {
-    font-size: 16px;
-    font-weight: 700;
-}
-.guilds-list-wrap .list-btn {
-    background-color: #473436;
-    color: #ff886d;
-    padding: 6px 10px;
-    border-radius: 6px;
-    margin-left: 20px;
-    margin-right: 20px;
-}
-.guilds-list-wrap .list-img-group {
-    display: flex;
-    align-items: center;
-}
-.guilds-list-wrap .list-img-group img {
-    margin-right: 10px;
-}
-.guilds-list-wrap .list-number {
-    font-size: 16px;
-}
-.guilds-list-wrap .common-checkbox {
-    margin-left: 20px;
-}
+
 /* common-checkbox */
 .common-checkbox .ui.checkbox .box:before, .ui.checkbox label:before {
     border: 2px solid #ff886d !important;
