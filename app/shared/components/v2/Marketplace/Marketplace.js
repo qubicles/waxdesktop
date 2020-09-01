@@ -106,6 +106,14 @@ class Marketplace extends React.Component {
                 <div className="dashboard-body-section">
                     <div className="market-search-section">
                         <div className="round-search-bar">
+                            <Form.Field
+                                    className="round-input"
+                                    control={Input}
+                                    fluid
+                                    name={"owner"}
+                                    onChange={this.onChange}
+                                    defaultValue={owner}
+                                />
                             <div className="round-search-btn">
                                 <img src={require('../../../../renderer/assets/images/marketplace/Group543.png')} />
                             </div>
