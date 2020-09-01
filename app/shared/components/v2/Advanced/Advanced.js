@@ -5,6 +5,8 @@ import { Card, Image, Divider, Tab, Button, Dropdown, Radio, Menu, Checkbox} fro
 import { connect } from 'react-redux';
 import Balance from "../Dashboard/Balance/Balance"
 import "./Advanced.global.css"
+import AdvancedMainCard from "./AdvancedMainCard/AdvancedMainCard"
+
 
 class Advanced extends React.Component {
 	constructor(props) {
@@ -37,38 +39,7 @@ class Advanced extends React.Component {
 				<div className="dashboard-body-section">
                     <div className="advanced-section">
                         <div className="advanced-title">Advanced</div>
-                        <div className="advanced-card-wrap">
-                            <div className="advanced-card" style={{backgroundImage:"url('../../renderer/assets/images/marketplace/ScrollGroup1.png')"}} onClick={this.goStaking}>
-                                <div className="advanced-card-title">
-                                    <div>Wallet Settings</div>
-                                </div>
-                            </div>
-                            <div className="advanced-card" style={{backgroundImage:"url('../../renderer/assets/images/marketplace/ScrollGroup2.png')"}} onClick={this.goCustomPermissions}>
-                                <div className="advanced-card-title">
-                                    <div>Custom Permissions</div>
-                                </div>
-                            </div>
-                            <div className="advanced-card" style={{backgroundImage:"url('../../renderer/assets/images/marketplace/ScrollGroup13.png')"}} onClick={this.goWhiteListedApps}>
-                                <div className="advanced-card-title">
-                                    <div>Whitelisted Apps</div>
-                                </div>
-                            </div>
-                            <div className="advanced-card" style={{backgroundImage:"url('../../renderer/assets/images/marketplace/ScrollGroup4.png')"}} onClick={this.goDelegatedResources}>
-                                <div className="advanced-card-title">
-                                    <div>Delegated Resources</div>
-                                </div>
-                            </div>
-                            <div className="advanced-card" style={{backgroundImage:"url('../../renderer/assets/images/marketplace/ScrollGroup5.png')"}} onClick={this.goSmartContractAccount}>
-                                <div className="advanced-card-title">
-                                    <div>Smart Contracts</div>
-                                </div>
-                            </div>
-                            <div className="advanced-card" style={{backgroundImage:"url('../../renderer/assets/images/marketplace/Group1732.png')"}} onClick={this.goConnectLedger}>
-                                <div className="advanced-card-title">
-                                    <div>Connect Ledger</div>
-                                </div>
-                            </div>
-                        </div>
+                        <AdvancedMainCard history={this.props.history} />
                     </div>
                 </div>
                 {/* <Balance /> */}
