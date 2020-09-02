@@ -1,0 +1,59 @@
+.connectLedger-body {
+    padding-top: 20px;
+    max-width: 800px;
+    margin: auto;
+}
+.connectLedger-body .w-title {
+    color: #ff886d;
+    font-size: 20px;
+    font-weight: 700;
+}
+.connectLedger-body .ledger-content {
+    padding: 20px;
+    margin: 20px 0;
+    background-color: #242b39;
+    border-radius: 25px;
+}
+.ledger-content .ledger-content-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.ledger-content-header-left {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.ledger-content-header-left div {
+    font-size: 20px;
+    font-weight: bold;
+    margin-left: 10px;
+}
+.ledger-content-body {
+    padding-top: 15px;
+}
+.ledger-content-body p:first-child {
+    font-size: 16px;
+    font-weight: bold;
+}
+.connectLedger-body .seller-input {
+    padding-top: 30px;
+    padding-bottom: 20px;
+}
+.connectLedger-body .seller-input .common-input::placeholder {
+    color: #707070;
+    font-size: 16px;
+}
+.connectLedger-body .seller-input .input-title {
+    color: white;
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+.connectLedger-body .delegate-btn {
+    padding: 10px 15px !important;
+    background-color: #ff886d;
+    color: white;
+    font-size: 16px;
+    font-weight: 700;
+}

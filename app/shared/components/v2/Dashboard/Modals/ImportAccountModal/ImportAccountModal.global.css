@@ -1,0 +1,12 @@
+.importAccountModal-body .private-key-section {
+    text-align: center;
+    padding: 50px;
+    border-radius: 20px;
+    background-color: #242b39;
+    color: #707070;
+}
+.importModal-label {
+    padding: 10px 0;
+    padding-left: 20px;
+    color: white;
+}

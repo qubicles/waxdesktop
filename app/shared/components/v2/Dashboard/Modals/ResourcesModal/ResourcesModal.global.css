@@ -1,0 +1,88 @@
+/* semantic tab and modal radius */
+.ui.active.modal {
+  border-radius: 30px !important;
+}
+.ui.modal>.icon:first-child+*, .ui.modal>:first-child:not(.icon) {
+  border-radius: 20px !important;
+  background-color: #191f28 !important;
+  padding-left: 40px !important;
+  padding-right: 40px !important;
+}
+.resourcesModal .ui.tab.active, .ui.tab.open {
+  background-color: #191f28 !important;
+}
+/* resource-choose-section */
+.resource-choose-section {
+  display: flex;
+  padding-top: 30px;
+  padding-bottom: 20px;
+}
+/* resource choose dropdown */
+.resource-choose-dropdown {
+  width: 25% !important;
+  min-width: unset !important;
+  border-radius: 20px !important;
+  color: white !important;
+  background-color: #ff886d !important;
+  border:1px solid #ff886d !important;
+  padding-top: 18px !important;
+}
+.resource-choose-dropdown .item {
+  color: white !important;
+  border: unset !important;
+}
+.resource-choose-dropdown .icon, .resource-choose-dropdown .text {
+  color: white !important;
+  margin: auto !important;
+}
+.resource-choose-dropdown .visible {
+  font-weight: 100 !important;
+  background-color: #ff886d !important;
+  border-bottom-left-radius: 15px !important;
+  border-bottom-right-radius: 15px !important;
+  border: 0 !important;
+  width: 100% !important;
+}
+/* input-button-wrap */
+.input-button-wrap {
+  position: relative;
+  width: 100%;
+  margin-left: 10px;
+}
+.input-button-wrap .circle-btn-wrap {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: rgba(255, 136, 109, .4);
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+/* common-input section */
+.common-input {
+  background-color: rgba(255,255,255,.08) !important;
+  border: 0 !important;
+  height: 50px !important;
+  width: 100% !important;
+  border-radius: 30px !important;
+  color: white !important;
+  font-size: 20px !important;
+}
+.common-input:focus {
+  outline: none !important;
+}
+.common-input::placeholder {
+  color: white !important;
+  font-size: 20px !important;
+  padding-left: 20px !important;
+}
+/* resources-delegate-link */
+.resources-delegate-link {
+  color: #707070;
+  font-size: 18px;
+  text-align: center;
+  padding: 20px;
+}

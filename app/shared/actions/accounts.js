@@ -5,7 +5,7 @@ import eos from './helpers/eos';
 import eos2 from './helpers/eos2';
 import { getRexBalance } from './rex';
 import EOSAccount from '../utils/EOS/Account';
-import { getContactByPublicKey } from './globals';
+import { getContactByPublicKey, getPriceFeedGecko } from './globals';
 const ecc = require('eosjs-ecc');
 import { payforcpunet } from './helpers/eos';
 
@@ -331,7 +331,13 @@ export function getCurrencyBalance(account, requestedTokens = false) {
       });
       forEach(selectedTokens, (namespace) => {
         const [contract, symbol] = namespace.split(':');
-        eos(connection).getCurrencyBalance(contract, account, symbol).then((results) =>
+        eos(connection).getCurrencyBalance(contract, account, symbol).then((results) =>{
+          if (settings.blockchain.tokenSymbol === symbol) {
+            dispatch(getPriceFeedGecko("WAX", "USD", settings.blockchain.tokenSymbol));
+          } else {
+            dispatch(getPriceFeedGecko(symbol, "USD"));
+          }
+          
           dispatch({
             type: types.GET_ACCOUNT_BALANCE_SUCCESS,
             payload: {
@@ -341,7 +347,8 @@ export function getCurrencyBalance(account, requestedTokens = false) {
               symbol,
               tokens: formatBalances(results, symbol)
             }
-          }))
+          })}
+          )
           .catch((err) => dispatch({
             type: types.GET_ACCOUNT_BALANCE_FAILURE,
             payload: { err, account_name: account }
@@ -512,6 +519,22 @@ export function claimVotingRewards() {
   };
 }
 
+export function getNFTBalance(account, contract) {
+  return (dispatch: () => void, getState) => {
+    const {
+      connection,
+      settings
+    } = getState();
+    if (account && (settings.node || settings.node.length !== 0)) {
+        const symbol = settings.blockchain.tokenSymbol;
+        eos(connection).getCurrencyBalance(contract, account, symbol).then((results) =>{
+          console.log("kkkk", results)
+        })
+        .catch((err) => err);
+    }
+  };
+}
+
 export default {
   checkAccountAvailability,
   checkAccountExists,
@@ -523,5 +546,6 @@ export default {
   getAccountByKey,
   getActions,
   getCurrencyBalance,
-  refreshAccountBalances
+  refreshAccountBalances,
+  getNFTBalance
 };

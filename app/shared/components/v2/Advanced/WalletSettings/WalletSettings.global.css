@@ -1,0 +1,76 @@
+.walletSettings-header {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+}
+.walletSettings-header .delegate-btn {
+    padding: 8px 15px !important;
+    background-color: rgba(255, 136, 109, 0.3);
+    color: rgba(170, 148, 147, 1);
+    font-size: 16px;
+    font-weight: 700;
+}
+.walletSettings-header img {
+    width: 18px;
+    height: 12px;
+}
+.walletSettings-header img:hover {
+    cursor: pointer;
+}
+.walletSettings-body {
+    padding: 15px 0;
+    max-width: 800px;
+    margin: auto;
+}
+.walletSettings-body .w-title {
+    color: #ff886d;
+    font-size: 20px;
+    font-weight: 700;
+}
+.w-form {
+    padding-top: 20px;
+}
+.w-form .seller-input {
+    margin: 20px 0;
+}
+.w-form .seller-input .input-title {
+    color: white;
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+.w-form .seller-input .common-input::placeholder {
+    color: white;
+}
+.w-form .seller-input .common-input {
+    font-size: 16px;
+}
+.btn-wrap div {
+    padding: 10px;
+    color: white;
+    font-size: 16px;
+    display: inline-block;
+    border-radius: 10px;
+}
+.btn-wrap .btn-left-round {
+    background-color: #ff886d;
+    font-weight: 700;
+    border: 1px solid #ff886d;
+}
+.btn-wrap .btn-right-round {
+    background-color: #242b39;
+    font-weight: 600;
+    border: 1px solid #707070;
+    margin-left: 20px;
+}
+.w-img-wrap {
+    position: relative;
+}
+.w-input-img {
+    width: 18px;
+    height: 14px;
+    position: absolute;
+    top: 50px;
+    right: 20px;
+}

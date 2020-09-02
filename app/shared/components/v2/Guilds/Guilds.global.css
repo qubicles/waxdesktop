@@ -1,0 +1,45 @@
+/* customize semantic UI tab  */
+.ui.tab.active, .ui.tab.open {
+    background-color: #191f28;
+}
+.ui.secondary.pointing.menu .item {
+    color: #707070;
+    font-size: 20px;
+    font-weight: 700;
+}
+.ui.secondary.pointing.menu .active.item {
+    color: white;
+}
+.guilds-section {
+    position: relative;
+    max-width: 1000px;
+    margin: auto;
+}
+.guilds-section .right-badge {
+    position: absolute;
+    top: 20px;
+    right: 0;
+}
+.guilds-tab-body {
+    display: flex;
+    flex: auto;
+}
+.guilds-tab-body .guilds-list-section {
+    min-width: 500px;
+    overflow-x: visible;
+}
+
+/* common-checkbox */
+.common-checkbox .ui.checkbox .box:before, .ui.checkbox label:before {
+    border: 2px solid #ff886d !important;
+    background-color: #473436 !important;
+}
+.common-checkbox .ui.checkbox .box:after, .ui.checkbox label:after {
+    background-color: #473436 !important;
+    border: 2px solid #ff886d !important;
+    color: #ff886d !important;
+}
+.common-checkbox .ui.checkbox input:checked~.box:after, .ui.checkbox input:checked~label:after {
+    border-radius: .21428571rem !important;
+}
+

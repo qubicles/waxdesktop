@@ -21,11 +21,13 @@ import settings from './settings';
 import system from './system';
 import tables from './tables';
 import tfvoting from './tfvoting';
+import tokens from './tokens'
 import transaction from './transaction';
 import validate from './validate';
 import wallet from './wallet';
 import wallets from './wallets';
 import wapii from '../../wallet-integration/wapii.reducer';
+import assets from './assets';
 
 const rootReducer = combineReducers({
   accounts,
@@ -48,11 +50,13 @@ const rootReducer = combineReducers({
   system,
   tables,
   tfvoting,
+  tokens,
   transaction,
   validate,
   wallet,
   wallets,
-  wapii
+  wapii,
+  assets
 });
 
 export default rootReducer;

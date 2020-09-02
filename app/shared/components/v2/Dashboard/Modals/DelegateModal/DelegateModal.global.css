@@ -1,0 +1,50 @@
+.modal-header {
+  padding: 20px 20px;
+  text-align: center;
+  font-size: 25px;
+}
+.modal-header span:first-child {
+  color: #ff886d;
+}
+.modal-header span:last-child {
+  color: white;
+}
+.modal-body .input-select {
+  padding-top: 10px;
+  position: relative;
+}
+.modal-body input {
+  border-radius: 15px;
+}
+.modal-body .resource-choose-dropdown {
+  position: absolute;
+  right: 0%;
+  top: 10px;
+  height: 50px !important;
+}
+.modal-body .input-select .d-title {
+  font-size: 14px;
+  padding-top: 15px;
+  padding-bottom: 30px;
+}
+.modal-body .input-select .d-title span:first-child {
+  color: #707070;
+}
+.modal-body .input-select .d-title span:last-child {
+  color: white;
+}
+.delegate-btn {
+  text-align: center;
+  color: white;
+  border-radius: 20px;
+  background-color: #ff886d;
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+.delegate-btn:hover {
+  cursor: pointer;
+}
+.delegate-btn img {
+  margin-left: 10px;
+  width: 20px;
+}

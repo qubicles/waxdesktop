@@ -1,0 +1,42 @@
+.progressbar-container {
+    position: relative;
+}
+.progressbar-container .progressbar-label {
+    display: flex;
+    align-items: center;
+    justify-content: space-between
+}
+.progressbar-label .left-label {
+    color: white;
+}
+.progressbar-label .right-label {
+    color: #707070;
+    font-weight: 200;
+}
+.progressbar-container .progressbar-inner-label {
+    position: absolute;
+    top: 53%;
+    left: 85%;
+    font-size: 12px;
+    color: white;
+}
+.progressbar-container .progress {
+    border-radius: 20px;
+    border: 1px solid #242b39;
+    background-color: #242b39;
+    margin-top: 0px;
+    margin-bottom: 15px;
+}
+.progressbar-container .progress .bar {
+    border-radius: 20px;
+}
+
+.ui.red.progress .bar{
+    background-color: #ff886d;
+}
+.ui.yellow.progress .bar {
+    background-color: #ffc06c;
+}
+.ui.green.progress .bar {
+    background-color: #6dff9a;
+}

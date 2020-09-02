@@ -78,9 +78,17 @@ export default function globals(state = initialState, action) {
       });
     }
     case types.GET_PRICEFEED_SUCCESS: {
+      let data = [];
+      if (state.pricefeed && state.pricefeed[action.payload.quote]) {
+        const pricefeedIndex = state.pricefeed[action.payload.quote].findIndex(price => price.base === action.payload.base);
+        if (pricefeedIndex > -1) {
+          state.pricefeed[action.payload.quote].splice(pricefeedIndex, 1);
+        }
+        data = [...state.pricefeed[action.payload.quote], action.payload];
+      }
       return Object.assign({}, state, {
         pricefeed: Object.assign({}, state.pricefeed, {
-          [action.payload.quote]: action.payload
+          [action.payload.quote]: data
         })
       });
     }
@@ -119,8 +127,8 @@ export default function globals(state = initialState, action) {
     case types.GET_CHARGECONTACT_ENROLLED:
     case types.GET_CHARGECONTACT_NOTENROLLED: {
       return Object.assign({}, state, {
-          chargecard: action.payload
-        });
+        chargecard: action.payload
+      });
     }
     case types.SYSTEM_GET_PROFILE_SUCCESS: {
       return Object.assign({}, state, {

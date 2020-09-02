@@ -1,0 +1,70 @@
+.ui.dimmer {
+    padding: 0 !important;
+}
+.modals.dimmer .ui.scrolling.modal {
+    margin: auto !important;
+}
+
+.createAccountModal.ui.active.modal {
+    border-radius: unset !important;
+    height: 100% !important;
+    background-color: #191f28 !important;
+    position: absolute;
+    top: 0%;
+    right: 0%;
+    padding-top: 30px !important;
+}
+.createAccountModal.ui.modal>.icon:first-child+*, .createAccountModal.ui.modal>:first-child:not(.icon) {
+    border-radius: unset !important;
+}
+.custom-textarea-section {
+    padding: 10px 0;
+    position: relative;
+}
+.custom-textarea-section .custom-textarea-label {
+    color: white;
+    padding: 10px 0;
+}
+.custom-textarea {
+    background-color: #242b39;
+    border-radius: 20px;
+    padding: 15px;
+}
+.custom-textarea textarea {
+    width: 60%;
+    background-color: #242b39;
+    border: none;
+    color: white;
+    resize: none;
+    outline: none;
+}
+.custom-textarea textarea::placeholder {
+    color: white;
+}
+.custom-copy-btn {
+    position: absolute;
+    top: 50px;
+    right: 0;
+    border-radius: 17px;
+    background-color: #473436;
+    padding: 17px;
+}
+.createAccountModal .custom-input-group {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+}
+.createAccountModal .c-input-left {
+    width: 46%;
+}
+.c-input-left .c-input-title, .input-title {
+    color: white;
+    padding: 5px;
+}
+.account-name-section input::placeholder {
+    color: #707070;
+}
+.createAccountModal .delegate-btn {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
