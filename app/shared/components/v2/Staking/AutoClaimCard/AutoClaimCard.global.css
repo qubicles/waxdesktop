@@ -1,0 +1,60 @@
+/* staking card radio */
+.s-custom-radio .ui.toggle.checkbox .box:before, .ui.toggle.checkbox label:before {
+    background-color: white !important;
+    border: none !important;
+}
+.s-custom-radio .ui.checkbox input:indeterminate~.box:after, .ui.checkbox input:indeterminate~label:after {
+    background-color: #242b39 !important;
+    content: '\00d7' !important;
+    color: white !important;
+    font-size: 16px;
+    border: none !important;
+    width: 18px !important;
+    height: 18px !important;
+    top: 1px !important;
+    left: 1px !important;
+}
+
+.s-custom-radio .ui.toggle.checkbox input:focus~.box:before, .ui.toggle.checkbox input:focus~label:before {
+    background-color: white !important;
+}
+.s-custom-radio .ui.toggle.checkbox .box:hover::before, .ui.toggle.checkbox label:hover::before {
+    background-color: white !important;
+}
+.s-custom-radio .ui.toggle.checkbox input:focus:checked~.box:before, .s-custom-radio .ui.toggle.checkbox input:focus:checked~label:before {
+    background-color: #ff886d !important;
+}
+.s-custom-radio .ui.toggle.checkbox input:focus:checked~.box:before, .s-custom-radio .ui.toggle.checkbox input:focus:checked~label:before {
+    background-color: #ff886d !important;
+}
+.s-custom-radio .ui.toggle.checkbox input:checked~.box:after, .ui.toggle.checkbox input:checked~label:after {
+    content: "\2713" !important;
+    color: #ff886d;
+    background-color: #242b39 !important;
+    border-radius: 50% !important;
+    border-color: #ff886d !important;
+}
+
+.staking-card-right {
+    margin: 10px;
+    padding: 20px;
+    background-color: #242b3d;
+    border-top: 8px solid white;
+    border-radius: 20px;
+    color: white;
+    font-size: 20px;
+    font-weight: 700;
+    display: inline-block;
+    min-width: 350px;
+}
+.staking-card-radio {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.s-card-des {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 20px;
+}

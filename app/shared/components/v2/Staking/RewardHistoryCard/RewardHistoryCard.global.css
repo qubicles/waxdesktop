@@ -1,0 +1,55 @@
+
+.staking-history-board {
+    padding: 20px;
+    margin: 10px;
+    background-color: #242b3d;
+    border-radius: 20px;
+    max-width: 510px;
+    display: inline-block;
+}
+.staking-history-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.staking-history-header .header-left div:first-child {
+    font-size: 20px;
+    text-align: left;
+    margin-bottom: 8px;
+}
+.staking-history-header .header-left div:last-child {
+    font-size: 16px;
+    color: #ff886d;
+    font-weight: 500;
+}
+.staking-history-header .header-right div:first-child {
+    font-size: 14px;
+    font-weight: 500;
+    text-align: left;
+    color: #707070;
+    margin-bottom: 5px;
+}
+.staking-history-header .header-right div:last-child {
+    font-size: 18px;
+    font-weight: 700;
+}
+.staking-history-body {
+    display: flex;
+    padding-top: 30px;
+}
+.staking-history-img {
+    width: 70%;
+    margin-right: 20px;
+}
+.history-body-right .history-body-des {
+    padding-top: 5px;
+}
+.history-body-right .history-body-des div:first-child {
+    font-size: 14px;
+    font-weight: 500;
+    color: #707070;
+    text-align: left;
+}
+.history-body-right .history-body-des div:last-child {
+    font-size: 18px;
+}

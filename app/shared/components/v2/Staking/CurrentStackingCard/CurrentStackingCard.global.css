@@ -1,0 +1,38 @@
+.staking-body .staking-card-left {
+    padding: 20px;
+    background-color: #242b3d;
+    border-top: 8px solid #ff886d;
+    border-radius: 20px;
+    margin: 10px;
+    display: inline-block;
+    min-width: 350px;
+}
+.staking-card-logo {
+    display: flex;
+    align-items: center;
+}
+.staking-card-logo img {
+    width: 60px;
+    height: 60px;
+    margin-right: 20px;
+}
+.staking-card-des div:first-child{
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 7px;
+}
+.staking-card-des div:last-child{
+    font-size: 16px;
+    font-weight: 700;
+    color: #ff886d;
+}
+.stake-card-btn {
+    margin-top: 30px;
+    border-radius: 30px;
+    width: 100%;
+    padding: 20px;
+    text-align: center;
+    font-size: 20px;
+    font-weight: 700;
+    background-color: #ff886d;
+}
