@@ -42,6 +42,8 @@
 }
 .w-form .seller-input .common-input::placeholder {
     color: white;
+    font-weight: 600;
+    font-size: 16px !important;
 }
 .w-form .seller-input .common-input {
     font-size: 16px;
