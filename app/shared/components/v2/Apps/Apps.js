@@ -20,7 +20,7 @@ class Apps extends React.Component {
           <RecentlyApps />
           <DecentralizedApps />
         </div>
-        <Balance />
+        {/* <Balance /> */}
       </div>
     );
   }

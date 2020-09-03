@@ -27,20 +27,21 @@
 }
 
 .ui-common-input input {
-    background-color: rgba(255,255,255,.08) !important;
+    background-color: #242b39 !important;
     border: 0 !important;
     height: 50px !important;
     width: 100% !important;
     border-radius: 30px !important;
     color: white !important;
     font-size: 20px !important;
+    font-weight: bold;
 }
 
 .ui-common-input input:focus {
     outline: none !important;
 }
 .ui-common-input input::placeholder {
-    color: white !important;
     font-size: 20px !important;
-    /* padding-left: 20px !important; */
+    font-family: montserrat;
+    font-weight: bold;
 }
