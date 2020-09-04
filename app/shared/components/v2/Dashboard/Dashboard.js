@@ -126,7 +126,7 @@ class Home extends React.Component {
 	
 	render() {
 		const { dashboardTokenModal, resourcesModal, delegateModal, cryptoModal, swapTokenModal, importAccountModal, buyWaxModal, createAccountModal, sellAssetModal } = this.state
-		const { wallet, actions, history, location, settings, balances, globals, accounts } = this.props
+		const { wallet, actions, history, location, settings, balances, globals, accounts, system } = this.props
 
 		const statsFetcher = new StatsFetcher(settings.account, balances, settings, null, null);
 
@@ -153,7 +153,6 @@ class Home extends React.Component {
 					openCryptoModal={this.toggleCryptoModal}
 					openSwapTokenModal={this.toggleSwapTokenModal}
 					openBuyWaxModal={this.toggleBuyWaxModal}
-					toggleCryptoModal={this.toggleCryptoModal}
 				/>
 				{dashboardTokenModal &&
 					<DashboardTokenModal
@@ -216,13 +215,19 @@ class Home extends React.Component {
 						actions={actions}
 						location={location}
 					/>}
-				<CreateAccountModal
-					closeModal={this.toggleCreateAccountModal}
-					modalOpen={createAccountModal}
-					history={history}
-					actions={actions}
-					location={location}
-				/>
+				{createAccountModal && 
+					<CreateAccountModal
+						settings={settings}
+						balances={balances}
+						globals={globals}
+						accounts={accounts}
+						system={system}
+						closeModal={this.toggleCreateAccountModal}
+						modalOpen={createAccountModal}
+						history={history}
+						actions={actions}
+						location={location}
+					/>}
 				<SellAssetModal
 					closeModal={this.toggleSellAssetModal}
 					modalOpen={sellAssetModal}
@@ -249,7 +254,8 @@ const mapStateToProps = (state) => {
 		balances: state.balances,
 		settings: state.settings,
 		globals: state.globals,
-		accounts: state.accounts
+		accounts: state.accounts,
+		system: state.system
 	};
 }
 

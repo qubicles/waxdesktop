@@ -528,7 +528,6 @@ export function getNFTBalance(account, contract) {
     if (account && (settings.node || settings.node.length !== 0)) {
         const symbol = settings.blockchain.tokenSymbol;
         eos(connection).getCurrencyBalance(contract, account, symbol).then((results) =>{
-          console.log("kkkk", results)
         })
         .catch((err) => err);
     }

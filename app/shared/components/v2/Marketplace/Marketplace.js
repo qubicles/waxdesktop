@@ -10,31 +10,22 @@ import * as AssetsActions from "../../../actions/assets";
 import "./Marketplace.global.css"
 
 const options = [
-    { key: 1, text: 'Most Recent', value: 1 },
-    { key: 2, text: 'Choice 2', value: 2 },
-    { key: 3, text: 'Choice 3', value: 3 },
+    { key: "created", text: "Most Recent", value: "created" },
+    { key: "updated", text: "Recently Updated", value: "updated" },
+    { key: "price", text: "Price", value: "price" },
 ]
-
-const MarketplaceDropdown = () => (
-    <Dropdown
-        clearable
-        options={options}
-        defaultValue={1}
-        selection
-        className="round-dropdown"
-    />
-)
 
 
 class Marketplace extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
+            match: "",
             owner: "",
             page: 1,
             limit: 100,
             order: "desc",
-            sort: "asset_id"
+            sort: "created"
         }
     }
 
@@ -44,13 +35,13 @@ class Marketplace extends React.Component {
 
     getAllAssets = () => {
         const { actions: { getAssets } } = this.props;
-        const { owner, page, limit, order, sort } = this.state;
-        getAssets({ owner, page, limit, order, sort });
+        const { match, owner, page, limit, order, sort } = this.state;
+        getAssets({ match, owner, page, limit, order, sort });
     }
 
     onChange = debounce((e, { name, value }) => {
         this.setState({
-            owner: value
+            match: value
         }, () => {
             this.getAllAssets();
         });
@@ -64,26 +55,26 @@ class Marketplace extends React.Component {
     }
 
     renderAssets = () => {
-        const { owner } = this.state;
+        const { match } = this.state;
         const { assets: { isAssetsLoading, assetsList } } = this.props;
         if (isAssetsLoading) {
             return <div>Loading...</div>
         }
 
         if (assetsList && assetsList.data.length === 0) {
-            return <div>No data found for "<b>{owner}</b>", Please try again!</div>
+            return <div>No data found for "<b>{match}</b>", Please try again!</div>
         }
 
         return assetsList && assetsList.data.map(asset =>
-            <Card className="trending-assets-card" key={`assets-${asset.asset_id}`}>
-                <Image src={`https://ipfs.io/ipfs/${asset.data.img}`} />
-                <Card.Header className="t-card-title">{asset.name}</Card.Header>
+            <Card className="trending-assets-card" key={`assets-${asset.offer_id}`}>
+                <Image src={`https://ipfs.io/ipfs/${asset.collection.img}`} />
+                <Card.Header className="t-card-title">{asset.collection.name}</Card.Header>
                 <Card.Meta>
-                    <div className="t-card-author">{asset.owner}</div>
+                    <div className="t-card-author">{asset.collection.author}</div>
                     <div className="t-card-price">
                         <Image src={require('../../../../renderer/assets/images/dashboard/Group47.png')} />
                         <div className="t-card-des">
-                            25,000 KARMAR
+                            {asset.listing_price} {asset.listing_symbol}
                         </div>
                     </div>
                     <div className="card-btn-group">
@@ -95,9 +86,28 @@ class Marketplace extends React.Component {
 
     }
 
+    handleChange = (e, { name, value }) => {
+        this.setState({
+            sort: value
+        }, () => {
+            this.getAllAssets();
+        })
+    }
+
     render() {
-        const { radioChange, owner } = this.state;
+        const { radioChange, match, sort } = this.state;
         const displayAssets = this.renderAssets();
+
+        const MarketplaceDropdown = () => (
+            <Dropdown
+                clearable
+                options={options}
+                defaultValue={sort}
+                selection
+                className="round-dropdown"
+                onChange={this.handleChange}
+            />
+        )
 
         return (
             <div className="dashboard-container">
@@ -108,9 +118,9 @@ class Marketplace extends React.Component {
                                 className="round-input"
                                 control={Input}
                                 fluid
-                                name={"owner"}
+                                name={"match"}
                                 onChange={this.onChange}
-                                defaultValue={owner}
+                                defaultValue={match}
                             />
                             <div className="round-search-btn">
                                 <img src={require('../../../../renderer/assets/images/marketplace/Group543.png')} />

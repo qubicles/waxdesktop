@@ -28,15 +28,16 @@
 .custom-textarea {
     background-color: #242b39;
     border-radius: 20px;
-    padding: 15px;
+    /* padding: 15px; */
 }
 .custom-textarea textarea {
-    width: 60%;
-    background-color: #242b39;
-    border: none;
-    color: white;
-    resize: none;
-    outline: none;
+    width: 80% !important;
+    background-color: #242b39 !important;
+    border: none !important;
+    color: white !important;
+    resize: none !important;
+    outline: none !important;
+    border-radius: 20px !important; 
 }
 .custom-textarea textarea::placeholder {
     color: white;
@@ -48,6 +49,7 @@
     border-radius: 17px;
     background-color: #473436;
     padding: 17px;
+    cursor: pointer;
 }
 .createAccountModal .custom-input-group {
     display: flex;
@@ -67,4 +69,27 @@
 .createAccountModal .delegate-btn {
     margin-top: 20px;
     margin-bottom: 20px;
+}
+
+.custom-textarea .error {
+    border: 1px solid #ff886d !important;
+    border-radius: 20px !important;
+}
+
+.ui-custom-account-input input {
+    background-color: rgba(255,255,255,.08) !important;
+    border: 0 !important;
+    height: 50px !important;
+    width: 100% !important;
+    border-radius: 30px !important;
+    color: white !important;
+    font-size: 20px !important;
+}
+.ui-custom-account-input input:focus {
+    outline: none !important;
+}
+.ui-custom-account-input input::placeholder {
+    color: white !important;
+    font-size: 20px !important;
+    padding-left: 20px !important;
 }
