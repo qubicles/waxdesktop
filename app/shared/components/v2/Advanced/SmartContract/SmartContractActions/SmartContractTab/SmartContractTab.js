@@ -9,7 +9,9 @@ import {
   Dropdown,
   Radio,
   Menu,
-  Checkbox
+  Checkbox,
+  Form,
+  Input
 } from "semantic-ui-react";
 import { connect } from "react-redux";
 import Balance from "../../../../Dashboard/Balance/Balance";
@@ -58,7 +60,13 @@ class SmartContractTab extends React.Component {
             </div>
             <div className="seller-input">
               <div className="input-title">Action Parameters</div>
-              <input type="text" className="common-input" placeholder="Owner" />
+              <Form.Field
+                className="ui-common-input"
+                placeholder="owner"
+                required
+                autoFocus
+                control={Input}
+              />
             </div>
             <div className="delegate-btn">
               Load Contract
@@ -96,10 +104,12 @@ class SmartContractTab extends React.Component {
             </div>
             <div className="seller-input">
               <div className="input-title">Table Scope (Account Name)</div>
-              <input
-                type="text"
-                className="common-input"
+              <Form.Field
+                className="ui-common-input"
                 placeholder="captainkama"
+                required
+                autoFocus
+                control={Input}
               />
             </div>
             <div className="delegate-btn">Load Table</div>
