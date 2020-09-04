@@ -1,9 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from 'react-router-dom'
 import "./SideBar.global.css";
 import { Dropdown } from "semantic-ui-react";
+import { connect } from 'react-redux';
+import { bindActionCreators } from "redux";
 
-export default () => {
+import * as GlobalsActions from "../../../actions/globals";
+import * as AccountActions from "../../../actions/accounts";
+import * as SettingsActions from '../../../actions/settings';
+import * as TransferActions from '../../../actions/transfer';
+import * as CreateAccountActions from '../../../actions/createaccount';
+
+import CreateAccountModal from "../Dashboard/Modals/CreateAccountModal/CreateAccountModal";
+
+const SideBar = (props) => {
+    const [createAccountModal, toggleCreateAccountModal] = useState(false);
     const accountOption = [
         {
             text: 'Import Account',
@@ -12,7 +23,7 @@ export default () => {
         },
         {
             text: 'Create Account',
-            value: 'Create Account',
+            value: 'createAccount',
             image: { avatar: true, src: '../assets/images/dashboard/dashboard-create.png' },
         },
         {
@@ -31,6 +42,17 @@ export default () => {
             image: { avatar: true, src: '../assets/images/dashboard/ScrollGroup6.png' },
         },
     ];
+
+    const handleChange = (e, { name, value }) => {
+        switch (value) {
+            case "createAccount":
+                toggleCreateAccountModal(true);
+                break;
+            default:
+                return null;
+        }
+    }
+
     const DropdownExampleSelection = () => (
         <Dropdown
             fluid
@@ -40,6 +62,7 @@ export default () => {
             options={accountOption}
             className="left-nav-dropdown"
             defaultValue="elhfo.wam"
+            onChange={(e, data) => handleChange(e, data)}
         />
     );
     const menuOption = [
@@ -86,6 +109,8 @@ export default () => {
         </Link>
     )))
 
+    const { accounts, balances, connection, globals, settings, system, actions } = props;
+
     return (
         <div className="nav-section">
             <div className="logo-section">
@@ -110,6 +135,46 @@ export default () => {
             <div className="nav-select-section">
                 <DropdownExampleSelection />
             </div>
+            {createAccountModal && 
+				<CreateAccountModal
+					settings={settings}
+					balances={balances}
+					globals={globals}
+					accounts={accounts}
+                    system={system}
+                    connection={connection}
+					closeModal={()=>toggleCreateAccountModal(false)}
+					modalOpen={createAccountModal}
+					history={history}
+					actions={actions}
+					location={location}
+			    />}
         </div>
     )
 }
+
+const mapStateToProps = (state) => {
+	return {
+		balances: state.balances,
+		settings: state.settings,
+		globals: state.globals,
+		accounts: state.accounts,
+        system: state.system,
+        connection: state.connection,
+	};
+}
+
+const mapDispatchToProps = (dispatch) => {
+	return {
+		actions: bindActionCreators({
+			...AccountActions,
+			...GlobalsActions,
+			...SettingsActions,
+            ...TransferActions,
+            ...CreateAccountActions
+		}, dispatch)
+	};
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(SideBar);
+

@@ -15,7 +15,7 @@ class NFTPanes extends Component {
             page: 1,
             limit: 100,
             order: "desc",
-            sort: "asset_id"
+            sort: "created"
         }
     }
 
@@ -37,15 +37,15 @@ class NFTPanes extends Component {
         }
 
         const NFTAssets = assetsList && assetsList.data.map(asset =>
-            <Card className="trending-assets-card" key={`nft-token-${asset.asset_id}`}>
-                <Image src={`https://ipfs.io/ipfs/${asset.data.img}`} />
-                <Card.Header className="t-card-title">{asset.name}</Card.Header>
+            <Card className="trending-assets-card" key={`nft-token-${asset.offer_id}`}>
+                <Image src={`https://ipfs.io/ipfs/${asset.collection.img}`} />
+                <Card.Header className="t-card-title">{asset.collection.name}</Card.Header>
                 <Card.Meta>
-                    <div className="t-card-author">{asset.owner}</div>
+                    <div className="t-card-author">{asset.collection.author}</div>
                     <div className="t-card-price">
                         <Image src={require('../../../../../renderer/assets/images/dashboard/Group47.png')} />
                         <div className="t-card-des">
-                            25,000 KARMAR
+                        {asset.listing_price} {asset.listing_symbol}
                       </div>
                     </div>
                     <div className="card-btn-group">

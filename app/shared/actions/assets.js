@@ -6,7 +6,7 @@ export const getTrendingAssets = () => {
         const {
             settings
         } = getState();
-        return axios.get(`https://wax.api.atomicassets.io/atomicmarket/v1/stats/collections?collection_whitelisted=true&sort=volume&order=desc&symbol=WAX&page=1&limit=5`)
+        return axios.get(`https://wax.api.atomicassets.io/atomicmarket/v1/sales?page=1&limit=5&order=desc&sort=created`)
             .then(res => {
                 dispatch({
                     type: types.TRENDING_ASSETS_LIST,
@@ -16,7 +16,7 @@ export const getTrendingAssets = () => {
     };
 }
 
-export const getAssets = ({ owner, page = 1, limit = 100, order = "desc", sort = "asset_id" }) => {
+export const getAssets = ({ match, owner, page = 1, limit = 100, order = "desc", sort = "created" }) => {
     return (dispatch: () => void, getState) => {
         const {
             settings
@@ -24,7 +24,7 @@ export const getAssets = ({ owner, page = 1, limit = 100, order = "desc", sort =
         dispatch({
             type: types.ASSETS_LIST_REQUEST,
         });
-        return axios.get(`https://wax.api.atomicassets.io/atomicassets/v1/assets?match=${owner}&page=${page}&limit=${limit}&order=${order}&sort=${sort}`)
+        return axios.get(`https://wax.api.atomicassets.io/atomicmarket/v1/sales?owner=${owner}&match=${match}&page=${page}&limit=${limit}&order=${order}&sort=${sort}`)
             .then(res => {
                 dispatch({
                     type: types.ASSETS_LIST_SUCCESS,

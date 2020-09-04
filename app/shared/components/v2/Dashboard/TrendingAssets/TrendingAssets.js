@@ -24,16 +24,16 @@ class TrendingAssets extends React.Component {
                 return <div>Loading...</div>;
             }
 
-            return (trendingAssetsList.data.results.map((item, index) => (
+            return (trendingAssetsList.data.map((item, index) => (
                 <Card className="trending-assets-card" key={`trending-asset-${index}`}>
-                    <Image src={`https://ipfs.io/ipfs/${item.img}`} />
-                    <Card.Header className="t-card-title">{item.name}</Card.Header>
+                    <Image src={`https://ipfs.io/ipfs/${item.collection.img}`} />
+                    <Card.Header className="t-card-title">{item.collection.name}</Card.Header>
                     <Card.Meta>
-                        <div className="t-card-author">{item.author}</div>
+                        <div className="t-card-author">{item.collection.author}</div>
                         <div className="t-card-price">
                             <Image src={require('../../../../../renderer/assets/images/dashboard/Group47.png')} />
                             <div className="t-card-des">
-                                {item.market_fee} KARMAR
+                                {item.listing_price} {item.listing_symbol}
                             </div>
                         </div>
                         <Button className="trending-view-button" onClick={this.goMarketplace}>View Market</Button>
