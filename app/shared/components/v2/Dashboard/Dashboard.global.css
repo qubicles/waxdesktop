@@ -8,65 +8,7 @@
   width: 300px;
   background-color: #191f28;
 }
-/* left-nav bar section */
-.nav-section {
-  width: 250px;
-  padding: 25px 10px;
-}
-.nav-section .pin-wax {
-  font-size: 20px;
-  margin-bottom: 2px !important;
-  height: auto !important;
-}
-.nav-section .pin-desktop {
-  font-size: 10px;
-  margin-top: 0 !important;
-}
-.nav-section .logo-rect1 {
-  width: 35px;
-  height: 35px;
-  border-width: 2px;
-  border-radius: 4px;
-}
-.nav-section .logo-rect2 {
-  width: 35px;
-  height: 35px;
-  border-radius: 4px;
-  z-index: unset !important;
-}
-.nav-section .logo-rect1-wrap {
-  padding-left: 0 !important;
-}
-.nav-section .logo-rect2-wrap {
-  left: 15px;
-  padding-left: 0 !important;
-  z-index: unset !important;
-}
-.nav-section .logo-text-wrap {
-  padding: 10px;
-  margin-left: 0 !important;
-  padding-left: 0 !important;
-}
-.nav-items-section {
-  padding: 20px 0;
-}
-.nav-item-wrap {
-  display: flex;
-  padding: 20px;
-}
-.nav-item-wrap img {
-  display: block;
-  width: 25px;
-  height: 25px;
-}
-.nav-item-title {
-  color: white;
-  font-size: 20px;
-  font-weight: 500;
-  margin-left: 20px;
-  display: flex;
-  align-items: center;
-}
+
 /* nav-bar-select */
 .nav-select-section {
   padding-top: 200px;
@@ -124,91 +66,7 @@
   background-color: #191f28;
   min-height: 1100px;
 }
-/* trending Assets section */
-.trending-assets-section {
-  padding: 10px 0;
-  border-bottom: 1px solid rgba(234, 241, 248, 0.2);
-  overflow: hidden;
-}
 
-.trending-assets-header {
-  display: flex;
-  justify-content: space-between;
-}
-.trending-assets-title {
-  font-size: 25px;
-  font-weight: 700;
-}
-.trending-assets-section .trending-assets-view {
-  color: #ff886d;
-  font-size: 17px;
-  font-weight: 700;
-}
-.trending-assets-body {
-  padding: 35px 20px 25px 20px;
-}
-/* trending assets card section */
-.trending-assets-card {
-  text-align: center;
-  background-color: #242b39;
-  border-radius: 25px;
-  width: 170px;
-  margin: 10px;
-  padding: 10px;
-  display: inline-block;
-}
-.trending-assets-card .t-card-price {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-weight: 800;
-}
-.trending-assets-card .t-card-des {
-  margin-left: 6px;
-}
-.trending-assets-card .t-card-title {
-  font-size: 15px;
-  font-weight: 800;
-  padding: 5px 0;
-}
-.trending-assets-card .t-card-author {
-  padding-bottom: 8px;
-  color: #ff886d;
-  font-weight: bold;
-}
-.trending-assets-card button {
-  padding: 9px 30px;
-  border: none;
-  border-radius: 20px;
-  background-color: rgba(255, 136, 109, 0.2);
-  color: #ff886d;
-  margin-top: 10px;
-}
-/* recommended app section */
-.recommended-apps-section {
-  padding: 10px 0;
-  border-bottom: 1px solid rgba(234, 241, 248, 0.2);
-}
-.recommended-apps-header {
-  display: flex;
-  justify-content: space-between;
-}
-.recommended-apps-title {
-  font-size: 20px;
-  font-weight: 700;
-}
-
-/* recommended app card */
-.recommended-apps-card {
-  width: 120px;
-  text-align: center;
-  margin: 10px;
-  display: inline-block;
-}
-.recommended-apps-card img {
-  width: 80px;
-  height: 80px;
-}
 /* balance-section */
 .balance-section {
   padding: 50px 30px;
@@ -222,6 +80,10 @@
   padding: 20px;
   background-color: #242b39;
 }
+.balance-section .balance-chart-container h2 {
+  font-size: 20px;
+  font-weight: 700;
+}
 .balance-chart-container .balance-total {
   display: flex;
   justify-content: space-between;
@@ -229,6 +91,8 @@
 }
 .balance-chart-container .balance-total h4 {
   margin-bottom: 0 !important;
+  font-size: 12px;
+  font-weight: 700;
 }
 .balance-chart-container .balance-total .balance-percent {
   border-radius: 20px;
@@ -236,12 +100,14 @@
   padding: 3px 10px;
   color: #39c354;
   font-weight: bold;
+  font-size: 10px;
 }
 .balance-chart-container .chart-button-group .chart-white-btn {
   padding: 2px 12px;
   border: 1px white solid;
   border-radius: 7px;
-  font-size: 12px;
+  font-size: 9px;
+  font-weight: 700;
 }
 .balance-chart-container .chart-button-group .chart-orange-btn {
   padding: 2px 12px;
@@ -249,7 +115,7 @@
   color: white;
   font-weight: bold;
   border-radius: 7px;
-  font-size: 12px;
+  font-size: 9px;
 }
 .balance-chart-container .chart-button-group {
   display: flex;
@@ -273,6 +139,8 @@
 .dashboard-send-btn h3 {
   margin-bottom: 0px;
   margin-right: 5px;
+  font-size: 16px;
+  font-weight: 800;
 }
 .balance-button-wrap {
   display: flex;
@@ -283,7 +151,8 @@
   background-color: #242b39;
 }
 .balance-button-wrap .balance-button-title {
-  font-size: 19px;
+  font-size: 16px;
+  font-weight: 800;
   color: #ff886d;
   margin-right: 10px;
 }

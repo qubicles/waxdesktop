@@ -51,11 +51,14 @@
 }
 .nav-item-title {
     color: white;
-    font-size: 20px;
-    font-weight: 700;
+    font-size: 16px;
+    font-weight: bold;
     margin-left: 20px;
     display: flex;
     align-items: center;
+}
+.nav-item-title:hover, .nav-item-title:active {
+    color: #ff886d;
 }
 /* nav-bar-select */
 .nav-select-section {
