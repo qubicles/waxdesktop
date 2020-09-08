@@ -1,13 +1,15 @@
 .swapTokenModal-body .input-custom-select {
     display: flex;
     padding: 10px 20px;
-    background-color: rgba(255,255,255,.08) !important;
-    margin-bottom: 20px;
+    background-color: #242b39 !important;
+    margin-bottom: 30px;
     border-radius: 20px;
-
+}
+.swapTokenModal-body .modal-body div:nth-child(2) {
+    margin-bottom: 10px !important;
 }
 .input-custom-select .custom-input {
-    width: 70%;
+    width: 65%;
 }
 .input-custom-select input {
     background-color: transparent !important;
@@ -17,21 +19,26 @@
     display: block;
     outline: none;
     color: white;
+    font-size: 24px;
+    font-weight: 700;
 }
 .input-custom-select .custom-input span {
     color: white;
+    font-size: 16px;
+    font-weight: 500;
 }
 .swapTokenModal-body .swap-dropdown {
-    width: 30% !important;
+    width: 35% !important;
     background-color: transparent !important;
     color: white !important;
     border: none !important;
 }
 .swap-dropdown .text {
-    font-size: 10px !important;
     border: none !important;
     color: white !important;
     padding-top: 10px !important;
+    font-size: 16px !important;
+    font-weight: 500;
 }
 .swap-dropdown .icon {
     top: 20px !important;
@@ -50,10 +57,12 @@
 .swapTokenModal-body .s-right-label {
     text-align: right;
     color: white;
-    padding: 10px 0;
+    padding: 10px 0 20px 0;
+    font-size: 16px;
+    font-weight: 500;
 }
 .swapTokenModal-body .s-change-btn {
     position: absolute;
-    top: 150px;
-    right: 50px;
+    top: 184px;
+    right: 65px;
 }
