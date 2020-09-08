@@ -10,7 +10,7 @@
     border-bottom-left-radius: 20px !important;
     border-top-right-radius: 0 !important;
     border-bottom-right-radius: 0 !important;
-    width: 730px;
+    width: 830px;
     height: 100% !important;
     background-color: #191f28 !important;
     position: absolute;
@@ -22,7 +22,8 @@
     display: flex !important;
     padding: 20px !important;
     color: white;
-    align-items: center;
+    font-size: 17px !important;
+    font-weight: 500;
 }
 .SellAssetModal-body .sell-left-container {
     padding: 10px;
@@ -32,7 +33,7 @@
 }
 .SellAssetModal-body .sell-card {
     padding: 10px 20px;
-    width: 280px;
+    width: 350px;
 }
 .sell-card>img {
     width: 100%;
@@ -42,24 +43,30 @@
 }
 .sell-card-info .sc-title {
     color: white;
+    font-size: 30px;
+    font-weight: 800;
 }
 .sell-card-info .sc-brand {
     padding-top: 10px;
     color: #ff886d;
     padding-bottom: 10px;
+    font-size: 25px;
+    font-weight: 700;
 }
 .sell-card-info .sc-price {
     display: flex;
     align-items: center;
     justify-content: center;
     color: white;
+    font-size: 31px;
+    font-weight: 600;
 }
 .sc-price img {
     margin-right: 10px;
 }
 .sell-right-container {
     flex: 1;
-    padding: 15px 0px 15px 30px ;
+    padding: 0 0px 15px 30px ;
 }
 .sell-right-container .sellModal-title {
     font-size: 25px;
@@ -67,15 +74,28 @@
 }
 .sellModal-title span:first-child {
     color: #ff886d;
+    font-size: 33px;
+    font-weight: 800;
 }
 .sellModal-title span:last-child {
     color: white;
+    font-size: 33px;
+    font-weight: 800;
+}
+.sell-right-container .seller-input .input-title {
+    font-size: 17px;
+    font-weight: 700;
 }
 .seller-input input {
     height: 40px;
 }
-.seller-input input::placeholder {
-    color: #ff886d;
+.sell-right-container .seller-input input {
+    font-size: 17px;
+    font-weight: 700;
+} 
+
+.sell-right-container .seller-input input::placeholder {
+    color: #ff886d !important;
 }
 .seller-info {
     display: flex;
@@ -84,13 +104,17 @@
     padding-bottom: 13px;
 }
 .sell-right-container .delegate-btn {
-    margin-top: 20px;
+    margin-top: 120px;
+    font-size: 20px;
+    font-weight: 700;
 }
 .sell-right-container .wdw-fee span:nth-child(2){
     color: #ff886d;
+    font-weight: 700;
 }
 .sell-right-container .author-fee span:nth-child(2){
     color: #ff886d;
+    font-weight: 700;
 }
 .sell-right-container .total-fee span:last-child{
     color: #6dff83;
