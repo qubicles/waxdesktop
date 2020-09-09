@@ -61,6 +61,9 @@
   align-items: center;
   justify-content: center;
 }
+.input-button-wrap input {
+  font-size: 18px !important;
+}
 /* common-input section */
 .common-input {
   background-color: #242b39 !important;
@@ -84,7 +87,14 @@
 /* resources-delegate-link */
 .resources-delegate-link {
   color: #707070;
-  font-size: 18px;
+  font-size: 14px;
+  font-weight: 600;
   text-align: center;
   padding: 20px;
+}
+/*  resourceModal tab pan*/
+.resourceModal-body .ui.secondary.pointing.menu .item {
+  font-size: 38px !important;
+  font-weight: 800 !important;
+  padding: 15px !important;
 }
