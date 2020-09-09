@@ -24,6 +24,8 @@
 .custom-textarea-section .custom-textarea-label {
     color: white;
     padding: 10px 0;
+    font-size: 20px;
+    font-weight: 700;
 }
 .custom-textarea {
     background-color: #242b39;
@@ -38,13 +40,15 @@
     resize: none !important;
     outline: none !important;
     border-radius: 20px !important; 
+    font-size: 16px;
+    font-weight: 600;
 }
 .custom-textarea textarea::placeholder {
     color: white;
 }
 .custom-copy-btn {
     position: absolute;
-    top: 50px;
+    top: 59px;
     right: 0;
     border-radius: 17px;
     background-color: #473436;
@@ -62,6 +66,8 @@
 .c-input-left .c-input-title, .input-title {
     color: white;
     padding: 5px;
+    font-size: 20px;
+    font-weight: 700;
 }
 .account-name-section input::placeholder {
     color: #707070;
@@ -69,6 +75,14 @@
 .createAccountModal .delegate-btn {
     margin-top: 20px;
     margin-bottom: 20px;
+    text-align: center;
+    color: white;
+    border-radius: 20px;
+    background-color: #ff886d;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    font-size: 24px;
+    font-weight: 700;
 }
 
 .custom-textarea .error {
@@ -77,13 +91,14 @@
 }
 
 .ui-custom-account-input input {
-    background-color: rgba(255,255,255,.08) !important;
+    background-color: #242b39 !important;
     border: 0 !important;
     height: 50px !important;
     width: 100% !important;
     border-radius: 30px !important;
     color: white !important;
     font-size: 20px !important;
+    font-weight: 700;
 }
 .ui-custom-account-input input:focus {
     outline: none !important;
