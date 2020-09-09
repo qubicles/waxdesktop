@@ -29,7 +29,7 @@ import "./Dashboard.global.css";
 const initialState = {
   dashboardTokenModal: false,
   resourcesModal: false,
-  delegateModal: true,
+  delegateModal: false,
   cryptoModal: false,
   swapTokenModal: false,
   importAccountModal: false,

@@ -11,6 +11,14 @@
 .cryptoModal-body .delegate-btn {
     margin-bottom: 20px;
     margin-top: 20px;
+    text-align: center;
+    color: white;
+    border-radius: 20px;
+    background-color: #ff886d;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    font-size: 24px;
+    font-weight: 700;
 }
 .delegate-btn img {
     margin-left: 10px;
