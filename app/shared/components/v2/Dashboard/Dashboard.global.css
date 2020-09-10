@@ -3,6 +3,7 @@
   display: flex;
   color: white;
   background-color: #242b39;
+  box-shadow: 0px 0px 89px 0px rgba(255,255,255,0.1);
 }
 .balance-section {
   width: 300px;
