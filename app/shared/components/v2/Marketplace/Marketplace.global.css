@@ -41,6 +41,9 @@
 }
 .market-search-section .round-dropdown .text {
     margin-bottom: 0 !important;
+    font-size: 14px;
+    font-weight: 600;
+    color: white;
 }
 .market-search-section .round-dropdown .menu {
     background-color: #ff886d;
@@ -60,13 +63,13 @@
 .card-btn-group .card-detail-btn {
     padding-left: 10px !important;
     padding-right: 10px !important;
-    font-size: 14px !important;
+    font-size: 10px !important;
     width: 70px;
 }
 .card-btn-group .card-buy-btn {
     padding-left: 10px !important;
     padding-right: 10px !important;
-    font-size: 14px !important;
+    font-size: 10px !important;
     width: 70px;
     background-color: #ff886d !important;
     color: white !important;

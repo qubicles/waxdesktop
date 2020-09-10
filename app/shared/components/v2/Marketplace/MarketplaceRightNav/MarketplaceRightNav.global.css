@@ -13,6 +13,8 @@
     border-radius: 10px;
     background-color: rgba(255, 136, 109, 0.2) !important;
     color: #ff886d;
+    font-size: 14px;
+    font-weight: 800;
 }
 .currency-btn-group .currency-btn-usd {
     padding: 10px 20px;
@@ -21,6 +23,8 @@
     background-color: transparent;
     color: #707070;
     margin-left: 20px;
+    font-size: 14px;
+    font-weight: 800;
 }
 .marketplace-filter-section .price-filter-wrap {
     display: flex;
@@ -30,6 +34,8 @@
     margin-top: 15px;
     color: #707070;
     justify-content: space-around;
+    font-size: 14px;
+    font-weight: 600;
 }
 .marketplace-filter-section .price-filter-wrap::after {
     content: '';
@@ -77,4 +83,5 @@
 .common-radio label {
     margin-left: 40px;
     font-weight: 700;
+    font-size: 16px;
 }
