@@ -6,6 +6,13 @@
     border-radius: 20px !important;
     border: 1px solid #242b39 !important;
 }
+.smartContractActions-body .round-dropdown.ui.fluid.dropdown>.text {
+    font-size: 16px;
+    font-weight: 600;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    margin: 0;
+}
 .smartContractActions-body .round-dropdown.ui.selection.active.dropdown .menu {
     background-color: #242b39 !important;
     border: none !important;
@@ -41,10 +48,10 @@
     font-size: 16px;
     background-color: #242b39 !important;
 }
-.smartContractActions-body .seller-input .common-input::placeholder {
+.smartContractActions-body .seller-input .ui-common-input::placeholder {
     font-size: 16px;
     color: #707070;
-}
+} 
 .smartContractActions-body .delegate-btn {
     padding: 12px 15px !important;
     background-color: rgba(255, 136, 109, 0.3);
