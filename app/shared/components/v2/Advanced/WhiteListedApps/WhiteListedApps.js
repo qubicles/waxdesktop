@@ -15,6 +15,7 @@ import {
 import { connect } from "react-redux";
 import Balance from "../../Dashboard/Balance/Balance";
 import "./WhiteListedApps.global.css";
+import WhiteListedAppsCard from "./WhiteListedAppsCard/WhiteListedAppsCard";
 
 class WhiteListedApps extends React.Component {
   constructor(props) {
@@ -43,120 +44,8 @@ class WhiteListedApps extends React.Component {
             </div>
             <div className="whiteListedApps-body">
               <div className="w-title">Whitelisted Apps</div>
-              <div className="item-list-wrap">
-                <SlideToggle
-                  duration={800}
-                  render={({ onToggle, setCollapsibleElement, progress }) => (
-                    <div className="item-list-body">
-                      <div className="item-parent-wrap">
-                        <div className="item-parent-left" onClick={onToggle}>
-                          <img
-                            src={require("../../../../../renderer/assets/images/dashboard/ScrollGroup1.png")}
-                          />
-                          <div className="w-des">
-                            <div>Newdex</div>
-                            <div>3 Type Of Transactions</div>
-                          </div>
-                        </div>
-                        <div className="item-parent-right">
-                          <div className="round-checkbox">
-                            <Checkbox />
-                          </div>
-                        </div>
-                      </div>
-                      <div
-                        className="item-child-wrap"
-                        ref={setCollapsibleElement}
-                      >
-                        <div
-                          className="item-child-inner"
-                          style={{
-                            transform: `translateY(${Math.round(
-                              20 * (-1 + progress)
-                            )}px)`
-                          }}
-                        >
-                          <div className="item-child-group">
-                            <div className="item-child-des">Markatbuy</div>
-                            <div className="common-checkbox">
-                              <Checkbox />
-                            </div>
-                          </div>
-                          <div className="item-child-group">
-                            <div className="item-child-des">Markatbuy</div>
-                            <div className="common-checkbox">
-                              <Checkbox />
-                            </div>
-                          </div>
-                          <div className="item-child-group">
-                            <div className="item-child-des">Markatbuy</div>
-                            <div className="common-checkbox">
-                              <Checkbox />
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  )}
-                />
-              </div>
-              <div className="item-list-wrap">
-                <SlideToggle
-                  duration={800}
-                  render={({ onToggle, setCollapsibleElement, progress }) => (
-                    <div className="item-list-body">
-                      <div className="item-parent-wrap">
-                        <div className="item-parent-left" onClick={onToggle}>
-                          <img
-                            src={require("../../../../../renderer/assets/images/dashboard/ScrollGroup1.png")}
-                          />
-                          <div className="w-des">
-                            <div>Newdex</div>
-                            <div>3 Type Of Transactions</div>
-                          </div>
-                        </div>
-                        <div className="item-parent-right">
-                          <div className="round-checkbox">
-                            <Checkbox />
-                          </div>
-                        </div>
-                      </div>
-                      <div
-                        className="item-child-wrap"
-                        ref={setCollapsibleElement}
-                      >
-                        <div
-                          className="item-child-inner"
-                          style={{
-                            transform: `translateY(${Math.round(
-                              20 * (-1 + progress)
-                            )}px)`
-                          }}
-                        >
-                          <div className="item-child-group">
-                            <div className="item-child-des">Markatbuy</div>
-                            <div className="common-checkbox">
-                              <Checkbox />
-                            </div>
-                          </div>
-                          <div className="item-child-group">
-                            <div className="item-child-des">Markatbuy</div>
-                            <div className="common-checkbox">
-                              <Checkbox />
-                            </div>
-                          </div>
-                          <div className="item-child-group">
-                            <div className="item-child-des">Markatbuy</div>
-                            <div className="common-checkbox">
-                              <Checkbox />
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  )}
-                />
-              </div>
+              <WhiteListedAppsCard />
+              <WhiteListedAppsCard />
             </div>
           </div>
         </div>
