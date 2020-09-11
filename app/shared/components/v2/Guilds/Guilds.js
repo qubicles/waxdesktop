@@ -2,8 +2,10 @@
 import React from "react"
 import PropTypes from "prop-types"
 import { Card, Image, Divider, Tab, Button, Dropdown, Radio, Menu, Checkbox} from "semantic-ui-react"
-import { connect } from 'react-redux';
+
 import Balance from "../Dashboard/Balance/Balance"
+import Proxies from "./Proxies";
+
 import "./Guilds.global.css"
 
 
@@ -100,7 +102,7 @@ class Guilds extends React.Component {
             ),
             render: () => (
                 <Tab.Pane attached={false}>
-                    content 2
+                    <Proxies />
                 </Tab.Pane>
             )
         };

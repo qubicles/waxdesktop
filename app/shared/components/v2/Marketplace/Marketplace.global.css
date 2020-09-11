@@ -20,6 +20,19 @@
     border: 2px solid #ff886d !important;
     font-size: 23px !important;
 }
+.price-input input {
+    background-color: transparent !important;
+    border: none !important;
+    outline: none !important;
+    color: white !important;
+    border-radius: 30px !important;
+    height: 10px !important;
+    width: 50% !important;
+    border: 1px solid #ff886d !important;
+    font-size: 23px !important;
+    margin-right: 10px !important;
+    margin-left: 10px !important;
+}
 .round-search-btn {
     position: absolute;
     background-color: #ff886d;
@@ -107,7 +120,7 @@
 .marketplace-filter-section .price-filter-wrap::after {
     content: '';
     position: absolute;
-    height: 20px;
+    height: 30px;
     border: 1px solid #707070;
 }
 .marketplce-collections-section {

@@ -26,6 +26,8 @@ class SmartContractActions extends React.Component {
     this.props.history.push("/smartContractAccount");
   };
   render() {
+    const { contractName } = this.props;
+    
     return (
       <div className="dashboard-container">
         <div className="dashboard-body-section">
@@ -39,7 +41,7 @@ class SmartContractActions extends React.Component {
             <div className="smartContractActions-body">
               <div className="w-title">Smart Contracts</div>
               <div className="w-account-name">
-                <div>theonlykarma</div>
+                <div>{contractName}</div>
                 <div>Change Contract</div>
               </div>
               <SmartContractTab />

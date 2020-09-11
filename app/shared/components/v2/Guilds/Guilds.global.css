@@ -79,3 +79,12 @@
     border-radius: .21428571rem !important;
 }
 
+.guilds-section table {
+    background-color: #191f28 !important;
+    color: white !important;
+}
+
+.guilds-section table td{
+    color: white !important;
+}
+

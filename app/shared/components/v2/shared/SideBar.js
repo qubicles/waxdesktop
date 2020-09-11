@@ -12,13 +12,15 @@ import * as TransferActions from '../../../actions/transfer';
 import * as CreateAccountActions from '../../../actions/createaccount';
 
 import CreateAccountModal from "../Dashboard/Modals/CreateAccountModal/CreateAccountModal";
+import ImportAccountModal from "../Dashboard/Modals/ImportAccountModal/ImportAccountModal"
 
 const SideBar = (props) => {
     const [createAccountModal, toggleCreateAccountModal] = useState(false);
+    const [importAccountModal, toggleImportAccountModal] = useState(false);
     const accountOption = [
         {
             text: 'Import Account',
-            value: 'Import Account',
+            value: 'importAccount',
             image: { avatar: true, src: '../assets/images/dashboard/dashboard-import.png' },
         },
         {
@@ -47,6 +49,9 @@ const SideBar = (props) => {
         switch (value) {
             case "createAccount":
                 toggleCreateAccountModal(true);
+                break;
+            case "importAccount":
+                toggleImportAccountModal(true);
                 break;
             default:
                 return null;
@@ -135,45 +140,59 @@ const SideBar = (props) => {
             <div className="nav-select-section">
                 <DropdownExampleSelection />
             </div>
-            {createAccountModal && 
-				<CreateAccountModal
-					settings={settings}
-					balances={balances}
-					globals={globals}
-					accounts={accounts}
+            {createAccountModal &&
+                <CreateAccountModal
+                    settings={settings}
+                    balances={balances}
+                    globals={globals}
+                    accounts={accounts}
                     system={system}
                     connection={connection}
-					closeModal={()=>toggleCreateAccountModal(false)}
-					modalOpen={createAccountModal}
-					history={history}
-					actions={actions}
-					location={location}
-			    />}
+                    closeModal={() => toggleCreateAccountModal(false)}
+                    modalOpen={createAccountModal}
+                    history={history}
+                    actions={actions}
+                    location={location}
+                />}
+            {importAccountModal &&
+                <ImportAccountModal
+                    settings={settings}
+                    balances={balances}
+                    globals={globals}
+                    accounts={accounts}
+                    system={system}
+                    connection={connection}
+                    closeModal={() => toggleImportAccountModal(false)}
+                    modalOpen={importAccountModal}
+                    history={history}
+                    actions={actions}
+                    location={location}
+                />}
         </div>
     )
 }
 
 const mapStateToProps = (state) => {
-	return {
-		balances: state.balances,
-		settings: state.settings,
-		globals: state.globals,
-		accounts: state.accounts,
+    return {
+        balances: state.balances,
+        settings: state.settings,
+        globals: state.globals,
+        accounts: state.accounts,
         system: state.system,
         connection: state.connection,
-	};
+    };
 }
 
 const mapDispatchToProps = (dispatch) => {
-	return {
-		actions: bindActionCreators({
-			...AccountActions,
-			...GlobalsActions,
-			...SettingsActions,
+    return {
+        actions: bindActionCreators({
+            ...AccountActions,
+            ...GlobalsActions,
+            ...SettingsActions,
             ...TransferActions,
             ...CreateAccountActions
-		}, dispatch)
-	};
+        }, dispatch)
+    };
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(SideBar);

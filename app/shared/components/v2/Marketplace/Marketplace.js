@@ -25,7 +25,9 @@ class Marketplace extends React.Component {
             page: 1,
             limit: 100,
             order: "desc",
-            sort: "created"
+            sort: "created",
+            minPrice: "",
+            maxPrice: ""
         }
     }
 
@@ -35,13 +37,13 @@ class Marketplace extends React.Component {
 
     getAllAssets = () => {
         const { actions: { getAssets } } = this.props;
-        const { match, owner, page, limit, order, sort } = this.state;
-        getAssets({ match, owner, page, limit, order, sort });
+        const { match, owner, page, limit, order, sort, minPrice, maxPrice } = this.state;
+        getAssets({ match, owner, page, limit, order, sort, minPrice, maxPrice });
     }
 
     onChange = debounce((e, { name, value }) => {
         this.setState({
-            match: value
+            [name]: value
         }, () => {
             this.getAllAssets();
         });
@@ -95,7 +97,7 @@ class Marketplace extends React.Component {
     }
 
     render() {
-        const { radioChange, match, sort } = this.state;
+        const { radioChange, match, sort, minPrice, maxPrice } = this.state;
         const displayAssets = this.renderAssets();
 
         const MarketplaceDropdown = () => (
@@ -116,9 +118,10 @@ class Marketplace extends React.Component {
                         <div className="round-search-bar">
                             <Form.Field
                                 className="round-input"
+                                autoFocus
                                 control={Input}
                                 fluid
-                                name={"match"}
+                                name="match"
                                 onChange={this.onChange}
                                 defaultValue={match}
                             />
@@ -145,8 +148,24 @@ class Marketplace extends React.Component {
                     <div className="marketplace-filter-section">
                         <div className="title">Price Filter</div>
                         <div className="price-filter-wrap">
-                            <div className="min-price">Min Price</div>
-                            <div>Max Price</div>
+                            <Form.Field
+                                className="price-input"
+                                control={Input}
+                                name="minPrice"
+                                type="number"
+                                onChange={this.onChange}
+                                defaultValue={minPrice}
+                            />
+                            <Form.Field
+                                className="price-input"
+                                control={Input}
+                                name="maxPrice"
+                                type="number"
+                                onChange={this.onChange}
+                                defaultValue={maxPrice}
+                            />
+                            {/* <div className="min-price">Min Price</div>
+                            <div>Max Price</div> */}
                         </div>
                     </div>
                     <div className="marketplce-collections-section">

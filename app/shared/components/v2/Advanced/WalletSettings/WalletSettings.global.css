@@ -51,6 +51,14 @@
 .ui-common-input .input {
     width: 100%
 }
+.ui-common-input.dropdown {
+    width: 100% !important;
+    border-radius: 30px !important;
+    background-color: #242b39 !important;
+    color: #ffffff !important;
+    font-size: 20px !important;
+    font-weight: bold !important;
+}
 .btn-wrap .btn-inside {
     padding: 15px 20px;
     color: white;
@@ -58,16 +66,18 @@
     display: inline-block;
     border-radius: 10px;
 }
-.btn-wrap .btn-left-round {
-    background-color: #ff886d;
+.btn-wrap .btn-round {
+    color: white;
     font-weight: 700;
-    border: 1px solid #ff886d;
-}
-.btn-wrap .btn-right-round {
     background-color: #242b39;
-    font-weight: 600;
     border: 1px solid #707070;
+}
+.btn-wrap .btn-right {
     margin-left: 20px;
+}
+.btn-wrap .active-btn {
+    background-color: #ff886d; 
+    border: 1px solid #ff886d; 
 }
 .w-img-wrap {
     position: relative;

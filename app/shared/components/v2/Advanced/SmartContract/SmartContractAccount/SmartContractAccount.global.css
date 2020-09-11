@@ -34,3 +34,12 @@
     font-size: 16px;
     font-weight: 700;
 }
+.ui-common-input.dropdown {
+    width: 100% !important;
+    border-radius: 30px !important;
+    background-color: #242b39 !important;
+    color: #ffffff !important;
+    font-size: 20px !important;
+    font-weight: bold !important;
+    margin-bottom: 20px !important;
+}
