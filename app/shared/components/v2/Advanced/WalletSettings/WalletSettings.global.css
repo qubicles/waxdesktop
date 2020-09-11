@@ -8,7 +8,7 @@
     padding: 8px 15px !important;
     background-color: rgba(255, 136, 109, 0.3);
     color: rgba(170, 148, 147, 1);
-    font-size: 16px;
+    font-size: 12px;
     font-weight: 700;
 }
 .walletSettings-header img {
@@ -91,4 +91,12 @@
 }
 .w-form .delegate-btn {
     width: 100%;
+    text-align: center;
+    color: white;
+    border-radius: 20px;
+    background-color: #ff886d;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    font-size: 16px;
+    font-weight: 700;
 }
