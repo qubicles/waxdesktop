@@ -1,5 +1,5 @@
 .nav-section {
-    width: 250px;
+    width: 300px;
     padding: 25px 10px;
     position: relative;
 }
@@ -66,7 +66,7 @@
     position: absolute;
     bottom: 30px;
     left: 20px;
-    width: 170px;
+    width: 220px;
 }
 /* left-nav-dropdown */
 .left-nav-dropdown .item {
@@ -83,11 +83,12 @@
     background-color: #191f28 !important;
     border-radius: 15px !important;
     color: white !important;
-    border: 1px solid rgba(234,241,248,.2) !important;
     width: 100% !important;
 }
 .left-nav-dropdown .icon, .left-nav-dropdown .text {
     color: white !important;
+    font-size: 16px !important;
+    font-weight: 600 !important;
 }
 .left-nav-dropdown .visible {
     font-weight: 100 !important;
@@ -97,7 +98,54 @@
     border: 1px solid rgba(234,241,248,.2) !important;
 }
 .ui.active.upward.selection.dropdown {
-    border: 1px solid rgba(234,241,248,.2) !important;
+    border: none !important;
     border-bottom-left-radius: 15px !important;
     border-bottom-right-radius: 15px !important;
+}
+/* nav-bar-select */
+.nav-select-section {
+    padding-top: 200px;
+}
+  /* left-nav-dropdown */
+.left-nav-dropdown .item {
+	color: white !important;
+	border: unset !important;
+}
+.left-nav-dropdown .item img{
+	border-radius: unset !important;
+}
+.left-nav-dropdown {
+	background-color: #191f28 !important;
+	border-radius: 15px !important;
+	color: white !important;
+	width: 100% !important;
+}
+.left-nav-dropdown .icon, .left-nav-dropdown .text {
+	color: white !important;
+	margin-bottom: 0 !important;
+}
+.left-nav-dropdown .visible {
+	font-weight: 100 !important;
+	background-color: #191f28 !important;
+	border-top-left-radius: 15px !important;
+	border-top-right-radius: 15px !important;
+	border: 1px solid rgba(234,241,248,.2) !important;
+}
+
+.ui.active.upward.selection.dropdown {
+	border-bottom-left-radius: 15px !important;
+	border-bottom-right-radius: 15px !important;
+	padding-left: 5px !important;
+	padding-right: 5px !important;
+}
+.ui.fluid.dropdown {
+	padding-left: 5px !important;
+	padding-right: 5px !important;
+}
+.nav-select-section .ui.active.upward.selection.dropdown .menu{
+	width: 170px !important;
+	border: 1px solid #242b39 !important;
+}
+.nav-select-section .ui.fluid.dropdown>.dropdown.icon {
+	top: 8px !important;
 }
