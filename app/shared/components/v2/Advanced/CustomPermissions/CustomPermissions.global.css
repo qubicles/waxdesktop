@@ -8,6 +8,10 @@
     font-size: 20px;
     font-weight: 700;
 }
+.customPermissions-body h3 {
+    font-size: 18px;
+    font-weight: 700;
+}
 .customPermissions-body .active-p-key {
     display: flex;
     align-items: center;
