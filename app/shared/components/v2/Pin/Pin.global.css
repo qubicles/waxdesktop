@@ -16,15 +16,28 @@ body {
 @font-face {
   font-family: montserrat;
   src: url(../../../../renderer/assets/fonts/Montserrat-Regular.ttf);
+  font-weight: normal;
 }
 @font-face {
-  font-family: montserrat_semibold;
+  font-family: montserrat;
   src: url(../../../../renderer/assets/fonts/Montserrat-Bold.ttf);
+  font-weight: 700;
 }
 
 @font-face {
-  font-family: montserrat_bold;
+  font-family: montserrat;
   src: url(../../../../renderer/assets/fonts/Montserrat-SemiBold.ttf);
+  font-weight: 600;
+}
+@font-face {
+  font-family: montserrat;
+  src: url(../../../../renderer/assets/fonts/Montserrat-ExtraBold.ttf);
+  font-weight: 800;
+}
+@font-face {
+  font-family: montserrat;
+  src: url(../../../../renderer/assets/fonts/Montserrat-Medium.ttf);
+  font-weight: 500;
 }
 
 /* Chrome, Safari, Edge, Opera */

@@ -45,7 +45,7 @@ class NFTPanes extends Component {
                     <div className="t-card-price">
                         <Image src={require('../../../../../renderer/assets/images/dashboard/Group47.png')} />
                         <div className="t-card-des">
-                        {asset.listing_price} {asset.listing_symbol}
+                        {asset.listing_price/80000000} {asset.listing_symbol}
                       </div>
                     </div>
                     <div className="card-btn-group">

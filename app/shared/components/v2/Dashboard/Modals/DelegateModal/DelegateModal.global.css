@@ -1,3 +1,9 @@
+.delgateModal-body .common-input::placeholder {
+  color: #707070 !important;
+}
+.delgateModal-body .common-input {
+  font-weight: 700;
+}
 .modal-header {
   padding: 20px 20px;
   text-align: center;
@@ -6,9 +12,13 @@
 }
 .modal-header span:first-child {
   color: #ff886d;
+  font-size: 38px;
+  font-weight: 800;
 }
 .modal-header span:last-child {
   color: white;
+  font-size: 38px;
+  font-weight: 800;
 }
 .modal-body .input-select {
   padding-top: 10px;
@@ -24,7 +34,8 @@
   height: 50px !important;
 }
 .modal-body .input-select .d-title {
-  font-size: 14px;
+  font-size: 16px;
+  font-weight: 700;
   padding-top: 15px;
   padding-bottom: 30px;
 }
@@ -41,6 +52,8 @@
   background-color: #ff886d;
   padding-top: 15px;
   padding-bottom: 15px;
+  font-size: 24px;
+  font-weight: 700;
 }
 .delegate-btn:hover {
   cursor: pointer;
@@ -48,4 +61,15 @@
 .delegate-btn img {
   margin-left: 10px;
   width: 20px;
+}
+.delgateModal-body .delegate-btn {
+  font-size: 20px;
+}
+.delgateModal-body .resource-choose-dropdown .text {
+  font-size: 18px !important;
+  font-weight: 600 !important;
+}
+.delgateModal-body .resource-choose-dropdown .icon {
+  top: 7px !important;
+  right: 7px !important;
 }

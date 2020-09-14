@@ -8,6 +8,7 @@ const ecc = require('eosjs-ecc');
 
 import "./ImportAccountModal.global.css"
 
+import "./ImportAccountModal.global.css";
 
 class ImportAccountModal extends React.Component {
 	constructor(props) {
@@ -116,8 +117,8 @@ class ImportAccountModal extends React.Component {
 	}
 }
 
-ImportAccountModal.propTypes = {}
+ImportAccountModal.propTypes = {};
 
-ImportAccountModal.defaultProps = {}
+ImportAccountModal.defaultProps = {};
 
-export default ImportAccountModal
+export default ImportAccountModal;

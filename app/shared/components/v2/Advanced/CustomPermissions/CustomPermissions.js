@@ -105,9 +105,9 @@ CustomPermissions.propTypes = {
 
 }
 
-CustomPermissions.defaultProps = {
+CustomPermissions.propTypes = {};
 
-}
+CustomPermissions.defaultProps = {};
 
 
 const mapStateToProps = (state) => {
