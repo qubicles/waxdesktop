@@ -12,6 +12,18 @@
     padding-left: 20px;
     color: white;
 }
-.importAccountModal-body {
-    padding-bottom: 50px !important;
+.custom-import textarea {
+    width: 100% !important;
+    background-color: #242b39 !important;
+    border: none !important;
+    color: white !important;
+    resize: none !important;
+    outline: none !important;
+    font-size: 24px !important;
+    border-radius: 20px !important; 
+}
+
+.custom-import.error {
+    border: 1px solid #ff886d !important;
+    border-radius: 20px !important;
 }

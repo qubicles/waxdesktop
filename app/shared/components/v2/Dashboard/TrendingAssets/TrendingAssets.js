@@ -33,7 +33,7 @@ class TrendingAssets extends React.Component {
                         <div className="t-card-price">
                             <Image src={require('../../../../../renderer/assets/images/dashboard/Group47.png')} />
                             <div className="t-card-des">
-                                {item.listing_price} {item.listing_symbol}
+                                {item.listing_price/80000000} {item.listing_symbol}
                             </div>
                         </div>
                         <Button className="trending-view-button" onClick={this.goMarketplace}>View Market</Button>
