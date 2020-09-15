@@ -1,13 +1,9 @@
 import React from "react";
 import PropTypes from "prop-types";
 import {
-  Card,
   Image,
   Divider,
   Tab,
-  Button,
-  Dropdown,
-  Radio,
   Menu,
   Checkbox,
   Form,
@@ -17,23 +13,11 @@ import { connect } from "react-redux";
 import Balance from "../../../../Dashboard/Balance/Balance";
 import "./SmartContractTab.global.css";
 
-const accountOption = [
-  {
-    text: "claim",
-    value: "claim"
-  },
-  {
-    text: "owner",
-    value: "owner"
-  }
-];
+import SmartContractActions from "../../Tab/Actions";
+import SmartContractTables from "../../Tab/Tables";
+import SmartContractABI from "../../Tab/Data";
 
 class SmartContractTab extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { accountOption };
-  }
-
   getPanes() {
     const smartActionsPan = {
       menuItem: (
@@ -47,34 +31,7 @@ class SmartContractTab extends React.Component {
       ),
       render: () => (
         <Tab.Pane attached={false}>
-          <div className="smartActions-tab-content">
-            <div className="round-dropdown-wrap">
-              <div className="round-dropdown-label">Contract Actions</div>
-              <Dropdown
-                fluid
-                selection
-                options={accountOption}
-                className="round-dropdown"
-                defaultValue="claim"
-              />
-            </div>
-            <div className="seller-input">
-              <div className="input-title">Action Parameters</div>
-              <Form.Field
-                className="ui-common-input"
-                placeholder="owner"
-                required
-                autoFocus
-                control={Input}
-              />
-            </div>
-            <div className="delegate-btn">
-              Load Contract
-              <img
-                src={require("../../../../../../../renderer/assets/images/advanced/correct2.png")}
-              />
-            </div>
-          </div>
+          <SmartContractActions />
         </Tab.Pane>
       )
     };
@@ -91,29 +48,7 @@ class SmartContractTab extends React.Component {
       ),
       render: () => (
         <Tab.Pane attached={false}>
-          <div className="smartActions-tab-content">
-            <div className="round-dropdown-wrap">
-              <div className="round-dropdown-label">Contract Tables</div>
-              <Dropdown
-                fluid
-                selection
-                options={accountOption}
-                className="round-dropdown"
-                defaultValue="claim"
-              />
-            </div>
-            <div className="seller-input">
-              <div className="input-title">Table Scope (Account Name)</div>
-              <Form.Field
-                className="ui-common-input"
-                placeholder="captainkama"
-                required
-                autoFocus
-                control={Input}
-              />
-            </div>
-            <div className="delegate-btn">Load Table</div>
-          </div>
+          <SmartContractTables />
         </Tab.Pane>
       )
     };
@@ -129,18 +64,13 @@ class SmartContractTab extends React.Component {
       ),
       render: () => (
         <Tab.Pane attached={false}>
-          <img
-            src={require("../../../../../../../renderer/assets/images/advanced/Image71.png")}
-          />
+          <SmartContractABI />
         </Tab.Pane>
       )
     };
     return [smartActionsPan, smartTablesPan, smartAbiPan];
   }
 
-  goBack = () => {
-    this.props.history.push("/smartContractAccount");
-  };
   render() {
     return (
       <div className="smartContractActions-tab">
