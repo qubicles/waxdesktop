@@ -1,0 +1,148 @@
+.smartContractAccount-body {
+    padding-top: 30px;
+    max-width: 1000px;
+    margin: auto;
+}
+.smartContractAccount-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.smartContractAccount-body .w-title {
+    color: #ff886d;
+    font-size: 20px;
+    font-weight: 700;
+}
+.smartContractAccount-body .seller-input {
+    padding-top: 30px;
+    padding-bottom: 20px;
+}
+.smartContractAccount-body .seller-input .common-input::placeholder {
+    color: #707070;
+    font-size: 16px;
+}
+.smartContractAccount-body .seller-input .input-title {
+    color: white;
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+.smartContractAccount-body .delegate-btn {
+    padding: 12px 15px !important;
+    background-color: rgba(255, 136, 109, 0.3);
+    color: rgba(170, 148, 147, 1);
+    font-size: 16px;
+    font-weight: 700;
+}
+.ui-common-input.dropdown {
+    width: 100% !important;
+    border-radius: 30px !important;
+    background-color: #242b39 !important;
+    color: #ffffff !important;
+    font-size: 20px !important;
+    font-weight: bold !important;
+    margin-bottom: 20px !important;
+}
+
+/*-------------------------------SmartContractActions----------------*/
+.smartContractActions-body {
+    padding-top: 30px;
+    max-width: 1000px;
+    margin: auto;
+}
+.smartContractActions-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.smartContractActions-body .w-title {
+    color: #ff886d;
+    font-size: 20px;
+    font-weight: 700;
+}
+.smartContractActions-body .w-account-name {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 20px 0;
+}
+.w-account-name div:first-child {
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    margin-right: 20px;
+}
+.w-account-name div:last-child {
+    padding: 8px 20px;
+    background-color: rgba(255, 136, 109, 0.3);
+    border-radius: 20px;
+    color: #ff886d;
+}
+
+/*------------------Tab------------------------*/
+/* customize round-dropdown */
+.smartContractActions-body .round-dropdown.ui.fluid.dropdown {
+    background-color: #242b39 !important;
+    color: white !important;
+    padding-left: 20px !important;
+    border-radius: 20px !important;
+    border: 1px solid #242b39 !important;
+}
+.smartContractActions-body .round-dropdown.ui.selection.active.dropdown .menu {
+    background-color: #242b39 !important;
+    border: none !important;
+    border-bottom-left-radius: 20px !important;
+    border-bottom-right-radius: 20px !important;
+}
+.smartContractActions-body .round-dropdown.ui.dropdown .menu .item {
+    color: white !important;
+    border: none !important;
+}
+.ui.selection.visible.dropdown>.text:not(.default) {
+    color: white !important;
+}
+.smartContractActions-body .round-dropdown.ui.active.selection.dropdown {
+    border-bottom-left-radius: 0 !important;
+    border-bottom-right-radius: 0 !important;
+}
+.round-dropdown-label {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+.smartContractActions-body .seller-input {
+    padding: 15px 0;
+}
+.smartContractActions-body .seller-input .input-title {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+.smartContractActions-body .seller-input .common-input {
+    padding-left: 20px !important;
+    font-size: 16px;
+    background-color: #242b39 !important;
+}
+.smartContractActions-body .seller-input .common-input::placeholder {
+    font-size: 16px;
+    color: #707070;
+}
+.smartContractActions-body .delegate-btn {
+    padding: 12px 15px !important;
+    background-color: rgba(255, 136, 109, 0.3);
+    color: rgba(170, 148, 147, 1);
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.ui.tabular.menu .item {
+    background: none !important;
+    border-color: transparent !important;
+    color: #ffffff !important;
+}
+.ui.tabular.menu .active.item {
+    border-bottom: 2px solid #ff886d !important;
+}
+.ui.tabular.menu {
+    border-bottom: none !important;
+}

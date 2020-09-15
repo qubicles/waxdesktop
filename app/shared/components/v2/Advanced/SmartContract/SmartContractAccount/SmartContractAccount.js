@@ -46,8 +46,13 @@ class SmartContractAccount extends React.Component {
     this.props.history.push("/advanced");
   };
 
-  goSmartContracts = () => {
-    this.props.history.push("/smartContractActions");
+  clearState = () => {
+    this.setState({
+      contractAction: '',
+      contractName: '',
+      contractTable: '',
+      contractTableScope: ''
+    })
   };
 
   isValidContract = (name) => {
@@ -78,7 +83,7 @@ class SmartContractAccount extends React.Component {
   }
 
   render() {
-    const { actions, settings, blockExplorers, system, transaction, contracts } = this.props;
+    const { actions, settings, blockExplorers, system, transaction, contracts, history } = this.props;
 
     const {
       contractAction,
@@ -99,7 +104,7 @@ class SmartContractAccount extends React.Component {
           {validContract ? (
             <SmartContractActions 
               contractName={contractName}
-            
+              clearState={this.clearState}
             />
           ) : (
               <div className="smartContractAccount-section">

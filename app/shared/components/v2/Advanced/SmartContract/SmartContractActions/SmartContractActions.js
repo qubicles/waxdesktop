@@ -23,8 +23,9 @@ class SmartContractActions extends React.Component {
   }
 
   goBack = () => {
-    this.props.history.push("/smartContractAccount");
+    this.props.clearState();
   };
+
   render() {
     const { contractName } = this.props;
     
