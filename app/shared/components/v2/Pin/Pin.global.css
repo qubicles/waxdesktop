@@ -119,7 +119,7 @@ input[type="number"] {
 }
 .logo-section {
   display: flex;
-  justify-content: center;
+  padding-left: 26px;
   align-items: center;
 }
 .logo-rect1-wrap {
