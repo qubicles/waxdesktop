@@ -1,8 +1,9 @@
 /* trending Assets section */
 .trending-assets-section {
-    padding: 10px 0;
+    padding: 10px 20px 10px 0;
     border-bottom: 1px solid rgba(234, 241, 248, 0.2);
     overflow: hidden;
+    margin-left: 40px;
 }
   
 .trending-assets-header {

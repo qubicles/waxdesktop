@@ -1,6 +1,8 @@
 .market-search-section {
     display: flex;
     justify-content: space-between;
+    padding-right: 20px;
+    padding-left: 40px;
 }
 .round-search-bar {
     position: relative;
@@ -68,7 +70,8 @@
     border: none !important;
 }
 .marketplace-card-section {
-    padding-top: 30px;
+    padding: 30px 0 0 40px;
+
 }
 .marketplace-card-section .card-btn-group {
     display: flex;
