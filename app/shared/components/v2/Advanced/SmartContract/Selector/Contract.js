@@ -68,8 +68,7 @@ class ContractInterfaceSelectorContract extends Component<Props> {
             selectOnBlur={false}
             selectOnNavigation={false}
           />
-          <Button fluid className="delegate-btn">
-            Load Contract
+          <Button fluid className="delegate-btn" content={t('interface_contract_load')}>
                 <img
               src={require("../../../../../../renderer/assets/images/advanced/correct2.png")}
             />
@@ -80,5 +79,4 @@ class ContractInterfaceSelectorContract extends Component<Props> {
     return display;
   }
 }
-
 export default translate('contract')(ContractInterfaceSelectorContract);
