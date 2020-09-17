@@ -1,10 +1,10 @@
 import React from "react";
 
-// import "./RecommendedApps.global.css";
+import "./RecentlyApps.global.css";
 
 export default () => {
   return (
-    <div className="recommended-apps-section">
+    <div className="recently-apps-section">
       <div className="recommended-apps-header">
         <div className="recommended-apps-title">Recently Used</div>
         <img

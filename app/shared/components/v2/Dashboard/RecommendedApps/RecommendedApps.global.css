@@ -1,6 +1,7 @@
 /* recommended app section */
 .recommended-apps-section {
-    padding: 40px 0;
+    padding: 40px 20px 40px 0;
+    margin-left: 40px;
     border-bottom: 1px solid rgba(234, 241, 248, 0.2);
 }
 .recommended-apps-header {
@@ -14,12 +15,12 @@
   
 /* recommended app card */
 .recommended-apps-card {
-    width: 120px;
     text-align: center;
-    margin: 10px;
+    margin-right: 30px;
     display: inline-block;
 }
 .recommended-apps-card img {
     width: 80px;
     height: 80px;
+    margin: 5px 0;
 }
