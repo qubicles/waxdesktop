@@ -1,4 +1,5 @@
 import concat from 'lodash/concat';
+import axios from 'axios'
 
 import * as types from './types';
 import eos from './helpers/eos';
@@ -49,6 +50,30 @@ export function getTable(code, scope, table, limit = 1000, index = false, previo
   };
 }
 
+export function getProxiesTable() {
+  return (dispatch: () => void, getState) => {
+    axios
+      .get(`https://www.alohaeos.com/vote/proxy/waxmain?output=json`)
+      .then(res => {
+        console.log(res.data)
+        return dispatch({
+          type: types.SYSTEM_GETTABLE_SUCCESS,
+          payload: {
+            code: 'eosio',
+            more: true,
+            rows: res.data,
+            scope: 'eosio',
+            table: 'voters'
+          }
+        });
+      }).catch((err) => dispatch({
+        type: types.SYSTEM_GETTABLE_FAILURE,
+        payload: { err },
+      }));
+    }
+}
+
 export default {
-  getTable
+  getTable,
+  getProxiesTable
 };
