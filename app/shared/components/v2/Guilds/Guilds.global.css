@@ -49,9 +49,9 @@
     font-size: 16px;
     font-weight: 700;
 }
-.guilds-list-wrap .list-btn {
+.list-btn {
     background-color: #473436;
-    color: #ff886d;
+    color: #ff886d !important;
     padding: 6px 10px;
     border-radius: 6px;
     margin-left: 30px;
@@ -59,13 +59,13 @@
     font-size: 12px;
     font-weight: 600;
 }
-.guilds-list-wrap .list-img-group {
+.list-img-group {
     display: flex;
     align-items: center;
     margin-right: 20px;
 }
-.guilds-list-wrap .list-img-group img {
-    margin-right: 20px;
+.list-img-group img {
+    margin-right: 10px;
 }
 .guilds-list-wrap .list-number {
     font-size: 16px;
