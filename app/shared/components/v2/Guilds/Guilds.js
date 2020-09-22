@@ -4,7 +4,8 @@ import PropTypes from "prop-types"
 import { Card, Image, Divider, Tab, Button, Dropdown, Radio, Menu, Checkbox} from "semantic-ui-react"
 
 import Balance from "../Dashboard/Balance/Balance"
-import Proxies from "./Proxies";
+import ProxiesTab from "./ProxiesTab";
+import GuildsTab from "./GuildsTab"
 
 import "./Guilds.global.css"
 
@@ -25,74 +26,11 @@ class Guilds extends React.Component {
             ),
             render: () => (
                 <Tab.Pane attached={false}>
-                    <div className="guilds-tab-body">
-                        <div className="guilds-list-section">
-                            <div className="guilds-list-wrap">
-                                <div className="list-index">1</div>
-                                <img src={require('../../../../renderer/assets/images/marketplace/g.png')} className="list-logo" />
-                                <div className="list-title">waxcafeblock</div>
-                                <div className="list-btn">Top 21</div>
-                                <div className="list-img-group">
-                                    <img src={require('../../../../renderer/assets/images/marketplace/telegram2.png')} />
-                                    <img src={require('../../../../renderer/assets/images/marketplace/internet.png')} />
-                                    <img src={require('../../../../renderer/assets/images/marketplace/Logo__x2014__FIXED.png')} />
-                                </div>
-                                <div className="list-number">1,38,002,190</div>
-                                <div className="common-checkbox">
-                                    <Checkbox />
-                                </div>
-                            </div>
-                            <div className="guilds-list-wrap">
-                                <div className="list-index">1</div>
-                                <img src={require('../../../../renderer/assets/images/marketplace/g.png')} className="list-logo" />
-                                <div className="list-title">waxcafeblock</div>
-                                <div className="list-btn">Top 21</div>
-                                <div className="list-img-group">
-                                    <img src={require('../../../../renderer/assets/images/marketplace/telegram2.png')} />
-                                    <img src={require('../../../../renderer/assets/images/marketplace/internet.png')} />
-                                    <img src={require('../../../../renderer/assets/images/marketplace/Logo__x2014__FIXED.png')} />
-                                </div>
-                                <div className="list-number">1,38,002,190</div>
-                                <div className="common-checkbox">
-                                    <Checkbox />
-                                </div>
-                            </div>
-                            <div className="guilds-list-wrap">
-                                <div className="list-index">1</div>
-                                <img src={require('../../../../renderer/assets/images/marketplace/g.png')} className="list-logo" />
-                                <div className="list-title">waxcafeblock</div>
-                                <div className="list-btn">Top 21</div>
-                                <div className="list-img-group">
-                                    <img src={require('../../../../renderer/assets/images/marketplace/telegram2.png')} />
-                                    <img src={require('../../../../renderer/assets/images/marketplace/internet.png')} />
-                                    <img src={require('../../../../renderer/assets/images/marketplace/Logo__x2014__FIXED.png')} />
-                                </div>
-                                <div className="list-number">1,38,002,190</div>
-                                <div className="common-checkbox">
-                                    <Checkbox />
-                                </div>
-                            </div>
-                            <div className="guilds-list-wrap">
-                                <div className="list-index">1</div>
-                                <img src={require('../../../../renderer/assets/images/marketplace/g.png')} className="list-logo" />
-                                <div className="list-title">waxcafeblock</div>
-                                <div className="list-btn">Top 21</div>
-                                <div className="list-img-group">
-                                    <img src={require('../../../../renderer/assets/images/marketplace/telegram2.png')} />
-                                    <img src={require('../../../../renderer/assets/images/marketplace/internet.png')} />
-                                    <img src={require('../../../../renderer/assets/images/marketplace/Logo__x2014__FIXED.png')} />
-                                </div>
-                                <div className="list-number">1,38,002,190</div>
-                                <div className="common-checkbox">
-                                    <Checkbox />
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <GuildsTab />
                 </Tab.Pane>
             )
         };
-    
+
         const proxiesPan = {
             menuItem: (
                 <Menu.Item key='messages'>
@@ -102,7 +40,7 @@ class Guilds extends React.Component {
             ),
             render: () => (
                 <Tab.Pane attached={false}>
-                    <Proxies />
+                    <ProxiesTab />
                 </Tab.Pane>
             )
         };
@@ -114,9 +52,9 @@ class Guilds extends React.Component {
 			<div className="dashboard-container">
 				<div className="dashboard-body-section">
                     <div className="guilds-section">
-                        <Tab 
-                            menu={{ secondary: true, pointing: true }} 
-                            panes={this.getPanes()} 
+                        <Tab
+                            menu={{ secondary: true, pointing: true }}
+                            panes={this.getPanes()}
                             className="guilds-tab"
                         />
                         <div className="right-badge">

@@ -9,7 +9,7 @@ import * as AccountActions from "../../../actions/accounts";
 import * as GlobalsActions from "../../../actions/globals";
 import * as SettingsActions from '../../../actions/settings';
 
-class Proxies extends Component {
+class GuildsTab extends Component {
     componentDidMount() {
         this.tick();
         this.interval = setInterval(this.tick.bind(this), 120000);
@@ -27,10 +27,10 @@ class Proxies extends Component {
         } = this.props;
         const {
             getTable,
-            getProxiesTable
+            getGuildsTable
         } = actions;
         if (validate.NODE) {
-          getProxiesTable()
+          getGuildsTable()
         }
 
     }
@@ -43,45 +43,41 @@ class Proxies extends Component {
             settings,
             tables,
         } = this.props;
-        const account = accounts[settings.account];
-        const isProxying = !!(account && account.voter_info && account.voter_info.proxy);
-        const currentProxy = account && account.voter_info && account.voter_info.proxy;
-        let proxies = (tables.tlsproxyinfo && tables.tlsproxyinfo.tlsproxyinfo.proxies.rows) || [];
-        if (proxies.length < 1) {
-          const voters = (tables.eosio &&
+        let producers = (tables.tlsguildsinfo && tables.tlsguildsinfo.tlsguildsinfo.producers.rows) || [];
+        if (producers.length < 1) {
+          const guilds = (tables.eosio &&
             tables.eosio.eosio &&
-            tables.eosio.eosio.voters &&
-            tables.eosio.eosio.voters.rows) || [];
-            if (voters.proxies.length > 0)
-                proxies = voters.proxies.map(proxy => {
+            tables.eosio.eosio.guilds &&
+            tables.eosio.eosio.guilds.rows) || [];
+            if (guilds.producers && guilds.producers.length > 0)
+                producers = guilds.producers.map(guild => {
                   const {
-                    account,
-                    website,
+                    owner,
+                    url,
                     slogan,
                     philosophy,
                     background,
-                    logo_256,
+                    logo,
                     telegram,
                     steemit,
                     twitter,
                     wechat,
                     rank,
                     vote_count
-                  } = proxy
+                  } = guild
                     return {
                       slogan,
                       telegram,
                       steemit,
                       twitter,
-                      website,
+                      website: url,
                       wechat,
                       rank,
                       vote_count,
-                      owner: account,
-                      name: account,
-                      philosophy: proxy.philosophy,
-                      background: proxy.background,
-                      logo_256: proxy.logo_256,
+                      owner,
+                      philosophy,
+                      background,
+                      logo,
                       reserved_1: '',
                       reserved_2: '',
                       reserved_3: ''
@@ -89,39 +85,41 @@ class Proxies extends Component {
                 });
         }
 
-        if (!proxies.length) {
+        if (!producers.length) {
             return null;
         }
-
         let rows = [];
-        forEach(proxies, (proxy, index) => {
+        forEach(producers, (producer, index) => {
             rows.push((
-            <Table.Row key={`proxy-${index}`}>
+            <Table.Row key={`producer-${index}`}>
                 <Table.Cell >{index + 1}</Table.Cell>
                 <Table.Cell >
                     <Image
-                        src={proxy.logo_256}
+                        src={producer.logo}
                         style={{width:"40px", height: '40px'}}
                     />
                 </Table.Cell>
                 <Table.Cell >
-                    <Header style={{color:"white"}}>{proxy.owner}</Header>
+                    <Header style={{color:"white"}}>{producer.owner}</Header>
                 </Table.Cell>
                 <Table.Cell  className="list-img-group" >
-                    <Image src={require('../../../../renderer/assets/images/marketplace/telegram2.png')} />
-                    <Image src={require('../../../../renderer/assets/images/marketplace/internet.png')} />
-                    <Image src={require('../../../../renderer/assets/images/marketplace/Logo__x2014__FIXED.png')} />
+                    {producer.telegram &&
+                        <a href={`https://telegram.dog/${producer.telegram}`} target="_blank"><Image src={require('../../../../renderer/assets/images/marketplace/telegram2.png')} /></a>}
+                    {producer.website &&
+                        <a href={producer.website} target="_target"><Image src={require('../../../../renderer/assets/images/marketplace/internet.png')} /></a>}
+                    {producer.twitter &&
+                        <a href={`https://twitter.com/${producer.twitter}`} target="_target"><Image src={require('../../../../renderer/assets/images/marketplace/Logo__x2014__FIXED.png')} /></a>}
                 </Table.Cell>
                 <Table.Cell>
                     <Header style={{color:"white"}}>
-                      {proxy.vote_count}
+                      {producer.vote_count}
                     </Header>
                 </Table.Cell>
                 <Table.Cell className="common-checkbox">
                     <Checkbox />
                 </Table.Cell>
-                {proxy.rank < 22 &&
-                    <Table.Cell collapsing="false">
+                {producer.rank < 22 &&
+                    <Table.Cell collapsing={false}>
                         <div className="list-btn">
                             Top 21
                         </div>
@@ -162,4 +160,4 @@ const mapDispatchToProps = (dispatch) => {
     };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Proxies);
+export default connect(mapStateToProps, mapDispatchToProps)(GuildsTab);

@@ -73,7 +73,30 @@ export function getProxiesTable() {
     }
 }
 
+export function getGuildsTable() {
+  return (dispatch: () => void, getState) => {
+    axios
+      .get(`https://www.api.bloks.io/wax/producers?pageNum=1&perPage=100`)
+      .then(res => {
+        return dispatch({
+          type: types.SYSTEM_GETTABLE_SUCCESS,
+          payload: {
+            code: 'eosio',
+            more: true,
+            rows: res.data,
+            scope: 'eosio',
+            table: 'guilds'
+          }
+        });
+      }).catch((err) => dispatch({
+        type: types.SYSTEM_GETTABLE_FAILURE,
+        payload: { err },
+      }));
+    }
+}
+
 export default {
   getTable,
-  getProxiesTable
+  getProxiesTable,
+  getGuildsTable
 };

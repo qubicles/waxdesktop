@@ -50,6 +50,11 @@ const createInterface = (resourcePath, route = '/', closable = true, store) => {
     }
   });
 
+  ui.webContents.on('new-window', function(e, url) {
+    e.preventDefault();
+    require('electron').shell.openExternal(url);
+  });
+
   const menuBuilder = new MenuBuilder(ui);
   menuBuilder.buildMenu();
 
