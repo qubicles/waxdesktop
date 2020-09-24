@@ -23,6 +23,7 @@ import * as AccountActions from "../../../../actions/accounts";
 import * as SettingsActions from '../../../../actions/settings';
 import * as ContractsActions from "../../../../actions/contracts";
 import * as TableActions from "../../../../actions/table";
+import * as TransactionActions from "../../../../actions/transaction";
 
 import EOSContract from '../../../../utils/EOS/Contract';
 
@@ -256,7 +257,8 @@ const mapDispatchToProps = (dispatch) => {
             ...GlobalsActions,
             ...SettingsActions,
             ...ContractsActions,
-            ...TableActions
+            ...TableActions,
+            ...TransactionActions
         }, dispatch)
     };
 }

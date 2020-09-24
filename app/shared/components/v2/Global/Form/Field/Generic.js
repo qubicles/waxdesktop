@@ -4,7 +4,7 @@ import { Form, Input } from 'semantic-ui-react';
 
 import debounce from 'lodash/debounce';
 
-export default class GlobalFormFieldGeneric extends Component 
+export default class GlobalFormFieldGeneric extends Component
 {
     state = { value: '' };
     onChange = debounce((e, { name, value }) => {
@@ -18,7 +18,8 @@ export default class GlobalFormFieldGeneric extends Component
     render() {
         const {
             name,
-            value
+            value,
+            label
         } = this.props;
 
         return (
@@ -26,6 +27,7 @@ export default class GlobalFormFieldGeneric extends Component
                 className="ui-common-input"
                 control={Input}
                 fluid
+                label={label}
                 name={name}
                 onChange={this.onChange}
                 defaultValue={value}
