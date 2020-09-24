@@ -1,10 +1,9 @@
 // @flow
-import React, { Component } from 'react';
-import { translate } from 'react-i18next';
-import debounce from 'lodash/debounce';
+import React, { Component } from "react";
+import { translate } from "react-i18next";
+import debounce from "lodash/debounce";
 
-import { Button, Form, Header, Segment, Dropdown } from 'semantic-ui-react';
-
+import { Button, Form, Header, Segment, Dropdown } from "semantic-ui-react";
 
 class ContractInterfaceSelectorContract extends Component<Props> {
   constructor(props) {
@@ -20,45 +19,33 @@ class ContractInterfaceSelectorContract extends Component<Props> {
         this.onSubmit();
       }
     });
-  }
+  };
   onSubmit = debounce(() => {
-    const {
-      onSet,
-      onSubmit
-    } = this.props;
+    const { onSet, onSubmit } = this.props;
     onSet(this.state, onSubmit);
-  }, 300)
+  }, 300);
   render() {
-    const {
-      contract,
-      onReset,
-      t,
-      settings
-    } = this.props;
-    const {
-      contractName
-    } = this.state;
+    const { contract, onReset, t, settings } = this.props;
+    const { contractName } = this.state;
 
     let recentOptions = [];
     if (settings && settings.recentContracts) {
-      recentOptions = settings.recentContracts.map((recentContract) => ({
+      recentOptions = settings.recentContracts.map(recentContract => ({
         text: recentContract,
-        value: recentContract,
+        value: recentContract
       }));
     }
 
     let display = (
-      <Segment basic>
-        <Form
-          onSubmit={this.onSubmit}
-        >
+      <Segment basic className="smartContract-dropdown">
+        <Form onSubmit={this.onSubmit}>
           <Dropdown
             className="ui-common-input"
             allowAdditions
             autoFocus
             fluid
             name="contractName"
-            placeholder={t('interface_contract_account_name_placeholder')}
+            placeholder={t("interface_contract_account_name_placeholder")}
             onChange={this.onChange}
             openOnFocus={false}
             options={recentOptions}
@@ -68,8 +55,12 @@ class ContractInterfaceSelectorContract extends Component<Props> {
             selectOnBlur={false}
             selectOnNavigation={false}
           />
-          <Button fluid className="delegate-btn" content={t('interface_contract_load')}>
-                <img
+          <Button
+            fluid
+            className="delegate-btn"
+            content={t("interface_contract_load")}
+          >
+            <img
               src={require("../../../../../../renderer/assets/images/advanced/correct2.png")}
             />
           </Button>
@@ -79,4 +70,4 @@ class ContractInterfaceSelectorContract extends Component<Props> {
     return display;
   }
 }
-export default translate('contract')(ContractInterfaceSelectorContract);
+export default translate("contract")(ContractInterfaceSelectorContract);

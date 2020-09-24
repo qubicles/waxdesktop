@@ -12,11 +12,13 @@
 }
 .guilds-section {
     position: relative;
+    padding-left: 40px;
+    padding-right: 20px;
 }
 .guilds-section .right-badge {
     position: absolute;
     top: 20px;
-    right: 0;
+    right: 20px;
 }
 .guilds-tab-body {
     display: flex;
@@ -25,6 +27,7 @@
 .guilds-tab-body .guilds-list-section {
     min-width: 500px;
     overflow-x: visible;
+    width: 100%;
 }
 .guilds-list-wrap {
     display: flex;
@@ -34,12 +37,13 @@
 .guilds-list-wrap .list-index {
     font-size: 20px;
     font-weight: 500;
+    margin-right: 40px;
 }
 .guilds-list-wrap .list-logo {
     width: 30px;
     height: 30px;
     margin-left: 10px;
-    margin-right: 10px;
+    margin-right: 20px;
 }
 .guilds-list-wrap .list-title {
     font-size: 16px;
@@ -50,21 +54,23 @@
     color: #ff886d;
     padding: 6px 10px;
     border-radius: 6px;
-    margin-left: 20px;
-    margin-right: 20px;
+    margin-left: 30px;
+    margin-right: 30px;
     font-size: 12px;
     font-weight: 600;
 }
 .guilds-list-wrap .list-img-group {
     display: flex;
     align-items: center;
+    margin-right: 20px;
 }
 .guilds-list-wrap .list-img-group img {
-    margin-right: 10px;
+    margin-right: 20px;
 }
 .guilds-list-wrap .list-number {
     font-size: 16px;
     font-weight: 500;
+    margin-right: 30px;
 }
 .guilds-list-wrap .common-checkbox {
     margin-left: 20px;

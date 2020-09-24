@@ -1,5 +1,5 @@
 .DelegatedResources-body {
-    padding-top: 30px;
+    padding: 30px 20px;
     max-width: 1000px;
     margin: auto;
     min-width: 570px;
@@ -8,6 +8,10 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    max-width: 1000px;
+    margin: auto;
+    padding-left: 20px;
+    padding-right: 20px;
 }
 .DelegatedResources-body .w-title {
     color: #ff886d;
