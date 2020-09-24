@@ -21,6 +21,8 @@
     outline: none !important;
     font-size: 24px !important;
     border-radius: 20px !important; 
+    padding-left: 20px;
+    padding-top: 15px;
 }
 
 .custom-import.error {
