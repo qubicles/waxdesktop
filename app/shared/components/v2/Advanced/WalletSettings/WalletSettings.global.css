@@ -119,3 +119,16 @@
     border: none;
     color: white;
 }
+.walletSettings-section .ui.radio.checkbox input:checked~label:before {
+    content: none !important;
+}
+.walletSettings-section .ui.radio.checkbox input:checked~label:after {
+    content: none !important;
+}
+.walletSettings-section .ui.checkbox input.hidden+label {
+    padding: 0 !important;
+    color: white !important;
+}
+.walletSettings-section .ui.radio.checkbox label:before {
+    content: none !important;
+}
