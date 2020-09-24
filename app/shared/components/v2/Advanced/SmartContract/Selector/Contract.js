@@ -60,6 +60,7 @@ class ContractInterfaceSelectorContract extends Component<Props> {
             className="delegate-btn"
             content={t("interface_contract_load")}
           >
+            Load Contract
             <img
               src={require("../../../../../../renderer/assets/images/advanced/correct2.png")}
             />
