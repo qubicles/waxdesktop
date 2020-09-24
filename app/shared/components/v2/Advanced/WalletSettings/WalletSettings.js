@@ -76,9 +76,6 @@ class WalletSettings extends React.Component {
     else {
       setSettingWithValidation('node', node);
     }
-    // if (onStageSelect) {
-    //   onStageSelect(types.SETUP_STAGE_ACCOUNT_OPTIONS);
-    // }
     if (settings.walletMode === 'cold') {
       setWalletMode('hot');
     }
