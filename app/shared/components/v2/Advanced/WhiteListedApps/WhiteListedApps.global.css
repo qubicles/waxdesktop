@@ -1,12 +1,16 @@
 .whiteListedApps-body {
-    padding-top: 30px;
     max-width: 1000px;
     margin: auto;
+    padding: 30px 20px;
 }
 .whiteListedApps-header {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    max-width: 1000px;
+    margin: auto;
+    padding-left: 20px;
+    padding-right: 20px;
 }
 .whiteListedApps-header .delegate-btn {
     padding: 8px 15px !important;
