@@ -1,6 +1,11 @@
+.walletSettings-section {
+    padding-left: 40px;
+    padding-right: 20px;
+}
 .walletSettings-header {
     display: flex;
-    width: 100%;
+    max-width: 800px;
+    margin: auto;
     align-items: center;
     justify-content: space-between;
 }
