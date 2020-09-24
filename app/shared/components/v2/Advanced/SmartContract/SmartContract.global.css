@@ -32,11 +32,12 @@
     margin-bottom: 10px;
 }
 .smartContractAccount-body .delegate-btn {
-    padding: 12px 15px !important;
+    padding: 15px 15px !important;
     background-color: rgba(255, 136, 109, 0.3);
     color: rgba(170, 148, 147, 1);
     font-size: 16px;
     font-weight: 700;
+    border-radius: 15px;
 }
 .ui-common-input.dropdown {
     width: 100% !important;
@@ -58,6 +59,8 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    max-width: 1000px;
+    margin: auto;
 }
 .smartContractActions-body .w-title {
     color: #ff886d;
@@ -149,4 +152,70 @@
 }
 .ui.tabular.menu {
     border-bottom: none !important;
+}
+/*  contract account dropdown css  */
+.smartContractAccount-body .ui.search.dropdown>.text {
+    padding-left: 20px !important;
+    margin-bottom: 0 !important;
+}
+.smartContractAccount-body .ui.active.selection.dropdown {
+    border: none !important;
+    border: 1px solid #242b39 !important;
+}
+.smartContractAccount-body .ui.selection.active.dropdown .menu {
+    background-color: #242b39;
+    border: none !important;
+}
+.smartContractAccount-body .ui.selection.dropdown .menu>.item {
+    color: white !important;
+    border: none !important;
+}
+
+/*  contract action dropdown css  */
+.smartContractActions-body .ui.search.dropdown>.text {
+    padding-left: 20px !important;
+    margin-bottom: 0 !important;
+}
+.smartContractActions-body .ui.active.selection.dropdown {
+    border: none !important;
+    border: 1px solid #242b39 !important;
+}
+.smartContractActions-body .ui.selection.active.dropdown .menu {
+    background-color: #242b39;
+    border: none !important;
+}
+.smartContractActions-body .ui.selection.dropdown .menu>.item {
+    color: white !important;
+    border: none !important;
+}
+
+/* smartContract action parameters css */
+.contract-actionParam-form .header {
+    color: white !important;
+    font-size: 20px !important;
+    font-weight: 700 !important;
+}
+.smartActions-tab-content .segment {
+    background-color: #191f28 !important;
+    color: white !important;
+    padding: 0 !important;
+}
+.smartActions-tab-content .ui-common-input.ui.dropdown {
+    border: none !important;
+}
+.smartActions-tab-content .ui-common-input.ui.dropdown>.text {
+    margin-bottom: 0 !important;
+    margin-left: 10px !important;
+}
+.contract-actionParam-form .delegate-btn, .smartActions-tab-content .delegate-btn {
+    text-align: center;
+    border-radius: 12px;
+    padding-top: 15px !important;
+    padding-bottom: 15px !important;
+    font-size: 16px;
+    font-weight: 700;
+    width: 100%;
+}
+.smartContractActions-tab .tab {
+    padding-left: 0 !important;
 }

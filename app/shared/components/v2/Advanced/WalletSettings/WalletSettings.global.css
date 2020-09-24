@@ -105,3 +105,30 @@
     font-size: 16px;
     font-weight: 700;
 }
+.walletSettings-section .ui-common-input.ui.dropdown {
+    border: none !important;
+}
+.walletSettings-section .ui-common-input.ui.dropdown .text {
+    margin-bottom: 0 !important;
+}
+.walletSettings-section .ui.selection.active.dropdown .menu {
+    background-color: #242b39 !important;
+    border: none !important;
+}
+.walletSettings-section .ui.selection.active.dropdown .menu .item {
+    border: none;
+    color: white;
+}
+.walletSettings-section .ui.radio.checkbox input:checked~label:before {
+    content: none !important;
+}
+.walletSettings-section .ui.radio.checkbox input:checked~label:after {
+    content: none !important;
+}
+.walletSettings-section .ui.checkbox input.hidden+label {
+    padding: 0 !important;
+    color: white !important;
+}
+.walletSettings-section .ui.radio.checkbox label:before {
+    content: none !important;
+}
