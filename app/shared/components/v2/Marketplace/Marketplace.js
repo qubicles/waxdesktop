@@ -146,13 +146,13 @@ class Marketplace extends React.Component {
           </div>
         </div>
         <div className="balance-section">
-          <div className="marketplace-currency-section">
+          {/* <div className="marketplace-currency-section">
             <div className="title">Currency</div>
             <div className="currency-btn-group">
               <div className="currency-btn-wax">WAX</div>
               <div className="currency-btn-usd">USD</div>
             </div>
-          </div>
+          </div> */}
           <div className="marketplace-filter-section">
             <div className="title">Price Filter</div>
             <div className="price-filter-wrap">
