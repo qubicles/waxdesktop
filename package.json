@@ -1,7 +1,7 @@
 {
   "name": "wax-desktop",
   "productName": "WAX Desktop Wallet",
-  "version": "1.2.2",
+  "version": "1.0.0",
   "description": "The most powerful and user-friendly desktop wallet for the WAX blockchain",
   "scripts": {
     "build": "concurrently \"GENERATE_SOURCEMAP=false npm run build-main\" \"GENERATE_SOURCEMAP=false npm run build-renderer\"",
