@@ -20,12 +20,12 @@
     outline: none;
     color: white;
     font-size: 24px;
-    font-weight: 700;
+    font-family: montserratBold;
 }
 .input-custom-select .custom-input span {
     color: white;
     font-size: 16px;
-    font-weight: 500;
+    font-family: montserratMedium !important;
 }
 .swapTokenModal-body .swap-dropdown {
     width: 35% !important;
@@ -38,7 +38,7 @@
     color: white !important;
     padding-top: 10px !important;
     font-size: 16px !important;
-    font-weight: 500;
+    font-family: montserratSemiBold !important;
 }
 .swap-dropdown .icon {
     top: 20px !important;
@@ -59,7 +59,7 @@
     color: white;
     padding: 10px 0 20px 0;
     font-size: 16px;
-    font-weight: 500;
+    font-family: montserratMedium !important;
 }
 .swapTokenModal-body .s-change-btn {
     position: absolute;

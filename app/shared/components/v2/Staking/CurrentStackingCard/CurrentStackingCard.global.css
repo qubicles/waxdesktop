@@ -18,12 +18,12 @@
 }
 .staking-card-des div:first-child{
     font-size: 20px;
-    font-weight: 700;
+    font-family: montserratBold;
     margin-bottom: 7px;
 }
 .staking-card-des div:last-child{
     font-size: 16px;
-    font-weight: 700;
+    font-family: montserratBold;
     color: #ff886d;
 }
 .stake-card-btn {
@@ -33,6 +33,6 @@
     padding: 20px;
     text-align: center;
     font-size: 20px;
-    font-weight: 700;
+    font-family: montserratBold;
     background-color: #ff886d;
 }

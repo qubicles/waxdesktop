@@ -14,7 +14,7 @@
     background-color: rgba(255, 136, 109, 0.3);
     color: rgba(170, 148, 147, 1);
     font-size: 12px;
-    font-weight: 700;
+    font-family: montserratBold;
 }
 .walletSettings-header img {
     width: 18px;
@@ -31,7 +31,7 @@
 .walletSettings-body .w-title {
     color: #ff886d;
     font-size: 20px;
-    font-weight: 700;
+    font-family: montserratBold;
 }
 .w-form {
     padding-top: 20px;
@@ -42,12 +42,12 @@
 .w-form .seller-input .input-title {
     color: white;
     font-size: 20px;
-    font-weight: 700;
+    font-family: montserratBold;
     margin-bottom: 10px;
 }
 .w-form .seller-input .ui-common-input input::placeholder {
     color: white !important;
-    font-weight: 600;
+    font-family: montserratSemiBold;
     font-size: 16px !important;
 }
 .w-form .seller-input .ui-common-input {
@@ -62,7 +62,7 @@
     background-color: #242b39 !important;
     color: #ffffff !important;
     font-size: 20px !important;
-    font-weight: bold !important;
+    font-family: montserratBold;
 }
 .btn-wrap .btn-inside {
     padding: 15px 20px;
@@ -73,7 +73,7 @@
 }
 .btn-wrap .btn-round {
     color: white;
-    font-weight: 700;
+    font-family: montserratBold;
     background-color: #242b39;
     border: 1px solid #707070;
 }
@@ -103,7 +103,7 @@
     padding-top: 20px;
     padding-bottom: 20px;
     font-size: 16px;
-    font-weight: 700;
+    font-family: montserratBold;
 }
 .walletSettings-section .ui-common-input.ui.dropdown {
     border: none !important;

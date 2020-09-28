@@ -2,23 +2,23 @@
   color: #707070 !important;
 }
 .delgateModal-body .common-input {
-  font-weight: 700;
+  font-family: montserratBold;
 }
 .modal-header {
   padding: 20px 20px;
   text-align: center;
   font-size: 25px;
-  font-weight: 800;
+  font-family: MontserratExtraBold;
 }
 .modal-header span:first-child {
   color: #ff886d;
   font-size: 38px;
-  font-weight: 800;
+  font-family: MontserratExtraBold;
 }
 .modal-header span:last-child {
   color: white;
   font-size: 38px;
-  font-weight: 800;
+  font-family: MontserratExtraBold;
 }
 .modal-body .input-select {
   padding-top: 10px;
@@ -35,7 +35,7 @@
 }
 .modal-body .input-select .d-title {
   font-size: 16px;
-  font-weight: 700;
+  font-family: montserratBold;
   padding-top: 15px;
   padding-bottom: 30px;
 }
@@ -53,7 +53,7 @@
   padding-top: 15px;
   padding-bottom: 15px;
   font-size: 24px;
-  font-weight: 700;
+  font-family: montserratBold;
 }
 .delegate-btn:hover {
   cursor: pointer;
@@ -67,9 +67,9 @@
 }
 .delgateModal-body .resource-choose-dropdown .text {
   font-size: 18px !important;
-  font-weight: 600 !important;
+  font-family: montserratSemiBold;
 }
-.delgateModal-body .resource-choose-dropdown .icon {
+/* .delgateModal-body .resource-choose-dropdown .icon {
   top: 7px !important;
   right: 7px !important;
-}
+} */

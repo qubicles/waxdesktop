@@ -19,25 +19,21 @@ body {
   font-weight: normal;
 }
 @font-face {
-  font-family: montserrat;
+  font-family: montserratBold;
   src: url(../../../../renderer/assets/fonts/Montserrat-Bold.ttf);
-  font-weight: 700;
 }
 
 @font-face {
-  font-family: montserrat;
+  font-family: montserratSemiBold;
   src: url(../../../../renderer/assets/fonts/Montserrat-SemiBold.ttf);
-  font-weight: 600;
 }
 @font-face {
-  font-family: montserrat;
+  font-family: MontserratExtraBold;
   src: url(../../../../renderer/assets/fonts/Montserrat-ExtraBold.ttf);
-  font-weight: 800;
 }
 @font-face {
-  font-family: montserrat;
+  font-family: montserratMedium;
   src: url(../../../../renderer/assets/fonts/Montserrat-Medium.ttf);
-  font-weight: 500;
 }
 
 /* Chrome, Safari, Edge, Opera */

@@ -38,7 +38,7 @@
 }
 .balance-section .balance-chart-container h2 {
   font-size: 20px;
-  font-weight: 700;
+  font-family: montserratBold;
 }
 .balance-chart-container .balance-total {
   display: flex;
@@ -48,14 +48,14 @@
 .balance-chart-container .balance-total h4 {
   margin-bottom: 0 !important;
   font-size: 12px;
-  font-weight: 700;
+  font-family: montserratBold;
 }
 .balance-chart-container .balance-total .balance-percent {
   border-radius: 20px;
   background-color: rgba(57, 195, 84, 0.3);
   padding: 3px 10px;
   color: #39c354;
-  font-weight: bold;
+  font-family: montserratBold;
   font-size: 10px;
 }
 .balance-chart-container .chart-button-group .chart-white-btn {
@@ -63,13 +63,13 @@
   border: 1px white solid;
   border-radius: 7px;
   font-size: 9px;
-  font-weight: 700;
+  font-family: montserratBold;
 }
 .balance-chart-container .chart-button-group .chart-orange-btn {
   padding: 2px 12px;
   background-color: #ff886d;
   color: white;
-  font-weight: bold;
+  font-family: montserratBold;
   border-radius: 7px;
   font-size: 9px;
 }
@@ -96,7 +96,7 @@
   margin-bottom: 0px;
   margin-right: 5px;
   font-size: 16px;
-  font-weight: 800;
+  font-family: MontserratExtraBold;
 }
 .balance-button-wrap {
   display: flex;
@@ -108,7 +108,7 @@
 }
 .balance-button-wrap .balance-button-title {
   font-size: 16px;
-  font-weight: 800;
+  font-family: MontserratExtraBold;
   color: #ff886d;
   margin-right: 10px;
 }

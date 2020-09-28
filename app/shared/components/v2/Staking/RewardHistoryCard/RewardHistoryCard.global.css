@@ -15,23 +15,23 @@
     font-size: 20px;
     text-align: left;
     margin-bottom: 8px;
-    font-weight: 800;
+    font-family: MontserratExtraBold;
 }
 .staking-history-header .header-left div:last-child {
     font-size: 16px;
     color: #ff886d;
-    font-weight: 600;
+    font-family: montserratSemiBold;
 }
 .staking-history-header .header-right div:first-child {
     font-size: 14px;
-    font-weight: 800;
+    font-family: MontserratExtraBold;
     text-align: left;
     color: #707070;
     margin-bottom: 5px;
 }
 .staking-history-header .header-right div:last-child {
     font-size: 18px;
-    font-weight: 700;
+    font-family: montserratBold;
 }
 .staking-history-body {
     display: flex;
@@ -50,12 +50,12 @@
 }
 .history-body-right .history-body-des div:first-child {
     font-size: 14px;
-    font-weight: 600;
+    font-family: montserratSemiBold;
     color: #707070;
     text-align: left;
     margin-bottom: 5px;
 }
 .history-body-right .history-body-des div:last-child {
     font-size: 18px;
-    font-weight: 700;
+    font-family: montserratBold;
 }

@@ -11,7 +11,7 @@
 .smartContractActions-body .w-title {
     color: #ff886d;
     font-size: 20px;
-    font-weight: 700;
+    font-family: montserratBold;
 }
 .smartContractActions-body .w-account-name {
     display: flex;
@@ -22,7 +22,7 @@
 .w-account-name div:first-child {
     color: white;
     font-size: 20px;
-    font-weight: bold;
+    font-family: montserratBold;
     margin-right: 20px;
 }
 .w-account-name div:last-child {
@@ -31,7 +31,7 @@
     border-radius: 20px;
     color: #ff886d;
     font-size: 12px;
-    font-weight: 700;
+    font-family: montserratBold;
 }
 
 

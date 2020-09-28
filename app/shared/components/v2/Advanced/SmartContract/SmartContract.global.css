@@ -15,7 +15,7 @@
 .smartContractAccount-body .w-title {
     color: #ff886d;
     font-size: 20px;
-    font-weight: 700;
+    font-family: montserratBold !important;
 }
 .smartContractAccount-body .seller-input {
     padding-top: 30px;
@@ -28,7 +28,7 @@
 .smartContractAccount-body .seller-input .input-title {
     color: white;
     font-size: 20px;
-    font-weight: 700;
+    font-family: montserratBold;
     margin-bottom: 10px;
 }
 .smartContractAccount-body .delegate-btn {
@@ -36,7 +36,7 @@
     background-color: rgba(255, 136, 109, 0.3);
     color: rgba(170, 148, 147, 1);
     font-size: 16px;
-    font-weight: 700;
+    font-family: montserratBold;
     border-radius: 15px;
 }
 .ui-common-input.dropdown {
@@ -45,7 +45,7 @@
     background-color: #242b39 !important;
     color: #ffffff !important;
     font-size: 20px !important;
-    font-weight: bold !important;
+    font-family: montserratBold;
     margin-bottom: 20px !important;
 }
 
@@ -65,7 +65,7 @@
 .smartContractActions-body .w-title {
     color: #ff886d;
     font-size: 20px;
-    font-weight: 700;
+    font-family: montserratBold;
 }
 .smartContractActions-body .w-account-name {
     display: flex;
@@ -76,7 +76,7 @@
 .w-account-name div:first-child {
     color: white;
     font-size: 20px;
-    font-weight: bold;
+    font-family: montserratBold;
     margin-right: 20px;
 }
 .w-account-name div:last-child {
@@ -84,6 +84,8 @@
     background-color: rgba(255, 136, 109, 0.3);
     border-radius: 20px;
     color: #ff886d;
+    font-family: montserratBold;
+    font-size: 12px;
 }
 
 /*------------------Tab------------------------*/
@@ -114,7 +116,7 @@
 }
 .round-dropdown-label {
     font-size: 20px;
-    font-weight: bold;
+    font-family: montserratBold;
     margin-bottom: 15px;
 }
 .smartContractActions-body .seller-input {
@@ -122,7 +124,7 @@
 }
 .smartContractActions-body .seller-input .input-title {
     font-size: 20px;
-    font-weight: bold;
+    font-family: montserratBold;
     margin-bottom: 10px;
 }
 .smartContractActions-body .seller-input .common-input {
@@ -139,13 +141,15 @@
     background-color: rgba(255, 136, 109, 0.3);
     color: rgba(170, 148, 147, 1);
     font-size: 16px;
-    font-weight: 700;
+    font-family: montserratBold;
 }
 
 .ui.tabular.menu .item {
     background: none !important;
     border-color: transparent !important;
     color: #ffffff !important;
+    font-size: 20px;
+    font-family: montserratBold;
 }
 .ui.tabular.menu .active.item {
     border-bottom: 2px solid #ff886d !important;
@@ -193,7 +197,7 @@
 .contract-actionParam-form .header {
     color: white !important;
     font-size: 20px !important;
-    font-weight: 700 !important;
+    font-family: montserratBold !important;
 }
 .smartActions-tab-content .segment {
     background-color: #191f28 !important;
@@ -213,7 +217,7 @@
     padding-top: 15px !important;
     padding-bottom: 15px !important;
     font-size: 16px;
-    font-weight: 700;
+    font-family: montserratBold;
     width: 100%;
 }
 .smartContractActions-tab .tab {
