@@ -1,7 +1,7 @@
 {
   "name": "wax-desktop",
   "productName": "WAX Desktop Wallet",
-  "version": "1.2.2",
+  "version": "1.0.0",
   "description": "",
   "main": "./main.prod.js",
   "author": {
