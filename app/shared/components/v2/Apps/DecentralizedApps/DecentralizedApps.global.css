@@ -3,7 +3,7 @@
 }
 .decentralized-apps-container .decentralized-apps-header {
     font-size: 20px;
-    font-weight: 700;
+    font-family: montserratBold;
     margin-bottom: 10px;
 }
 .decentralized-apps-section {
@@ -29,22 +29,24 @@
 }
 .dec-left-section .dec-des div:first-child {
     font-size: 24px;
-    font-weight: bold;
+    font-family: montserratBold;
     margin-bottom: 5px;
 }
 .dec-left-section .dec-des div:last-child {
     font-size: 20px;
-    font-weight: 500;
+    font-family: montserratMedium;
 }
 .decentralized-apps-body .dec-right-section {
     padding: 5px 15px;
     color: #ff886d;
     background-color: #242b39;
     border-radius: 18px;
+    font-size: 16px;
+    font-family: montserratBold;
 }
 .app-title {
     font-size: 14px;
-    font-weight: 600;
+    font-family: montserratSemiBold;
 }
 /* responsive */
 /* @media only screen and (max-width: 1050px) {

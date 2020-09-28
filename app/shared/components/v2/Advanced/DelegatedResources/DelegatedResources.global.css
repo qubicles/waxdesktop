@@ -16,7 +16,7 @@
 .DelegatedResources-body .w-title {
     color: #ff886d;
     font-size: 20px;
-    font-weight: 700;
+    font-family: montserratBold;
 }
 .DelegatedResources-body .del-table {
     padding-top: 30px;
@@ -24,7 +24,7 @@
 .del-table-header div {
     display: inline-block;
     font-size: 20px;
-    font-weight: bold;
+    font-family: montserratBold;
     text-align: center;
 }
 .del-table-header .header-account, .del-table-header .header-amount {
@@ -50,7 +50,7 @@
     display: inline-block;
     text-align: center;
     font-size: 16px;
-    font-weight: bold;
+    font-family: montserratBold;
 }
 .del-table-row .body-account {
     width: 30%;
@@ -65,7 +65,7 @@
     width: 20%;
     background-color: #473436;
     font-size: 12px;
-    font-weight: 600;
+    font-family: montserratSemiBold;
     color: #ff886d;
     padding: 5px 10px;
     max-width: 90px;

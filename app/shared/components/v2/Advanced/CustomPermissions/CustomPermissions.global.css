@@ -12,11 +12,11 @@
 .customPermissions-body .w-title {
     color: #ff886d;
     font-size: 20px;
-    font-weight: 700;
+    font-family: montserratBold;
 }
 .customPermissions-body h3 {
     font-size: 18px;
-    font-weight: 700;
+    font-family: montserratBold;
 }
 .customPermissions-body .active-p-key {
     display: flex;
@@ -30,12 +30,12 @@
 }
 .active-p-key .p-key-des div:first-child{
     font-size: 16px;
-    font-weight: 700;
+    font-family: montserratBold;
     margin-bottom: 5px;
 }
 .active-p-key .p-key-des div:last-child {
     font-size: 12px;
-    font-weight: 600;
+    font-family: montserratSemiBold;
 }
 
 .new-permission-btn {
@@ -48,7 +48,7 @@
     background-color: #ff886d;
     border-radius: 20px;
     font-size: 16px;
-    font-weight: 700;
+    font-family: montserratBold;
 }
 .new-permission-btn img {
     margin-left: 20px;
@@ -72,9 +72,9 @@
 }
 .active-permission-des div:first-child {
     font-size: 16px !important;
-    font-weight: 700 !important;
+    font-family: montserratBold !important;
 }
 .active-permission-des div {
     font-size: 12px;
-    font-weight: 600;
+    font-family: montserratSemiBold;
 }

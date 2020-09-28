@@ -31,11 +31,11 @@
 }
 .whiteListedApps-body .item-parent-left div:first-child {
     font-size: 20px;
-    font-weight: 600;
+    font-family: montserratSemiBold;
 }
 .whiteListedApps-body .item-parent-left div:last-child {
     font-size: 12px;
-    font-weight: 600;
+    font-family: montserratSemiBold;
 }
 .whiteListedApps-body .item-child-wrap {
     padding: 15px;
@@ -48,7 +48,7 @@
 }
 .item-child-inner .item-child-group>div:first-child {
     font-size: 14px;
-    font-weight: 600;
+    font-family: montserratSemiBold;
 }
 /* customize round-checkbox */
 .round-checkbox .ui.checkbox .box:before, .round-checkbox .ui.checkbox label:before {

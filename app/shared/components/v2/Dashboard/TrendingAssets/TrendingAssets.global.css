@@ -12,12 +12,12 @@
 }
 .trending-assets-title {
     font-size: 20px;
-    font-weight: 700;
+    font-family: montserratBold;
 }
 .trending-assets-section .trending-assets-view {
     color: #ff886d;
     font-size: 14px;
-    font-weight: 600;
+    font-family: montserratSemiBold;
 }
 .trending-assets-section .trending-assets-view:hover{
     cursor: pointer;
@@ -52,17 +52,17 @@
     margin-left: 6px;
     color: #ffffff;
     font-size: 11px;
-    font-weight: 600;
+    font-family: montserratSemiBold;
 }
 .trending-assets-card .t-card-title {
     font-size: 12px;
-    font-weight: 800;
+    font-family: MontserratExtraBold;
 }
 .trending-assets-card .t-card-author {
     padding-bottom: 8px;
     color: #ff886d;
     font-size: 11px;
-    font-weight: 700;
+    font-family: montserratBold;
 }
 .trending-assets-card button {
     padding: 9px 30px !important;
