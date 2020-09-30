@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import { Form, Dropdown, Modal, Button } from "semantic-ui-react";
 import debounce from 'lodash/debounce';
 import { Decimal } from 'decimal.js';
+import macaddress from 'macaddress';
 
 import GlobalPublicKeyField from "../../../Global/Form/Field/Key/Public";
 import GlobalPrivateKeyField from "../../../Global/Form/Field/Key/Private";
@@ -180,7 +181,8 @@ class CreateAccountModal extends React.Component {
 		} = this.props;
 
 		const {
-			createAccount
+      createAccount,
+      createFreeAccount
 		} = actions;
 
 		const {
@@ -193,13 +195,32 @@ class CreateAccountModal extends React.Component {
 		} = this.state;
 
 		if (!submitDisabled) {
-			createAccount(
-				accountName,
-				activePublicKey,
-				delegatedNet,
-				delegatedCpu,
-				activePublicKey
-			);
+      // if(this.props.accounts.allAccounts.length < 3) {
+      //   macaddress.all(function (err, all) {
+      //     const macaddresses = [];
+      //     const map = new Map();
+      //     let keys = Object.keys(all);
+      //     for(let index=0;index<keys.length;index++)
+      //     {
+      //       const mac = all[keys[index]].mac;
+      //       if(!map.has(mac) && mac != '00:00:00:00:00:00'){
+      //         map.set(mac, true);
+      //         macaddresses.push(mac);
+      //       }
+      //     }
+      //     if (macaddresses.length > 0) {
+      //       createFreeAccount(accountName, activePublicKey, activePublicKey, macaddresses)
+      //     }
+      //   });
+      // } else {
+        createAccount(
+          accountName,
+          activePublicKey,
+          delegatedNet,
+          delegatedCpu,
+          activePublicKey
+        );
+      // }
 		}
 	}
 

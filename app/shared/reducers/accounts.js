@@ -1,7 +1,19 @@
 import * as types from '../actions/types';
 
 const initialState = {
-  __lookups: []
+  __lookups: [],
+  allAccounts: [
+    {
+        text: 'Import Account',
+        value: 'importAccount',
+        image: { avatar: true, src: '../assets/images/dashboard/dashboard-import.png' },
+    },
+    {
+        text: 'Create Account',
+        value: 'createAccount',
+        image: { avatar: true, src: '../assets/images/dashboard/dashboard-create.png' },
+    }
+  ]
 };
 
 export default function accounts(state = initialState, action) {
@@ -28,6 +40,10 @@ export default function accounts(state = initialState, action) {
         __lookups: []
       });
     }
+    case types.ALL_ACCOUNTS:
+      return {
+        ...state
+      }
     default: {
       return state;
     }

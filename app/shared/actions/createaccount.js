@@ -121,8 +121,8 @@ export function createFreeAccount(account_name, owner_key, active_key, macaddres
           type: types.SYSTEM_CREATEACCOUNT_SUCCESS
         });
       } else if (response.code == 0) {
-        const message = response && response.message && response.message.error 
-          && response.message.error.details[0] ? response.message.error.details[0] : 
+        const message = response && response.message && response.message.error
+          && response.message.error.details[0] ? response.message.error.details[0] :
           response && response.message ? response.message : 'An undefined exception occurred';
         return dispatch({
           payload: { err: message },
@@ -132,7 +132,7 @@ export function createFreeAccount(account_name, owner_key, active_key, macaddres
     }).catch((err) => dispatch({
       payload: { err },
       type: types.SYSTEM_CREATEACCOUNT_FAILURE
-    }));    
+    }));
   };
 }
 

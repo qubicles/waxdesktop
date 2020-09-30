@@ -181,10 +181,11 @@ export function getAccount(account = '') {
           type: types.GET_ACCOUNT_SUCCESS,
           payload: { results: modified }
         });
-      }).catch((err) => dispatch({
+      }).catch((err) => {
+        return dispatch({
         type: types.GET_ACCOUNT_FAILURE,
         payload: { err, account_name: account },
-      }));
+      })});
       return;
     }
     dispatch({
@@ -282,20 +283,20 @@ export function getGenesisBalance(account) {
     };
     eos(connection).getTableRows(query).then((results) => {
       let { rows } = results;
-      const { 
-        balance, 
-        unclaimed_balance, 
-        last_claim_time, 
-        last_updated 
+      const {
+        balance,
+        unclaimed_balance,
+        last_claim_time,
+        last_updated
       } = rows[0];
-        
+
       return dispatch({
         type: types.GET_GENESIS_BALANCE_SUCCESS,
         payload: {
           account: account,
-          balance: balance, 
-          unclaimed_balance: unclaimed_balance, 
-          last_claim_time: last_claim_time, 
+          balance: balance,
+          unclaimed_balance: unclaimed_balance,
+          last_claim_time: last_claim_time,
           last_updated: last_updated
         }
       });
@@ -337,7 +338,7 @@ export function getCurrencyBalance(account, requestedTokens = false) {
           } else {
             dispatch(getPriceFeedGecko(symbol, "USD"));
           }
-          
+
           dispatch({
             type: types.GET_ACCOUNT_BALANCE_SUCCESS,
             payload: {
@@ -534,6 +535,15 @@ export function getNFTBalance(account, contract) {
   };
 }
 
+export function previousAccounts() {
+  return (dispatch: () => void, getState) => {
+    return dispatch({
+      payload: null,
+      type: types.PREVIOUS_ACCOUNTS
+    });
+  };
+}
+
 export default {
   checkAccountAvailability,
   checkAccountExists,
@@ -546,5 +556,6 @@ export default {
   getActions,
   getCurrencyBalance,
   refreshAccountBalances,
-  getNFTBalance
+  getNFTBalance,
+  previousAccounts
 };
