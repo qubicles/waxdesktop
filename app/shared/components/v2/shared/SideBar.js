@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from 'react-router-dom'
 import "./SideBar.global.css";
 import { Dropdown } from "semantic-ui-react";
@@ -15,37 +15,13 @@ import CreateAccountModal from "../Dashboard/Modals/CreateAccountModal/CreateAcc
 import ImportAccountModal from "../Dashboard/Modals/ImportAccountModal/ImportAccountModal"
 
 const SideBar = (props) => {
+    const { allAccounts } = props.accounts
     const [createAccountModal, toggleCreateAccountModal] = useState(false);
+    const [currentAccount, setCurrentAccount] = useState(allAccounts[2]);
     const [importAccountModal, toggleImportAccountModal] = useState(false);
-    const accountOption = [
-        {
-            text: 'Import Account',
-            value: 'importAccount',
-            image: { avatar: true, src: '../assets/images/dashboard/dashboard-import.png' },
-        },
-        {
-            text: 'Create Account',
-            value: 'createAccount',
-            image: { avatar: true, src: '../assets/images/dashboard/dashboard-create.png' },
-        },
-        {
-            text: 'willquigley',
-            value: 'willquigley',
-            image: { avatar: true, src: '../assets/images/dashboard/ScrollGroup6.png' },
-        },
-        {
-            text: 'dloyt.yes',
-            value: 'dloyt.yes',
-            image: { avatar: true, src: '../assets/images/dashboard/ScrollGroup6.png' },
-        },
-        {
-            text: 'elhfo.wam',
-            value: 'elhfo.wam',
-            image: { avatar: true, src: '../assets/images/dashboard/ScrollGroup6.png' },
-        },
-    ];
 
     const handleChange = (e, { name, value }) => {
+        setCurrentAccount(value)
         switch (value) {
             case "createAccount":
                 toggleCreateAccountModal(true);
@@ -57,17 +33,16 @@ const SideBar = (props) => {
                 return null;
         }
     }
-
     const DropdownExampleSelection = () => (
         <Dropdown
             fluid
             selection
             scrolling
             upward
-            options={accountOption}
+            options={allAccounts}
             className="left-nav-dropdown"
-            defaultValue="elhfo.wam"
             onChange={(e, data) => handleChange(e, data)}
+            value={currentAccount}
         />
     );
     const menuOption = [
