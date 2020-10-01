@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from 'react-redux';
 import { bindActionCreators } from "redux";
-import { Table, Image, Header, Checkbox } from "semantic-ui-react";
+import { Table, Image, Header, Checkbox, Flag } from "semantic-ui-react";
 import { forEach } from 'lodash';
 
 import * as TableActions from "../../../actions/table";
@@ -35,6 +35,10 @@ class GuildsTab extends Component {
 
     }
 
+    numberWithComma(num){
+      return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+    }
+
     render() {
         const {
             accounts,
@@ -63,7 +67,11 @@ class GuildsTab extends Component {
                     twitter,
                     wechat,
                     rank,
-                    vote_count
+                    vote_count,
+                    num_votes,
+                    country,
+                    flag,
+                    voteNumChange
                   } = guild
                     return {
                       slogan,
@@ -80,7 +88,11 @@ class GuildsTab extends Component {
                       logo,
                       reserved_1: '',
                       reserved_2: '',
-                      reserved_3: ''
+                      reserved_3: '',
+                      num_votes,
+                      country,
+                      flag,
+                      voteNumChange
                     }
                 });
         }
@@ -92,22 +104,29 @@ class GuildsTab extends Component {
         forEach(producers, (producer, index) => {
             rows.push((
             <Table.Row key={`producer-${index}`}>
+                <Table.Cell className="common-checkbox">
+                    <Checkbox />
+                </Table.Cell>
                 <Table.Cell >{index + 1}</Table.Cell>
                 <Table.Cell >
                     <Image
                         src={producer.logo}
-                        style={{width:"40px", height: '40px'}}
+                        style={{width:"40px", height: '40px', borderRadius: '50%'}}
                     />
                 </Table.Cell>
                 <Table.Cell >
                     <Header style={{color:"white"}}>{producer.owner}</Header>
                 </Table.Cell>
                 <Table.Cell>
-                {producer.rank < 22 &&
                     <div className="list-btn">
-                        Top 21
+                    {producer.rank < 22 ? 'Top 21' : 'Stand By'}
                     </div>
-                }
+                </Table.Cell>
+                <Table.Cell>
+                  <Flag name={producer.flag} style={{display:'inline', marginRight:'10px'}} />
+                  <Header style={{color:"white", display:'inline'}}>
+                      {producer.country}
+                  </Header>
                 </Table.Cell>
                 <Table.Cell className="list-img-group" >
                     {producer.telegram &&
@@ -119,18 +138,19 @@ class GuildsTab extends Component {
                 </Table.Cell>
                 <Table.Cell>
                     <Header style={{color:"white"}}>
-                      {producer.vote_count}
+                      {this.numberWithComma(producer.num_votes.toFixed(2))}
+                    {producer.voteNumChange < 0 ?
+                      (<sup style={{marginLeft: "8px", color: 'red'}}>{this.numberWithComma(producer.voteNumChange.toFixed(2))}</sup>) :
+                      (<sup style={{marginLeft: "8px", color: 'green'}}>+{this.numberWithComma(producer.voteNumChange.toFixed(2))}</sup>)
+                    }
                     </Header>
-                </Table.Cell>
-                <Table.Cell className="common-checkbox">
-                    <Checkbox />
                 </Table.Cell>
             </Table.Row>
           ))
         })
 
         return (
-            <Table collapsing>
+            <Table collapsing={true}>
                 <Table.Body>
                     {rows}
                 </Table.Body>

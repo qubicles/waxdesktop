@@ -82,12 +82,12 @@ export default class Balance extends Component {
                     </div>
                         <Image src={require('../../../../../renderer/assets/images/dashboard/credit-card2.png')} />
                     </div>
-                    <div className="balance-button-wrap">
+                    {/* <div className="balance-button-wrap">
                         <div className="balance-button-title" onClick={openSwapTokenModal}>
                             Swap Tokens
                         </div>
                         <Image src={require('../../../../../renderer/assets/images/dashboard/Group1734.png')} />
-                    </div>
+                    </div> */}
                     <div className="balance-button-wrap" onClick={openResourcesModal}>
                         <div className="balance-button-title">
                             Resources

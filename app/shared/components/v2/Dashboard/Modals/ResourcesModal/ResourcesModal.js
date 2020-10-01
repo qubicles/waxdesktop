@@ -57,7 +57,7 @@ class ResourcesModal extends React.Component {
 		const account = accounts[settings.account];
 		if (!account) account = {};
 		const { cpuUsage, netUsage, ramUsage } = this.resourceUsage(account);
-		
+
 		const {
 			cpu_weight,
 			net_weight
@@ -109,7 +109,7 @@ class ResourcesModal extends React.Component {
 					/>
 					<div className="resource-choose-section">
 						<Dropdown
-							defaultValue="CPU"
+							defaultValue={1}
 							selection
 							options={options}
 							className="resource-choose-dropdown"
