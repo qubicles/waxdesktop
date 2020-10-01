@@ -15,11 +15,11 @@ class SellAssetModal extends React.Component {
     return (
       <Modal
         onClose={closeModal}
-        className="SellAssetModal"
+        className="BuyAssetModal"
         size={"tiny"}
         open={modalOpen}
       >
-        <Modal.Content className="SellAssetModal-body">
+        <Modal.Content className="BuyAssetModal-body">
           <div className="sell-left-container">
             <div className="sell-card">
               <img

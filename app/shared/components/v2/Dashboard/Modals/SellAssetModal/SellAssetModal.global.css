@@ -1,122 +1,62 @@
-.ui.dimmer {
-    padding: 0 !important;
-}
-.modals.dimmer .ui.scrolling.modal {
-    margin: auto !important;
-}
 
 .SellAssetModal.ui.active.modal {
     border-top-left-radius: 20px !important;
     border-bottom-left-radius: 20px !important;
     border-top-right-radius: 0 !important;
     border-bottom-right-radius: 0 !important;
-    width: 830px;
+    width: unset !important;
     height: 100% !important;
     background-color: #191f28 !important;
     position: absolute;
     top: 0%;
     right: 0%;
-    padding-top: 30px !important;
+    padding-left: 30px;
+    padding-right: 30px;
 }
 .SellAssetModal-body {
     display: flex !important;
-    padding: 20px !important;
+    padding: 50px !important;
     color: white;
     font-size: 17px !important;
-    font-weight: 500;
+    font-family: montserratMedium;
+    height: 100% !important;
 }
 .SellAssetModal-body .sell-left-container {
-    padding: 10px;
+    padding: 30px 70px;
     background-color: #242b39;
     border-radius: 20px;
     text-align: center;
-}
-.SellAssetModal-body .sell-card {
-    padding: 10px 20px;
-    width: 350px;
-}
-.sell-card>img {
-    width: 100%;
-}
-.sell-card-info {
-    padding: 10px;
-}
-.sell-card-info .sc-title {
-    color: white;
-    font-size: 30px;
-    font-weight: 800;
-}
-.sell-card-info .sc-brand {
-    padding-top: 10px;
-    color: #ff886d;
-    padding-bottom: 10px;
-    font-size: 25px;
-    font-weight: 700;
-}
-.sell-card-info .sc-price {
     display: flex;
     align-items: center;
     justify-content: center;
-    color: white;
-    font-size: 31px;
-    font-weight: 600;
 }
-.sc-price img {
-    margin-right: 10px;
+.SellAssetModal-body .sell-card {
+    padding: 50px 20px;
+    width: 350px;
+    height: 100%;
 }
-.sell-right-container {
-    flex: 1;
-    padding: 0 0px 15px 30px ;
+.SellAssetModal-body .first-element{
+    margin-bottom: 20px !important;
 }
-.sell-right-container .sellModal-title {
-    font-size: 25px;
-    text-align: center;
+.SellAssetModal-body .sell-right-container .seller-input input::placeholder {
+    color: white !important;
 }
-.sellModal-title span:first-child {
-    color: #ff886d;
-    font-size: 33px;
-    font-weight: 800;
+.SellAssetModal-body .seller-input {
+    position: relative;
 }
-.sellModal-title span:last-child {
-    color: white;
-    font-size: 33px;
-    font-weight: 800;
-}
-.sell-right-container .seller-input .input-title {
-    font-size: 17px;
-    font-weight: 700;
-}
-.seller-input input {
-    height: 40px;
-}
-.sell-right-container .seller-input input {
-    font-size: 17px;
-    font-weight: 700;
-} 
-
-.sell-right-container .seller-input input::placeholder {
-    color: #ff886d !important;
-}
-.seller-info {
-    display: flex;
-    justify-content: space-between;
-    padding-top: 13px;
-    padding-bottom: 13px;
-}
-.sell-right-container .delegate-btn {
-    margin-top: 120px;
-    font-size: 20px;
-    font-weight: 700;
-}
-.sell-right-container .wdw-fee span:nth-child(2){
-    color: #ff886d;
-    font-weight: 700;
-}
-.sell-right-container .author-fee span:nth-child(2){
-    color: #ff886d;
-    font-weight: 700;
-}
-.sell-right-container .total-fee span:last-child{
+.SellAssetModal-body .seller-input div:nth-child(4) {
+    position: absolute;
+    top: 58px;
+    right: 204px;
     color: #6dff83;
+    font-size: 17px;
+    font-family: montserratBold;
 }
-
+.SellAssetModal-body .seller-input div:nth-child(3) {
+    position: absolute;
+    top: 58px;
+    right: 282px;
+    color: white;
+    font-size: 17px;
+    font-family: montserratBold;
+}
