@@ -105,7 +105,7 @@ class GuildsTab extends Component {
         let rows = [];
         forEach(producers, (producer, index) => {
             const isSelected = this.props.selected.includes(producer.owner)
-            
+
             rows.push((
             <Table.Row key={`producer-${index}`}>
                 <Table.Cell className="common-checkbox">
