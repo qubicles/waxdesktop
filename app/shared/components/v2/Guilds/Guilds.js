@@ -51,19 +51,25 @@ class Guilds extends React.Component {
 		return (
 			<div className="dashboard-container">
 				<div className="dashboard-body-section">
-                    <div className="guilds-section">
-                        <Tab
-                            menu={{ secondary: true, pointing: true }}
-                            panes={this.getPanes()}
-                            className="guilds-tab"
-                        />
-                        <div className="right-badge">
-                            <img src={require('../../../../renderer/assets/images/dashboard/Group1737.png')} onClick={this.goStaking} />
-                        </div>
+              <div className="guilds-section">
+                  <Tab
+                      menu={{ secondary: true, pointing: true }}
+                      panes={this.getPanes()}
+                      className="guilds-tab"
+                  />
+                <div className="confirm-btn-wrap">
+                    <div className="confirm-btn">
+                        <h3>Confirm Votes</h3>
+                        <Image src={require('../../../../renderer/assets/images/dashboard/correct3.png')} />
                     </div>
                 </div>
-                {/* <Balance /> */}
-            </div>
+                  <div className="right-badge">
+                      <img src={require('../../../../renderer/assets/images/dashboard/Group1737.png')} onClick={this.goStaking} />
+                  </div>
+              </div>
+          </div>
+          {/* <Balance /> */}
+      </div>
 		)
 	}
 }
