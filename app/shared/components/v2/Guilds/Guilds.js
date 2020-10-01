@@ -63,9 +63,6 @@ class Guilds extends React.Component {
                         <Image src={require('../../../../renderer/assets/images/dashboard/correct3.png')} />
                     </div>
                 </div>
-                  <div className="right-badge">
-                      <img src={require('../../../../renderer/assets/images/dashboard/Group1737.png')} onClick={this.goStaking} />
-                  </div>
               </div>
           </div>
           {/* <Balance /> */}

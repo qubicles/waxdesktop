@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from 'react-redux';
 import { bindActionCreators } from "redux";
-import { Table, Image, Header, Checkbox } from "semantic-ui-react";
+import { Table, Image, Header, Checkbox, Flag } from "semantic-ui-react";
 import { forEach } from 'lodash';
 
 import * as TableActions from "../../../actions/table";
@@ -95,16 +95,27 @@ class ProxiesTab extends Component {
         let rows = [];
         forEach(proxies, (proxy, index) => {
             rows.push((
-            <Table.Row key={`proxy-${index}`}>
+            <Table.Row key={`proxy-${index + 1}`}>
                 <Table.Cell >{index + 1}</Table.Cell>
                 <Table.Cell >
                     <Image
                         src={proxy.logo_256}
-                        style={{width:"40px", height: '40px'}}
+                        style={{width:"40px", height: '40px', borderRadius: '50%'}}
                     />
                 </Table.Cell>
                 <Table.Cell >
                     <Header style={{color:"white"}}>{proxy.owner}</Header>
+                </Table.Cell>
+                <Table.Cell>
+                    <div className="list-btn">
+                    {proxy.rank < 22 ? 'Top 21' : 'Stand By'}
+                    </div>
+                </Table.Cell>
+                <Table.Cell>
+                  <Flag name={proxy.flag} style={{display:'inline', marginRight:'10px'}} />
+                  <Header style={{color:"white", display:'inline'}}>
+                      {proxy.country}
+                  </Header>
                 </Table.Cell>
                 <Table.Cell  className="list-img-group" >
                     {proxy.telegram && <a target="_blank" href={`https://telegram.dog/${proxy.telegram}`}><Image src={require('../../../../renderer/assets/images/marketplace/telegram2.png')} /></a>}
@@ -119,19 +130,12 @@ class ProxiesTab extends Component {
                 <Table.Cell className="common-checkbox">
                     <Checkbox />
                 </Table.Cell>
-                {proxy.rank < 22 &&
-                    <Table.Cell collapsing={false}>
-                        <div className="list-btn">
-                            Top 21
-                        </div>
-                    </Table.Cell>
-                }
             </Table.Row>
           ))
         })
 
         return (
-            <Table collapsing>
+            <Table collapsing={true}>
                 <Table.Body>
                     {rows}
                 </Table.Body>

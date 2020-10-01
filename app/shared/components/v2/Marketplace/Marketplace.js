@@ -44,13 +44,13 @@ class Marketplace extends React.Component {
   componentDidMount() {
     const { actions: { getActiveCollections } } = this.props;
     this.getAllAssets();
-    console.log(this.props.assets.collectionNames, '------------------ASSEETTTSSS')
+    getActiveCollections()
   }
 
   getAllAssets = () => {
     const { actions: { getAssets } } = this.props;
     const { match, owner, page, limit, order, sort, minPrice, maxPrice, collection } = this.state;
-    getAssets({ match, owner, page, limit, order, sort, minPrice, maxPrice, collection });
+    getAssets({ match, owner, page, limit, order, sort, minPrice: minPrice * 100000000, maxPrice: maxPrice * 100000000, collection });
   }
 
   onChange = debounce((e, { name, value }) => {
@@ -81,7 +81,7 @@ class Marketplace extends React.Component {
 
     return assetsList && assetsList.data.map(asset =>
       <Card className="trending-assets-card" key={`assets-${asset.offer_id}`}>
-        <Image src={`https://ipfs.io/ipfs/${asset.collection.img}`} />
+        <Image src={`https://ipfs.io/ipfs/${asset.assets[0].data.img}`} />
         <Card.Header className="t-card-title">{asset.assets[0].name}</Card.Header>
         <Card.Meta>
           <div className="t-card-author">{asset.seller}</div>
@@ -111,6 +111,7 @@ class Marketplace extends React.Component {
   render() {
     const { radioChange, match, sort, minPrice, maxPrice } = this.state;
     const displayAssets = this.renderAssets();
+    const { assets } = this.props
 
     const MarketplaceDropdown = () => (
       <Dropdown
@@ -192,7 +193,7 @@ class Marketplace extends React.Component {
                     onChange={this.onChange}
                   />
                 </Form.Field>
-                {this.props.assets.collectionNames.length > 0 && this.props.assets.collectionNames.map((collection, index) => (
+                {assets.collectionNames && assets.collectionNames.length > 0 && assets.collectionNames.map((collection, index) => (
                     <Form.Field key={`collection_${index}`}>
                       <Radio
                         label={collection.name}

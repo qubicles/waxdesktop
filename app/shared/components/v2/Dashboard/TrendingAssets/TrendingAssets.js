@@ -26,10 +26,10 @@ class TrendingAssets extends React.Component {
 
             return (trendingAssetsList.data.map((item, index) => (
                 <Card className="trending-assets-card" key={`trending-asset-${index}`}>
-                    <Image src={`https://ipfs.io/ipfs/${item.collection.img}`} />
-                    <Card.Header className="t-card-title">{item.collection.name}</Card.Header>
+                    <Image src={`https://ipfs.io/ipfs/${item.assets[0].data.img}`} />
+                    <Card.Header className="t-card-title">{item.assets[0].name}</Card.Header>
                     <Card.Meta>
-                        <div className="t-card-author">{item.collection.author}</div>
+                        <div className="t-card-author">{item.seller}</div>
                         <div className="t-card-price">
                             <Image src={require('../../../../../renderer/assets/images/dashboard/Group47.png')} />
                             <div className="t-card-des">
