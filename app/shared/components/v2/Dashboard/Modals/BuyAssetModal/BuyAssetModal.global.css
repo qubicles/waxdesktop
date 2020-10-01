@@ -5,7 +5,7 @@
     margin: auto !important;
 }
 
-.SellAssetModal.ui.active.modal {
+.BuyAssetModal.ui.active.modal {
     border-top-left-radius: 20px !important;
     border-bottom-left-radius: 20px !important;
     border-top-right-radius: 0 !important;
@@ -19,7 +19,7 @@
     padding-left: 30px;
     padding-right: 30px;
 }
-.SellAssetModal-body {
+.BuyAssetModal-body {
     display: flex !important;
     padding: 50px !important;
     color: white;
@@ -27,7 +27,7 @@
     font-family: montserratMedium;
     height: 100% !important;
 }
-.SellAssetModal-body .sell-left-container {
+.BuyAssetModal-body .sell-left-container {
     padding: 30px 70px;
     background-color: #242b39;
     border-radius: 20px;
@@ -36,7 +36,7 @@
     align-items: center;
     justify-content: center;
 }
-.SellAssetModal-body .sell-card {
+.BuyAssetModal-body .sell-card {
     padding: 50px 20px;
     width: 350px;
     height: 100%;
