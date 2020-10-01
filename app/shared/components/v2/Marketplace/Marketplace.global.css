@@ -134,6 +134,12 @@
 }
 .radio-btn-wrap {
     padding: 10px;
+    color: white;
+}
+.radio-btn-wrap label {
+  color: white !important;
+  left: -5px;
+  font-weight: 700 !important;
 }
 .common-radio {
     height: 30px;
@@ -164,7 +170,7 @@
     width: 30px;
     height: 30px;
     border-radius: 50%;
-    background-color: #ff886d;
+    background-color: #ff886d !important;
 }
 .common-radio label {
     margin-left: 40px;

@@ -15,6 +15,9 @@ export default (state = initialState, action) => {
         case types.ASSETS_LIST_SUCCESS:
             return { ...state, assetsList: action.payload, isAssetsLoading: false };
 
+        case types.COLLECTION_NAMES_SUCCESS:
+             return { ...state, collectionNames: action.payload }
+
         default: {
             return state;
         }

@@ -8,7 +8,8 @@ import {
   Button,
   Dropdown,
   Form,
-  Input
+  Input,
+  Radio
 } from "semantic-ui-react";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
@@ -35,18 +36,21 @@ class Marketplace extends React.Component {
       order: "desc",
       sort: "created",
       minPrice: "",
-      maxPrice: ""
+      maxPrice: "",
+      collection: ""
     }
   }
 
   componentDidMount() {
+    const { actions: { getActiveCollections } } = this.props;
     this.getAllAssets();
+    console.log(this.props.assets.collectionNames, '------------------ASSEETTTSSS')
   }
 
   getAllAssets = () => {
     const { actions: { getAssets } } = this.props;
-    const { match, owner, page, limit, order, sort, minPrice, maxPrice } = this.state;
-    getAssets({ match, owner, page, limit, order, sort, minPrice, maxPrice });
+    const { match, owner, page, limit, order, sort, minPrice, maxPrice, collection } = this.state;
+    getAssets({ match, owner, page, limit, order, sort, minPrice, maxPrice, collection });
   }
 
   onChange = debounce((e, { name, value }) => {
@@ -78,9 +82,9 @@ class Marketplace extends React.Component {
     return assetsList && assetsList.data.map(asset =>
       <Card className="trending-assets-card" key={`assets-${asset.offer_id}`}>
         <Image src={`https://ipfs.io/ipfs/${asset.collection.img}`} />
-        <Card.Header className="t-card-title">{asset.collection.name}</Card.Header>
+        <Card.Header className="t-card-title">{asset.assets[0].name}</Card.Header>
         <Card.Meta>
-          <div className="t-card-author">{asset.collection.author}</div>
+          <div className="t-card-author">{asset.seller}</div>
           <div className="t-card-price">
             <Image src={require('../../../../renderer/assets/images/dashboard/Group47.png')} />
             <div className="t-card-des">
@@ -118,7 +122,6 @@ class Marketplace extends React.Component {
         onChange={this.handleChange}
       />
     )
-
     return (
       <div className="dashboard-container">
         <div className="dashboard-body-section">
@@ -179,20 +182,28 @@ class Marketplace extends React.Component {
           <div className="marketplce-collections-section">
             <div className="title">Collections</div>
             <div className="radio-btn-wrap">
-              <form>
-                <div className="common-radio">
-                  <input type="radio" id="collectionsRadio1" />
-                  <label htmlFor="collectionsRadio1">GPK</label>
-                </div>
-                <div className="common-radio">
-                  <input type="radio" id="collectionsRadio2" />
-                  <label htmlFor="collectionsRadio2">Topps</label>
-                </div>
-                <div className="common-radio">
-                  <input type="radio" id="collectionsRadio3" />
-                  <label htmlFor="collectionsRadio3">Topps</label>
-                </div>
-              </form>
+              <Form>
+                <Form.Field>
+                  <Radio
+                    label="All"
+                    name='collection'
+                    value=""
+                    checked={this.state.collection === ""}
+                    onChange={this.onChange}
+                  />
+                </Form.Field>
+                {this.props.assets.collectionNames.length > 0 && this.props.assets.collectionNames.map((collection, index) => (
+                    <Form.Field key={`collection_${index}`}>
+                      <Radio
+                        label={collection.name}
+                        name='collection'
+                        value={collection.collection_name}
+                        checked={this.state.collection === collection.collection_name}
+                        onChange={this.onChange}
+                      />
+                    </Form.Field>
+                ))}
+              </Form>
             </div>
           </div>
         </div>

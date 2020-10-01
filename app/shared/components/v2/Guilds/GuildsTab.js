@@ -102,7 +102,14 @@ class GuildsTab extends Component {
                 <Table.Cell >
                     <Header style={{color:"white"}}>{producer.owner}</Header>
                 </Table.Cell>
-                <Table.Cell  className="list-img-group" >
+                <Table.Cell>
+                {producer.rank < 22 &&
+                    <div className="list-btn">
+                        Top 21
+                    </div>
+                }
+                </Table.Cell>
+                <Table.Cell className="list-img-group" >
                     {producer.telegram &&
                         <a href={`https://telegram.dog/${producer.telegram}`} target="_blank"><Image src={require('../../../../renderer/assets/images/marketplace/telegram2.png')} /></a>}
                     {producer.website &&
@@ -118,13 +125,6 @@ class GuildsTab extends Component {
                 <Table.Cell className="common-checkbox">
                     <Checkbox />
                 </Table.Cell>
-                {producer.rank < 22 &&
-                    <Table.Cell collapsing={false}>
-                        <div className="list-btn">
-                            Top 21
-                        </div>
-                    </Table.Cell>
-                }
             </Table.Row>
           ))
         })
