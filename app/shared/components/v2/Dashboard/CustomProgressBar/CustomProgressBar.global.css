@@ -9,11 +9,11 @@
 .progressbar-label .left-label {
     color: white;
     font-size: 16px;
-    font-weight: 700;
+    font-family: montserratBold;
 }
 .progressbar-label .right-label {
     color: #707070;
-    font-weight: 500;
+    font-family: montserratMedium;
     font-size: 16px;
 }
 .progressbar-container .progressbar-inner-label {
@@ -21,7 +21,7 @@
     top: 58%;
     left: 80%;
     font-size: 12px;
-    font-weight: 600;
+    font-family: montserratBold;
     color: white;
     width: 200px;
 }

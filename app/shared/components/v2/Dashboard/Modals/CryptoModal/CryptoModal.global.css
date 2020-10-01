@@ -18,11 +18,11 @@
     padding-top: 15px;
     padding-bottom: 15px;
     font-size: 24px;
-    font-weight: 700;
+    font-family: montserratBold;
 }
 .delegate-btn img {
     margin-left: 10px;
-    width: 16px;
+    width: 22px;
 }
 
 .ui-common-input input {
@@ -33,7 +33,7 @@
     border-radius: 30px !important;
     color: white !important;
     font-size: 20px !important;
-    font-weight: bold;
+    font-family: montserratBold;
 }
 
 .ui-common-input input:focus {
@@ -42,5 +42,6 @@
 .ui-common-input input::placeholder {
     font-size: 20px !important;
     font-family: montserrat;
-    font-weight: bold;
+    font-family: montserratBold;
+    color: #707070 !important;
 }

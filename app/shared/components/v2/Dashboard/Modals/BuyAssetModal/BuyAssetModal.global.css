@@ -1,0 +1,142 @@
+.ui.dimmer {
+    padding: 0 !important;
+}
+.modals.dimmer .ui.scrolling.modal {
+    margin: auto !important;
+}
+
+.BuyAssetModal.ui.active.modal {
+    border-top-left-radius: 20px !important;
+    border-bottom-left-radius: 20px !important;
+    border-top-right-radius: 0 !important;
+    border-bottom-right-radius: 0 !important;
+    width: unset !important;
+    height: 100% !important;
+    background-color: #191f28 !important;
+    position: absolute;
+    top: 0%;
+    right: 0%;
+    padding-left: 30px;
+    padding-right: 30px;
+}
+.BuyAssetModal-body {
+    display: flex !important;
+    padding: 50px !important;
+    color: white;
+    font-size: 17px !important;
+    font-family: montserratMedium;
+    height: 100% !important;
+}
+.BuyAssetModal-body .sell-left-container {
+    padding: 30px 70px;
+    background-color: #242b39;
+    border-radius: 20px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.BuyAssetModal-body .sell-card {
+    padding: 50px 20px;
+    width: 350px;
+    height: 100%;
+}
+.sell-card>img {
+    width: 100%;
+    margin-top: 20px;
+}
+.sell-card-info {
+    margin-top: 70px;
+}
+.sell-card-info .sc-title {
+    color: white;
+    font-size: 30px;
+    font-family: MontserratExtraBold;
+}
+.sell-card-info .sc-brand {
+    padding-top: 10px;
+    color: #ff886d;
+    padding-bottom: 10px;
+    font-size: 25px;
+    font-family: montserratBold;
+}
+.sell-card-info .sc-price {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 31px;
+    font-family: montserratSemiBold;
+    margin-top: 50px;
+}
+.sc-price img {
+    margin-right: 10px;
+    width: 46px;
+    height: 46px;
+}
+.sell-right-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 0 20px 0px 90px;
+    min-width: 500px;
+}
+.sell-right-container .sellModal-title {
+    font-size: 33px;
+    font-family: MontserratExtraBold;
+    margin-bottom: 30px;
+    text-align: center;
+}
+.sellModal-title span:first-child {
+    color: #ff886d;
+    font-size: 33px;
+    font-weight: 800;
+}
+.sellModal-title span:last-child {
+    color: white;
+    font-size: 33px;
+    font-weight: 800;
+}
+.sell-right-container .seller-input .input-title {
+    font-size: 17px;
+    font-family: montserratBold;
+    margin-bottom: 10px;
+}
+.sell-right-container .seller-input {
+    margin-bottom: 55px;
+}
+.seller-input input {
+    height: 40px;
+}
+.sell-right-container .seller-input input {
+    font-size: 17px;
+    font-family: montserratBold;
+} 
+
+.sell-right-container .seller-input input::placeholder {
+    color: #ff886d !important;
+    font-family: montserratBold;
+}
+.seller-info {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 13px;
+    padding-bottom: 13px;
+}
+.sell-right-container .delegate-btn {
+    margin-top: 120px;
+    font-size: 20px;
+    font-family: montserratBold;
+}
+.sell-right-container .wdw-fee span:nth-child(2){
+    color: #ff886d;
+    font-family: montserratBold;
+}
+.sell-right-container .author-fee span:nth-child(2){
+    color: #ff886d;
+    font-family: montserratBold;
+}
+.sell-right-container .total-fee span:last-child{
+    color: #6dff83;
+}
+

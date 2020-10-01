@@ -19,7 +19,7 @@
 }
 /* resource choose dropdown */
 .resource-choose-dropdown {
-  width: 25% !important;
+  width: 30% !important;
   min-width: unset !important;
   border-radius: 20px !important;
   color: white !important;
@@ -31,9 +31,18 @@
   color: white !important;
   border: unset !important;
 }
-.resource-choose-dropdown .icon, .resource-choose-dropdown .text {
+.resource-choose-dropdown .text {
   color: white !important;
   margin: auto !important;
+  font-size: 18px !important;
+  font-family: montserratSemiBold;
+}
+.resource-choose-dropdown .icon {
+  top: -2px !important;
+  right: 1px !important;
+  color: white !important;
+  margin: auto !important;
+  font-size: 18px !important;
 }
 .resource-choose-dropdown .visible {
   font-weight: 100 !important;
@@ -88,7 +97,7 @@
 .resources-delegate-link {
   color: #707070;
   font-size: 14px;
-  font-weight: 600;
+  font-family: montserratSemiBold;
   text-align: center;
   padding: 20px;
 }
@@ -97,4 +106,16 @@
   font-size: 38px !important;
   font-weight: 800 !important;
   padding: 15px !important;
+}
+
+/* semantic ui active pan line color */
+.ui.secondary.pointing.menu .active.item {
+  border-bottom: 3px solid #ff886d !important;
+  border-bottom-left-radius: 2px !important;
+  border-bottom-right-radius: 2px !important;
+  font-family: montserratBold !important;
+
+}
+.ui.secondary.pointing.menu .dropdown.item:hover, .ui.secondary.pointing.menu .link.item:hover, .ui.secondary.pointing.menu a.item:hover {
+  color: white !important;
 }

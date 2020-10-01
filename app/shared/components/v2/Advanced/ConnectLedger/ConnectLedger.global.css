@@ -12,7 +12,7 @@
 .connectLedger-body .w-title {
     color: #ff886d;
     font-size: 20px;
-    font-weight: 700;
+    font-family: montserratBold;
 }
 .connectLedger-body .ledger-content {
     padding: 20px;
@@ -32,7 +32,7 @@
 }
 .ledger-content-header-left div {
     font-size: 20px;
-    font-weight: bold;
+    font-family: montserratBold;
     margin-left: 10px;
 }
 .ledger-content-body {
@@ -40,7 +40,7 @@
 }
 .ledger-content-body p:first-child {
     font-size: 16px;
-    font-weight: bold;
+    font-family: montserratBold;
 }
 .connectLedger-body .seller-input {
     padding-top: 30px;
@@ -53,7 +53,7 @@
 .connectLedger-body .seller-input .input-title {
     color: white;
     font-size: 20px;
-    font-weight: 700;
+    font-family: montserratBold;
     margin-bottom: 10px;
 }
 .connectLedger-body .delegate-btn {
@@ -61,5 +61,5 @@
     background-color: #ff886d;
     color: white;
     font-size: 16px;
-    font-weight: 700;
+    font-family: montserratBold;
 }
