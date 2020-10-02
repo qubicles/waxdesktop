@@ -35,7 +35,7 @@ const initialState = {
   importAccountModal: false,
   buyWaxModal: false,
   createAccountModal: false,
-  sellAssetModal: true
+  sellAssetModal: false
 };
 
 class Home extends React.Component {
