@@ -14,7 +14,6 @@ import ImportAccountModal from "./Modals/ImportAccountModal/ImportAccountModal";
 import BuyWaxModal from "./Modals/BuyWaxModal/BuyWaxModal";
 import CreateAccountModal from "./Modals/CreateAccountModal/CreateAccountModal";
 import SellAssetModal from "./Modals/SellAssetModal/SellAssetModal";
-import BuyAssetModal from "./Modals/BuyAssetModal/BuyAssetModal";
 import TrendingAssets from "./TrendingAssets/TrendingAssets";
 import RecommendedApps from "./RecommendedApps/RecommendedApps";
 import Balance from "./Balance/Balance";
@@ -36,8 +35,7 @@ const initialState = {
   importAccountModal: false,
   buyWaxModal: false,
   createAccountModal: false,
-  sellAssetModal: false,
-  buyAssetModal: false
+  sellAssetModal: true
 };
 
 class Home extends React.Component {
@@ -122,10 +120,7 @@ class Home extends React.Component {
     const { sellAssetModal } = this.state;
     this.setState({ sellAssetModal: !sellAssetModal });
   };
-  toggleBuyAssetModal = () => {
-    const { buyAssetModal } = this.state;
-    this.setState({ buyAssetModal: !buyAssetModal });
-  };
+
   goStaking = () => {
     this.props.history.push("/advanced");
   };
@@ -143,8 +138,7 @@ class Home extends React.Component {
       importAccountModal,
       buyWaxModal,
       createAccountModal,
-      sellAssetModal,
-      buyAssetModal
+      sellAssetModal
     } = this.state;
     const {
       wallet,
@@ -276,13 +270,6 @@ class Home extends React.Component {
         <SellAssetModal
           closeModal={this.toggleSellAssetModal}
           modalOpen={sellAssetModal}
-          history={history}
-          actions={actions}
-          location={location}
-        />
-        <BuyAssetModal
-          closeModal={this.toggleBuyAssetModal}
-          modalOpen={buyAssetModal}
           history={history}
           actions={actions}
           location={location}

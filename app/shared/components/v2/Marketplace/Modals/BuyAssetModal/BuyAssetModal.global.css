@@ -51,7 +51,7 @@
 .sell-card-info .sc-title {
     color: white;
     font-size: 30px;
-    font-family: MontserratExtraBold;
+    font-family: montserratSemiBold;
 }
 .sell-card-info .sc-brand {
     padding-top: 10px;
@@ -83,19 +83,19 @@
 }
 .sell-right-container .sellModal-title {
     font-size: 33px;
-    font-family: MontserratExtraBold;
+    font-family: montserratSemiBold;
     margin-bottom: 30px;
     text-align: center;
 }
 .sellModal-title span:first-child {
     color: #ff886d;
     font-size: 33px;
-    font-weight: 800;
+    font-family: montserratSemiBold;
 }
 .sellModal-title span:last-child {
     color: white;
     font-size: 33px;
-    font-weight: 800;
+    font-family: montserratSemiBold;
 }
 .sell-right-container .seller-input .input-title {
     font-size: 17px;
@@ -119,9 +119,12 @@
 }
 .seller-info {
     display: flex;
-    justify-content: space-between;
     padding-top: 13px;
     padding-bottom: 13px;
+    justify-content: space-between;
+}
+.seller-info.total-fee div {
+    font-family: montserratBold;
 }
 .sell-right-container .delegate-btn {
     margin-top: 120px;
@@ -131,10 +134,17 @@
 .sell-right-container .wdw-fee span:nth-child(2){
     color: #ff886d;
     font-family: montserratBold;
+    margin-left: 30px;
 }
 .sell-right-container .author-fee span:nth-child(2){
     color: #ff886d;
     font-family: montserratBold;
+    margin-left: 30px;
+}
+.sell-right-container .total-fee span:nth-child(2){
+    color: white;
+    font-family: montserratBold;
+    margin-left: 30px;
 }
 .sell-right-container .total-fee span:last-child{
     color: #6dff83;
