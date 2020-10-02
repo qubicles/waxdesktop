@@ -18,6 +18,7 @@ import debounce from "lodash/debounce";
 import * as AssetsActions from "../../../actions/assets";
 import "./Marketplace.global.css";
 import MarketplaceRightNav from "./MarketplaceRightNav/MarketplaceRightNav";
+import BuyAssetModal from "../Marketplace/Modals/BuyAssetModal/BuyAssetModal";
 
 const options = [
   { key: "created", text: "Most Recent", value: "created" },
@@ -37,8 +38,9 @@ class Marketplace extends React.Component {
       sort: "created",
       minPrice: "",
       maxPrice: "",
-      collection: ""
-    }
+      collection: "",
+      buyAssetModal: false
+    };
   }
 
   componentDidMount() {
@@ -48,35 +50,62 @@ class Marketplace extends React.Component {
   }
 
   getAllAssets = () => {
-    const { actions: { getAssets } } = this.props;
-    const { match, owner, page, limit, order, sort, minPrice, maxPrice, collection } = this.state;
-    getAssets({ match, owner, page, limit, order, sort, minPrice: minPrice * 100000000, maxPrice: maxPrice * 100000000, collection });
-  }
+    const {
+      actions: { getAssets }
+    } = this.props;
+    const {
+      match,
+      owner,
+      page,
+      limit,
+      order,
+      sort,
+      minPrice,
+      maxPrice,
+      collection,
+      buyAssetModal
+    } = this.state;
+    getAssets({ match, owner, page, limit, order, sort, minPrice, maxPrice });
+  };
 
   onChange = debounce((e, { name, value }) => {
-    this.setState({
-      [name]: value
-    }, () => {
-      this.getAllAssets();
-    });
-  }, 300)
+    this.setState(
+      {
+        [name]: value
+      },
+      () => {
+        this.getAllAssets();
+      }
+    );
+  }, 300);
 
   toggleRadio = () => {
-    const { radioChange } = this.state
+    const { radioChange } = this.state;
     this.setState({
-      radioChange: !radioChange,
-    })
-  }
+      radioChange: !radioChange
+    });
+  };
+
+  toggleBuyAssetModal = () => {
+    const { buyAssetModal } = this.state;
+    this.setState({ buyAssetModal: !buyAssetModal });
+  };
 
   renderAssets = () => {
     const { match } = this.state;
-    const { assets: { isAssetsLoading, assetsList } } = this.props;
+    const {
+      assets: { isAssetsLoading, assetsList }
+    } = this.props;
     if (isAssetsLoading) {
-      return <div>Loading...</div>
+      return <div>Loading...</div>;
     }
 
     if (assetsList && assetsList.data.length === 0) {
-      return <div>No data found for "<b>{match}</b>", Please try again!</div>
+      return (
+        <div>
+          No data found for "<b>{match}</b>", Please try again!
+        </div>
+      );
     }
 
     return assetsList && assetsList.data.map(asset =>
@@ -90,26 +119,41 @@ class Marketplace extends React.Component {
             <div className="t-card-des">
               {asset.listing_price/100000000} {asset.listing_symbol}
             </div>
-          </div>
-          <div className="card-btn-group">
-            <Button className="card-detail-btn">Details</Button>
-            <Button className="card-buy-btn">Buy</Button>
-          </div>
-        </Card.Meta>
-      </Card>)
-
-  }
+            <div className="card-btn-group">
+              <Button className="card-detail-btn">Details</Button>
+              <Button
+                className="card-buy-btn"
+                onClick={this.toggleBuyAssetModal}
+              >
+                Buy
+              </Button>
+            </div>
+          </Card.Meta>
+        </Card>
+      ))
+    );
+  };
 
   handleChange = (e, { name, value }) => {
-    this.setState({
-      sort: value
-    }, () => {
-      this.getAllAssets();
-    })
-  }
+    this.setState(
+      {
+        sort: value
+      },
+      () => {
+        this.getAllAssets();
+      }
+    );
+  };
 
   render() {
-    const { radioChange, match, sort, minPrice, maxPrice } = this.state;
+    const {
+      radioChange,
+      match,
+      sort,
+      minPrice,
+      maxPrice,
+      buyAssetModal
+    } = this.state;
     const displayAssets = this.renderAssets();
     const { assets } = this.props
 
@@ -138,15 +182,15 @@ class Marketplace extends React.Component {
                 defaultValue={match}
               />
               <div className="round-search-btn">
-                <img src={require('../../../../renderer/assets/images/marketplace/Group543.png')} />
+                <img
+                  src={require("../../../../renderer/assets/images/marketplace/Group543.png")}
+                />
               </div>
             </div>
             <MarketplaceDropdown />
           </div>
           <div className="marketplace-card-section">
-            <div className="card-wrap">
-              {displayAssets}
-            </div>
+            <div className="card-wrap">{displayAssets}</div>
           </div>
         </div>
         <div className="balance-section">
@@ -208,9 +252,15 @@ class Marketplace extends React.Component {
             </div>
           </div>
         </div>
+        <BuyAssetModal
+          closeModal={this.toggleBuyAssetModal}
+          modalOpen={buyAssetModal}
+          history={history}
+          location={location}
+        />
       </div>
     );
-  };
+  }
 }
 
 Marketplace.propTypes = {};

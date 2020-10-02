@@ -92,23 +92,29 @@ class SellAssetModal extends React.Component {
               </div>
               <h3>Breakdown</h3>
               <div className="seller-info">
-                <span>List Price</span>
-                <span>2000 WAX</span>
+                <span>Seller Gets</span>
+                <span>1,820 WAX</span>
               </div>
               <div className="seller-info author-fee">
-                <span>Author Fee</span>
-                <span>8%</span>
-                <span>160 WAX</span>
+                <div>
+                  <span>Author Fee</span>
+                  <span>8%</span>
+                </div>
+                <div>160 WAX</div>
               </div>
               <div className="seller-info wdw-fee">
-                <span>WDW Fee</span>
-                <span>1%</span>
-                <span>20 WAX</span>
+                <div>
+                  <span>WDW Fee</span>
+                  <span>1%</span>
+                </div>
+                <div>20 WAX</div>
               </div>
               <div className="seller-info total-fee">
-                <span>Total</span>
-                <span>1820 WAX</span>
-                <span>$100.00</span>
+                <div>Total</div>
+                <div>
+                  <span>2,000 WAX</span>
+                  <span>$100.00</span>
+                </div>
               </div>
             </div>
             <div className="delegate-btn">
