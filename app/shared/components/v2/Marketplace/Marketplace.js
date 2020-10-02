@@ -55,7 +55,6 @@ class Marketplace extends React.Component {
     const {
       actions: { getAssets }
     } = this.props;
-
     const {
       match,
       owner,
