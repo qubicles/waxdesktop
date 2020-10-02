@@ -44,9 +44,11 @@ class Marketplace extends React.Component {
   }
 
   componentDidMount() {
-    const { actions: { getActiveCollections } } = this.props;
+    const {
+      actions: { getActiveCollections }
+    } = this.props;
     this.getAllAssets();
-    getActiveCollections()
+    getActiveCollections();
   }
 
   getAllAssets = () => {
@@ -108,16 +110,23 @@ class Marketplace extends React.Component {
       );
     }
 
-    return assetsList && assetsList.data.map(asset =>
-      <Card className="trending-assets-card" key={`assets-${asset.offer_id}`}>
-        <Image src={`https://ipfs.io/ipfs/${asset.assets[0].data.img}`} />
-        <Card.Header className="t-card-title">{asset.assets[0].name}</Card.Header>
-        <Card.Meta>
-          <div className="t-card-author">{asset.seller}</div>
-          <div className="t-card-price">
-            <Image src={require('../../../../renderer/assets/images/dashboard/Group47.png')} />
-            <div className="t-card-des">
-              {asset.listing_price/100000000} {asset.listing_symbol}
+    return (
+      assetsList &&
+      assetsList.data.map(asset => (
+        <Card className="trending-assets-card" key={`assets-${asset.offer_id}`}>
+          <Image src={`https://ipfs.io/ipfs/${asset.assets[0].data.img}`} />
+          <Card.Header className="t-card-title">
+            {asset.assets[0].name}
+          </Card.Header>
+          <Card.Meta>
+            <div className="t-card-author">{asset.seller}</div>
+            <div className="t-card-price">
+              <Image
+                src={require("../../../../renderer/assets/images/dashboard/Group47.png")}
+              />
+              <div className="t-card-des">
+                {asset.listing_price / 100000000} {asset.listing_symbol}
+              </div>
             </div>
             <div className="card-btn-group">
               <Button className="card-detail-btn">Details</Button>
@@ -155,7 +164,7 @@ class Marketplace extends React.Component {
       buyAssetModal
     } = this.state;
     const displayAssets = this.renderAssets();
-    const { assets } = this.props
+    const { assets } = this.props;
 
     const MarketplaceDropdown = () => (
       <Dropdown
@@ -166,7 +175,7 @@ class Marketplace extends React.Component {
         className="round-dropdown"
         onChange={this.handleChange}
       />
-    )
+    );
     return (
       <div className="dashboard-container">
         <div className="dashboard-body-section">
@@ -231,23 +240,27 @@ class Marketplace extends React.Component {
                 <Form.Field>
                   <Radio
                     label="All"
-                    name='collection'
+                    name="collection"
                     value=""
                     checked={this.state.collection === ""}
                     onChange={this.onChange}
                   />
                 </Form.Field>
-                {assets.collectionNames && assets.collectionNames.length > 0 && assets.collectionNames.map((collection, index) => (
+                {assets.collectionNames &&
+                  assets.collectionNames.length > 0 &&
+                  assets.collectionNames.map((collection, index) => (
                     <Form.Field key={`collection_${index}`}>
                       <Radio
                         label={collection.name}
-                        name='collection'
+                        name="collection"
                         value={collection.collection_name}
-                        checked={this.state.collection === collection.collection_name}
+                        checked={
+                          this.state.collection === collection.collection_name
+                        }
                         onChange={this.onChange}
                       />
                     </Form.Field>
-                ))}
+                  ))}
               </Form>
             </div>
           </div>
