@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Dropdown, Modal } from "semantic-ui-react";
 
-import "./sellAssetModal.global.css";
+import "./SellAssetModal.global.css";
 
 const Styles = {
   elementHidden: { display: "none" },

@@ -1,8 +1,8 @@
 // @flow
-import React, { Component } from 'react';
-import { Button, Header, Modal } from 'semantic-ui-react';
+import React, { Component } from "react";
+import { Button, Header, Modal } from "semantic-ui-react";
 
-import GlobalTransactionHandler from './Handler';
+import GlobalTransactionHandler from "./Handler";
 
 type Props = {
   actionName: string,
@@ -23,47 +23,58 @@ class GlobalTransactionModal extends Component<Props> {
   constructor(props) {
     super(props);
     this.state = {
-      open: (props.open) ? props.open : false
+      open: props.open ? props.open : false
     };
   }
 
   handleOpen = () => this.setState({ open: true });
 
-  onClose = () => this.setState({ open: false }, () => {
-    if (this.props.onClose) {
-      this.props.onClose();
-    }
-    this.props.actions.clearSystemState();
-  });
+  onClose = () =>
+    this.setState({ open: false }, () => {
+      if (this.props.onClose) {
+        this.props.onClose();
+      }
+      this.props.actions.clearSystemState();
+    });
 
   onOpen = () => {
     const { onOpen } = this.props;
     if (onOpen) {
       onOpen();
     }
-  }
+  };
 
   render() {
     const {
       actionName,
       actions,
       blockExplorers,
-      button,
       content,
       icon,
       title,
       settings,
       size,
-      system
+      system,
+      confirmVotesButton
     } = this.props;
-    let {
-      contract,
-      openModal,
-      transaction
-    } = this.props;
-    const {
-      open
-    } = this.state;
+    let { button, contract, openModal, transaction } = this.props;
+    const { open } = this.state;
+    button =
+      (<span onClick={this.handleOpen}> {confirmVotesButton} </span>) ||
+      (button ? (
+        <Button
+          color={button.color}
+          content={button.content}
+          disabled={button.disabled}
+          fluid={button.fluid}
+          floated={button.floated}
+          icon={button.icon}
+          onClick={this.handleOpen}
+          size={button.size}
+        />
+      ) : (
+        button
+      ));
     // Load the transaction from props by default, but overwrite
     //   with last transaction from the system if exists
     if (system && system[`${actionName}_LAST_TRANSACTION`]) {
@@ -80,29 +91,13 @@ class GlobalTransactionModal extends Component<Props> {
         closeIcon
         closeOnDimmerClick={false}
         closeOnDocumentClick={false}
-        trigger={(button)
-          ? (
-            <Button
-              color={button.color}
-              content={button.content}
-              disabled={button.disabled}
-              fluid={button.fluid}
-              floated={button.floated}
-              icon={button.icon}
-              onClick={this.handleOpen}
-              size={button.size}
-            />
-          ) : false
-        }
+        trigger={button ? button : false}
         open={openModal || open}
         onOpen={this.onOpen}
         onClose={this.onClose}
-        size={size || 'small'}
+        size={size || "small"}
       >
-        <Header
-          icon={icon}
-          content={title}
-        />
+        <Header icon={icon} content={title} />
         <Modal.Content>
           <GlobalTransactionHandler
             actionName={actionName}
