@@ -46,6 +46,8 @@ class GuildsTab extends Component {
             globals,
             settings,
             tables,
+            removeProducer,
+            addProducer
         } = this.props;
         let producers = (tables.tlsguildsinfo && tables.tlsguildsinfo.tlsguildsinfo.producers.rows) || [];
         if (producers.length < 1) {
@@ -102,10 +104,18 @@ class GuildsTab extends Component {
         }
         let rows = [];
         forEach(producers, (producer, index) => {
+          const isSelected = this.props.selected.includes(producer.owner)
             rows.push((
             <Table.Row key={`producer-${index}`}>
                 <Table.Cell className="common-checkbox">
-                    <Checkbox />
+                    <Checkbox
+                      checked={isSelected}
+                      onClick={
+                        (isSelected)
+                        ? () => removeProducer(producer.owner)
+                        : () => addProducer(producer.owner)
+                      }
+                    />
                 </Table.Cell>
                 <Table.Cell >{index + 1}</Table.Cell>
                 <Table.Cell >
