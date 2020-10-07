@@ -262,9 +262,6 @@ class Guilds extends React.Component {
               system={system}
               confirmVotesButton={selected.length > 0 && confirmVotesButton}
             />
-            {/* {(this.state.selected.length > 0) && (
-
-            )} */}
           </div>
         </div>
         {/* <Balance /> */}
