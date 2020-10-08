@@ -214,6 +214,7 @@ class Marketplace extends React.Component {
             <div className="title">Price Filter</div>
             <div className="price-filter-wrap">
               <Form.Field
+                placeholder="Min Price"
                 className="price-input"
                 control={Input}
                 name="minPrice"
@@ -222,6 +223,7 @@ class Marketplace extends React.Component {
                 defaultValue={minPrice}
               />
               <Form.Field
+                placeholder="Max Price"
                 className="price-input"
                 control={Input}
                 name="maxPrice"

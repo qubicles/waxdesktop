@@ -1,6 +1,6 @@
 .balance-section .title {
     font-size: 20px;
-    font-weight: 700;
+    font-family: montserratBold;
 }
 .marketplace-currency-section .currency-btn-group {
     padding-top: 20px;
@@ -14,7 +14,7 @@
     background-color: rgba(255, 136, 109, 0.2) !important;
     color: #ff886d;
     font-size: 14px;
-    font-weight: 800;
+    font-family: MontserratExtraBold;
 }
 .currency-btn-group .currency-btn-usd {
     padding: 10px 20px;
@@ -35,12 +35,12 @@
     color: #707070;
     justify-content: space-around;
     font-size: 14px;
-    font-weight: 600;
+    font-family: montserratSemiBold;
 }
 .marketplace-filter-section .price-filter-wrap::after {
     content: '';
     position: absolute;
-    height: 20px;
+    height: 21px;
     border: 1px solid #707070;
 }
 .marketplce-collections-section {
@@ -82,6 +82,6 @@
 }
 .common-radio label {
     margin-left: 40px;
-    font-weight: 700;
+    font-family: montserratBold;
     font-size: 16px;
 }
