@@ -60,7 +60,7 @@ class GlobalTransactionModal extends Component<Props> {
     let { button, contract, openModal, transaction } = this.props;
     const { open } = this.state;
     button =
-      (<span onClick={this.handleOpen}> {confirmVotesButton} </span>) ||
+      <span onClick={this.handleOpen}> {confirmVotesButton} </span> ||
       (button ? (
         <Button
           color={button.color}
@@ -87,6 +87,7 @@ class GlobalTransactionModal extends Component<Props> {
     }
     return (
       <Modal
+        className="guild-voting-modal"
         centered={false}
         closeIcon
         closeOnDimmerClick={false}

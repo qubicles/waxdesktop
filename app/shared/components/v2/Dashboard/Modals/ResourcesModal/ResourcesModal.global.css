@@ -4,7 +4,7 @@
 }
 .ui.modal>.icon:first-child+*, .ui.modal>:first-child:not(.icon) {
   border-radius: 20px !important;
-  background-color: #191f28 !important;
+  background-color: #191f28;
   padding-left: 40px !important;
   padding-right: 40px !important;
 }

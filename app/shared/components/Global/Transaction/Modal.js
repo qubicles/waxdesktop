@@ -1,8 +1,8 @@
 // @flow
-import React, { Component } from 'react';
-import { Button, Header, Modal } from 'semantic-ui-react';
+import React, { Component } from "react";
+import { Button, Header, Modal } from "semantic-ui-react";
 
-import GlobalTransactionHandler from './Handler';
+import GlobalTransactionHandler from "./Handler";
 
 type Props = {
   actionName: string,
@@ -23,25 +23,26 @@ class GlobalTransactionModal extends Component<Props> {
   constructor(props) {
     super(props);
     this.state = {
-      open: (props.open) ? props.open : false
+      open: props.open ? props.open : false
     };
   }
 
   handleOpen = () => this.setState({ open: true });
 
-  onClose = () => this.setState({ open: false }, () => {
-    if (this.props.onClose) {
-      this.props.onClose();
-    }
-    this.props.actions.clearSystemState();
-  });
+  onClose = () =>
+    this.setState({ open: false }, () => {
+      if (this.props.onClose) {
+        this.props.onClose();
+      }
+      this.props.actions.clearSystemState();
+    });
 
   onOpen = () => {
     const { onOpen } = this.props;
     if (onOpen) {
       onOpen();
     }
-  }
+  };
 
   render() {
     const {
@@ -56,14 +57,8 @@ class GlobalTransactionModal extends Component<Props> {
       size,
       system
     } = this.props;
-    let {
-      contract,
-      openModal,
-      transaction
-    } = this.props;
-    const {
-      open
-    } = this.state;
+    let { contract, openModal, transaction } = this.props;
+    const { open } = this.state;
     // Load the transaction from props by default, but overwrite
     //   with last transaction from the system if exists
     if (system && system[`${actionName}_LAST_TRANSACTION`]) {
@@ -76,12 +71,13 @@ class GlobalTransactionModal extends Component<Props> {
     }
     return (
       <Modal
+        className="guild-voting-modal"
         centered={false}
         closeIcon
         closeOnDimmerClick={false}
         closeOnDocumentClick={false}
-        trigger={(button)
-          ? (
+        trigger={
+          button ? (
             <Button
               color={button.color}
               content={button.content}
@@ -92,17 +88,16 @@ class GlobalTransactionModal extends Component<Props> {
               onClick={this.handleOpen}
               size={button.size}
             />
-          ) : false
+          ) : (
+            false
+          )
         }
         open={openModal || open}
         onOpen={this.onOpen}
         onClose={this.onClose}
-        size={size || 'small'}
+        size={size || "small"}
       >
-        <Header
-          icon={icon}
-          content={title}
-        />
+        <Header icon={icon} content={title} />
         <Modal.Content>
           <GlobalTransactionHandler
             actionName={actionName}
