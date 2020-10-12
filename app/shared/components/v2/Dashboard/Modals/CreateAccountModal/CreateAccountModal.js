@@ -270,7 +270,7 @@ class CreateAccountModal extends React.Component {
 							</div>
 							<div className="custom-textarea-section">
 								<div className="custom-textarea-label">
-									Active Prvate Key
+									Active Private Key
 								</div>
 								<div className="custom-textarea">
 									<GlobalPrivateKeyField

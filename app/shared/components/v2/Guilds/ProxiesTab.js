@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import { connect } from 'react-redux';
 import { bindActionCreators } from "redux";
-import { Table, Image, Header, Checkbox, Flag } from "semantic-ui-react";
+import { Table, Image, Header, Checkbox, Flag, Popup, Button, Radio } from "semantic-ui-react";
 import { forEach } from 'lodash';
+import { translate } from 'react-i18next';
 
 import * as TableActions from "../../../actions/table";
 import * as AccountActions from "../../../actions/accounts";
@@ -35,6 +36,12 @@ class ProxiesTab extends Component {
 
     }
 
+    deleteRegProxy = () => {
+      const { actions } = this.props;
+      actions.removeregproxyinfo();
+      actions.unregproxy();
+    }
+
     render() {
         const {
             accounts,
@@ -42,10 +49,15 @@ class ProxiesTab extends Component {
             globals,
             settings,
             tables,
+            system,
+            keys,
+            addProxy,
+            removeProxy,
+            t,
+            currentProxy
         } = this.props;
         const account = accounts[settings.account];
         const isProxying = !!(account && account.voter_info && account.voter_info.proxy);
-        const currentProxy = account && account.voter_info && account.voter_info.proxy;
         let proxies = (tables.tlsproxyinfo && tables.tlsproxyinfo.tlsproxyinfo.proxies.rows) || [];
         if (proxies.length < 1) {
           const voters = (tables.eosio &&
@@ -94,9 +106,69 @@ class ProxiesTab extends Component {
         }
         let rows = [];
         forEach(proxies, (proxy, index) => {
+            const currentProxy = (account && account.voter_info && account.voter_info.proxy);
+            const isSelected = (proxy.owner === currentProxy)
             rows.push((
             <Table.Row key={`proxy-${index + 1}`}>
                 <Table.Cell >{index + 1}</Table.Cell>
+                <Table.Cell
+                  singleLine
+                  textAlign="center"
+                >
+                {
+                  (proxy.owner == settings.account) ?
+                  <GlobalTransactionModal
+                      actionName="REMOVE_REGPROXYINFO"
+                      actions={actions}
+                      blockExplorers={blockExplorers}
+                      button={{
+                        color: 'red',
+                        icon: 'trash'
+                      }}
+                      content={(
+                        <Segment basic clearing>
+                          <p>
+                          This will delete your account <strong>{proxy.owner}</strong> as a voting proxy on the network. Are you sure you would like to continue?
+                          <Button
+                            color='red'
+                            content="Delete Registration"
+                            floated="right"
+                            icon="trash"
+                            loading={system.REMOVE_REGPROXYINFO === 'PENDING'}
+                            style={{ marginTop: 20 }}
+                            onClick={() => this.deleteRegProxy(proxy.owner)}
+                            primary
+                          />
+                          </p>
+                        </Segment>
+                      )}
+                      icon="share square"
+                      settings={settings}
+                      system={system}
+                      title="Delete Proxy Registration"
+                    />
+                  : ''
+                }
+
+                <Popup
+                  content={t('producers_proxies_popup_content', { proxy: proxy.owner })}
+                  header={t('producers_proxies_popup_header')}
+                  hoverable
+                  position="right center"
+                  trigger={(
+                    <Button
+                      color={isSelected ? 'blue' : 'grey'}
+                      icon={isSelected ? 'circle' : 'circle outline'}
+                      onClick={
+                        (isSelected)
+                        ? () => removeProxy(proxy.owner)
+                        : () => addProxy(proxy.owner)
+                      }
+                      size="small"
+                    />
+                  )}
+                />
+                </Table.Cell>
                 <Table.Cell >
                     <Image
                         src={proxy.logo_256}
@@ -126,9 +198,6 @@ class ProxiesTab extends Component {
                     <Header style={{color:"white"}}>
                       {proxy.vote_count}
                     </Header>
-                </Table.Cell>
-                <Table.Cell className="common-checkbox">
-                    <Checkbox />
                 </Table.Cell>
             </Table.Row>
           ))
@@ -165,4 +234,4 @@ const mapDispatchToProps = (dispatch) => {
     };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(ProxiesTab);
+export default translate('producers')(connect(mapStateToProps, mapDispatchToProps)(ProxiesTab));

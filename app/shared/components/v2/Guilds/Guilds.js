@@ -13,12 +13,14 @@ import {
   Menu,
   Checkbox
 } from "semantic-ui-react";
+import { findIndex } from 'lodash'
 
 import Balance from "../Dashboard/Balance/Balance";
 import ProxiesTab from "./ProxiesTab";
 import GuildsTab from "./GuildsTab";
 import "./Guilds.global.css";
 import ProducersVotingPreview from "./Preview";
+import ProducersProxy from './Proxy';
 
 import * as AccountsActions from "../../../actions/accounts";
 import * as ArbitrationActions from "../../../actions/governance/arbitration";
@@ -64,6 +66,10 @@ class Guilds extends React.Component {
       submitting: false,
       activeTabIndex: 0
     };
+  }
+
+  componentDidMount() {
+    this.props.actions.getBlockExplorers()
   }
 
   componentWillReceiveProps(nextProps) {
@@ -142,6 +148,25 @@ class Guilds extends React.Component {
     });
   }
 
+  addProxy = (proxyAccout) => {
+    this.setState({
+      addProxy: proxyAccout
+    });
+  }
+
+  removeProxy = () => {
+    this.setState({
+      removeProxy: true
+    });
+  }
+
+  onClose = () => {
+    this.setState({
+      addProxy: false,
+      removeProxy: false
+    });
+  }
+
   previewProducerVotes = previewing =>
     this.setState({
       previewing,
@@ -177,6 +202,7 @@ class Guilds extends React.Component {
   };
 
   getPanes() {
+    const { actions, settings, blockExplorers, system, keys } = this.props
     const guildsPan = {
       menuItem: (
         <Menu.Item key="messages" onClick={this.emptyChoices}>
@@ -190,9 +216,9 @@ class Guilds extends React.Component {
       render: () => (
         <Tab.Pane attached={false}>
           <GuildsTab
-           selected={this.state.selected}
-           addProducer={this.addProducer.bind(this)}
-           removeProducer={this.removeProducer.bind(this)}
+            selected={this.state.selected}
+            addProducer={this.addProducer.bind(this)}
+            removeProducer={this.removeProducer.bind(this)}
           />
         </Tab.Pane>
       )
@@ -210,7 +236,15 @@ class Guilds extends React.Component {
       ),
       render: () => (
         <Tab.Pane attached={false}>
-          <ProxiesTab />
+          <ProxiesTab
+            actions={actions}
+            settings={settings}
+            blockExplorers={blockExplorers}
+            system={system}
+            addProxy={this.addProxy.bind(this)}
+            removeProxy={this.removeProxy.bind(this)}
+            keys={keys}
+          />
         </Tab.Pane>
       )
     };
@@ -224,9 +258,15 @@ class Guilds extends React.Component {
       lastTransaction,
       previewing,
       selected,
-      submitting
+      submitting,
+      addProxy,
+      removeProxy
     } = this.state;
-    const { actions, blockExplorers, system, settings } = this.props;
+    const { actions, blockExplorers, system, settings, accounts, keys, tables } = this.props;
+    const account = accounts[settings.account]
+    const currentProxy = account && account.voter_info && account.voter_info.proxy;
+    const isProxying = !!(account && account.voter_info && account.voter_info.proxy);
+    const isValidUser = !!((keys && keys.key && settings.walletMode !== 'wait') || settings.walletMode === 'watch');
 
     const confirmVotesButton =
       <div className="confirm-btn-wrap">
@@ -261,6 +301,22 @@ class Guilds extends React.Component {
               submitting={submitting}
               system={system}
               confirmVotesButton={selected.length > 0 && confirmVotesButton}
+            />
+            <ProducersProxy
+              account={account}
+              accounts={accounts}
+              actions={actions}
+              addProxy={addProxy}
+              blockExplorers={blockExplorers}
+              currentProxy={currentProxy}
+              keys={keys}
+              isProxying={isProxying}
+              isValidUser={true}
+              onClose={this.onClose}
+              removeProxy={removeProxy}
+              settings={settings}
+              system={system}
+              tables={tables}
             />
           </div>
         </div>
