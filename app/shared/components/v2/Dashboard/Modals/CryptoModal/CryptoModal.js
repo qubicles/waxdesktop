@@ -55,12 +55,14 @@ class CryptoModal extends React.Component {
             globals &&
             globals.remotetokens &&
             globals.remotetokens.filter(
-              token => token.account == contract && token.symbol == symbol
+              token =>
+                token.account == contract &&
+                token.symbol == settings.blockchain.tokenSymbol
             )[0];
 
           return {
             contract,
-            symbol,
+            symbol: tokenInfo ? tokenInfo.name : "",
             logo: tokenInfo ? tokenInfo.logo : null
           };
         })
@@ -87,7 +89,7 @@ class CryptoModal extends React.Component {
         ) {
           options.push({
             key: asset,
-            image: logo,
+            // image: logo,
             text: `${symbol}`,
             value: asset
           });
