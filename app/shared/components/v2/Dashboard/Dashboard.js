@@ -30,7 +30,7 @@ const initialState = {
   dashboardTokenModal: false,
   resourcesModal: false,
   delegateModal: false,
-  cryptoModal: true,
+  cryptoModal: false,
   swapTokenModal: false,
   importAccountModal: false,
   buyWaxModal: false,

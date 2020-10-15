@@ -13,7 +13,7 @@
 }
 .progressbar-label .right-label {
     color: #707070;
-    font-family: montserratMedium;
+    font-family: montserratSemiBold;
     font-size: 16px;
 }
 .progressbar-container .progressbar-inner-label {
@@ -21,7 +21,7 @@
     top: 58%;
     left: 80%;
     font-size: 12px;
-    font-family: montserratBold;
+    font-family: montserratSemiBold;
     color: white;
     width: 200px;
 }

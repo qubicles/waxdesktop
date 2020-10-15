@@ -2,20 +2,34 @@
   display: flex;
   padding-bottom: 50px;
 }
+.dashboardTokenModal-body .modal-header span:first-child {
+  font-family: montserratMedium !important;
+}
+.dashboardTokenModal-body .modal-header span:last-child {
+  font-family: montserratMedium !important;
+}
+.dashboardTokenModal-body .modal-header {
+  padding-top: 30px;
+  padding-bottom: 50px;
+}
+.dashboardTokenModal-body .modal-body {
+  padding-bottom: 30px;
+}
 .dashboardTokenModal .token-img-wrap {
   margin: auto;
   text-align: center;
   padding-bottom: 30px;
 }
 .dashboardTokenModal .token-title {
-  padding-top: 20px;
+  padding-top: 30px;
 }
 .dashboardTokenModal .token-title .left-title {
   color: white;
   font-size: 18px;
-  font-weight: 600;
+  font-family: montserratSemiBold;
 }
 .dashboardTokenModal .token-title .right-title {
   color: #ff886d;
   font-size: 18px;
+  font-family: montserratSemiBold;
 }

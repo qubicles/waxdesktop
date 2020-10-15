@@ -8,6 +8,9 @@
   padding-left: 40px !important;
   padding-right: 40px !important;
 }
+.resourceModal-body {
+  padding-top: 40px !important;
+}
 .resourcesModal .ui.tab.active, .ui.tab.open {
   background-color: #191f28 !important;
 }
@@ -83,15 +86,14 @@
   color: white !important;
   font-size: 20px !important;
   padding-left: 20px;
-  font-weight: 600;
+  font-family: montserratSemiBold;
 }
 .common-input:focus {
   outline: none !important;
 }
 .common-input::placeholder {
   color: white !important;
-  font-size: 20px !important;
-  font-family: montserrat;
+  font-size: 18px !important;
 }
 /* resources-delegate-link */
 .resources-delegate-link {
@@ -104,8 +106,9 @@
 /*  resourceModal tab pan*/
 .resourceModal-body .ui.secondary.pointing.menu .item {
   font-size: 38px !important;
-  font-weight: 800 !important;
+  font-family: montserratMedium !important;
   padding: 15px !important;
+  font-weight: unset !important;
 }
 
 /* semantic ui active pan line color */
@@ -113,7 +116,7 @@
   border-bottom: 3px solid #ff886d !important;
   border-bottom-left-radius: 2px !important;
   border-bottom-right-radius: 2px !important;
-  font-family: montserratBold !important;
+  font-family: montserratBold;
 
 }
 .ui.secondary.pointing.menu .dropdown.item:hover, .ui.secondary.pointing.menu .link.item:hover, .ui.secondary.pointing.menu a.item:hover {

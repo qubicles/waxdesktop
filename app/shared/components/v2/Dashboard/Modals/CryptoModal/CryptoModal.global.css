@@ -34,7 +34,7 @@
     border-radius: 30px !important;
     color: white !important;
     font-size: 20px !important;
-    font-family: montserratBold;
+    font-family: montserratBold !important;
 }
 
 .ui-common-input input:focus {
