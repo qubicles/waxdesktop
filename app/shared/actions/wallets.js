@@ -9,10 +9,10 @@ import EOSAccount from '../utils/EOS/Account';
 const ecc = require('eosjs-ecc');
 const CryptoJS = require('crypto-js');
 
-export function importWallet(account, 
-  authorization = false, 
-  key = false, 
-  password = false, 
+export function importWallet(account,
+  authorization = false,
+  key = false,
+  password = false,
   mode = 'hot',
   chainId,
   publicKey = undefined,
@@ -198,10 +198,32 @@ export function upgradeWatchWallet(chainId, account, authorization, swap = false
   };
 }
 
+export function addNewAccount(account) {
+  return (dispatch: () => void, getState) => {
+    const { wallets: allAccounts } = getState()
+    const accountExists = allAccounts.filter(acc => acc.value === account)
+    if(accountExists.length < 1)
+      return dispatch({
+        payload: account,
+        type: types.ADD_NEW_ACCOUNT
+      })
+  }
+}
+
+export function removeAllAccounts() {
+  return (dispatch: () => void, getState) => {
+    return dispatch({
+      type: types.RESET_ALL_STATES
+    })
+  }
+}
+
 export default {
   importWallet,
   importWallets,
   upgradeWallet,
   upgradeWatchWallet,
-  useWallet
+  useWallet,
+  addNewAccount,
+  removeAllAccounts
 };

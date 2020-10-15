@@ -20,7 +20,7 @@ export default function wallets(state = initialState, action) {
         partitionParams.authorization = action.payload.authorization;
       }
       const [, other] = partition(state, partitionParams);
-      
+
       return [
         action.payload,
         ...other
@@ -28,14 +28,14 @@ export default function wallets(state = initialState, action) {
     }
     case types.REMOVE_WALLET: {
       if (action.payload.authorization) {
-        const [, other] = partition(state, { 
+        const [, other] = partition(state, {
           account: action.payload.account,
           authorization: action.payload.authorization,
           chainId: action.payload.chainId
         });
         return other;
       } else {
-        const [, other] = partition(state, { 
+        const [, other] = partition(state, {
           account: action.payload.account,
           chainId: action.payload.chainId
         });
@@ -66,6 +66,14 @@ export default function wallets(state = initialState, action) {
         ...current,
         ...other
       ];
+    }
+    case types.ADD_NEW_ACCOUNT: {
+      state.forEach(acc => { acc.status = 'inactive' })
+      return [...state, {
+        text: action.payload,
+        value: action.payload,
+        status: 'active'
+      }]
     }
     default: {
       return state;

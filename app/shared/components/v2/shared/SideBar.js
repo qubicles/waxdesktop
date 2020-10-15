@@ -4,45 +4,61 @@ import "./SideBar.global.css";
 import { Dropdown } from "semantic-ui-react";
 import { connect } from 'react-redux';
 import { bindActionCreators } from "redux";
+import { withRouter } from "react-router-dom"
 
 import * as GlobalsActions from "../../../actions/globals";
 import * as AccountActions from "../../../actions/accounts";
 import * as SettingsActions from '../../../actions/settings';
 import * as TransferActions from '../../../actions/transfer';
 import * as CreateAccountActions from '../../../actions/createaccount';
+import * as WalletsActions from '../../../actions/wallets'
 
 import CreateAccountModal from "../Dashboard/Modals/CreateAccountModal/CreateAccountModal";
 import ImportAccountModal from "../Dashboard/Modals/ImportAccountModal/ImportAccountModal"
 
 const SideBar = (props) => {
-    const { allAccounts } = props.accounts
+    const allAccounts = props.wallets
     const [createAccountModal, toggleCreateAccountModal] = useState(false);
-    const [currentAccount, setCurrentAccount] = useState(allAccounts[2]);
     const [importAccountModal, toggleImportAccountModal] = useState(false);
+    const dropDownOptions = [{
+      text: 'Create Account',
+      value: 'createAccount',
+      image: { avatar: true, src: '../assets/images/dashboard/dashboard-create.png' },
+    },{
+      text: 'Import Account',
+      value: 'importAccount',
+      image: { avatar: true, src: '../assets/images/dashboard/dashboard-import.png' },
+      }, ...allAccounts
+    ]
 
-    const handleChange = (e, { name, value }) => {
-        setCurrentAccount(value)
-        switch (value) {
+    const handleChange = (e, { value }) => {
+      switch (value) {
             case "createAccount":
                 toggleCreateAccountModal(true);
                 break;
             case "importAccount":
                 toggleImportAccountModal(true);
                 break;
+            case '':
+                break
             default:
-                return null;
+                props.actions.setSettings('account', value)
+                props.history.push('/')
         }
     }
+
     const DropdownExampleSelection = () => (
         <Dropdown
             fluid
+            selectOnNavigation={true}
             selection
             scrolling
-            upward
-            options={allAccounts}
-            className="left-nav-dropdown"
             onChange={(e, data) => handleChange(e, data)}
-            value={currentAccount}
+            upward
+            options={dropDownOptions}
+            selectOnNavigation={false}
+            value={props.settings.account || ''}
+            className="left-nav-dropdown"
         />
     );
     const menuOption = [
@@ -155,6 +171,7 @@ const mapStateToProps = (state) => {
         accounts: state.accounts,
         system: state.system,
         connection: state.connection,
+        wallets: state.wallets
     };
 }
 
@@ -165,10 +182,11 @@ const mapDispatchToProps = (dispatch) => {
             ...GlobalsActions,
             ...SettingsActions,
             ...TransferActions,
-            ...CreateAccountActions
+            ...CreateAccountActions,
+            ...WalletsActions
         }, dispatch)
     };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(SideBar);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(SideBar));
 

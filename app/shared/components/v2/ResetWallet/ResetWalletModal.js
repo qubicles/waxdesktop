@@ -14,6 +14,8 @@ class ResetWalletModal extends React.Component {
     const { actions, history, location } = this.props
 
     actions.setWalletPin("")
+    actions.removeAllAccounts()
+    actions.setSetting('account', '')
 
     if (location.pathname === "/") history.go()
     else history.push("/")

@@ -2,18 +2,7 @@ import * as types from '../actions/types';
 
 const initialState = {
   __lookups: [],
-  allAccounts: [
-    {
-        text: 'Import Account',
-        value: 'importAccount',
-        image: { avatar: true, src: '../assets/images/dashboard/dashboard-import.png' },
-    },
-    {
-        text: 'Create Account',
-        value: 'createAccount',
-        image: { avatar: true, src: '../assets/images/dashboard/dashboard-create.png' },
-    }
-  ]
+  allAccounts: []
 };
 
 export default function accounts(state = initialState, action) {

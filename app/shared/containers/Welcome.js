@@ -7,20 +7,23 @@ import { withRouter } from "react-router-dom"
 import Pin from "../components/v2/Pin/Pin"
 
 import * as WalletActions from "../actions/wallet"
+import * as WalletsActions from "../actions/wallets"
 import * as SettingsActions from "../actions/settings"
 import * as ValidateActions from "../actions/validate"
 import * as GlobalsActions from "../actions/globals"
 
 class WelcomeContainer extends Component {
   componentDidMount() {
-    const { actions } = this.props
-    actions.setSetting('node', 'https://api.wax.alohaeos.com');
-    actions.setSetting('account', 'mj1ai.waa');
-    actions.validateNode('https://api.wax.alohaeos.com');
-    // actions.setSetting('node', 'https://api.eos.miami');
-    // actions.setSetting('account', 'rakeshs12345');
-    // actions.validateNode('https://api.eos.miami');
-    actions.setSetting('blockchain', { tokenSymbol: "WAX" });
+    const { actions, wallets } = this.props
+    const activeAccount = wallets.filter(acc => acc.status === 'active')
+    // actions.removeAllAccounts()
+    // actions.setSetting('node', 'https://api.wax.alohaeos.com');
+    // actions.setSetting('account', 'mj1ai.waa');
+    // actions.validateNode('https://api.wax.alohaeos.com');
+    actions.setSetting('node', 'https://api.eos.miami');
+    actions.setSetting('account', (activeAccount[0] && activeAccount[0].value) || '');
+    actions.validateNode('https://api.eos.miami');
+    actions.setSetting('blockchain', { tokenSymbol: "TLOS" });
   }
 
   onUserLogin = () => {
@@ -68,7 +71,9 @@ class WelcomeContainer extends Component {
 
 function mapStateToProps(state) {
   return {
-    wallet: state.wallet
+    wallet: state.wallet,
+    settings: state.settings,
+    wallets: state.wallets
   }
 }
 
@@ -77,9 +82,11 @@ function mapDispatchToProps(dispatch) {
     actions: bindActionCreators(
       {
         ...WalletActions,
+        ...WalletsActions,
         ...SettingsActions,
         ...ValidateActions,
-        ...GlobalsActions
+        ...GlobalsActions,
+        ...WalletsActions
       },
       dispatch
     )
