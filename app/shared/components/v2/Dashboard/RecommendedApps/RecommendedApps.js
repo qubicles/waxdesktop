@@ -3,27 +3,35 @@ import "./RecommendedApps.global.css";
 
 import recommendedAppsJSON from "../../../../../../resources/recommendedApps.json";
 
-// import "./RecommendedApps.global.css";
+import "./RecommendedApps.global.css";
+const recommendedApps = recommendedAppsJSON.map((app, index) => (
+  <div className="recommended-apps-card" key={`recommeded-${index}`}>
+    <img
+      src={require(`../../../../../renderer/assets/images/dashboard/${app.image}`)}
+    />
+    <div className="app-title">{app.name}</div>
+  </div>
+));
 
-export default () => {
-  const recommendedApps = recommendedAppsJSON.map((app, index) => (
-    <div className="recommended-apps-card" key={`recommeded-${index}`}>
-      <img
-        src={require(`../../../../../renderer/assets/images/dashboard/${app.image}`)}
-      />
-      <div className="app-title">{app.name}</div>
-    </div>
-  ));
-
-  return (
-    <div className="recommended-apps-section">
-      <div className="recommended-apps-header">
-        <div className="recommended-apps-title">Recommended Apps</div>
-        <img
-          src={require("../../../../../renderer/assets/images/dashboard/Group1737.png")}
-        />
+class RecommendedApps extends React.Component {
+  goApps = () => {
+    this.props.history.push("/apps");
+  };
+  render() {
+    return (
+      <div className="recommended-apps-section">
+        <div className="recommended-apps-header">
+          <div className="recommended-apps-title">Recommended Apps</div>
+          <img
+            src={require("../../../../../renderer/assets/images/dashboard/Group1737.png")}
+            onClick={this.goApps}
+            className="elipsis"
+          />
+        </div>
+        <div className="recommended-apps-body">{recommendedApps}</div>
       </div>
-      <div className="recommended-apps-body">{recommendedApps}</div>
-    </div>
-  );
-};
+    );
+  }
+}
+
+export default RecommendedApps;
