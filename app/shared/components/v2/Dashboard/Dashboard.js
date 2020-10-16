@@ -164,7 +164,7 @@ class Home extends React.Component {
       <div className="dashboard-container">
         <div className="dashboard-body-section">
           <TrendingAssets history={history} />
-          <RecommendedApps />
+          <RecommendedApps history={history} />
           <div className="token-ntfs-section">
             <div className="right-badge">
               <img

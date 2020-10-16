@@ -1,9 +1,9 @@
 .buy-wax-link {
-    padding-bottom: 30px;
+    padding-bottom: 20px;
 }
 .buy-wax-link iframe {
     width: 100%;
-    min-height: 400px;
+    min-height: 500px;
     border: none;
-    background-color: #ffffff;
+    border-radius: 10px;
 }

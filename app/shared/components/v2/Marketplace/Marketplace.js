@@ -55,6 +55,7 @@ class Marketplace extends React.Component {
     const {
       actions: { getAssets }
     } = this.props;
+
     const {
       match,
       owner,
@@ -67,6 +68,7 @@ class Marketplace extends React.Component {
       collection,
       buyAssetModal
     } = this.state;
+
     getAssets({ match, owner, page, limit, order, sort, minPrice, maxPrice });
   };
 

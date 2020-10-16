@@ -9,6 +9,8 @@
 .trending-assets-header {
     display: flex;
     justify-content: space-between;
+    padding-left: 10px;
+    padding-bottom: 20px;
 }
 .trending-assets-title {
     font-size: 20px;
@@ -22,9 +24,7 @@
 .trending-assets-section .trending-assets-view:hover{
     cursor: pointer;
 }
-.trending-assets-body {
-    padding: 35px 20px 25px 20px;
-}
+
 /* trending assets card section */
 .trending-assets-card {
     text-align: center !important;

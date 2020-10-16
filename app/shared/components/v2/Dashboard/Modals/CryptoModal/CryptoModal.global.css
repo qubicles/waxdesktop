@@ -7,6 +7,7 @@
 }
 .cryptoModal-body .resource-choose-dropdown .visible {
     background-color: #242b39 !important;
+    border: 1px solid rgba(255, 255, 255, 0.15) !important;
 }
 .cryptoModal-body .delegate-btn {
     margin-bottom: 20px;
@@ -33,7 +34,7 @@
     border-radius: 30px !important;
     color: white !important;
     font-size: 20px !important;
-    font-family: montserratBold;
+    font-family: montserratBold !important;
 }
 
 .ui-common-input input:focus {

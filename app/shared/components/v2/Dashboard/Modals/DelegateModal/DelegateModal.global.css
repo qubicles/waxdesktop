@@ -8,17 +8,17 @@
   padding: 20px 20px;
   text-align: center;
   font-size: 25px;
-  font-family: MontserratExtraBold;
+  font-family: montserratMedium;
 }
 .modal-header span:first-child {
   color: #ff886d;
   font-size: 38px;
-  font-family: MontserratExtraBold;
+  font-family: montserratMedium;
 }
 .modal-header span:last-child {
   color: white;
   font-size: 38px;
-  font-family: MontserratExtraBold;
+  font-family: montserratMedium;
 }
 .modal-body .input-select {
   padding-top: 10px;
