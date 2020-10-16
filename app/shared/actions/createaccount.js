@@ -20,7 +20,8 @@ export function createAccount(
   return (dispatch: () => void, getState) => {
     const {
       connection,
-      settings
+      settings,
+      wallets
     } = getState();
 
     const currentAccount = settings.account;
@@ -84,10 +85,11 @@ export function createAccount(
       setTimeout(() => {
         dispatch(AccountActions.getAccount(currentAccount));
       }, 500);
-      return dispatch({
+      dispatch({
         payload: { tx },
         type: types.SYSTEM_CREATEACCOUNT_SUCCESS
       });
+      return true
     }).catch((err) => {
       dispatch({
         payload: { err },

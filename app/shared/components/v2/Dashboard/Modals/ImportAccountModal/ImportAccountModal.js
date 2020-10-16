@@ -60,8 +60,8 @@ class ImportAccountModal extends React.Component {
 		} else {
       actions.addNewAccount(importedAccount)
       history.push('/')
+      closeModal()
     }
-    closeModal()
 	}
 
 

@@ -15,6 +15,7 @@ const { PrivateKey } = require('eosjs-ecc');
 const { clipboard } = require('electron');
 
 import "./CreateAccountModal.global.css";
+import { setSettings } from "../../../../../actions/settings";
 
 const formAttributes = ['accountName', 'activePublicKey', 'activePrivateKey', 'delegatedNet', 'delegatedCpu'];
 
@@ -182,7 +183,9 @@ class CreateAccountModal extends React.Component {
 
 		const {
       createAccount,
-      createFreeAccount
+      createFreeAccount,
+      addNewAccount,
+      setSettings
 		} = actions;
 
 		const {
@@ -213,13 +216,18 @@ class CreateAccountModal extends React.Component {
       //     }
       //   });
       // } else {
-        createAccount(
-          accountName,
-          activePublicKey,
-          delegatedNet,
-          delegatedCpu,
-          activePublicKey
-        );
+        if(createAccount(
+            accountName,
+            activePublicKey,
+            delegatedNet,
+            delegatedCpu,
+            activePublicKey
+          )
+        ) {
+          addNewAccount(accountName)
+          setSettings('account', accountName)
+          history.push('/')
+        }
       // }
 		}
 	}

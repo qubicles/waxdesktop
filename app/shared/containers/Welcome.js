@@ -17,13 +17,13 @@ class WelcomeContainer extends Component {
     const { actions, wallets } = this.props
     const activeAccount = wallets.filter(acc => acc.status === 'active')
     // actions.removeAllAccounts()
-    // actions.setSetting('node', 'https://api.wax.alohaeos.com');
+    actions.setSetting('node', 'https://api.wax.alohaeos.com');
     // actions.setSetting('account', 'mj1ai.waa');
-    // actions.validateNode('https://api.wax.alohaeos.com');
-    actions.setSetting('node', 'https://api.eos.miami');
+    actions.validateNode('https://api.wax.alohaeos.com');
+    // actions.setSetting('node', 'https://api.eos.miami');
     actions.setSetting('account', (activeAccount[0] && activeAccount[0].value) || '');
-    actions.validateNode('https://api.eos.miami');
-    actions.setSetting('blockchain', { tokenSymbol: "TLOS" });
+    // actions.validateNode('https://api.eos.miami');
+    actions.setSetting('blockchain', { tokenSymbol: "WAX" });
   }
 
   onUserLogin = () => {
