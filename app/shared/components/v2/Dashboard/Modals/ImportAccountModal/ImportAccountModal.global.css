@@ -25,11 +25,18 @@
     outline: none !important;
     font-size: 24px !important;
     border-radius: 20px !important; 
-    padding-left: 20px;
-    padding-top: 15px;
+    padding: 20px;
+    height: 180px;
+    overflow: hidden;
+    font-family: montserratBold;
+}
+.custom-import textarea::placeholder {
+    line-height: 140px;
+    padding-left: 90px;
 }
 
 .custom-import.error {
     border: 1px solid #ff886d !important;
     border-radius: 20px !important;
+    line-height: 0.9 !important;
 }
