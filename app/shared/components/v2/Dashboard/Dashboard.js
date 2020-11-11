@@ -49,7 +49,7 @@ class Home extends React.Component {
   }
 
   componentDidMount = async () => {
-    const { actions, settings, chain, accounts } = this.props;
+    const { actions, settings, chain, accounts, keys, wallets, wallet } = this.props;
 
     const {
       addCustomToken,
@@ -94,23 +94,25 @@ class Home extends React.Component {
           .map(perm => perm.required_auth.keys[0].key)
       ).values();
       pubkey = validKeys.next().value;
-
-      actions.importWallet(
-        settings.account,
-        "active",
-        false,
-        false,
-        "hot",
-        chain.chain_id,
-        pubkey
-      );
+      const activeAccount = wallets.filter(acc => acc.account == account)
+      if(activeAccount.length == 0){
+        actions.importWallet(
+          settings.account,
+          "active",
+          false,
+          false,
+          "hot",
+          chain.chain_id,
+          pubkey
+        );
+      }
       actions.setSetting('walletInit', true);
-      actions.useWallet(settings.account, chain.chain_id, "active");
+      // actions.useWallet(settings.account, chain.chain_id, "active");
       actions.setWalletKey(
-        "5KaWFCzUH7QeX78jSuTJa9SXLFcT3MDSXcBMaRDHQZHRYy1wEob",
-        "111111",
+        keys.key,
+        wallet.pin,
         "hot",
-        false,
+        keys.hash,
         "active"
       );
       actions.setWalletMode('hot');
@@ -329,7 +331,9 @@ const mapStateToProps = state => {
     accounts: state.accounts,
     system: state.system,
     chain: state.chain,
-    wallets: state.wallets
+    wallets: state.wallets,
+    wallet: state.wallet,
+    keys: state.keys,
   };
 };
 
