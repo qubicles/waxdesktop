@@ -28,10 +28,14 @@ class CryptoModal extends React.Component {
 
   onConfirm = () => {
     const { from, memo, quantity, asset, to } = this.state;
-    console.log("onConfirm", to, from, memo, quantity, asset);
-    // this.setState({ confirming: false }, () => {
-    //     this.props.actions.transfer(from, to, quantity, memo, asset);
-    // });
+    let quantityFom = '';
+    
+    this.setState({ confirming: false }, () => {
+      if (quantity) {
+        quantityFom = parseInt(quantity).toFixed(8) + " " + asset;
+      }
+      this.props.actions.transfer(from, to, quantityFom, memo, asset);
+    });
   };
 
   onChange = (e, { name, value, valid }) => {

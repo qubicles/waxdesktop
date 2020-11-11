@@ -22,6 +22,10 @@ import * as GlobalsActions from "../../../actions/globals";
 import * as AccountActions from "../../../actions/accounts";
 import * as SettingsActions from "../../../actions/settings";
 import * as TransferActions from "../../../actions/transfer";
+import * as ChainActions from "../../../actions/chain";
+import * as WalletActions from "../../../actions/wallet";
+import * as WalletsActions from "../../../actions/wallets";
+
 import StatsFetcher from "../../../utils/StatsFetcher";
 import { isArray } from "util";
 import "./Dashboard.global.css";
@@ -45,7 +49,7 @@ class Home extends React.Component {
   }
 
   componentDidMount = async () => {
-    const { actions, settings } = this.props;
+    const { actions, settings, chain, accounts } = this.props;
 
     const {
       addCustomToken,
@@ -80,6 +84,39 @@ class Home extends React.Component {
     }
 
     getCurrencyBalance(settings.account);
+    const { account } = settings;
+    let validKeys = [];
+    let pubkey = false;
+    if (accounts[account]) {
+      validKeys = new Set(
+        accounts[account].permissions
+          .filter(perm => perm.required_auth.keys.length > 0)
+          .map(perm => perm.required_auth.keys[0].key)
+      ).values();
+      pubkey = validKeys.next().value;
+
+      actions.importWallet(
+        settings.account,
+        "active",
+        false,
+        false,
+        "hot",
+        chain.chain_id,
+        pubkey
+      );
+      actions.setSetting('walletInit', true);
+      actions.useWallet(settings.account, chain.chain_id, "active");
+      actions.setWalletKey(
+        "5KaWFCzUH7QeX78jSuTJa9SXLFcT3MDSXcBMaRDHQZHRYy1wEob",
+        "111111",
+        "hot",
+        false,
+        "active"
+      );
+      actions.setWalletMode('hot');
+    }
+    // actions.removeAllAccounts();
+    
   };
 
   toggleDashboardTokenModal = () => {
@@ -149,7 +186,8 @@ class Home extends React.Component {
       balances,
       globals,
       accounts,
-      system
+      system,
+      chain,
     } = this.props;
 
     const statsFetcher = new StatsFetcher(
@@ -289,7 +327,9 @@ const mapStateToProps = state => {
     settings: state.settings,
     globals: state.globals,
     accounts: state.accounts,
-    system: state.system
+    system: state.system,
+    chain: state.chain,
+    wallets: state.wallets
   };
 };
 
@@ -300,7 +340,10 @@ const mapDispatchToProps = dispatch => {
         ...AccountActions,
         ...GlobalsActions,
         ...SettingsActions,
-        ...TransferActions
+        ...TransferActions,
+        ...ChainActions,
+        ...WalletsActions,
+        ...WalletActions
       },
       dispatch
     )

@@ -12,6 +12,8 @@ import * as SettingsActions from "../../../actions/settings";
 import * as TransferActions from "../../../actions/transfer";
 import * as CreateAccountActions from "../../../actions/createaccount";
 import * as WalletsActions from "../../../actions/wallets";
+import * as WalletAction from "../../../actions/wallet";
+import * as ChainActions from "../../../actions/chain";
 
 import CreateAccountModal from "../Dashboard/Modals/CreateAccountModal/CreateAccountModal";
 import ImportAccountModal from "../Dashboard/Modals/ImportAccountModal/ImportAccountModal";
@@ -24,7 +26,12 @@ const accountIcon = {
 };
 
 const SideBar = props => {
-  const allAccounts = props.wallets.map(arr => Object.assign(arr, accountIcon));
+  let allAccounts = [];
+  props.wallets.map(arr => {
+    if (arr.text && arr.value) {
+      allAccounts.push(arr);
+    }
+  });
   // const allAccounts = props.wallets;
   const [createAccountModal, toggleCreateAccountModal] = useState(false);
   const [importAccountModal, toggleImportAccountModal] = useState(false);
@@ -127,7 +134,9 @@ const SideBar = props => {
     globals,
     settings,
     system,
-    actions
+    actions,
+    chain,
+    wallets,
   } = props;
 
   return (
@@ -174,12 +183,14 @@ const SideBar = props => {
           globals={globals}
           accounts={accounts}
           system={system}
+          // wallets={wallets}
           connection={connection}
           closeModal={() => toggleImportAccountModal(false)}
           modalOpen={importAccountModal}
           history={history}
           actions={actions}
           location={location}
+          chain={chain}
         />
       )}
     </div>
@@ -194,7 +205,9 @@ const mapStateToProps = state => {
     accounts: state.accounts,
     system: state.system,
     connection: state.connection,
-    wallets: state.wallets
+    wallets: state.wallets,
+    chain: state.chain,
+    wallet: state.wallet,
   };
 };
 
@@ -207,7 +220,9 @@ const mapDispatchToProps = dispatch => {
         ...SettingsActions,
         ...TransferActions,
         ...CreateAccountActions,
-        ...WalletsActions
+        ...WalletsActions,
+        ...ChainActions,
+        ...WalletAction,
       },
       dispatch
     )

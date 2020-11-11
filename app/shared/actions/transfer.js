@@ -63,10 +63,11 @@ export function transfer(from, to, quantity, memo, symbol) {
           payload: { tx },
           type: types.SYSTEM_TRANSFER_SUCCESS
         });
-      }).catch((err) => dispatch({
+      }).catch((err) => {
+      dispatch({
         payload: { err },
         type: types.SYSTEM_TRANSFER_FAILURE
-      }));
+      })});
     } catch (err) {
       return dispatch({
         payload: { err },

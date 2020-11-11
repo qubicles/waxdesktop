@@ -2,6 +2,10 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Form, TextArea, Dropdown, Modal } from "semantic-ui-react";
 import { withRouter } from "react-router-dom";
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
+
+import * as WalletsActions from "../../../../../actions/wallets";
 
 import debounce from "lodash/debounce";
 
@@ -49,7 +53,7 @@ class ImportAccountModal extends React.Component {
       }
     );
   }, 300);
-
+ 
   onSubmit = () => {
     const { value } = this.state;
     const { actions, closeModal, history } = this.props;
@@ -61,7 +65,11 @@ class ImportAccountModal extends React.Component {
       });
       return;
     } else {
-      actions.addNewAccount(importedAccount);
+      const { actions, closeModal, history } = this.props;
+      const importedAccount = this.props.accounts.__lookups[0];
+      actions.addNewAccount(importedAccount)
+      actions.setSetting('account', importedAccount);
+      actions.setTemporaryKey(value, 'active')
       history.push("/");
       closeModal();
     }
@@ -115,4 +123,15 @@ ImportAccountModal.propTypes = {};
 
 ImportAccountModal.defaultProps = {};
 
-export default withRouter(ImportAccountModal);
+// export default withRouter(ImportAccountModal);
+
+const mapStateToProps = (state, ownProps) => {
+  return {
+    wallets: state.wallets,
+  };
+};
+
+
+export default withRouter(
+  connect(mapStateToProps)(ImportAccountModal)
+);
