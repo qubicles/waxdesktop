@@ -85,39 +85,42 @@ class Home extends React.Component {
 
     getCurrencyBalance(settings.account);
     const { account } = settings;
-    let validKeys = [];
-    let pubkey = false;
-    if (accounts[account]) {
-      validKeys = new Set(
-        accounts[account].permissions
-          .filter(perm => perm.required_auth.keys.length > 0)
-          .map(perm => perm.required_auth.keys[0].key)
-      ).values();
-      pubkey = validKeys.next().value;
+    // if(activeAccount.length == 0){
+    //     actions.importWallet(
+    //       settings.account,
+    //       "active",
+    //       false,
+    //       false,
+    //       "hot",
+    //       chain.chain_id,
+    //       pubkey
+    //     );
       const activeAccount = wallets.filter(acc => acc.account == account)
-      if(activeAccount.length == 0){
-        actions.importWallet(
-          settings.account,
-          "active",
-          false,
-          false,
+      if(account != keys.account){
+        actions.setWalletKey(
+          activeAccount[0].data,
+          wallet.pin,
           "hot",
-          chain.chain_id,
-          pubkey
+          activeAccount[0].hash,
+          "active"
         );
+      } else if(keys.key){
+        if(activeAccount.length == 0){
+          actions.setWalletKey(
+            keys.key,
+            wallet.pin,
+            "hot",
+            keys.hash,
+            "active"
+          );
+        }
       }
+    // }
       actions.setSetting('walletInit', true);
       // actions.useWallet(settings.account, chain.chain_id, "active");
-      actions.setWalletKey(
-        keys.key,
-        wallet.pin,
-        "hot",
-        keys.hash,
-        "active"
-      );
+      
       actions.setWalletMode('hot');
-    }
-    // actions.removeAllAccounts();
+      // actions.removeAllAccounts();
     
   };
 

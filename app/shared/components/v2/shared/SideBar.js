@@ -29,6 +29,7 @@ const SideBar = props => {
   let allAccounts = [];
   props.wallets.map(arr => {
     if (arr.text && arr.value) {
+      Object.assign(arr, accountIcon);
       allAccounts.push(arr);
     }
   });
@@ -66,7 +67,7 @@ const SideBar = props => {
       case "":
         break;
       default:
-        props.actions.setSettings("account", value);
+        props.actions.setSetting("account", value);
         props.history.push("/");
     }
   };

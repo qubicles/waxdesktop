@@ -14,14 +14,16 @@ import * as GlobalsActions from "../actions/globals"
 
 class WelcomeContainer extends Component {
   componentDidMount() {
-    const { actions, wallets } = this.props
+    const { actions, wallets, settings } = this.props
     const activeAccount = wallets.filter(acc => acc.status === 'active')
     // actions.removeAllAccounts()
     actions.setSetting('node', 'https://api.wax.alohaeos.com');
     // actions.setSetting('account', 'mj1ai.waa');
     actions.validateNode('https://api.wax.alohaeos.com');
     // actions.setSetting('node', 'https://api.eos.miami');
-    actions.setSetting('account', (activeAccount[0] && activeAccount[0].value) || '');
+    if(!settings.account){
+      actions.setSetting('account', (activeAccount[0] && activeAccount[0].value) || '');
+    }
     // actions.validateNode('https://api.eos.miami');
     actions.setSetting('blockchain', { tokenSymbol: "WAX" });
   }

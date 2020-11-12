@@ -47,60 +47,61 @@ class CryptoModal extends React.Component {
   render() {
     const { modalOpen, closeModal, settings, balances, globals } = this.props;
     const { from, memo, quantity, asset, to } = this.state;
-
-    const assets = balances && Object.keys(balances[settings.account]);
-    const { customTokens } = settings;
-    const trackedTokens = customTokens
-      ? customTokens.map(tokenName => {
-          const [contract, symbol] = tokenName.split(":");
-
-          // find logo
-          const tokenInfo =
-            globals &&
-            globals.remotetokens &&
-            globals.remotetokens.filter(
-              token =>
-                token.account == contract &&
-                token.symbol == settings.blockchain.tokenSymbol
-            )[0];
-
-          return {
-            contract,
-            symbol: tokenInfo ? tokenInfo.name : "",
-            logo: tokenInfo ? tokenInfo.logo : null
-          };
-        })
-      : [
-          {
-            contract: "eosio",
-            symbol: settings.blockchain.tokenSymbol,
-            logo: null
-          }
-        ];
     const options = [];
-    // Iterate assets and build the options list based on tracked tokens
-    assets.forEach(asset => {
-      const assetDetails = find(trackedTokens, { symbol: asset });
-      if (assetDetails) {
-        const { contract, symbol, logo } = find(trackedTokens, {
-          symbol: asset
-        });
-        if (
-          contract &&
-          symbol &&
-          balances[settings.account] &&
-          balances[settings.account][asset] > 0
-        ) {
-          options.push({
-            key: asset,
-            // image: logo,
-            text: `${symbol}`,
-            value: asset
+    if(balances[settings.account]){
+      const assets = Object.keys(balances[settings.account]);
+      const { customTokens } = settings;
+      const trackedTokens = customTokens
+        ? customTokens.map(tokenName => {
+            const [contract, symbol] = tokenName.split(":");
+  
+            // find logo
+            const tokenInfo =
+              globals &&
+              globals.remotetokens &&
+              globals.remotetokens.filter(
+                token =>
+                  token.account == contract &&
+                  token.symbol == settings.blockchain.tokenSymbol
+              )[0];
+  
+            return {
+              contract,
+              symbol: tokenInfo ? tokenInfo.name : "",
+              logo: tokenInfo ? tokenInfo.logo : null
+            };
+          })
+        : [
+            {
+              contract: "eosio",
+              symbol: settings.blockchain.tokenSymbol,
+              logo: null
+            }
+          ];
+      
+      // Iterate assets and build the options list based on tracked tokens
+      assets.forEach(asset => {
+        const assetDetails = find(trackedTokens, { symbol: asset });
+        if (assetDetails) {
+          const { contract, symbol, logo } = find(trackedTokens, {
+            symbol: asset
           });
+          if (
+            contract &&
+            symbol &&
+            balances[settings.account] &&
+            balances[settings.account][asset] > 0
+          ) {
+            options.push({
+              key: asset,
+              // image: logo,
+              text: `${symbol}`,
+              value: asset
+            });
+          }
         }
-      }
-    });
-
+      });
+    }
     return (
       <Modal onClose={closeModal} size={"tiny"} open={modalOpen}>
         <Modal.Content className="cryptoModal-body">

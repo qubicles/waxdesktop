@@ -19,6 +19,9 @@ export default function wallets(state = initialState, action) {
       if (action.payload.authorization) {
         partitionParams.authorization = action.payload.authorization;
       }
+      if (action.payload.hash) {
+        partitionParams.hash = action.payload.hash;
+      }
       const [, other] = partition(state, partitionParams);
 
       return [

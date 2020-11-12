@@ -19,7 +19,8 @@ export default function wallet(state = initialState, action) {
         data: action.payload.data,
         mode: action.payload.mode,
         pubkey: action.payload.pubkey,
-        chainId: action.payload.chainId
+        chainId: action.payload.chainId,
+        hash: action.payload.hash
       });
     }
     case types.SET_WALLET_PIN: {

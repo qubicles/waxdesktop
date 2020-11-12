@@ -47,7 +47,8 @@ export function setWalletKey(data, password, mode = 'hot', existingHash = false,
         account: settings.account,
         accountData: accounts[settings.account],
         authorization,
-        data: encrypt(key, password),
+        data: obfuscated,
+        hash,
         mode,
         pubkey,
         chainId: settings.blockchain.chainId
@@ -68,10 +69,11 @@ export function setWalletHash(password) {
 
 export function setTemporaryKey(key, authorization = 'active') {
   return (dispatch: () => void, getState) => {
-    const { settings } = getState();
+    const { settings, wallet } = getState();
     const pubkey = (key) ? ecc.privateToPublic(key) : '';
     // Obfuscate key for in-memory storage
-    const hash = encrypt(key, key, 1).toString(CryptoJS.enc.Utf8);
+    // const hash = encrypt(key, key, 1).toString(CryptoJS.enc.Utf8);
+    const hash = encrypt(wallet.pin, wallet.pin, 1).toString(CryptoJS.enc.Utf8);
     const obfuscated = encrypt(key, hash, 1).toString(CryptoJS.enc.Utf8);
 
     dispatch({
