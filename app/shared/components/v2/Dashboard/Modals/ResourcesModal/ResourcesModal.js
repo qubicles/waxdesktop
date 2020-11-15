@@ -1,6 +1,6 @@
 import React from "react"
 import PropTypes from "prop-types"
-import { Modal, Button, Tab, Dropdown, Menu } from "semantic-ui-react"
+import { Modal, Button, Tab, Dropdown, Menu, Form, Input } from "semantic-ui-react"
 import Decimal from "decimal.js";
 
 import "./ResourcesModal.global.css"
@@ -17,9 +17,18 @@ class ResourcesModal extends React.Component {
 	constructor(props) {
 		super(props)
 		this.state = {
+			amountVal: "",
+			stakeItem: 1,
 		}
 	}
-
+	onSubmit = () => {
+		const { amountVal, stakeItem } = this.state;
+		debugger
+	}
+	onChange = (e, { name, value, valid }) => {
+		const newState = { [name]: value };
+		this.setState(newState);
+	}
 	resourceUsage = (account) => {
 		const {
 			cpu_limit,
@@ -54,7 +63,8 @@ class ResourcesModal extends React.Component {
 
 	render() {
 		const { modalOpen, closeModal, accounts, settings } = this.props;
-		const account = accounts[settings.account];
+		const { amountVal, stakeItem } = this.state;
+		let account = accounts[settings.account];
 		if (!account) account = {};
 		const { cpuUsage, netUsage, ramUsage } = this.resourceUsage(account);
 
@@ -74,21 +84,21 @@ class ResourcesModal extends React.Component {
 				<CustomProgressBar
 					label="CPU"
 					statusColor="red"
-					percent={cpuUsage.toFixed(2)}
+					percent={cpuUsage ? cpuUsage.toFixed(2) : 0 }
 					innerLabel={Decimal(parsedCpuWeight).toFixed(2)}
 					settings={settings}
 				/>
 				<CustomProgressBar
 					label="NET"
 					statusColor="yellow"
-					percent={netUsage.toFixed(2)}
+					percent={netUsage ? netUsage.toFixed(2) : 0 }
 					innerLabel={Decimal(parsedNetWeight).toFixed(2)}
 					settings={settings}
 				/>
 				<CustomProgressBar
 					label="RAM"
 					statusColor="green"
-					percent={ramUsage.toFixed(2)}
+					percent={ramUsage ? ramUsage.toFixed(2) : 0 }
 					innerLabel="0"
 					settings={settings}
 				/>
@@ -107,23 +117,35 @@ class ResourcesModal extends React.Component {
 						parsedNetWeight={parsedNetWeight}
 						settings={settings}
 					/>
-					<div className="resource-choose-section">
-						<Dropdown
-							defaultValue={1}
-							selection
-							options={options}
-							className="resource-choose-dropdown"
-						/>
-						<div className="input-button-wrap">
-							<input type="text" className="common-input" placeholder="Amount Of WAX" />
-							<div className="circle-btn-wrap">
-								<img src={require('../../../../../../renderer/assets/images/dashboard/correct2.png')} />
+					{/* <Form> */}
+						<div className="resource-choose-section">
+							<Dropdown
+								defaultValue={stakeItem}
+								name="stakeItem"
+								selection
+								options={options}
+								className="resource-choose-dropdown"
+								onChange={this.onChange}
+							/>
+							<div className="input-button-wrap">
+								<Form.Field 
+									className="common-input-wrap"
+									control={Input}
+									name="amountVal"
+									placeholder="Amount Of WAX" 
+									value={amountVal}
+									onChange={this.onChange}
+									required
+								/>
+								<div className="circle-btn-wrap" onClick={this.onSubmit}>
+									<img src={require('../../../../../../renderer/assets/images/dashboard/correct2.png')} />
+								</div>
 							</div>
 						</div>
-					</div>
-					<div className="resources-delegate-link">
-						DELEGATE RESOURCES
-								</div>
+						<div className="resources-delegate-link">
+							DELEGATE RESOURCES
+						</div>
+					{/* </Form> */}
 				</Tab.Pane>,
 			},
 			{
