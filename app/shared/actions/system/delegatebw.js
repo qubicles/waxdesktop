@@ -50,8 +50,8 @@ export function delegatebwParams(delegator, receiver, netAmount, cpuAmount, tran
   return {
     from: delegator,
     receiver,
-    stake_net_quantity: `${stakeNetAmount.toFixed(settings.tokenPrecision)} ` + settings.blockchain.tokenSymbol,
-    stake_cpu_quantity: `${stakeCpuAmount.toFixed(settings.tokenPrecision)} ` + settings.blockchain.tokenSymbol,
+    stake_net_quantity: `${stakeNetAmount.toFixed(8)} ` + settings.blockchain.tokenSymbol,
+    stake_cpu_quantity: `${stakeCpuAmount.toFixed(8)} ` + settings.blockchain.tokenSymbol,
     transfer: transferTokens ? 1 : 0
   };
 }

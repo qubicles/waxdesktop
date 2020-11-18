@@ -25,6 +25,7 @@ import * as TransferActions from "../../../actions/transfer";
 import * as ChainActions from "../../../actions/chain";
 import * as WalletActions from "../../../actions/wallet";
 import * as WalletsActions from "../../../actions/wallets";
+import * as StakeActions from "../../../actions/stake";
 
 import StatsFetcher from "../../../utils/StatsFetcher";
 import { isArray } from "util";
@@ -350,7 +351,8 @@ const mapDispatchToProps = dispatch => {
         ...TransferActions,
         ...ChainActions,
         ...WalletsActions,
-        ...WalletActions
+        ...WalletActions,
+        ...StakeActions,
       },
       dispatch
     )

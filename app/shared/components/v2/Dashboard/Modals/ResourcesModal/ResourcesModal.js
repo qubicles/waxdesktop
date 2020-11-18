@@ -1,7 +1,7 @@
 import React from "react"
 import PropTypes from "prop-types"
 import { Modal, Button, Tab, Dropdown, Menu, Form, Input } from "semantic-ui-react"
-import Decimal from "decimal.js";
+import { Decimal } from "decimal.js";
 
 import "./ResourcesModal.global.css"
 import CustomProgressBar from "../../CustomProgressBar/CustomProgressBar"
@@ -16,14 +16,53 @@ const options = [
 class ResourcesModal extends React.Component {
 	constructor(props) {
 		super(props)
+		let { accounts, settings } = props;
+		let account = accounts[settings.account];
+		if (!account) account = {};
+		const {
+			cpu_weight,
+			net_weight
+		} = account.self_delegated_bandwidth || {
+			cpu_weight: '0.'.padEnd(settings.tokenPrecision + 2, '0') + ' ' + settings.blockchain.tokenSymbol,
+			net_weight: '0.'.padEnd(settings.tokenPrecision + 2, '0') + ' ' + settings.blockchain.tokenSymbol
+		};
+	  
+		const parsedCpuWeight = cpu_weight.split(' ')[0];
+		const parsedNetWeight = net_weight.split(' ')[0];
+		
 		this.state = {
-			amountVal: "",
-			stakeItem: 1,
+			accountName: account.account_name,
+			amountValStake: "",
+			selectItemStake: 1,
+			amountValUnstake: "",
+			selectItemUnstake:1,
+			cpuOriginal: Decimal(parsedCpuWeight),
+			netOriginal: Decimal(parsedNetWeight),
 		}
 	}
 	onSubmit = () => {
-		const { amountVal, stakeItem } = this.state;
-		debugger
+		const { amountValStake, selectItemStake, netOriginal, cpuOriginal, accountName } = this.state;
+		const decimalAmountStake = Decimal(amountValStake);
+		if(selectItemStake == 1){
+			debugger;
+			this.props.actions.setStake(accountName, netOriginal, cpuOriginal.plus(decimalAmountStake));
+		} else if(selectItemStake == 2) {
+			this.props.actions.setStake(accountName, netOriginal.plus(decimalAmountStake), cpuOriginal);
+		} else {
+
+		}
+	}
+	onSubmit1 = () => {
+		const { amountValUnstake, selectItemUnstake, netOriginal, cpuOriginal, accountName } = this.state;
+		const decimalAmountUnstake = Decimal(amountValUnstake);
+		if(selectItemUnstake == 1){
+			this.props.actions.setStake(accountName, netOriginal, cpuOriginal.minus(decimalAmountUnstake));
+		} else if(selectItemUnstake == 2) {
+			debugger
+			this.props.actions.setStake(accountName, netOriginal.minus(decimalAmountUnstake), cpuOriginal);
+		} else {
+
+		}
 	}
 	onChange = (e, { name, value, valid }) => {
 		const newState = { [name]: value };
@@ -60,10 +99,15 @@ class ResourcesModal extends React.Component {
 		};
 	}
 
+	TabExampleSecondaryPointing = (panes) => {
+		return (
+			<Tab menu={{ secondary: true, pointing: true }} panes={panes} />
+		)
+	}
 
 	render() {
 		const { modalOpen, closeModal, accounts, settings } = this.props;
-		const { amountVal, stakeItem } = this.state;
+		const { amountValStake, selectItemStake, amountValUnstake, selectItemUnstake } = this.state;
 		let account = accounts[settings.account];
 		if (!account) account = {};
 		const { cpuUsage, netUsage, ramUsage } = this.resourceUsage(account);
@@ -75,7 +119,6 @@ class ResourcesModal extends React.Component {
 			cpu_weight: '0.'.padEnd(settings.tokenPrecision + 2, '0') + ' ' + settings.blockchain.tokenSymbol,
 			net_weight: '0.'.padEnd(settings.tokenPrecision + 2, '0') + ' ' + settings.blockchain.tokenSymbol
 		};
-
 		const parsedCpuWeight = cpu_weight.split(' ')[0];
 		const parsedNetWeight = net_weight.split(' ')[0];
 
@@ -120,8 +163,8 @@ class ResourcesModal extends React.Component {
 					{/* <Form> */}
 						<div className="resource-choose-section">
 							<Dropdown
-								defaultValue={stakeItem}
-								name="stakeItem"
+								defaultValue={selectItemStake}
+								name="selectItemStake"
 								selection
 								options={options}
 								className="resource-choose-dropdown"
@@ -131,9 +174,9 @@ class ResourcesModal extends React.Component {
 								<Form.Field 
 									className="common-input-wrap"
 									control={Input}
-									name="amountVal"
+									name="amountValStake"
 									placeholder="Amount Of WAX" 
-									value={amountVal}
+									value={amountValStake}
 									onChange={this.onChange}
 									required
 								/>
@@ -161,14 +204,24 @@ class ResourcesModal extends React.Component {
 					/>
 					<div className="resource-choose-section">
 						<Dropdown
-							defaultValue="CPU"
+							defaultValue={selectItemUnstake}
+							name="selectItemUnstake"
 							selection
 							options={options}
 							className="resource-choose-dropdown"
+							onChange={this.onChange}
 						/>
 						<div className="input-button-wrap">
-							<input type="text" className="common-input" placeholder="Amount Of WAX" />
-							<div className="circle-btn-wrap">
+							<Form.Field 
+								className="common-input-wrap"
+								control={Input}
+								name="amountValUnstake"
+								placeholder="Amount Of WAX" 
+								value={amountValUnstake}
+								onChange={this.onChange}
+								required
+							/>
+							<div className="circle-btn-wrap" onClick={this.onSubmit1}>
 								<img src={require('../../../../../../renderer/assets/images/dashboard/correct2.png')} />
 							</div>
 						</div>
@@ -176,10 +229,6 @@ class ResourcesModal extends React.Component {
 				</Tab.Pane>,
 			},
 		]
-
-		const TabExampleSecondaryPointing = () => (
-			<Tab menu={{ secondary: true, pointing: true }} panes={panes} />
-		)
 
 		return (
 			<Modal
@@ -193,11 +242,7 @@ class ResourcesModal extends React.Component {
 				<Modal.Content
 					className="resourceModal-body"
 				>
-					<TabExampleSecondaryPointing
-						cpuUsage={cpuUsage}
-						netUsage={netUsage}
-						ramUsage={ramUsage}
-					/>
+					{this.TabExampleSecondaryPointing(panes)}
 				</Modal.Content>
 
 			</Modal>
