@@ -39,11 +39,18 @@ class ResourcesModal extends React.Component {
 			selectItemUnstake:1,
 			cpuOriginal: Decimal(parsedCpuWeight),
 			netOriginal: Decimal(parsedNetWeight),
+			errorMsg: "",
 		}
 		this.props.actions.getRamStats();
 	}
 	onSubmit = () => {
 		const { amountValStake, selectItemStake, netOriginal, cpuOriginal, accountName } = this.state;
+		if(!amountValStake){
+			this.setState({
+				errorMsg: "This form can't be blink"
+			})
+			return false;
+		}
 		const decimalAmountStake = Decimal(amountValStake);
 		if(selectItemStake == 1){
 			this.props.actions.setStake(accountName, netOriginal, cpuOriginal.plus(decimalAmountStake));
@@ -52,9 +59,18 @@ class ResourcesModal extends React.Component {
 		} else {
 			this.props.actions.buyram(decimalAmountStake);
 		}
+		this.setState({
+			errorMsg: "",
+		})
 	}
 	onSubmit1 = () => {
-		const { amountValUnstake, selectItemUnstake, netOriginal, cpuOriginal, accountName } = this.state;
+		const { amountValUnstake, selectItemUnstake, netOriginal, cpuOriginal, accountName, errorMsg } = this.state;
+		if(!amountValUnstake){
+			this.setState({
+				errorMsg: "This form can't be blink"
+			})
+			return false;
+		}
 		const decimalAmountUnstake = Decimal(amountValUnstake);
 		if(selectItemUnstake == 1){
 			this.props.actions.setStake(accountName, netOriginal, cpuOriginal.minus(decimalAmountUnstake));
@@ -72,6 +88,9 @@ class ResourcesModal extends React.Component {
 			}
 			this.props.actions.sellram(amountOfRam);
 		}
+		this.setState({
+			errorMsg: "",
+		})
 	}
 	onChange = (e, { name, value, valid }) => {
 		const newState = { [name]: value };
@@ -116,7 +135,7 @@ class ResourcesModal extends React.Component {
 
 	render() {
 		const { modalOpen, closeModal, accounts, settings } = this.props;
-		const { amountValStake, selectItemStake, amountValUnstake, selectItemUnstake } = this.state;
+		const { amountValStake, selectItemStake, amountValUnstake, selectItemUnstake, error, errorMsg } = this.state;
 		let account = accounts[settings.account];
 		if (!account) account = {};
 		const { cpuUsage, netUsage, ramUsage } = this.resourceUsage(account);
@@ -194,6 +213,13 @@ class ResourcesModal extends React.Component {
 								</div>
 							</div>
 						</div>
+						{
+							(errorMsg) ? (
+								<div className="warnning-alert">
+									{errorMsg}
+								</div>
+							): ''
+						}
 						<div className="resources-delegate-link">
 							DELEGATE RESOURCES
 						</div>
@@ -235,6 +261,13 @@ class ResourcesModal extends React.Component {
 							</div>
 						</div>
 					</div>
+					{
+						(errorMsg) ? (
+							<div className="warnning-alert">
+								{errorMsg}
+							</div>
+						): ''
+					}
 				</Tab.Pane>,
 			},
 		]

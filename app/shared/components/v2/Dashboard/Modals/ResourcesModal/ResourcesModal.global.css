@@ -72,6 +72,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  cursor: pointer;
 }
 .input-button-wrap input {
   font-size: 18px !important;
@@ -121,4 +122,8 @@
 }
 .ui.secondary.pointing.menu .dropdown.item:hover, .ui.secondary.pointing.menu .link.item:hover, .ui.secondary.pointing.menu a.item:hover {
   color: white !important;
+}
+.resourceModal-body .warnning-alert {
+  text-align: center;
+  color: #ff886d;
 }
