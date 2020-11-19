@@ -13,7 +13,6 @@ import { payforcpunet } from './helpers/eos';
 
 export function setStake(accountName, netAmount, cpuAmount) {
   return (dispatch: () => void, getState) => {
-    debugger;
     const {
       accounts,
       connection,

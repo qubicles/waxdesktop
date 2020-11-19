@@ -28,7 +28,7 @@ export function buyram(amount) {
         data: {
           payer: account,
           receiver: account,
-          quant: `${amount.toFixed(settings.tokenPrecision)} ` + settings.blockchain.tokenSymbol
+          quant: `${amount.toFixed(8)} ` + settings.blockchain.tokenSymbol
         }
       }
     ];

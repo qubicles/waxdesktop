@@ -6,6 +6,7 @@ import { Decimal } from "decimal.js";
 import "./ResourcesModal.global.css"
 import CustomProgressBar from "../../CustomProgressBar/CustomProgressBar"
 import settings from "../../../../../actions/settings";
+import calculateAmountOfRam from '../../../../helpers/calculateAmountOfRam';
 
 const options = [
 	{ key: 1, text: 'CPU', value: 1 },
@@ -39,17 +40,17 @@ class ResourcesModal extends React.Component {
 			cpuOriginal: Decimal(parsedCpuWeight),
 			netOriginal: Decimal(parsedNetWeight),
 		}
+		this.props.actions.getRamStats();
 	}
 	onSubmit = () => {
 		const { amountValStake, selectItemStake, netOriginal, cpuOriginal, accountName } = this.state;
 		const decimalAmountStake = Decimal(amountValStake);
 		if(selectItemStake == 1){
-			debugger;
 			this.props.actions.setStake(accountName, netOriginal, cpuOriginal.plus(decimalAmountStake));
 		} else if(selectItemStake == 2) {
 			this.props.actions.setStake(accountName, netOriginal.plus(decimalAmountStake), cpuOriginal);
 		} else {
-
+			this.props.actions.buyram(decimalAmountStake);
 		}
 	}
 	onSubmit1 = () => {
@@ -58,10 +59,18 @@ class ResourcesModal extends React.Component {
 		if(selectItemUnstake == 1){
 			this.props.actions.setStake(accountName, netOriginal, cpuOriginal.minus(decimalAmountUnstake));
 		} else if(selectItemUnstake == 2) {
-			debugger
 			this.props.actions.setStake(accountName, netOriginal.minus(decimalAmountUnstake), cpuOriginal);
 		} else {
-
+			const { globals } = this.props;
+			const decPrice = Decimal(amountValUnstake);
+			const decBaseBal = Decimal(globals.ram.base_balance);
+			const decQuoteBal = Decimal(globals.ram.quote_balance);
+			let amountOfRam = 0;
+			if (decPrice.greaterThan(0)) {
+				const decAmount = calculateAmountOfRam(decBaseBal, decQuoteBal, decPrice);
+				amountOfRam = decAmount.floor();
+			}
+			this.props.actions.sellram(amountOfRam);
 		}
 	}
 	onChange = (e, { name, value, valid }) => {

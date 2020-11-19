@@ -26,6 +26,8 @@ import * as ChainActions from "../../../actions/chain";
 import * as WalletActions from "../../../actions/wallet";
 import * as WalletsActions from "../../../actions/wallets";
 import * as StakeActions from "../../../actions/stake";
+import * as BuyRamActions from "../../../actions/system/buyram";
+import * as SellRamActions from "../../../actions/system/sellram";
 
 import StatsFetcher from "../../../utils/StatsFetcher";
 import { isArray } from "util";
@@ -250,6 +252,7 @@ class Home extends React.Component {
             location={location}
             accounts={accounts}
             settings={settings}
+            globals={globals}
           />
         )}
         <DelegateModal
@@ -353,6 +356,8 @@ const mapDispatchToProps = dispatch => {
         ...WalletsActions,
         ...WalletActions,
         ...StakeActions,
+        ...BuyRamActions,
+        ...SellRamActions,
       },
       dispatch
     )
