@@ -1,48 +1,21 @@
 import React from "react";
 
 import "./DecentralizedApps.global.css";
+import { decentralizedData } from "../dApps.js"
 
-const decentralizedData = [
-    {
-        title: 'Newdex',
-        description: 'Decentralized Exchange',
-        image: require('../../../../../renderer/assets/images/dashboard/ScrollGroup1.png'),
-    },
-    {
-        title: 'KARMA',
-        description: 'Social Network That Pays You',
-        image: require('../../../../../renderer/assets/images/dashboard/ScrollGroup1.png'),
-    },
-    {
-        title: 'OceanSwap',
-        description: 'Instantly Swap WAX Tokens',
-        image: require('../../../../../renderer/assets/images/dashboard/ScrollGroup1.png'),
-    },
-    {
-        title: 'Topps',
-        description: 'Social Network That pays You',
-        image: require('../../../../../renderer/assets/images/dashboard/ScrollGroup1.png'),
-    },
-    {
-        title: 'Tycoon',
-        description: 'Build An Empire',
-        image: require('../../../../../renderer/assets/images/dashboard/ScrollGroup1.png'),
-    },
-    
-]
 const DecentralizedAppList = () => {
 
     return (decentralizedData.map(item => (
             <div className="decentralized-apps-body">
                 <div className="dec-left-section">
-                    <img src={item.image} />
+                    <img src={item.image} className={`dApps-img ${item.css}`}/>
                     <div className="dec-des">
                         <div>{item.title}</div>
                         <div>{item.description}</div>
                     </div>
                 </div>
                 <div className="dec-right-section">
-                    Open
+                    <a className="dApps-link" href={item.url} target="_blink">Open</a>
                 </div>
             </div>
         ))
