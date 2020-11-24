@@ -1,6 +1,13 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Form, TextArea, Dropdown, Modal } from "semantic-ui-react";
+import {
+  Form,
+  TextArea,
+  Dropdown,
+  Modal,
+  Checkbox,
+  Button
+} from "semantic-ui-react";
 import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
@@ -20,7 +27,8 @@ class ImportAccountModal extends React.Component {
     super(props);
     this.state = {
       value: "",
-      error: false
+      error: false,
+      btnDisable: true,
     };
   }
 
@@ -29,7 +37,8 @@ class ImportAccountModal extends React.Component {
     const { actions } = this.props;
     this.setState(
       {
-        value: parsed
+        value: parsed,
+        error: true
       },
       () => {
         try {
@@ -40,47 +49,54 @@ class ImportAccountModal extends React.Component {
           } else {
             actions.clearAccountByKey();
           }
-          this.setState({
-            value: parsed,
-            error: !valid
-          });
         } catch (error) {
           this.setState({
             value: parsed,
-            error: true
+            error: false
           });
         }
       }
     );
   }, 300);
- 
-  onSubmit = () => {
+
+  onSelectAccount = e => {
+    this.setState({
+      btnDisable: false
+    });
+  };
+
+  onSubmit = e => {
+    e.preventDefault();
+    let selectedAccounts = document.getElementsByName("selectedAccounts");
+    const filtered = [];
+    selectedAccounts.forEach(el => {
+      if (el.checked) {
+        filtered.push(el.value);
+
+      }
+    });
     const { value } = this.state;
     const { actions, closeModal, history } = this.props;
-    const importedAccount = this.props.accounts.__lookups[0];
 
-    if (!value) {
-      this.setState({
-        error: true
+    if (filtered.length > 0 && value) {
+      filtered.forEach(importedAccount => {
+        actions.addNewAccount(importedAccount);
       });
-      return;
-    } else {
-      const { actions, closeModal, history } = this.props;
-      const importedAccount = this.props.accounts.__lookups[0];
-      actions.addNewAccount(importedAccount)
-      actions.setSetting('account', importedAccount);
-      actions.setTemporaryKey(value, 'active')
+      actions.setSetting('account', filtered[0]);
+      actions.setTemporaryKey(value, 'active');
       history.push("/");
-      closeModal();
     }
-  };
+    closeModal();
+  }
 
   render() {
     const { modalOpen, closeModal, accounts } = this.props;
-
-    const { value, error } = this.state;
-
-    const importedAccount = accounts && accounts.__lookups[0];
+    const {
+      value,
+      error,
+      btnDisable,
+    } = this.state;
+    const importedAccounts = this.props.accounts && this.props.accounts.__lookups;
 
     return (
       <Modal onClose={closeModal} className="" size={"tiny"} open={modalOpen}>
@@ -96,20 +112,38 @@ class ImportAccountModal extends React.Component {
               name="privateKey"
               onChange={this.onChange}
               defaultValue={value}
-              error={error}
+              error={!error}
               placeholder="Active Private key"
             />
-            {!this.state.error && (
+            {this.state.error && importedAccounts.length > 0 && (
               <div>
                 <div className="importModal-label">
-                  imported account: {importedAccount}
+                  <div>
+                    Select one or more accounts to import with this private key
                 </div>
-                <div className="delegate-btn" onClick={this.onSubmit}>
+                  <div className="imported-users-wrap">
+                    {importedAccounts.map(importedAccount => (
+                      <div className="user-row" key={importedAccount}>
+                        <Checkbox
+                          label={importedAccount}
+                          onChange={this.onSelectAccount}
+                          name="selectedAccounts"
+                          value={importedAccount}
+                        />
+                      </div>
+                    ))}
+                  </div>
+                </div>
+                <button
+                  className={`delegate-btn-sem delegate-btn ${btnDisable ? "btn-disable" : ""}`}
+                  onClick={this.onSubmit}
+                  disabled={btnDisable}
+                >
                   Confirm Import
-                  <img
+                <img
                     src={require("../../../../../../renderer/assets/images/dashboard/correct3.png")}
                   />
-                </div>
+                </button>
               </div>
             )}
           </div>
@@ -127,11 +161,8 @@ ImportAccountModal.defaultProps = {};
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    wallets: state.wallets,
+    wallets: state.wallets
   };
 };
 
-
-export default withRouter(
-  connect(mapStateToProps)(ImportAccountModal)
-);
+export default withRouter(connect(mapStateToProps)(ImportAccountModal));

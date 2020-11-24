@@ -40,3 +40,27 @@
     border-radius: 20px !important;
     line-height: 0.9 !important;
 }
+.imported-users-wrap {
+    padding: 5px;
+}
+.imported-users-wrap .user-row {
+    padding-bottom: 2px;
+}
+.user-row .checkbox label {
+    color: white !important;
+}
+.delegate-btn-sem {
+    border: none;
+    width: 100%;
+    text-align: center;
+    color: white;
+    border-radius: 20px;
+    background-color: #ff886d;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    font-size: 24px;
+    font-family: montserratBold;
+}
+.btn-disable {
+    opacity: 0.6;
+}
