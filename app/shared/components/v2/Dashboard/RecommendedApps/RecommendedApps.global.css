@@ -27,3 +27,6 @@
 .elipsis:hover {
     cursor: pointer;
 }
+.recommended-apps-card a {
+    color: white;
+}

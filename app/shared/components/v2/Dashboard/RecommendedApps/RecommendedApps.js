@@ -2,16 +2,24 @@ import React from "react";
 import "./RecommendedApps.global.css";
 
 import recommendedAppsJSON from "../../../../../../resources/recommendedApps.json";
+import { decentralizedData } from "../../Apps/dApps"
 
 import "./RecommendedApps.global.css";
-const recommendedApps = recommendedAppsJSON.map((app, index) => (
-  <div className="recommended-apps-card" key={`recommeded-${index}`}>
-    <img
-      src={require(`../../../../../renderer/assets/images/dashboard/${app.image}`)}
-    />
-    <div className="app-title">{app.name}</div>
-  </div>
-));
+const recommendedApps = decentralizedData.map((item, index) => {
+  if(index < 5){
+    return (
+      <div className="recommended-apps-card" key={`recommeded-${index}`}>
+        <a href={item.url} target="_blink">
+          <img
+            className={`dApps-img ${item.css}`}
+            src={item.image}
+          />
+          <div className="app-title">{item.title}</div>
+        </a>
+      </div>
+    )
+  }
+});
 
 class RecommendedApps extends React.Component {
   goApps = () => {
