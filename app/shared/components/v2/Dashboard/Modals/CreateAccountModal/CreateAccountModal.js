@@ -323,6 +323,7 @@ class CreateAccountModal extends React.Component {
 									onChange={this.onChange}
 									value={accountName || ''}
 									error={formErrors["accountName"]}
+									placeholder="12 Characters (A-Z & 1-5)"
 								/>
 							</div>
 							<Button

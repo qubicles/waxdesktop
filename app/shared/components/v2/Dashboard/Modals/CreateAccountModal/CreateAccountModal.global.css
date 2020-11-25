@@ -25,7 +25,7 @@
     color: white;
     padding: 10px 0;
     font-size: 20px;
-    font-weight: 700;
+    font-family: montserratBold;
 }
 .custom-textarea {
     background-color: #242b39;
@@ -40,8 +40,8 @@
     resize: none !important;
     outline: none !important;
     border-radius: 20px !important; 
-    font-size: 16px;
-    font-weight: 600;
+    font-size: 16px !important;
+    font-family: montserratMedium !important;
 }
 .custom-textarea textarea::placeholder {
     color: white;
@@ -67,7 +67,7 @@
     color: white;
     padding: 5px;
     font-size: 20px;
-    font-weight: 700;
+    font-family: montserratBold;
 }
 .account-name-section input::placeholder {
     color: #707070;
@@ -107,4 +107,12 @@
     color: white !important;
     font-size: 20px !important;
     padding-left: 20px !important;
+}
+.custom-input-group input, .account-name-section input {
+    font-family: montserratBold !important;
+}
+.account-name-section input::placeholder {
+    color: #707070 !important;
+    font-size: 20px;
+    font-family: montserratBold !important;
 }

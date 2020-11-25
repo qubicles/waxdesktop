@@ -25,7 +25,8 @@ export default class Account extends Component {
     render() {
         const {
             name,
-            error
+            error,
+            placeholder
         } = this.props;
 
         const {
@@ -40,6 +41,7 @@ export default class Account extends Component {
                 onChange={this.onChange}
                 defaultValue={value}
                 error={error}
+                placeholder={placeholder}
             />
         )
     }
