@@ -1,11 +1,42 @@
 import React, { Component } from "react";
-
-// import "./Balance.global.css";
-import { Image, Header } from "semantic-ui-react";
+import { Card, Image, Divider, Tab, Button, Dropdown, Header } from "semantic-ui-react";
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
 import { Decimal } from 'decimal.js';
 import { forEach } from 'lodash';
 
-export default class Balance extends Component {
+import * as GlobalsActions from "../../../../actions/globals";
+import * as AccountActions from "../../../../actions/accounts";
+import * as SettingsActions from "../../../../actions/settings";
+import * as TransferActions from "../../../../actions/transfer";
+import * as ChainActions from "../../../../actions/chain";
+import * as WalletActions from "../../../../actions/wallet";
+import * as WalletsActions from "../../../../actions/wallets";
+import * as StakeActions from "../../../../actions/stake";
+import * as BuyRamActions from "../../../../actions/system/buyram";
+import * as SellRamActions from "../../../../actions/system/sellram";
+import StatsFetcher from "../../../../utils/StatsFetcher";
+
+import DashboardTokenModal from "../../Dashboard/Modals/TokenModal/DashboardTokenModal";
+import ResourcesModal from "../../Dashboard/Modals/ResourcesModal/ResourcesModal";
+import CryptoModal from "../../Dashboard/Modals/CryptoModal/CryptoModal";
+import SwapTokenModal from "../../Dashboard/Modals/SwapTokenModal/SwapTokenModal";
+import BuyWaxModal from "../../Dashboard/Modals/BuyWaxModal/BuyWaxModal";
+import "./Balance.global.css"
+
+const initialState = {
+    dashboardTokenModal: false,
+    resourcesModal: false,
+    cryptoModal: false,
+    swapTokenModal: false,
+    buyWaxModal: false,
+};
+
+class Balance extends Component {
+    constructor(props) {
+        super(props);
+        this.state = initialState;
+    }
     getBalance = (base) => {
         const {
             globals
@@ -16,18 +47,56 @@ export default class Balance extends Component {
             return tokenPrice ? tokenPrice.price : 0;
         }
     }
+    toggleDashboardTokenModal = () => {
+        const { dashboardTokenModal, resourcesModal } = this.state;
+        this.setState({
+            dashboardTokenModal: !dashboardTokenModal
+        });
+    };
+    toggleResourcesModal = () => {
+        const { resourcesModal } = this.state;
+        this.setState({ resourcesModal: !resourcesModal });
+    };
+    toggleCryptoModal = () => {
+        const { cryptoModal } = this.state;
+        this.setState({ cryptoModal: !cryptoModal });
+    };
+    toggleSwapTokenModal = () => {
+        const { swapTokenModal } = this.state;
+        this.setState({ swapTokenModal: !swapTokenModal });
+    };
+    toggleBuyWaxModal = () => {
+        const { buyWaxModal } = this.state;
+        this.setState({ buyWaxModal: !buyWaxModal });
+    };
     render() {
         const {
-            globals,
+            wallet,
+            actions,
+            history,
+            location,
             settings,
-            statsFetcher,
-            openResourcesModal,
-            openTokenModal,
-            openDelegateModal,
-            openCryptoModal,
-            openSwapTokenModal,
-            openBuyWaxModal
+            balances,
+            globals,
+            accounts,
+            system,
+            chain,
         } = this.props;
+        const {
+            dashboardTokenModal,
+            resourcesModal,
+            cryptoModal,
+            swapTokenModal,
+            importAccountModal,
+            buyWaxModal,
+        } = this.state;
+        const statsFetcher = new StatsFetcher(
+            settings.account,
+            balances,
+            settings,
+            null,
+            null
+        );
         const {
             tokens,
             totalTokens
@@ -63,20 +132,20 @@ export default class Balance extends Component {
                         <div className="chart-orange-btn">All</div>
                     </div>
                     <div className="send-btn-wrap">
-                        <div className="dashboard-send-btn" onClick={openCryptoModal}>
+                        <div className="dashboard-send-btn" onClick={this.toggleCryptoModal}>
                             <h3>Send</h3>
                             <Image src={require('../../../../../renderer/assets/images/dashboard/arrow1.png')} />
                         </div>
                     </div>
                     <div className="send-btn-wrap">
-                        <div className="dashboard-send-btn" onClick={openTokenModal}>
+                        <div className="dashboard-send-btn" onClick={this.toggleDashboardTokenModal}>
                             <h3>Receive</h3>
                             <Image src={require('../../../../../renderer/assets/images/dashboard/iconfinder263.png')} />
                         </div>
                     </div>
                 </div>
                 <div className="balance-button-group">
-                    <div className="balance-button-wrap" onClick={openBuyWaxModal}>
+                    <div className="balance-button-wrap" onClick={this.toggleBuyWaxModal}>
                         <div className="balance-button-title">
                             Buy WAX
                     </div>
@@ -88,15 +157,108 @@ export default class Balance extends Component {
                         </div>
                         <Image src={require('../../../../../renderer/assets/images/dashboard/Group1734.png')} />
                     </div> */}
-                    <div className="balance-button-wrap" onClick={openResourcesModal}>
+                    <div className="balance-button-wrap" onClick={this.toggleResourcesModal}>
                         <div className="balance-button-title">
                             Resources
                         </div>
                         <Image src={require('../../../../../renderer/assets/images/dashboard/Group15.png')} />
                     </div>
                 </div>
+                {dashboardTokenModal && (
+                    <DashboardTokenModal
+                        closeModal={this.toggleDashboardTokenModal}
+                        modalOpen={dashboardTokenModal}
+                        history={history}
+                        actions={actions}
+                        location={location}
+                        settings={settings}
+                    />
+                )}
+                {resourcesModal && (
+                    <ResourcesModal
+                        closeModal={this.toggleResourcesModal}
+                        modalOpen={resourcesModal}
+                        history={history}
+                        actions={actions}
+                        location={location}
+                        accounts={accounts}
+                        settings={settings}
+                        globals={globals}
+                    />
+                )}
+                {cryptoModal && (
+                    <CryptoModal
+                        actions={actions}
+                        settings={settings}
+                        balances={balances}
+                        globals={globals}
+                        closeModal={this.toggleCryptoModal}
+                        modalOpen={cryptoModal}
+                        history={history}
+                        actions={actions}
+                        location={location}
+                    />
+                )}
+                {swapTokenModal && (
+                    <SwapTokenModal
+                        closeModal={this.toggleSwapTokenModal}
+                        modalOpen={swapTokenModal}
+                        history={history}
+                        actions={actions}
+                        location={location}
+                    />
+                )}
+
+                {buyWaxModal && (
+                    <BuyWaxModal
+                        closeModal={this.toggleBuyWaxModal}
+                        modalOpen={buyWaxModal}
+                        history={history}
+                        actions={actions}
+                        location={location}
+                    />
+                )}
             </div>
         );
     }
-
 }
+
+Balance.propTypes = {};
+
+Balance.defaultProps = {};
+
+const mapStateToProps = state => {
+    return {
+        balances: state.balances,
+        settings: state.settings,
+        globals: state.globals,
+        accounts: state.accounts,
+        system: state.system,
+        chain: state.chain,
+        wallets: state.wallets,
+        wallet: state.wallet,
+        keys: state.keys,
+    };
+};
+
+const mapDispatchToProps = dispatch => {
+    return {
+        actions: bindActionCreators(
+            {
+                ...AccountActions,
+                ...GlobalsActions,
+                ...SettingsActions,
+                ...TransferActions,
+                ...ChainActions,
+                ...WalletsActions,
+                ...WalletActions,
+                ...StakeActions,
+                ...BuyRamActions,
+                ...SellRamActions,
+            },
+            dispatch
+        )
+    };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Balance);

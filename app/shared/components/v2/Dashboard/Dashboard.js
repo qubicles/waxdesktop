@@ -6,17 +6,12 @@ import { bindActionCreators } from "redux";
 
 import DashboardTokenModal from "./Modals/TokenModal/DashboardTokenModal";
 import TabPanes from "./TabPanes/TabPanes";
-import ResourcesModal from "./Modals/ResourcesModal/ResourcesModal";
 import DelegateModal from "./Modals/DelegateModal/DelegateModal";
-import CryptoModal from "./Modals/CryptoModal/CryptoModal";
-import SwapTokenModal from "./Modals/SwapTokenModal/SwapTokenModal";
 import ImportAccountModal from "./Modals/ImportAccountModal/ImportAccountModal";
-import BuyWaxModal from "./Modals/BuyWaxModal/BuyWaxModal";
 import CreateAccountModal from "./Modals/CreateAccountModal/CreateAccountModal";
 import SellAssetModal from "./Modals/SellAssetModal/SellAssetModal";
 import TrendingAssets from "./TrendingAssets/TrendingAssets";
 import RecommendedApps from "./RecommendedApps/RecommendedApps";
-import Balance from "./Balance/Balance";
 
 import * as GlobalsActions from "../../../actions/globals";
 import * as AccountActions from "../../../actions/accounts";
@@ -28,19 +23,14 @@ import * as WalletsActions from "../../../actions/wallets";
 import * as StakeActions from "../../../actions/stake";
 import * as BuyRamActions from "../../../actions/system/buyram";
 import * as SellRamActions from "../../../actions/system/sellram";
-
 import StatsFetcher from "../../../utils/StatsFetcher";
+
 import { isArray } from "util";
 import "./Dashboard.global.css";
 
 const initialState = {
-  dashboardTokenModal: false,
-  resourcesModal: false,
   delegateModal: false,
-  cryptoModal: false,
-  swapTokenModal: false,
   importAccountModal: false,
-  buyWaxModal: false,
   createAccountModal: false,
   sellAssetModal: false
 };
@@ -98,64 +88,42 @@ class Home extends React.Component {
     //       chain.chain_id,
     //       pubkey
     //     );
-      const activeAccount = wallets.filter(acc => acc.account == account)
-      if(account != keys.account){
+    const activeAccount = wallets.filter(acc => acc.account == account)
+    if (account != keys.account) {
+      actions.setWalletKey(
+        activeAccount[0].data,
+        wallet.pin,
+        "hot",
+        activeAccount[0].hash,
+        "active"
+      );
+    } else if (keys.key) {
+      if (activeAccount.length == 0) {
         actions.setWalletKey(
-          activeAccount[0].data,
+          keys.key,
           wallet.pin,
           "hot",
-          activeAccount[0].hash,
+          keys.hash,
           "active"
         );
-      } else if(keys.key){
-        if(activeAccount.length == 0){
-          actions.setWalletKey(
-            keys.key,
-            wallet.pin,
-            "hot",
-            keys.hash,
-            "active"
-          );
-        }
       }
+    }
     // }
-      actions.setSetting('walletInit', true);
-      // actions.useWallet(settings.account, chain.chain_id, "active");
-      
-      actions.setWalletMode('hot');
-      // actions.removeAllAccounts();
-    
+    actions.setSetting('walletInit', true);
+    // actions.useWallet(settings.account, chain.chain_id, "active");
+
+    actions.setWalletMode('hot');
+    // actions.removeAllAccounts();
+
   };
 
-  toggleDashboardTokenModal = () => {
-    const { dashboardTokenModal, resourcesModal } = this.state;
-    this.setState({
-      dashboardTokenModal: !dashboardTokenModal
-    });
-  };
-  toggleResourcesModal = () => {
-    const { resourcesModal } = this.state;
-    this.setState({ resourcesModal: !resourcesModal });
-  };
   toggleDelegateModal = () => {
     const { delegateModal } = this.state;
     this.setState({ delegateModal: !delegateModal });
   };
-  toggleCryptoModal = () => {
-    const { cryptoModal } = this.state;
-    this.setState({ cryptoModal: !cryptoModal });
-  };
-  toggleSwapTokenModal = () => {
-    const { swapTokenModal } = this.state;
-    this.setState({ swapTokenModal: !swapTokenModal });
-  };
   toggleImportAccountModal = () => {
     const { importAccountModal } = this.state;
     this.setState({ importAccountModal: !importAccountModal });
-  };
-  toggleBuyWaxModal = () => {
-    const { buyWaxModal } = this.state;
-    this.setState({ buyWaxModal: !buyWaxModal });
   };
   toggleCreateAccountModal = () => {
     const { createAccountModal } = this.state;
@@ -175,13 +143,8 @@ class Home extends React.Component {
 
   render() {
     const {
-      dashboardTokenModal,
-      resourcesModal,
       delegateModal,
-      cryptoModal,
-      swapTokenModal,
       importAccountModal,
-      buyWaxModal,
       createAccountModal,
       sellAssetModal
     } = this.state;
@@ -222,39 +185,6 @@ class Home extends React.Component {
           </div>
         </div>
 
-        <Balance
-          globals={globals}
-          settings={settings}
-          statsFetcher={statsFetcher}
-          openTokenModal={this.toggleDashboardTokenModal}
-          openResourcesModal={this.toggleResourcesModal}
-          openDelegateModal={this.toggleDelegateModal}
-          openCryptoModal={this.toggleCryptoModal}
-          openSwapTokenModal={this.toggleSwapTokenModal}
-          openBuyWaxModal={this.toggleBuyWaxModal}
-        />
-        {dashboardTokenModal && (
-          <DashboardTokenModal
-            closeModal={this.toggleDashboardTokenModal}
-            modalOpen={dashboardTokenModal}
-            history={history}
-            actions={actions}
-            location={location}
-            settings={settings}
-          />
-        )}
-        {resourcesModal && (
-          <ResourcesModal
-            closeModal={this.toggleResourcesModal}
-            modalOpen={resourcesModal}
-            history={history}
-            actions={actions}
-            location={location}
-            accounts={accounts}
-            settings={settings}
-            globals={globals}
-          />
-        )}
         <DelegateModal
           closeModal={this.toggleDelegateModal}
           modalOpen={delegateModal}
@@ -262,28 +192,8 @@ class Home extends React.Component {
           actions={actions}
           location={location}
         />
-        {cryptoModal && (
-          <CryptoModal
-            actions={actions}
-            settings={settings}
-            balances={balances}
-            globals={globals}
-            closeModal={this.toggleCryptoModal}
-            modalOpen={cryptoModal}
-            history={history}
-            actions={actions}
-            location={location}
-          />
-        )}
-        {swapTokenModal && (
-          <SwapTokenModal
-            closeModal={this.toggleSwapTokenModal}
-            modalOpen={swapTokenModal}
-            history={history}
-            actions={actions}
-            location={location}
-          />
-        )}
+
+
         <ImportAccountModal
           closeModal={this.toggleImportAccountModal}
           modalOpen={importAccountModal}
@@ -291,15 +201,7 @@ class Home extends React.Component {
           actions={actions}
           location={location}
         />
-        {buyWaxModal && (
-          <BuyWaxModal
-            closeModal={this.toggleBuyWaxModal}
-            modalOpen={buyWaxModal}
-            history={history}
-            actions={actions}
-            location={location}
-          />
-        )}
+
         {createAccountModal && (
           <CreateAccountModal
             settings={settings}

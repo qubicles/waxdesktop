@@ -17,7 +17,7 @@ const options = [
 class ResourcesModal extends React.Component {
 	constructor(props) {
 		super(props)
-		let { accounts, settings } = props;
+		let { accounts, settings, actions } = props;
 		let account = accounts[settings.account];
 		if (!account) account = {};
 		const {
@@ -41,7 +41,7 @@ class ResourcesModal extends React.Component {
 			netOriginal: Decimal(parsedNetWeight),
 			errorMsg: "",
 		}
-		this.props.actions.getRamStats();
+		actions.getRamStats();
 	}
 	onSubmit = () => {
 		const { amountValStake, selectItemStake, netOriginal, cpuOriginal, accountName } = this.state;

@@ -1,6 +1,8 @@
 /* balance-section */
 .balance-section {
     padding: 50px 30px;
+    background-color: #191f28;
+    width: 300px;
   }
 .balance-section .balance-chart-container {
     border-top: 8px solid #ff886d;
@@ -24,19 +26,20 @@
     background-color: rgba(57, 195, 84, 0.3);
     padding: 3px 10px;
     color: #39c354;
-    font-weight: bold;
+    font-family: montserratBold;
 }
 .balance-chart-container .chart-button-group .chart-white-btn {
     padding: 2px 12px;
     border: 1px white solid;
     border-radius: 7px;
-    font-size: 12px;
+    font-size: 10px;
+    font-family: montserratBold;
 }
 .balance-chart-container .chart-button-group .chart-orange-btn {
     padding: 2px 12px;
     background-color: #ff886d;
     color: white;
-    font-weight: bold;
+    font-family: montserratBold;
     border-radius: 7px;
     font-size: 12px;
 }
@@ -62,6 +65,8 @@
 .dashboard-send-btn h3 {
     margin-bottom: 0px;
     margin-right: 5px;
+    font-size: 16px;
+    font-family: montserratSemiBold;
 }
 .balance-button-wrap {
     display: flex;
@@ -72,7 +77,8 @@
     background-color: #242b39;
 }
 .balance-button-wrap .balance-button-title {
-    font-size: 20px;
+    font-size: 16px;
+    font-family: montserratSemiBold;
     color: #ff886d;
     margin-right: 10px;
 }
