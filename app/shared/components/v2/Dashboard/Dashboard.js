@@ -32,7 +32,7 @@ const initialState = {
   delegateModal: false,
   importAccountModal: false,
   createAccountModal: false,
-  sellAssetModal: false
+  sellAssetModal: false,
 };
 
 class Home extends React.Component {
@@ -146,7 +146,7 @@ class Home extends React.Component {
       delegateModal,
       importAccountModal,
       createAccountModal,
-      sellAssetModal
+      sellAssetModal,
     } = this.state;
     const {
       wallet,

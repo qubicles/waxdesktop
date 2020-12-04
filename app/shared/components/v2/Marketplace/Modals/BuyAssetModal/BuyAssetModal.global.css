@@ -46,12 +46,12 @@
     margin-top: 20px;
 }
 .sell-card-info {
-    margin-top: 70px;
+    margin-top: 100px;
 }
 .sell-card-info .sc-title {
     color: white;
     font-size: 30px;
-    font-family: montserratSemiBold;
+    font-family: MontserratExtraBold;
 }
 .sell-card-info .sc-brand {
     padding-top: 10px;
@@ -67,10 +67,10 @@
     color: white;
     font-size: 31px;
     font-family: montserratSemiBold;
-    margin-top: 50px;
+    margin-top: 10px;
 }
 .sc-price img {
-    margin-right: 10px;
+    margin-right: 20px;
     width: 46px;
     height: 46px;
 }
@@ -111,12 +111,8 @@
 .sell-right-container .seller-input input {
     font-size: 17px;
     font-family: montserratBold;
-} 
-
-.sell-right-container .seller-input input::placeholder {
     color: #ff886d !important;
-    font-family: montserratBold;
-}
+} 
 .seller-info {
     display: flex;
     padding-top: 13px;

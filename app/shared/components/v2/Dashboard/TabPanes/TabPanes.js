@@ -25,15 +25,15 @@ class TabPanes extends React.Component {
 
     const nftsPane = {
       menuItem: "NFTS",
-      render: () => <NFTPane settings={settings}/>
+      render: () => <NFTPane settings={settings} />
     };
     return [tokensPane, nftsPane];
   }
 
   render() {
-	return (
-	  <Tab menu={{ secondary: true, pointing: true }} panes={this.getPanes()} />
-	);
+    return (
+      <Tab menu={{ secondary: true, pointing: true }} panes={this.getPanes()} />
+    );
   }
 }
 
