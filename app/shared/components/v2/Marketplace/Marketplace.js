@@ -115,7 +115,7 @@ class Marketplace extends React.Component {
       assetsList &&
       assetsList.data.map(asset => (
         <Card className="trending-assets-card" key={`assets-${asset.offer_id}`}>
-          <Image src={`https://ipfs.io/ipfs/${asset.assets[0].data.img}`} />
+          <Image src={asset.assets[0].data.img.indexOf('http') == -1 ? `https://ipfs.io/ipfs/${asset.assets[0].data.img}`: asset.assets[0].data.img } />
           <Card.Header className="t-card-title">
             {asset.assets[0].name}
           </Card.Header>

@@ -19,7 +19,7 @@ class BuyAssetModal extends React.Component {
 
   static getDerivedStateFromProps(props, state) {
     let tokenPrice = "";
-    if (props.globals.pricefeed && props.globals.pricefeed.CUSD) {
+    if (props.globals && props.globals.pricefeed && props.globals.pricefeed.CUSD) {
       tokenPrice = props.globals.pricefeed.CUSD.find(item => item.base === "WAX");
     }
     return {
