@@ -6,7 +6,7 @@ export default () => {
   return (
     <div className="recently-apps-section">
       <div className="recommended-apps-header">
-        <div className="recommended-apps-title">Recently Used</div>
+        <div className="recommended-apps-title">Popular Apps</div>
         <img
           src={require("../../../../../renderer/assets/images/dashboard/Group1737.png")}
         />
