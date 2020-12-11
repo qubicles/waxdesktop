@@ -121,7 +121,7 @@ class GuildsTab extends Component {
                 <Table.Cell >{index + 1}</Table.Cell>
                 <Table.Cell >
                     <Image
-                        src={producer.logo}
+                        src={producer.logo ? producer.logo : require('../../../../renderer/assets/images/profile.png')}
                         style={{width:"40px", height: '40px', borderRadius: '50%'}}
                     />
                 </Table.Cell>

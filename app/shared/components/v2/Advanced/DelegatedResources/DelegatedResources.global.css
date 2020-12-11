@@ -4,6 +4,9 @@
     margin: auto;
     min-width: 570px;
 }
+.delgateModal-body {
+    padding-bottom: 40px !important;
+}
 .DelegatedResources-header {
     display: flex;
     align-items: center;
@@ -74,4 +77,7 @@
 }
 .DelegatedResources-body .new-permission-btn {
     margin: 0 !important;
+}
+.new-permission-btn:hover {
+    cursor: pointer;
 }

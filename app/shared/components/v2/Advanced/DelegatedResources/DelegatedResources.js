@@ -11,8 +11,6 @@ import * as GlobalsActions from "../../../../actions/globals";
 import * as AccountActions from "../../../../actions/accounts";
 import * as SettingsActions from '../../../../actions/settings';
 import * as TableActions from '../../../../actions/table';
-
-import Balance from "../../Dashboard/Balance/Balance"
 import "./DelegatedResources.global.css"
 
 const initialState = {
@@ -100,28 +98,15 @@ class DelegatedResources extends React.Component {
                                         <div className="body-type">CPU</div>
                                         <div className="body-action">Undelegate</div>
                                     </div>
-                                    <div className="del-table-row del-yellow-border">
-                                        <div className="body-account">captainkarma</div>
-                                        <div className="body-amount">32.0000 WAX</div>
-                                        <div className="body-type">CPU</div>
-                                        <div className="body-action">Undelegate</div>
-                                    </div>
-                                    <div className="del-table-row">
-                                        <div className="body-account">captainkarma</div>
-                                        <div className="body-amount">32.0000 WAX</div>
-                                        <div className="body-type">CPU</div>
-                                        <div className="body-action">Undelegate</div>
-                                    </div>
                                 </div>
                             </div>
                             <div className="new-permission-btn" onClick={this.toggleDelegateModal}>
-                                Create New Permission
+                                Create New Delegation
                                 <img src={require('../../../../../renderer/assets/images/advanced/Group1730.png')} />
                             </div>
                         </div>
                     </div>
                 </div>
-                {/* <Balance /> */}
                 <DelegateModal
                     closeModal={this.toggleDelegateModal}
                     modalOpen={delegateModal}

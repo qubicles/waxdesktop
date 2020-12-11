@@ -205,7 +205,7 @@ class Guilds extends React.Component {
     const { actions, settings, blockExplorers, system, keys } = this.props
     const guildsPan = {
       menuItem: (
-        <Menu.Item key="messages" onClick={this.emptyChoices}>
+        <Menu.Item key="guilds-list" onClick={this.emptyChoices}>
           <img
             src={require("../../../../renderer/assets/images/dashboard/dashboard-guilds.png")}
             style={{ width: 15, height: 15, marginRight: 10 }}
@@ -226,7 +226,7 @@ class Guilds extends React.Component {
 
     const proxiesPan = {
       menuItem: (
-        <Menu.Item key="messages" onClick={this.emptyChoices}>
+        <Menu.Item key="proxy-list" onClick={this.emptyChoices}>
           <img
             src={require("../../../../renderer/assets/images/marketplace/Group565.png")}
             style={{ width: 15, height: 15, marginRight: 10 }}
