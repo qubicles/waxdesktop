@@ -1,4 +1,3 @@
-
 import React from "react"
 import PropTypes from "prop-types"
 import DelegateModal from "../../Dashboard/Modals/DelegateModal/DelegateModal"
@@ -39,6 +38,17 @@ class DelegatedResources extends React.Component {
         } = this.props;
 
         actions.getTable('eosio', settings.account, 'delband');
+    }
+    removeDelegation = (delegate, type) => {
+        const {
+            actions
+        } = this.props; 
+
+        const {
+            setStake
+        } = actions;
+
+        setStake(accountName, netOriginal.plus(decimalNetAmount), cpuOriginal.plus(decimalCpuAmount));
     }
 
     toggleDelegateModal = () => {
@@ -92,12 +102,52 @@ class DelegatedResources extends React.Component {
                                     <div className="header-action"></div>
                                 </div>
                                 <div className="del-table-body">
-                                    <div className="del-table-row">
-                                        <div className="body-account">captainkarma</div>
-                                        <div className="body-amount">32.0000 WAX</div>
-                                        <div className="body-type">CPU</div>
-                                        <div className="body-action">Undelegate</div>
-                                    </div>
+                                    {
+                                        delegationsToDisplay.map((delegation) => (
+                                            <div>
+                                                {
+                                                    (delegation.cpu_weight && parseFloat(delegationsToDisplay[0].cpu_weight.match(/[\d\.]+/)[0]) > 0) ? (
+                                                        <div className="del-table-row">
+                                                            <div className="body-account">{delegation.to}</div>
+                                                            <div className="body-amount">{delegation.cpu_weight}</div>
+                                                            <div className="body-type">CPU</div>
+                                                            {
+                                                                (delegation.to !== settings.account)
+                                                                    ? (
+                                                                        <div
+                                                                            className="body-action"
+                                                                            onClick={() => this.removeDelegation(delegation, 'cpu')}>
+                                                                            Undelegate
+                                                                        </div>
+                                                                    )
+                                                                    : ''
+                                                            }
+                                                        </div>
+                                                    ) : false
+                                                }
+                                                {
+                                                    (delegation.net_weight && parseFloat(delegationsToDisplay[0].net_weight.match(/[\d\.]+/)[0]) > 0) ? (
+                                                        <div className="del-table-row del-yellow-border">
+                                                            <div className="body-account">{delegation.to}</div>
+                                                            <div className="body-amount">{delegation.net_weight}</div>
+                                                            <div className="body-type">NET</div>
+                                                            {
+                                                                (delegation.to !== settings.account)
+                                                                    ? (
+                                                                        <div
+                                                                            className="body-action"
+                                                                            onClick={() => this.removeDelegation(delegation, 'net')}>
+                                                                            Undelegate
+                                                                        </div>
+                                                                    )
+                                                                    : ''
+                                                            }
+                                                        </div>
+                                                    ) : false
+                                                }
+                                            </div>
+                                        ))
+                                    }
                                 </div>
                             </div>
                             <div className="new-permission-btn" onClick={this.toggleDelegateModal}>
