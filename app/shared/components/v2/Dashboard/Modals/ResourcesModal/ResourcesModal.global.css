@@ -78,7 +78,7 @@
   font-size: 18px !important;
 }
 /* common-input section */
-.common-input, .common-input-wrap input {
+.common-input input, .common-input-wrap input {
   background-color: #242b39 !important;
   border: 0 !important;
   height: 50px !important;
@@ -87,13 +87,13 @@
   color: white !important;
   font-size: 20px !important;
   padding-left: 20px;
-  font-family: montserratSemiBold;
+  font-family: montserratSemiBold !important;
 }
-.common-input:focus {
+.common-input input:focus {
   outline: none !important;
 }
-.common-input::placeholder {
-  color: white !important;
+.common-input input::placeholder {
+  font-family: montserratBold !important;
   font-size: 18px !important;
 }
 /* resources-delegate-link */

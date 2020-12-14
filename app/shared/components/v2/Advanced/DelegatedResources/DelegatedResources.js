@@ -56,12 +56,12 @@ class DelegatedResources extends React.Component {
             net_weight,
         } = delegate;
 
-        if(type=="cpu"){
+        if (type == "cpu") {
             setStake(to, net_weight, Decimal(0));
-        } else if (type="net") {
+        } else if (type = "net") {
             setStake(to, Decimal(0), cpu_weight);
         }
-        
+
     }
 
     toggleDelegateModal = () => {
@@ -75,7 +75,7 @@ class DelegatedResources extends React.Component {
 
     render() {
         const { delegateModal } = this.state
-        const { wallet, actions, history, location, tokens, tables, settings } = this.props
+        const { wallet, actions, history, location, tokens, tables, settings, accounts, globals } = this.props
 
         let delegations = tables &&
             tables.eosio &&
@@ -176,6 +176,9 @@ class DelegatedResources extends React.Component {
                     history={history}
                     actions={actions}
                     location={location}
+                    accounts={accounts}
+                    settings={settings}
+                    globals={globals}
                 />
             </div>
         )

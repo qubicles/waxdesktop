@@ -84,3 +84,6 @@
 .new-permission-btn:hover {
     cursor: pointer;
 }
+.common-input .input {
+    width: 100% !important;
+}

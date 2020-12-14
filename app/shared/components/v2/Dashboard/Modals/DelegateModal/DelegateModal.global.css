@@ -32,7 +32,7 @@
   right: 0%;
   top: 10px;
   height: 50px !important;
-  width: 23% !important;
+  width: 20% !important;
 }
 .modal-body .input-select .d-title {
   font-size: 16px;
@@ -74,3 +74,8 @@
   top: 7px !important;
   right: 7px !important;
 } */
+.delgateModal-body .warnning-alert {
+  text-align: center;
+  color: #ff886d;
+  padding-bottom: 14px;
+}
