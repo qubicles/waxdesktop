@@ -6,7 +6,6 @@ import { bindActionCreators } from "redux";
 
 import DashboardTokenModal from "./Modals/TokenModal/DashboardTokenModal";
 import TabPanes from "./TabPanes/TabPanes";
-import DelegateModal from "./Modals/DelegateModal/DelegateModal";
 import ImportAccountModal from "./Modals/ImportAccountModal/ImportAccountModal";
 import CreateAccountModal from "./Modals/CreateAccountModal/CreateAccountModal";
 import SellAssetModal from "./Modals/SellAssetModal/SellAssetModal";
@@ -29,7 +28,6 @@ import { isArray } from "util";
 import "./Dashboard.global.css";
 
 const initialState = {
-  delegateModal: false,
   importAccountModal: false,
   createAccountModal: false,
   sellAssetModal: false,
@@ -117,10 +115,6 @@ class Home extends React.Component {
 
   };
 
-  toggleDelegateModal = () => {
-    const { delegateModal } = this.state;
-    this.setState({ delegateModal: !delegateModal });
-  };
   toggleImportAccountModal = () => {
     const { importAccountModal } = this.state;
     this.setState({ importAccountModal: !importAccountModal });
@@ -143,7 +137,6 @@ class Home extends React.Component {
 
   render() {
     const {
-      delegateModal,
       importAccountModal,
       createAccountModal,
       sellAssetModal,
@@ -184,15 +177,6 @@ class Home extends React.Component {
             <TabPanes statsFetcher={statsFetcher} actions={actions} />
           </div>
         </div>
-
-        <DelegateModal
-          closeModal={this.toggleDelegateModal}
-          modalOpen={delegateModal}
-          history={history}
-          actions={actions}
-          location={location}
-        />
-
 
         <ImportAccountModal
           closeModal={this.toggleImportAccountModal}

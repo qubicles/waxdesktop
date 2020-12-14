@@ -13,7 +13,7 @@ const options = [
 class DelegateModal extends React.Component {
 	constructor(props) {
 		super(props)
-		let { accounts, settings, actions } = props;
+		const { accounts, settings } = props;
 		let account = accounts[settings.account];
 		if (!account) account = {};
 		const {
@@ -67,7 +67,8 @@ class DelegateModal extends React.Component {
 
 
 	render() {
-		const { modalOpen, closeModal } = this.props;
+		const { modalOpen, closeModal, accounts, settings } = this.props;
+		let liquidWax = accounts && accounts[settings.account] && accounts[settings.account].core_liquid_balance;
 		const { delegateAmt, delegationItem, delegationTo, errorMsg } = this.state;
 
 		return (
@@ -113,7 +114,7 @@ class DelegateModal extends React.Component {
 							/>
 							<div className="d-title">
 								<span>Liquid WAX: </span>
-								<span> 321,932.19 WAX</span>
+								<span> {liquidWax}</span>
 							</div>
 						</div>
 						{
