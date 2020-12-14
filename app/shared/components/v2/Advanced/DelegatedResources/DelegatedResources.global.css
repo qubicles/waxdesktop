@@ -75,6 +75,9 @@
     border-radius: 8px;
     margin: auto;
 }
+.del-table-row .body-action:hover {
+    cursor: pointer;
+}
 .DelegatedResources-body .new-permission-btn {
     margin: 0 !important;
 }

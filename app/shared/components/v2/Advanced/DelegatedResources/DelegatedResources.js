@@ -1,5 +1,6 @@
 import React from "react"
 import PropTypes from "prop-types"
+import { Decimal } from "decimal.js"
 import DelegateModal from "../../Dashboard/Modals/DelegateModal/DelegateModal"
 import { Card, Image, Divider, Tab, Button, Dropdown, Radio, Menu, Checkbox } from "semantic-ui-react"
 import { connect } from 'react-redux';
@@ -10,6 +11,7 @@ import * as GlobalsActions from "../../../../actions/globals";
 import * as AccountActions from "../../../../actions/accounts";
 import * as SettingsActions from '../../../../actions/settings';
 import * as TableActions from '../../../../actions/table';
+import * as StakeActions from "../../../../actions/stake";
 import "./DelegatedResources.global.css"
 
 const initialState = {
@@ -42,13 +44,24 @@ class DelegatedResources extends React.Component {
     removeDelegation = (delegate, type) => {
         const {
             actions
-        } = this.props; 
+        } = this.props;
 
         const {
             setStake
         } = actions;
 
-        setStake(accountName, netOriginal.plus(decimalNetAmount), cpuOriginal.plus(decimalCpuAmount));
+        const {
+            to,
+            cpu_weight,
+            net_weight,
+        } = delegate;
+
+        if(type=="cpu"){
+            setStake(to, net_weight, Decimal(0));
+        } else if (type="net") {
+            setStake(to, Decimal(0), cpu_weight);
+        }
+        
     }
 
     toggleDelegateModal = () => {
@@ -103,8 +116,8 @@ class DelegatedResources extends React.Component {
                                 </div>
                                 <div className="del-table-body">
                                     {
-                                        delegationsToDisplay.map((delegation) => (
-                                            <div>
+                                        delegationsToDisplay.map((delegation, index) => (
+                                            <div key={index}>
                                                 {
                                                     (delegation.cpu_weight && parseFloat(delegationsToDisplay[0].cpu_weight.match(/[\d\.]+/)[0]) > 0) ? (
                                                         <div className="del-table-row">
@@ -193,7 +206,8 @@ const mapDispatchToProps = (dispatch) => {
             ...AccountActions,
             ...GlobalsActions,
             ...SettingsActions,
-            ...TableActions
+            ...TableActions,
+            ...StakeActions,
         }, dispatch)
     };
 }
