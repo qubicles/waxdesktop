@@ -9,24 +9,28 @@ import { bindActionCreators } from "redux";
 import * as GlobalsActions from "../../../../actions/globals";
 import * as AccountActions from "../../../../actions/accounts";
 import * as SettingsActions from '../../../../actions/settings';
-import * as TransferActions from '../../../../actions/transfer';
-import * as CreateAccountActions from '../../../../actions/createaccount';
-
-import Balance from "../../Dashboard/Balance/Balance"
+import PermissionModal from "./PermissionModal/PermissionModal";
 import "./CustomPermissions.global.css"
 
 class CustomPermissions extends React.Component {
     constructor(props) {
         super(props)
-        this.state = {}
+        this.state = {
+            openModal: false,
+        }
     }
+    togglePermissionModal = () => {
+        const { openModal } = this.state;
+        this.setState({ openModal: !openModal });
+    };
 
     goBack = () => {
         this.props.history.push("/advanced")
     }
 
     render() {
-        const { actions, settings, accounts, keys } = this.props;
+        const { settings, accounts } = this.props;
+        const { openModal } = this.state;
 
         let account = accounts[settings.account];
 
@@ -50,13 +54,13 @@ class CustomPermissions extends React.Component {
                                 </div>
                             </div>
                             {account.permissions.map((data) => {
-                                return data.required_auth.keys.map((key) => {
+                                return data.required_auth.keys.map((key, index) => {
                                     return (
-                                        <div className="active-permission">
+                                        <div className="active-permission" key={index}>
                                             <div className="active-permission-left">
                                                 <img src={require('../../../../../renderer/assets/images/advanced/padlock.png')} />
                                                 <div className="active-permission-des">
-                                                    <div style={{textTransform:"capitalize"}}>{data.perm_name} Permission</div>
+                                                    <div style={{ textTransform: "capitalize" }}>{data.perm_name} Permission</div>
                                                     <div>1 of 1 (child of owner)</div>
                                                     <div>{key.key}</div>
                                                 </div>
@@ -66,44 +70,22 @@ class CustomPermissions extends React.Component {
                                     )
                                 })
                             })}
-                            {/* <div className="active-permission">
-                                <div className="active-permission-left">
-                                    <img src={require('../../../../../renderer/assets/images/advanced/padlock.png')} />
-                                    <div className="active-permission-des">
-                                        <div>Active Permission</div>
-                                        <div>1 of 1 (child of owner)</div>
-                                        <div>EOS7alsdkfjaosijGzlkJLKJOiksjflsadkjDFKJDLFJEKJDL</div>
-                                    </div>
-                                </div>
-                                <img src={require('../../../../../renderer/assets/images/dashboard/Group1737.png')} />
-                            </div>
-                            <div className="active-permission">
-                                <div className="active-permission-left">
-                                    <img src={require('../../../../../renderer/assets/images/advanced/padlock.png')} />
-                                    <div className="active-permission-des">
-                                        <div>Claim Permission</div>
-                                        <div>1 of 1 (child of owner)</div>
-                                        <div>EOS7alsdkfjaosijGzlkJLKJOiksjflsadkjDFKJDLFJEKJDL</div>
-                                    </div>
-                                </div>
-                                <img src={require('../../../../../renderer/assets/images/dashboard/Group1737.png')} />
-                            </div> */}
-                            <div className="new-permission-btn">
+                            <div className="new-permission-btn" onClick={this.togglePermissionModal}>
                                 Create New Permission
                                 <img src={require('../../../../../renderer/assets/images/advanced/Group1730.png')} />
                             </div>
                         </div>
                     </div>
                 </div>
-                {/* <Balance /> */}
+                <PermissionModal
+                    closeModal={this.togglePermissionModal}
+                    modalOpen={openModal}
+                />
             </div>
         )
     }
 }
 
-CustomPermissions.propTypes = {
-
-}
 
 CustomPermissions.propTypes = {};
 
