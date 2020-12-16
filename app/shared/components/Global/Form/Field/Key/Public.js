@@ -100,6 +100,7 @@ class GlobalFormFieldKeyPublic extends Component<Props> {
         onChange={this.onChange}
         defaultValue={generated || value}
         width={width}
+        className="seller-input"
       />
     );
   }

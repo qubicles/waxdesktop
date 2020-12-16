@@ -1,0 +1,45 @@
+.permissionModal-body {
+  color: white !important;
+  font-family: montserrat !important;
+}
+.permissionModal-body .seller-input .input::placeholder {
+  color: #707070;
+  font-size: 16px;
+}
+.permissionModal-body .seller-input .input input {
+  background-color: #242b39 !important;
+  border: 0 !important;
+  height: 50px !important;
+  width: 100% !important;
+  border-radius: 30px !important;
+  color: white !important;
+  font-size: 16px !important;
+  font-family: montserratSemiBold !important;
+}
+.permissionModal-body .seller-input label {
+  color: white !important;
+  font-size: 20px !important;
+  font-family: montserratBold !important;
+  margin-bottom: 10px !important;
+}
+.sel-permission-part {
+    background-color: #242b39 !important;
+    color: white !important;
+}
+.sel-permission-part:hover {
+    cursor: pointer;
+}
+.sel-permission-part .inner-part {
+    padding: 10px;
+}
+.sel-permission-part .inner-part label {
+    color: white;
+}
+.yellow-bg {
+    background-color: #ff886d !important;
+    color: white !important;
+}
+.permission-del-btn {
+    display: flex;
+    flex-direction: column-reverse;
+}

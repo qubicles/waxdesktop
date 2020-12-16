@@ -4,11 +4,17 @@ import PropTypes from "prop-types"
 import { Card, Image, Divider, Tab, Button, Dropdown, Radio, Menu, Checkbox } from "semantic-ui-react"
 import { connect } from 'react-redux';
 import { bindActionCreators } from "redux";
-
+import eos from '../../../../actions/helpers/eos';
+import EOSAccount from '../../../../utils/EOS/Account';
+import EOSContract from '../../../../utils/EOS/Contract';
 
 import * as GlobalsActions from "../../../../actions/globals";
 import * as AccountActions from "../../../../actions/accounts";
 import * as SettingsActions from '../../../../actions/settings';
+import * as WalletActions from '../../../../actions/wallet';
+import * as ContractsActions from '../../../../actions/contracts';
+import * as SystemActions from '../../../../actions/system/updateauth';
+
 import PermissionModal from "./PermissionModal/PermissionModal";
 import "./CustomPermissions.global.css"
 
@@ -17,8 +23,35 @@ class CustomPermissions extends React.Component {
         super(props)
         this.state = {
             openModal: false,
+            linkAuthHistory: [],
         }
     }
+
+    componentDidMount() {
+        const {
+            actions,
+            connection,
+            settings
+        } = this.props;
+        actions.getAbi('eosio');
+        actions.getAccount(settings.account);
+
+        eos(connection).getActions(settings.account, -1, -100000).then((results) => {
+            if (results && results.actions) {
+                const linkAuthHistory = [...this.state.linkAuthHistory];
+                results.actions.map(action => {
+                    if (action && action.action_trace && action.action_trace.act) {
+                        const trace = action.action_trace.act;
+                        if (trace.name == "linkauth") {
+                            linkAuthHistory.push(trace.data);
+                        }
+                    }
+                });
+                this.setState({ linkAuthHistory });
+            }
+        })
+    }
+
     togglePermissionModal = () => {
         const { openModal } = this.state;
         this.setState({ openModal: !openModal });
@@ -29,10 +62,58 @@ class CustomPermissions extends React.Component {
     }
 
     render() {
-        const { settings, accounts } = this.props;
-        const { openModal } = this.state;
+        const {
+            accounts,
+            actions,
+            blockExplorers,
+            contracts,
+            keys,
+            settings,
+            system,
+            t,
+            validate,
+            wallet,
+            connection
+        } = this.props;
+        const {
+            linkAuthHistory,
+            openModal,
+        } = this.state;
 
-        let account = accounts[settings.account];
+        const account = accounts[settings.account];
+        if (!account) return false;
+
+        let { pubkey } = wallet;
+        if (!pubkey) {
+            if (keys && keys.pubkey) {
+                ({ pubkey } = keys);
+            }
+        }
+        let authorization = new EOSAccount(account).getAuthorization(pubkey, true);
+        if (settings.walletMode === 'watch') {
+            authorization = {
+                perm_name: settings.authorization
+            };
+        }
+
+        // Ensure the contract is loaded and valid
+        let contract = null;
+        if (contracts && contracts.eosio && contracts.eosio.abi)
+            contract = new EOSContract(contracts.eosio.abi, 'eosio');
+
+        const contractActions = contract &&
+            contract.getActions().filter((action) => {
+                return ['updateauth', 'deleteauth', 'linkauth',
+                    'unlinkauth', 'canceldelay', 'init',
+                    'onblock', 'onerror', 'setabi', 'setalimits',
+                    'setpriv', 'setcode', 'setparams', 'setram',
+                    'setramrate', 'updtrevision'].indexOf(action.name) === -1
+            }).map((action) => {
+                return {
+                    text: action.name,
+                    value: action.type
+                }
+            });
 
         return (
             <div className="dashboard-container">
@@ -80,6 +161,13 @@ class CustomPermissions extends React.Component {
                 <PermissionModal
                     closeModal={this.togglePermissionModal}
                     modalOpen={openModal}
+                    actions={actions}
+                    auth={false}
+                    contractActions={contractActions}
+                    linkAuthHistory={linkAuthHistory}
+                    pubkey={pubkey}
+                    settings={settings}
+                    connection={connection}
                 />
             </div>
         )
@@ -99,7 +187,10 @@ const mapStateToProps = (state) => {
         globals: state.globals,
         accounts: state.accounts,
         blockExplorers: state.blockexplorers,
-        keys: state.keys
+        keys: state.keys,
+        wallet: state.wallet,
+        contracts: state.contracts,
+        
     };
 }
 
@@ -108,7 +199,10 @@ const mapDispatchToProps = (dispatch) => {
         actions: bindActionCreators({
             ...AccountActions,
             ...GlobalsActions,
-            ...SettingsActions
+            ...SettingsActions,
+            ...WalletActions,
+            ...ContractsActions,
+            ...SystemActions,
         }, dispatch)
     };
 }

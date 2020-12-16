@@ -20,7 +20,7 @@ class ToolsFormPermissionsAuthWeightedKey extends Component<Props> {
     } = this.props;
     const showWeight = (auth.keys.length > 1 || settings.advancedPermissions);
     return (
-      <Form.Group>
+      <Form.Group className="permission-group">
         {(showWeight)
           ? (
             <Form.Input
@@ -28,7 +28,7 @@ class ToolsFormPermissionsAuthWeightedKey extends Component<Props> {
               label={(!index) ? t('tools_form_permissions_auth_weight') : false}
               name={`keys.${index}.weight`}
               onChange={onNumberChange}
-              width={2}
+              className="seller-input"
             />
           )
           : false
@@ -39,13 +39,13 @@ class ToolsFormPermissionsAuthWeightedKey extends Component<Props> {
           name={`keys.${index}.key`}
           onChange={onKeyChange}
           settings={settings}
-          width={(showWeight) ? 14 : 16}
           connection={connection}
         />
         {(settings.advancedPermissions)
           ? (
             <Form.Button
-              color="red"
+              className="permission-del-btn"
+              style={{marginBottom: 10, backgroundColor: "#ff886d", color: "white"}}
               icon="trash"
               name={`keys.${index}`}
               onClick={onRemoveKey}

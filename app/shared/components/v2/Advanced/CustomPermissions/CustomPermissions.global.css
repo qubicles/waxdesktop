@@ -67,7 +67,7 @@
     align-items: flex-start;
     justify-content: space-between;
 }
-.active-permission img {
+.active-permission-left img {
     margin-right: 20px;
 }
 .active-permission-des div:first-child {
