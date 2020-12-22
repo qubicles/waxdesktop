@@ -6,7 +6,6 @@ import { payforcpunet } from '../helpers/eos';
 
 export function updateauth(permission, parent, auth, authorizationOverride = false, linkauthActions) {
   return (dispatch: () => void, getState) => {
-    debugger
     const { connection, settings } = getState();
     const { account } = settings;
     dispatch({
@@ -51,7 +50,7 @@ export function updateauth(permission, parent, auth, authorizationOverride = fal
         type: types.SYSTEM_UPDATEAUTH_SUCCESS
       });
     }).catch((err) => {
-      debugger;
+      debugger
       dispatch({
         payload: { err },
         type: types.SYSTEM_UPDATEAUTH_FAILURE

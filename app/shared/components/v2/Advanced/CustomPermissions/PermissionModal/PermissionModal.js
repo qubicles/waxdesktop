@@ -28,16 +28,21 @@ class PermissionModal extends React.Component {
         super(props);
         let { auth } = props;
         const newAuth = !(auth);
-        if (!auth || auth.required_auth.keys.length === 0 && auth.required_auth.accounts.length === 0) {
+        if (props.modalOpen) {
+            if (!auth || auth.required_auth.keys.length === 0 && auth.required_auth.accounts.length === 0) {
+                auth = Object.assign({}, defaultAuth);
+            }
+            if (!auth || auth.required_auth.keys.length === 0 && auth.required_auth.accounts.length !== 0) {
+                auth = Object.assign({}, auth);
+                auth.required_auth.keys.push({
+                    key: '',
+                    weight: 1
+                });
+            }
+        } else {
             auth = Object.assign({}, defaultAuth);
         }
-        if (!auth || auth.required_auth.keys.length === 0 && auth.required_auth.accounts.length !== 0) {
-            auth = Object.assign({}, auth);
-            auth.required_auth.keys.push({
-                key: '',
-                weight: 1
-            });
-        }
+
         this.state = Object.assign({}, {
             auth: {
                 ...auth.required_auth,
@@ -52,15 +57,16 @@ class PermissionModal extends React.Component {
             validFields: {},
             validForm: false
         });
+
+
     }
-    componentWillMount() {
-        if (this.props.defaultValue) {
-            this.setState({
-                auth: set(this.state.auth, 'keys.0.key', this.props.defaultValue),
-            });
-        }
-        this.validateFields();
+    componentDidMount() {
+        const { auth } = this.props;
+        this.setState({
+            validForm: auth ? true : false,            
+        })
     }
+
     addKey = () => this.setState({
         auth: set(this.state.auth, `keys.${this.state.auth.keys.length}`, { key: '', weight: 1 }),
         validFields: Object.assign({}, this.state.validFields, {
@@ -84,7 +90,7 @@ class PermissionModal extends React.Component {
     }
     onStringChange = (e, { name, value }) => {
         this.setState({
-            [name]: String(value)
+            permission: String(value)
         });
     }
     onNumberChange = (e, { name, value }) => {
@@ -100,6 +106,7 @@ class PermissionModal extends React.Component {
         });
     }
     toggleAccount = (e, { checked, name }) => {
+        debugger
         const selectedActions = [...this.state.selectedActions];
         const existing = selectedActions.indexOf(name);
         if (checked && existing < 0) {
@@ -117,29 +124,29 @@ class PermissionModal extends React.Component {
         const { auth, parent, permission, selectedActions } = this.state;
         if (!settings.authorization) {
             settings.authorization = 'active';
-            actions.setSettings('authorization', settings.authorization);
+            actions.setSetting('authorization', settings.authorization);
         }
         let authorization = `${settings.account}@${settings.authorization}`;
         actions.updateauth(permission, parent, auth, authorization, selectedActions);
     }
     deleteAuth = (e) => {
         e.preventDefault();
-
         const {
             actions,
             settings
         } = this.props;
-        // const { permission, selectedActions } = this.state;
-        // let authorization = `${settings.account}@${settings.authorization}`;
-        debugger
-        // actions.deleteauth(authorization, permission, selectedActions);
+        const { permission, selectedActions } = this.state;
+        if (!settings.authorization) {
+            settings.authorization = 'active';
+            actions.setSetting('authorization', 'active');
+        }
+        let authorization = `${settings.account}@${settings.authorization}`;
         const selAuth = [];
         this.props.contractActions.map((arr) => {
             selAuth.push(arr.value)
         })
-        actions.deleteauth("vlad1.wdw@active", "test", selAuth);
+        actions.deleteauth(authorization, permission, selAuth);
     }
-
 
     render() {
         const {
@@ -150,7 +157,8 @@ class PermissionModal extends React.Component {
             t,
             connection,
             closeModal,
-            modalOpen
+            modalOpen,
+            modalKey
         } = this.props;
         const {
             auth,
@@ -161,7 +169,8 @@ class PermissionModal extends React.Component {
             selectedActions,
             validForm
         } = this.state;
-        const isCurrentKey = map(original.keys, 'key').includes(pubkey);
+        // const isCurrentKey = map(original.keys, 'key').includes(pubkey);
+        const isCurrentKey = this.props.auth ? true : false;
         return (
             <Modal
                 onClose={closeModal}
@@ -178,7 +187,6 @@ class PermissionModal extends React.Component {
                     <Form
                         onSubmit={this.onSubmit}
                     >
-                        {/* <p className="test">{t('tools_form_permissions_auth_instructions')}</p> */}
                         {(settings.advancedPermissions || newAuth)
                             ? (
                                 <Form.Input
@@ -240,6 +248,7 @@ class PermissionModal extends React.Component {
                             )
                             : false
                         }
+
                         <SlideToggle
                             collapsed
                             duration={800}
@@ -247,9 +256,9 @@ class PermissionModal extends React.Component {
                                 <Segment className="sel-permission-part">
                                     <div onClick={onToggle}>{t('tools_form_permissions_auth_linkauth')}</div>
                                     <div ref={setCollapsibleElement} className="inner-part">
-                                        {(contractActions && contractActions.map((action) => {
+                                        {(contractActions && contractActions.map((action, index) => {
                                             return (
-                                                <p>
+                                                <div key={index} style={{ padding: 5 }}>
                                                     <Checkbox
                                                         label={action.text}
                                                         name={action.value}
@@ -259,7 +268,7 @@ class PermissionModal extends React.Component {
                                                         }).length > 0
                                                             || selectedActions.indexOf(action.value) !== -1}
                                                     />
-                                                </p>
+                                                </div>
 
                                             );
                                         })
@@ -269,31 +278,12 @@ class PermissionModal extends React.Component {
                             )}
                         />
 
-
-
-                        {(isCurrentKey)
-                            ? (
-                                <Message
-                                    content={t('tools_form_permissions_auth_current_key_content')}
-                                    header={t('tools_form_permissions_auth_current_key_header')}
-                                    icon="exclamation circle"
-                                    negative
-                                />
-                            )
-                            : false
-                        }
-                        {/* <Message
-                            content={t('tools_permissions_warning_content')}
-                            header={t('tools_permissions_warning_header')}
-                            icon="warning sign"
-                            color="orange"
-                        /> */}
                         <Container textAlign="right">
                             {(settings.advancedPermissions)
                                 ? (
                                     <Button
                                         content={t('Delete Permission')}
-                                        // disabled={!validForm || !isCurrentKey}
+                                        disabled={!validForm || !isCurrentKey}
                                         onClick={this.deleteAuth}
                                     />) : false}
                             <Button

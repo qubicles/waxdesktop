@@ -24,6 +24,8 @@ class CustomPermissions extends React.Component {
         this.state = {
             openModal: false,
             linkAuthHistory: [],
+            auth: false,
+            modalKey: 123,
         }
     }
 
@@ -52,9 +54,13 @@ class CustomPermissions extends React.Component {
         })
     }
 
-    togglePermissionModal = () => {
+    togglePermissionModal = (data) => {
         const { openModal } = this.state;
-        this.setState({ openModal: !openModal });
+        this.setState({
+            auth: data ? data : false,
+            modalKey: +new Date(),
+            openModal: !openModal,
+        });
     };
 
     goBack = () => {
@@ -77,9 +83,10 @@ class CustomPermissions extends React.Component {
         } = this.props;
         const {
             linkAuthHistory,
+            auth,
             openModal,
+            modalKey
         } = this.state;
-
         const account = accounts[settings.account];
         if (!account) return false;
 
@@ -146,12 +153,25 @@ class CustomPermissions extends React.Component {
                                                     <div>{key.key}</div>
                                                 </div>
                                             </div>
-                                            <img src={require('../../../../../renderer/assets/images/dashboard/Group1737.png')} />
+                                            {
+                                                (
+                                                    !authorization
+                                                    || (data.perm_name === 'owner' && authorization.perm_name !== 'owner')
+                                                    || (data.perm_name === 'active' && !(['active', 'owner'].includes(authorization.perm_name)))
+                                                )
+                                                    ? false
+                                                    : (
+                                                        <div onClick={() => this.togglePermissionModal(data)}>
+                                                            <img src={require('../../../../../renderer/assets/images/dashboard/Group1737.png')} />
+                                                        </div>
+                                                    )
+                                            }
+
                                         </div>
                                     )
                                 })
                             })}
-                            <div className="new-permission-btn" onClick={this.togglePermissionModal}>
+                            <div className="new-permission-btn" onClick={() => this.togglePermissionModal()}>
                                 Create New Permission
                                 <img src={require('../../../../../renderer/assets/images/advanced/Group1730.png')} />
                             </div>
@@ -162,12 +182,13 @@ class CustomPermissions extends React.Component {
                     closeModal={this.togglePermissionModal}
                     modalOpen={openModal}
                     actions={actions}
-                    auth={false}
+                    auth={auth}
                     contractActions={contractActions}
                     linkAuthHistory={linkAuthHistory}
                     pubkey={pubkey}
                     settings={settings}
                     connection={connection}
+                    key={modalKey}
                 />
             </div>
         )
@@ -190,7 +211,8 @@ const mapStateToProps = (state) => {
         keys: state.keys,
         wallet: state.wallet,
         contracts: state.contracts,
-        
+        connection: state.connection,
+
     };
 }
 
