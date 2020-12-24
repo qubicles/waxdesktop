@@ -55,24 +55,41 @@ class PermissionModal extends React.Component {
             permission: auth.perm_name,
             selectedActions: [],
             validFields: {},
-            validForm: false
+            validForm: false,
+            linkedAuth: [],
+            unlinkAuth: [],
         });
 
 
     }
     componentDidMount() {
-        const { auth } = this.props;
+        const { auth, linkAuthHistory } = this.props;
+        const permission = auth.perm_name;
+        let linkedAuth = [];
+
+        if(auth && auth.perm_name){
+            linkAuthHistory.filter(item => {
+                if(item.requirement == permission){
+                    linkedAuth.push(item.type);
+                }
+            })
+        }
+        
         this.setState({
-            validForm: auth ? true : false,            
+            validForm: auth ? true : false,
+            linkedAuth: linkedAuth,
         })
     }
 
-    addKey = () => this.setState({
-        auth: set(this.state.auth, `keys.${this.state.auth.keys.length}`, { key: '', weight: 1 }),
-        validFields: Object.assign({}, this.state.validFields, {
-            [`keys.${this.state.auth.keys.length}.key`]: false
+    addKey = (e) => {
+        e.preventDefault();
+        this.setState({
+            auth: set(this.state.auth, `keys.${this.state.auth.keys.length}`, { key: '', weight: 1 }),
+            validFields: Object.assign({}, this.state.validFields, {
+                [`keys.${this.state.auth.keys.length}.key`]: false
+            })
         })
-    })
+    }
     onKeyChange = (e, { name, valid, value }) => {
         this.setState({
             auth: set(this.state.auth, name, value),
@@ -106,14 +123,22 @@ class PermissionModal extends React.Component {
         });
     }
     toggleAccount = (e, { checked, name }) => {
-        debugger
+        let { unlinkAuth } = this.state;
+        if(this.state.linkedAuth.indexOf(name)>=0 && !checked){
+            unlinkAuth.push(name);
+        } else if(this.state.linkedAuth.indexOf(name)>=0 && checked){
+            unlinkAuth.splice(unlinkAuth.indexOf(name), 1);
+        }
+
         const selectedActions = [...this.state.selectedActions];
         const existing = selectedActions.indexOf(name);
+
         if (checked && existing < 0) {
             selectedActions.push(name);
         } else if (!checked && existing >= 0) {
             selectedActions.splice(existing, 1);
         }
+
         this.setState({ selectedActions });
     }
     onSubmit = () => {
@@ -121,7 +146,13 @@ class PermissionModal extends React.Component {
             actions,
             settings
         } = this.props;
-        const { auth, parent, permission, selectedActions } = this.state;
+        const { auth, parent, permission, selectedActions, unlinkAuth } = this.state;
+        debugger
+        if(unlinkAuth.length != 0){
+            unlinkAuth.map((item) => (
+                actions.unlinkauth(item)
+            ))
+        }
         if (!settings.authorization) {
             settings.authorization = 'active';
             actions.setSetting('authorization', settings.authorization);
@@ -133,19 +164,28 @@ class PermissionModal extends React.Component {
         e.preventDefault();
         const {
             actions,
-            settings
+            settings,
+            linkAuthHistory,
         } = this.props;
-        const { permission, selectedActions } = this.state;
+        const {
+            permission
+        } = this.state;
+        const { deleteauth } = actions;
+
+
         if (!settings.authorization) {
             settings.authorization = 'active';
             actions.setSetting('authorization', 'active');
         }
         let authorization = `${settings.account}@${settings.authorization}`;
-        const selAuth = [];
-        this.props.contractActions.map((arr) => {
-            selAuth.push(arr.value)
-        })
-        actions.deleteauth(authorization, permission, selAuth);
+        let selAuth = [];
+        linkAuthHistory.filter(auth => { 
+            if (auth.requirement == permission){
+                actions.unlinkauth(auth.type);
+            }
+        });
+        setTimeout((deleteauth(authorization, permission, selAuth)), 5000)
+        
     }
 
     render() {
@@ -263,7 +303,7 @@ class PermissionModal extends React.Component {
                                                         label={action.text}
                                                         name={action.value}
                                                         onChange={this.toggleAccount}
-                                                        checked={linkAuthHistory.filter(auth => {
+                                                        defaultChecked={linkAuthHistory.filter(auth => {
                                                             return auth.requirement == permission && auth.type == action.text
                                                         }).length > 0
                                                             || selectedActions.indexOf(action.value) !== -1}

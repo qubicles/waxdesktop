@@ -37,7 +37,6 @@ class CustomPermissions extends React.Component {
         } = this.props;
         actions.getAbi('eosio');
         actions.getAccount(settings.account);
-
         eos(connection).getActions(settings.account, -1, -100000).then((results) => {
             if (results && results.actions) {
                 const linkAuthHistory = [...this.state.linkAuthHistory];
@@ -141,8 +140,8 @@ class CustomPermissions extends React.Component {
                                     <div>EOS7alsdkfjaosijGzlkJLKJOiksjflsadkjDFKJDLFJEKJDL</div>
                                 </div>
                             </div>
-                            {account.permissions.map((data) => {
-                                return data.required_auth.keys.map((key, index) => {
+                            {
+                                account.permissions.map((data, index) => {
                                     return (
                                         <div className="active-permission" key={index}>
                                             <div className="active-permission-left">
@@ -150,7 +149,14 @@ class CustomPermissions extends React.Component {
                                                 <div className="active-permission-des">
                                                     <div style={{ textTransform: "capitalize" }}>{data.perm_name} Permission</div>
                                                     <div>1 of 1 (child of owner)</div>
-                                                    <div>{key.key}</div>
+                                                    {
+                                                        data.required_auth.keys.map((key, index) => {
+                                                            return (
+                                                                <div key={index}>{key.key}</div>
+                                                            )
+                                                        })
+                                                    }
+
                                                 </div>
                                             </div>
                                             {
@@ -170,7 +176,7 @@ class CustomPermissions extends React.Component {
                                         </div>
                                     )
                                 })
-                            })}
+                            }
                             <div className="new-permission-btn" onClick={() => this.togglePermissionModal()}>
                                 Create New Permission
                                 <img src={require('../../../../../renderer/assets/images/advanced/Group1730.png')} />

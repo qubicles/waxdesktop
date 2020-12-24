@@ -32,7 +32,7 @@ export function updateauth(permission, parent, auth, authorizationOverride = fal
         }
       }
     ];
-
+    debugger
     const payforaction = payforcpunet(account, getState());
     if (payforaction) actions = payforaction.concat(actions);
 
@@ -116,7 +116,8 @@ export function unlinkauth(auth) {
       type: types.SYSTEM_UNLINKAUTH_PENDING
     });
 
-    const authorization = [settings.authorization || connection.authorization];
+    // const authorization = [settings.authorization || connection.authorization];
+    const authorization = connection.authorization;
 
     return eos(connection, true).unlinkauth({
       account,
@@ -130,10 +131,14 @@ export function unlinkauth(auth) {
         payload: { tx },
         type: types.SYSTEM_UNLINKAUTH_SUCCESS
       });
-    }).catch((err) => dispatch({
-      payload: { err },
-      type: types.SYSTEM_UNLINKAUTH_FAILURE
-    }));
+    }).catch((err) => {
+      debugger
+      dispatch({
+        payload: { err },
+        type: types.SYSTEM_UNLINKAUTH_FAILURE
+      })
+    }
+    );
   }
 }
 
@@ -145,16 +150,16 @@ export function deleteauth(authorization, permission, linkauthActions) {
       type: types.SYSTEM_DELETEAUTH_PENDING
     });
 
-    linkauthActions.map((auth) => {
-      eos(connection, true).unlinkauth({
-        account,
-        code: 'eosio',
-        type: auth
-      }, {
-        authorization,
-        forceActionDataHex: false,
-      });
-    });
+    // linkauthActions.map((auth) => {
+    //   eos(connection, true).unlinkauth({
+    //     account,
+    //     code: 'eosio',
+    //     type: auth
+    //   }, {
+    //     authorization,
+    //     forceActionDataHex: false,
+    //   });
+    // });
 
     return eos(connection, true).deleteauth({
       account,
