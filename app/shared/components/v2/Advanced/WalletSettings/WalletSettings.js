@@ -21,6 +21,7 @@ import * as AccountActions from "../../../../actions/accounts";
 import * as SettingsActions from '../../../../actions/settings';
 import * as TransferActions from '../../../../actions/transfer';
 import * as CreateAccountActions from '../../../../actions/createaccount';
+import * as BlockExplorersActions from "../../../../actions/blockexplorers";
 
 import GlobalSettingsIPFSNode from "../../Global/Settings/IPFSNode";
 import GlobalSettingsIPFSPort from "../../Global/Settings/IPFSPort";
@@ -52,6 +53,9 @@ class WalletSettings extends React.Component {
     }
 
     return null;
+  }
+  componentDidMount() {
+    this.props.actions.getBlockExplorers()
   }
 
   goBack = () => {
@@ -86,7 +90,6 @@ class WalletSettings extends React.Component {
 
   render() {
     const { actions, settings, blockExplorers } = this.props;
-
     return (
       <div className="dashboard-container">
         <div className="dashboard-body-section">
@@ -252,7 +255,8 @@ const mapDispatchToProps = (dispatch) => {
     actions: bindActionCreators({
       ...AccountActions,
       ...GlobalsActions,
-      ...SettingsActions
+      ...SettingsActions,
+      ...BlockExplorersActions,
     }, dispatch)
   };
 }
