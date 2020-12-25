@@ -32,7 +32,6 @@ export function updateauth(permission, parent, auth, authorizationOverride = fal
         }
       }
     ];
-    debugger
     const payforaction = payforcpunet(account, getState());
     if (payforaction) actions = payforaction.concat(actions);
 
@@ -50,7 +49,6 @@ export function updateauth(permission, parent, auth, authorizationOverride = fal
         type: types.SYSTEM_UPDATEAUTH_SUCCESS
       });
     }).catch((err) => {
-      debugger
       dispatch({
         payload: { err },
         type: types.SYSTEM_UPDATEAUTH_FAILURE
@@ -132,7 +130,6 @@ export function unlinkauth(auth) {
         type: types.SYSTEM_UNLINKAUTH_SUCCESS
       });
     }).catch((err) => {
-      debugger
       dispatch({
         payload: { err },
         type: types.SYSTEM_UNLINKAUTH_FAILURE
@@ -168,12 +165,12 @@ export function deleteauth(authorization, permission, linkauthActions) {
       authorization,
       forceActionDataHex: false,
     }).then((tx) => {
+      setTimeout(dispatch(getAccount(account)), 500);
       return dispatch({
         payload: { tx },
         type: types.SYSTEM_DELETEAUTH_SUCCESS
       });
     }).catch((err) => {
-      debugger
       dispatch({
         payload: { err },
         type: types.SYSTEM_DELETEAUTH_FAILURE

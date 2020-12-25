@@ -67,14 +67,14 @@ class PermissionModal extends React.Component {
         const permission = auth.perm_name;
         let linkedAuth = [];
 
-        if(auth && auth.perm_name){
+        if (auth && auth.perm_name) {
             linkAuthHistory.filter(item => {
-                if(item.requirement == permission){
+                if (item.requirement == permission) {
                     linkedAuth.push(item.type);
                 }
             })
         }
-        
+
         this.setState({
             validForm: auth ? true : false,
             linkedAuth: linkedAuth,
@@ -124,9 +124,9 @@ class PermissionModal extends React.Component {
     }
     toggleAccount = (e, { checked, name }) => {
         let { unlinkAuth } = this.state;
-        if(this.state.linkedAuth.indexOf(name)>=0 && !checked){
+        if (this.state.linkedAuth.indexOf(name) >= 0 && !checked) {
             unlinkAuth.push(name);
-        } else if(this.state.linkedAuth.indexOf(name)>=0 && checked){
+        } else if (this.state.linkedAuth.indexOf(name) >= 0 && checked) {
             unlinkAuth.splice(unlinkAuth.indexOf(name), 1);
         }
 
@@ -147,8 +147,7 @@ class PermissionModal extends React.Component {
             settings
         } = this.props;
         const { auth, parent, permission, selectedActions, unlinkAuth } = this.state;
-        debugger
-        if(unlinkAuth.length != 0){
+        if (unlinkAuth.length != 0) {
             unlinkAuth.map((item) => (
                 actions.unlinkauth(item)
             ))
@@ -179,13 +178,20 @@ class PermissionModal extends React.Component {
         }
         let authorization = `${settings.account}@${settings.authorization}`;
         let selAuth = [];
-        linkAuthHistory.filter(auth => { 
-            if (auth.requirement == permission){
-                actions.unlinkauth(auth.type);
+        const promises = [];
+        linkAuthHistory.filter(auth => {
+            if (auth.requirement == permission) {
+                promises.push(
+                    new Promise((resolve, reject) => {
+                        resolve(actions.unlinkauth(auth.type));
+                    })
+                );
             }
         });
-        setTimeout((deleteauth(authorization, permission, selAuth)), 5000)
-        
+
+        Promise.all(promises).then((res) => {
+            deleteauth(authorization, permission, selAuth);
+        })
     }
 
     render() {
