@@ -82,7 +82,7 @@ class BuyAssetModal extends React.Component {
                 <div className="input-title">Seller</div>
                 <input
                   type="text"
-                  className="common-input"
+                  className="common-input seller-name"
                   defaultValue={seller}
                   readOnly
                 />

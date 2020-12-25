@@ -16,6 +16,7 @@ import { connect } from "react-redux";
 import debounce from "lodash/debounce";
 
 import * as AssetsActions from "../../../actions/assets";
+import * as GlobalsActions from "../../../actions/globals";
 import "./Marketplace.global.css";
 import MarketplaceRightNav from "./MarketplaceRightNav/MarketplaceRightNav";
 import BuyAssetModal from "../Marketplace/Modals/BuyAssetModal/BuyAssetModal";
@@ -39,7 +40,8 @@ class Marketplace extends React.Component {
       minPrice: "",
       maxPrice: "",
       collection: "",
-      buyAssetModal: false
+      buyAssetModal: false,
+      selectedAssets: "",
     };
   }
 
@@ -89,9 +91,13 @@ class Marketplace extends React.Component {
     });
   };
 
-  toggleBuyAssetModal = () => {
+  toggleBuyAssetModal = (index) => {
     const { buyAssetModal } = this.state;
-    this.setState({ buyAssetModal: !buyAssetModal });
+    const { assetsList } = this.props.assets;
+    this.setState({ 
+      buyAssetModal: !buyAssetModal,
+      selectedAssets: assetsList.data[index],
+    });
   };
 
   renderAssets = () => {
@@ -113,7 +119,7 @@ class Marketplace extends React.Component {
 
     return (
       assetsList &&
-      assetsList.data.map(asset => (
+      assetsList.data.map((asset, index) => (
         <Card className="trending-assets-card" key={`assets-${asset.offer_id}`}>
           <Image src={asset.assets[0].data.img.indexOf('http') == -1 ? `https://ipfs.io/ipfs/${asset.assets[0].data.img}`: asset.assets[0].data.img } />
           <Card.Header className="t-card-title">
@@ -133,7 +139,7 @@ class Marketplace extends React.Component {
               <Button className="card-detail-btn">Details</Button>
               <Button
                 className="card-buy-btn"
-                onClick={this.toggleBuyAssetModal}
+                onClick={() => this.toggleBuyAssetModal(index)}
               >
                 Buy
               </Button>
@@ -162,10 +168,11 @@ class Marketplace extends React.Component {
       sort,
       minPrice,
       maxPrice,
-      buyAssetModal
+      buyAssetModal,
+      selectedAssets
     } = this.state;
     const displayAssets = this.renderAssets();
-    const { assets } = this.props;
+    const { assets, actions, globals } = this.props;
 
     const MarketplaceDropdown = () => (
       <Dropdown
@@ -272,7 +279,10 @@ class Marketplace extends React.Component {
           closeModal={this.toggleBuyAssetModal}
           modalOpen={buyAssetModal}
           history={history}
+          actions={actions}
+          selectedAssets={selectedAssets}
           location={location}
+          globals={globals}
         />
       </div>
     );
@@ -284,7 +294,8 @@ Marketplace.propTypes = {};
 Marketplace.defaultProps = {};
 const mapStateToProps = state => {
   return {
-    assets: state.assets
+    assets: state.assets,
+    globals: state.globals,
   };
 };
 
@@ -292,7 +303,8 @@ const mapDispatchToProps = dispatch => {
   return {
     actions: bindActionCreators(
       {
-        ...AssetsActions
+        ...AssetsActions,
+        ...GlobalsActions,
       },
       dispatch
     )
