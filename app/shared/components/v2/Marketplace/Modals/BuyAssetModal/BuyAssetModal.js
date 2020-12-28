@@ -28,7 +28,7 @@ class BuyAssetModal extends React.Component {
       collectionName: props.selectedAssets ? props.selectedAssets.assets[0].collection.collection_name : "",
       sellerAmt: props.selectedAssets ? props.selectedAssets.listing_price / 100000000 : "",
       currencyPrice: props.selectedAssets && tokenPrice ? (parseInt(props.selectedAssets.listing_price / 100000000) + Math.round(parseInt(props.selectedAssets.listing_price / 100000000) * 0.09)) * parseFloat(tokenPrice.price) : 0,
-      totalAmt: props.selectedAssets ? parseInt(props.selectedAssets.listing_price / 100000000) + Math.round(parseInt(props.selectedAssets.listing_price / 100000000) * 0.09): "",
+      totalAmt: props.selectedAssets ? parseInt(props.selectedAssets.listing_price / 100000000) + Math.round(parseInt(props.selectedAssets.listing_price / 100000000) * 0.09) : "",
     };
   }
 
@@ -57,9 +57,18 @@ class BuyAssetModal extends React.Component {
         <Modal.Content className="BuyAssetModal-body">
           <div className="sell-left-container">
             <div className="sell-card">
-              <img
-                src={selectedAssets && selectedAssets.assets[0].data.img ? `https://ipfs.io/ipfs/${selectedAssets.assets[0].data.img}` : require("../../../../../../renderer/assets/images/dashboard/dallas141.png")}
-              />
+              {
+                (!selectedAssets) ?
+                  (
+                    <img
+                      src={require("../../../../../../renderer/assets/images/dashboard/dallas141.png")}
+                    />
+                  ) : (
+                    <img
+                      src={selectedAssets.assets[0].data.img.indexOf('http') == -1 ? `https://ipfs.io/ipfs/${selectedAssets.assets[0].data.img}` : selectedAssets.assets[0].data.img}
+                    />
+                  )
+              }
               <div className="sell-card-info">
                 <div className="sc-title">{nftName}</div>
                 <div className="sc-brand">{collectionName}</div>
@@ -117,7 +126,7 @@ class BuyAssetModal extends React.Component {
               <div className="seller-info total-fee">
                 <div>Total</div>
                 <div>
-                  <span>{ totalAmt } WAX</span>
+                  <span>{totalAmt} WAX</span>
                   <span> $ {currencyPrice.toFixed(2)}</span>
                 </div>
               </div>
