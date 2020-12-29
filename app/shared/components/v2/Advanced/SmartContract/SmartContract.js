@@ -33,6 +33,7 @@ import ContractInterfaceTabTables from "./Tab/Tables";
 import ContractInterfaceTabData from "./Tab/Data";
 
 import "./SmartContract.global.css";
+import "./SmartContractActions/SmartContractActions.global.css"
 import { from } from "form-data";
 
 class SmartContract extends Component {
@@ -71,6 +72,10 @@ class SmartContract extends Component {
         contractTableScope: ''
     });
     resetContract = () => this.setState({ contractName: '' });
+
+    goBack = () => {
+        this.props.history.push("/advanced")
+    }
 
     render() {
         const {

@@ -165,7 +165,7 @@ class ContractInterfaceFormAction extends Component<Props> {
         <Message
           content={String(system.TRANSACTION_BUILD_LAST_ERROR)}
           error
-          icon="warning sign"
+          icon="warning sign small"
         />
       );
     }

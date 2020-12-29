@@ -169,10 +169,13 @@
 .smartContractAccount-body .ui.selection.active.dropdown .menu {
     background-color: #242b39;
     border: none !important;
+    border-bottom-left-radius: 27px !important;
+    border-bottom-right-radius: 27px !important;
 }
 .smartContractAccount-body .ui.selection.dropdown .menu>.item {
     color: white !important;
     border: none !important;
+    padding: 20px !important;
 }
 
 /*  contract action dropdown css  */
@@ -187,10 +190,13 @@
 .smartContractActions-body .ui.selection.active.dropdown .menu {
     background-color: #242b39;
     border: none !important;
+    border-bottom-left-radius: 30px !important;
+    border-bottom-right-radius: 30px !important;
 }
 .smartContractActions-body .ui.selection.dropdown .menu>.item {
     color: white !important;
     border: none !important;
+    padding: 20px !important;
 }
 
 /* smartContract action parameters css */
@@ -222,4 +228,17 @@
 }
 .smartContractActions-tab .tab {
     padding-left: 0 !important;
+}
+
+/* smartContractAction Parameters input css */
+.contract-actionParam-form .ui-common-input label {
+    color: white !important;
+}
+.contract-actionParam-form .message {
+    background-color: #191f28 !important;
+    box-shadow: none !important;
+    color: #ff886d !important;
+}
+.contract-actionParam-form .message i {
+    font-size: 2em !important;
 }
