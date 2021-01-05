@@ -35,7 +35,7 @@ export const getAssets = ({
     });
     return axios
       .get(
-        `https://wax.api.atomicassets.io/atomicmarket/v1/sales?owner=${owner}&match=${match}&page=${page}&limit=${limit}&order=${order}&sort=${sort}&min_price=${minPrice}&max_price=${maxPrice}&collection_name=${collection}`
+        `https://wax.api.atomicassets.io/atomicmarket/v1/sales?symbol=WAX&match=${match}&page=${page}&limit=${limit}&order=${order}&sort=${sort}&min_price=${minPrice}&max_price=${maxPrice}&collection_name=${collection}`
       )
       .then(res => {
         dispatch({
