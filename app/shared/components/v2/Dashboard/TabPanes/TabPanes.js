@@ -24,7 +24,7 @@ class TabPanes extends React.Component {
     };
 
     const nftsPane = {
-      menuItem: "NFTS",
+      menuItem: "NFTs",
       render: () => <NFTPane settings={settings} />
     };
     return [tokensPane, nftsPane];

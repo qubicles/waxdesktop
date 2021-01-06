@@ -16,7 +16,10 @@ export default (state = initialState, action) => {
             return { ...state, assetsList: action.payload, isAssetsLoading: false };
 
         case types.COLLECTION_NAMES_SUCCESS:
-             return { ...state, collectionNames: action.payload }
+            return { ...state, collectionNames: action.payload }
+
+        case types.NFT_ASSETS_LIST_SUCCESS:
+            return { ...state, nftAssets: action.payload }
 
         default: {
             return state;

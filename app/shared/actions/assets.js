@@ -45,7 +45,21 @@ export const getAssets = ({
       });
   };
 };
-
+export const getNftAssets = (owner) => {
+  return (dispatch: () => void, getState) => {
+    dispatch({
+      type: types.NFT_ASSETS_LIST_REQUEST
+    });
+    return axios
+      .get(`https://wax.api.atomicassets.io/atomicassets/v1/assets?owner=${owner}&page=1&limit=100&order=desc&sort=asset_id`)
+      .then(res => {
+        dispatch({
+          type: types.NFT_ASSETS_LIST_SUCCESS,
+          payload: res.data
+        })
+      })
+  }
+}
 export const getActiveCollections = () => {
   return (dispatch: () => void, getState) => {
     return axios
@@ -64,5 +78,6 @@ export const getActiveCollections = () => {
 export default {
   getTrendingAssets,
   getAssets,
-  getActiveCollections
+  getActiveCollections,
+  getNftAssets
 };

@@ -8,35 +8,29 @@ import * as AssetsActions from "../../../../actions/assets";
 class NFTPanes extends Component {
     constructor(props) {
         super(props);
-
-        const owner = props.settings.account;
-        this.state = {
-            owner,
-            page: 1,
-            limit: 100,
-            order: "desc",
-            sort: "created"
-        }
     }
 
     componentDidMount() {
-        const { actions: { getAssets } } = this.props;
-        const { owner, page, limit, order, sort } = this.state;
-        getAssets({ owner, page, limit, order, sort })
+        const { actions: { getNftAssets } } = this.props;
+        const owner = this.props.settings.account;
+        if (owner) {
+            getNftAssets(owner);
+        }
     }
 
     render() {
-        const { assets: { isAssetsLoading, assetsList } } = this.props;
+        console.log(this.props)
+        const { assets: { isAssetsLoading, nftAssets } } = this.props;
 
         if (isAssetsLoading) {
             return <div>Loading...</div>
         }
 
-        if (assetsList && assetsList.data.length === 0) {
+        if (nftAssets && nftAssets.data.length === 0) {
             return <div>No data found</div>
         }
 
-        const NFTAssets = assetsList && assetsList.data.map(asset =>
+        const NFTAssets = nftAssets && nftAssets.data.map(asset =>
             <Card className="trending-assets-card" key={`nft-token-${asset.offer_id}`}>
                 <Image src={`https://ipfs.io/ipfs/${asset.collection.img}`} />
                 <Card.Header className="t-card-title">{asset.collection.name}</Card.Header>
@@ -45,8 +39,8 @@ class NFTPanes extends Component {
                     <div className="t-card-price">
                         <Image src={require('../../../../../renderer/assets/images/dashboard/Group47.png')} />
                         <div className="t-card-des">
-                        {asset.listing_price/100000000} {asset.listing_symbol}
-                      </div>
+                            {asset.listing_price / 100000000} {asset.listing_symbol}
+                        </div>
                     </div>
                     <div className="card-btn-group">
                         <Button className="card-detail-btn">Details</Button>
