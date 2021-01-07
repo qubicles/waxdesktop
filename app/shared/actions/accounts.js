@@ -8,6 +8,7 @@ import EOSAccount from "../utils/EOS/Account";
 import { getContactByPublicKey, getPriceFeedGecko } from "./globals";
 const ecc = require("eosjs-ecc");
 import { payforcpunet } from "./helpers/eos";
+import Axios from "axios";
 
 export function clearAccountCache() {
   return (dispatch: () => void) => {
@@ -568,7 +569,7 @@ export function getNFTBalance(account, contract) {
       const symbol = settings.blockchain.tokenSymbol;
       eos(connection)
         .getCurrencyBalance(contract, account, symbol)
-        .then(results => {})
+        .then(results => { })
         .catch(err => err);
     }
   };
@@ -580,6 +581,23 @@ export function previousAccounts() {
       payload: null,
       type: types.PREVIOUS_ACCOUNTS
     });
+  };
+}
+
+export function getBalanceHistory(account) {
+  return (dispatch: () => void, getState) => {
+    Axios.get(`https://wax.eosrio.io/v2/history/get_deltas?code=eosio.token&scope=${account}&table=accounts`)
+      .then(res => {
+        return dispatch({
+          payload: {
+            account_name: account,
+            balHistory: {
+              balanceHistory: res.data.deltas
+            }
+          },
+          type: types.GET_BALANCE_HISTORY_SUCCESS
+        });
+      })
   };
 }
 
@@ -596,5 +614,6 @@ export default {
   getCurrencyBalance,
   refreshAccountBalances,
   getNFTBalance,
-  previousAccounts
+  previousAccounts,
+  getBalanceHistory
 };

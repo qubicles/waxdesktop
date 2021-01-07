@@ -30,6 +30,7 @@ const initialState = {
     cryptoModal: false,
     swapTokenModal: false,
     buyWaxModal: false,
+    increaseBal: 0,
 };
 
 class Balance extends Component {
@@ -37,15 +38,33 @@ class Balance extends Component {
         super(props);
         this.state = initialState;
     }
+    componentDidMount() {
+        const {
+            globals,
+            accounts,
+            settings,
+        } = this.props;
+        if (accounts[settings['account']]) {
+            const { balanceHistory } = accounts[settings['account']];
+            if (balanceHistory) {
+                this.setState({
+                    increaseBal: (parseFloat(balanceHistory[0].data.amount) - parseFloat(balanceHistory[1].data.amount)) / parseFloat(balanceHistory[1].data.amount)*100
+                })
+            }
+        }
+    }
     getBalance = (base) => {
         const {
-            globals
+            globals,
+            accounts,
+            settings,
         } = this.props;
 
         if (globals.pricefeed && globals.pricefeed.CUSD) {
             const tokenPrice = globals.pricefeed.CUSD.find(item => item.base === base);
             return tokenPrice ? tokenPrice.price : 0;
         }
+
     }
     toggleDashboardTokenModal = () => {
         const { dashboardTokenModal, resourcesModal } = this.state;
@@ -89,6 +108,7 @@ class Balance extends Component {
             swapTokenModal,
             importAccountModal,
             buyWaxModal,
+            increaseBal,
         } = this.state;
         const statsFetcher = new StatsFetcher(
             settings.account,
@@ -118,7 +138,7 @@ class Balance extends Component {
                     <div className="balance-total">
                         <h4>Total Balance</h4>
                         <div className="balance-percent">
-                            +3.49%
+                            {Math.sign(increaseBal) == 1 ? `+${increaseBal.toFixed(2)}`: increaseBal.toFixed(2)} %
                         </div>
                     </div>
                     <h2>${totalBalance.toFixed(2)}</h2>

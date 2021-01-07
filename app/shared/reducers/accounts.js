@@ -33,6 +33,11 @@ export default function accounts(state = initialState, action) {
       return {
         ...state
       }
+    case types.GET_BALANCE_HISTORY_SUCCESS:
+      return Object.assign({}, state, {
+        [action.payload.account_name]: 
+          Object.assign({}, state[action.payload.account_name], action.payload.balHistory)
+      });
     default: {
       return state;
     }

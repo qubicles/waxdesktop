@@ -46,11 +46,13 @@ class Home extends React.Component {
       addCustomToken,
       getCustomTokensRemote,
       getCurrencyBalance,
-      getAccount
+      getAccount,
+      getBalanceHistory
     } = actions;
 
     if (settings.account) {
       getAccount(settings.account);
+      getBalanceHistory(settings.account);
     }
 
     const remoteTokensResult = await getCustomTokensRemote();
