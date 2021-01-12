@@ -22,6 +22,7 @@ import ResourcesModal from "../../Dashboard/Modals/ResourcesModal/ResourcesModal
 import CryptoModal from "../../Dashboard/Modals/CryptoModal/CryptoModal";
 import SwapTokenModal from "../../Dashboard/Modals/SwapTokenModal/SwapTokenModal";
 import BuyWaxModal from "../../Dashboard/Modals/BuyWaxModal/BuyWaxModal";
+import HistoryChart from "./HistoryChart/HistoryChart"
 import "./Balance.global.css"
 
 const initialState = {
@@ -142,15 +143,7 @@ class Balance extends Component {
                         </div>
                     </div>
                     <h2>${totalBalance.toFixed(2)}</h2>
-                    <div className="chart-img">
-                        <Image src={require('../../../../../renderer/assets/images/dashboard/Group1733.png')} />
-                    </div>
-                    <div className="chart-button-group">
-                        <div className="chart-white-btn">1D</div>
-                        <div className="chart-white-btn">1W</div>
-                        <div className="chart-white-btn">1M</div>
-                        <div className="chart-orange-btn">All</div>
-                    </div>
+                    <HistoryChart />
                     <div className="send-btn-wrap">
                         <div className="dashboard-send-btn" onClick={this.toggleCryptoModal}>
                             <h3>Send</h3>

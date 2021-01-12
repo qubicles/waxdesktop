@@ -35,6 +35,9 @@
     font-size: 10px;
     font-family: montserratBold;
 }
+.bal-history-btn:hover {
+    cursor: pointer;
+}
 .balance-chart-container .chart-button-group .chart-orange-btn {
     padding: 2px 12px;
     background-color: #ff886d;
@@ -47,6 +50,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-top: 15px;
 }
 .send-btn-wrap {
     margin: 20px 0;
