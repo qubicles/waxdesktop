@@ -1,7 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { bindActionCreators } from "redux";
+import { connect } from "react-redux";
 import { Dropdown, Modal } from "semantic-ui-react";
 
+import * as AssetsActions from "../../../../../actions/assets";
 import "./BuyAssetModal.global.css";
 
 class BuyAssetModal extends React.Component {
@@ -32,12 +35,19 @@ class BuyAssetModal extends React.Component {
     };
   }
 
+  purchaseAssets(selectedAssets) {
+    const { actions } = this.props;
+    actions.purchaseAssets(selectedAssets);
+  }
+
   render() {
     const {
       modalOpen,
       closeModal,
-      selectedAssets
+      selectedAssets,
+      actions,
     } = this.props;
+
     const {
       seller,
       nftName,
@@ -131,7 +141,7 @@ class BuyAssetModal extends React.Component {
                 </div>
               </div>
             </div>
-            <div className="delegate-btn">
+            <div className="delegate-btn" onClick={() => {this.purchaseAssets(selectedAssets)}}>
               Confirm Purchase
               <img
                 src={require("../../../../../../renderer/assets/images/dashboard/correct3.png")}
@@ -148,4 +158,23 @@ BuyAssetModal.propTypes = {};
 
 BuyAssetModal.defaultProps = {};
 
-export default BuyAssetModal;
+// const mapStateToProps = state => {
+//   return {
+//     assets: state.assets,
+//   };
+// };
+
+// const mapDispatchToProps = dispatch => {
+//   return {
+//     actions: bindActionCreators(
+//       {
+//         ...AssetsActions,
+//       },
+//       dispatch
+//     )
+//   };
+// };
+
+// export default connect(mapStateToProps, mapDispatchToProps)(BuyAssetModal);
+
+export default BuyAssetModal

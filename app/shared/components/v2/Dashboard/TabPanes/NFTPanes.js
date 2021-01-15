@@ -19,7 +19,6 @@ class NFTPanes extends Component {
     }
 
     render() {
-        console.log(this.props)
         const { assets: { isAssetsLoading, nftAssets } } = this.props;
 
         if (isAssetsLoading) {

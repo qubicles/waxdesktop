@@ -1,5 +1,8 @@
 import * as types from "./types";
 import axios from "axios";
+import eos from './helpers/eos';
+import { payforcpunet } from './helpers/eos';
+import { Decimal } from 'decimal.js';
 
 export const getTrendingAssets = () => {
   return (dispatch: () => void, getState) => {
@@ -75,9 +78,91 @@ export const getActiveCollections = () => {
   };
 };
 
+export const purchaseAssets = (selectedAsset) => {
+  return (dispatch: () => void, getState) => {
+    const {
+      balances,
+      connection,
+      settings,
+      accounts
+    } = getState();
+
+    dispatch({
+      type: types.PURCHASE_ASSETS_PENDING
+    });
+
+    try {
+      const symbol = settings.blockchain.tokenSymbol;
+      const contracts = balances.__contracts;
+      const account = contracts[symbol].contract;
+      const price = Decimal(selectedAsset.price.amount/100000000).toFixed(8) + ' ' + selectedAsset.price.token_symbol
+      let actions = [
+        {
+          account: account,
+          name: 'transfer',
+          authorization: [{
+            actor: settings.account,
+            permission: 'active',
+          }],
+          data: {
+            from: settings.account,
+            to: 'atomicmarket',
+            quantity: price,
+            memo: "deposit"
+          },
+        },
+        {
+          account: 'atomicmarket',
+          name: 'purchasesale',
+          authorization: [{
+            actor: settings.account,
+            permission: 'active',
+          }],
+          data: {
+            buyer: settings.account,
+            intended_delphi_median: 0,
+            sale_id: selectedAsset.sale_id,
+            taker_marketplace: ""
+          },
+        }
+      ]
+
+
+      const payforaction = payforcpunet(settings.account, getState());
+      if (payforaction) actions = payforaction.concat(actions);
+
+      return eos(connection, true, payforaction !== null).transaction(
+        {
+          actions
+        },
+        {
+          broadcast: connection.broadcast,
+          expireInSeconds: connection.expireInSeconds,
+          sign: connection.sign
+        }).then((tx) => {
+          return dispatch({
+            payload: { tx },
+            type: types.PURCHASE_ASSETS_SUCCESS
+          });
+        }).catch((err) => {
+          dispatch({
+            payload: { err },
+            type: types.PURCHASE_ASSETS_FAILURE
+          })
+        });
+    } catch (err) {
+      return dispatch({
+        payload: { err },
+        type: types.PURCHASE_ASSETS_FAILURE
+      });
+    }
+  };
+}
+
 export default {
   getTrendingAssets,
   getAssets,
   getActiveCollections,
-  getNftAssets
+  getNftAssets,
+  purchaseAssets,
 };

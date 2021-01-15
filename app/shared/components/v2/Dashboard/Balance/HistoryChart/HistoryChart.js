@@ -41,7 +41,7 @@ class HistoryChart extends Component {
         ]
         let startDate = '';
         let endDate = '';
-        if (accounts && settings) {
+        if (accounts && settings && accounts[settings.account] != undefined && accounts[settings.account].hasOwnProperty('balanceHistory')) {
             const balTemp = accounts[settings.account].balanceHistory;
             if (balTemp) {
                 switch (range) {
