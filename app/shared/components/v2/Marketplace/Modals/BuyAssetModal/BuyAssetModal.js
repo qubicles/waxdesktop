@@ -30,8 +30,8 @@ class BuyAssetModal extends React.Component {
       nftName: props.selectedAssets ? props.selectedAssets.assets[0].name : "",
       collectionName: props.selectedAssets ? props.selectedAssets.assets[0].collection.collection_name : "",
       sellerAmt: props.selectedAssets ? props.selectedAssets.listing_price / 100000000 : "",
-      currencyPrice: props.selectedAssets && tokenPrice ? (parseInt(props.selectedAssets.listing_price / 100000000) + Math.round(parseInt(props.selectedAssets.listing_price / 100000000) * 0.09)) * parseFloat(tokenPrice.price) : 0,
-      totalAmt: props.selectedAssets ? parseInt(props.selectedAssets.listing_price / 100000000) + Math.round(parseInt(props.selectedAssets.listing_price / 100000000) * 0.09) : "",
+      currencyPrice: props.selectedAssets && tokenPrice ? (parseInt(props.selectedAssets.listing_price / 100000000) + (parseInt(props.selectedAssets.listing_price / 100000000) * 0.09)) * parseFloat(tokenPrice.price) : 0,
+      totalAmt: props.selectedAssets ? parseInt(props.selectedAssets.listing_price / 100000000) + (parseInt(props.selectedAssets.listing_price / 100000000) * 0.09) : "",
     };
   }
 
@@ -118,7 +118,7 @@ class BuyAssetModal extends React.Component {
                 </div>
                 <div>
                   {
-                    Math.round(sellerAmt * 0.08)
+                    (sellerAmt * 0.08).toFixed(2)
                   } WAX
                 </div>
               </div>
@@ -129,7 +129,7 @@ class BuyAssetModal extends React.Component {
                 </div>
                 <div>
                   {
-                    Math.round(sellerAmt * 0.01)
+                    (sellerAmt * 0.01).toFixed(2)
                   } WAX
                 </div>
               </div>

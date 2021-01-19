@@ -86,7 +86,6 @@ export const purchaseAssets = (selectedAsset) => {
       settings,
       accounts
     } = getState();
-
     dispatch({
       type: types.PURCHASE_ASSETS_PENDING
     });
@@ -95,7 +94,11 @@ export const purchaseAssets = (selectedAsset) => {
       const symbol = settings.blockchain.tokenSymbol;
       const contracts = balances.__contracts;
       const account = contracts[symbol].contract;
-      const price = Decimal(selectedAsset.price.amount/100000000).toFixed(8) + ' ' + selectedAsset.price.token_symbol
+      const price = Decimal(selectedAsset.price.amount/100000000).toFixed(8) + ' ' + selectedAsset.price.token_symbol;
+      const wdwPrice = Decimal(selectedAsset.price.amount/100000000*0.01).toFixed(8) + ' ' + selectedAsset.price.token_symbol;
+      const authorPrice = Decimal(selectedAsset.price.amount/100000000*0.08).toFixed(8) + ' ' + selectedAsset.price.token_symbol;
+      const assetAuthor = selectedAsset.collection.author;
+      debugger
       let actions = [
         {
           account: account,
@@ -109,6 +112,34 @@ export const purchaseAssets = (selectedAsset) => {
             to: 'atomicmarket',
             quantity: price,
             memo: "deposit"
+          },
+        },
+        {
+          account: account,
+          name: 'transfer',
+          authorization: [{
+            actor: settings.account,
+            permission: 'active',
+          }],
+          data: {
+            from: settings.account,
+            to: 'wdw',
+            quantity: wdwPrice,
+            memo: "WDW fee",
+          },
+        },
+        {
+          account: account,
+          name: 'transfer',
+          authorization: [{
+            actor: settings.account,
+            permission: 'active',
+          }],
+          data: {
+            from: settings.account,
+            to: assetAuthor,
+            quantity: authorPrice,
+            memo: "Author Fee",
           },
         },
         {
