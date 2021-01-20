@@ -29,7 +29,7 @@ class NFTPanes extends Component {
             return <div>No data found</div>
         }
 
-        const NFTAssets = nftAssets && nftAssets.data.map(asset =>
+        const NFTAssets = nftAssets && nftAssets.data.map(asset => 
             <Card className="trending-assets-card" key={`nft-token-${asset.offer_id}`}>
                 <Image src={`https://ipfs.io/ipfs/${asset.collection.img}`} />
                 <Card.Header className="t-card-title">{asset.collection.name}</Card.Header>
@@ -38,15 +38,16 @@ class NFTPanes extends Component {
                     <div className="t-card-price">
                         <Image src={require('../../../../../renderer/assets/images/dashboard/Group47.png')} />
                         <div className="t-card-des">
-                            {asset.listing_price / 100000000} {asset.listing_symbol}
+                            {asset.prices[0].sales ? `${asset.prices[0].sales} ${asset.prices[0].token.token_symbol}` : '' }
                         </div>
                     </div>
                     <div className="card-btn-group">
                         <Button className="card-detail-btn">Details</Button>
-                        <Button className="card-buy-btn">Buy</Button>
+                        <Button className="card-buy-btn">Sell</Button>
                     </div>
                 </Card.Meta>
-            </Card>)
+            </Card>
+        )
 
         return <Tab.Pane attached={false}>
             {NFTAssets}

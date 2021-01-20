@@ -54,7 +54,7 @@ export const getNftAssets = (owner) => {
       type: types.NFT_ASSETS_LIST_REQUEST
     });
     return axios
-      .get(`https://wax.api.atomicassets.io/atomicassets/v1/assets?owner=${owner}&page=1&limit=100&order=desc&sort=asset_id`)
+      .get(`https://wax.api.atomicassets.io/atomicmarket/v1/assets?owner=${owner}&page=1&limit=100&order=desc&sort=asset_id`)
       .then(res => {
         dispatch({
           type: types.NFT_ASSETS_LIST_SUCCESS,
@@ -98,7 +98,6 @@ export const purchaseAssets = (selectedAsset) => {
       const wdwPrice = Decimal(selectedAsset.price.amount/100000000*0.01).toFixed(8) + ' ' + selectedAsset.price.token_symbol;
       const authorPrice = Decimal(selectedAsset.price.amount/100000000*0.08).toFixed(8) + ' ' + selectedAsset.price.token_symbol;
       const assetAuthor = selectedAsset.collection.author;
-      debugger
       let actions = [
         {
           account: account,
