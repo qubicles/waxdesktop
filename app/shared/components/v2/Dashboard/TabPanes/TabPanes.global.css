@@ -59,3 +59,21 @@
   right: 20px;
   top: 20px;
 }
+.nftCheckBox-wrap {
+  position: absolute !important;
+  right: 17px;
+  top: 3px;
+}
+.nftCheckBox-wrap label:before {
+  width: 30px !important;
+  height: 30px !important;
+  border-radius: 50% !important;
+  background-color: #242b39 !important;
+  border: 3px solid #ff886d !important;
+}
+.nftCheckBox-wrap label:after {
+  color: #ff886d !important;
+  padding-top: 7px !important;
+  font-size: 20px !important;
+  padding-left: 5px !important;
+}

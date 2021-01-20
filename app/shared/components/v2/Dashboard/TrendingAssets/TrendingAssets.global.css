@@ -36,6 +36,7 @@
     margin: 10px !important;
     padding: 10px !important;
     display: inline-block !important;
+    position: relative;
 }
 .trending-assets-card>img{
     margin: auto !important;

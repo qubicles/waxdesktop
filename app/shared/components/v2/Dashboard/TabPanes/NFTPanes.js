@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
-import { Tab, Image, Card, Button } from "semantic-ui-react";
+import { Tab, Image, Card, Button, Checkbox } from "semantic-ui-react";
 
 import * as AssetsActions from "../../../../actions/assets";
 
@@ -32,6 +32,9 @@ class NFTPanes extends Component {
         const NFTAssets = nftAssets && nftAssets.data.map(asset => 
             <Card className="trending-assets-card" key={`nft-token-${asset.offer_id}`}>
                 <Image src={`https://ipfs.io/ipfs/${asset.collection.img}`} />
+                <Checkbox
+                    className="nftCheckBox-wrap"
+                />
                 <Card.Header className="t-card-title">{asset.collection.name}</Card.Header>
                 <Card.Meta>
                     <div className="t-card-author">{asset.collection.author}</div>
