@@ -171,10 +171,7 @@ class Home extends React.Component {
           <RecommendedApps history={history} />
           <div className="token-ntfs-section">
             <div className="right-badge">
-              <img
-                src={require("../../../../renderer/assets/images/dashboard/Group1737.png")}
-                onClick={this.goStaking}
-              />
+              confirm
             </div>
             <TabPanes statsFetcher={statsFetcher} actions={actions} />
           </div>

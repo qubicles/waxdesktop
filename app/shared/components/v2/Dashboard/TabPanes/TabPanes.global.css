@@ -70,10 +70,28 @@
   border-radius: 50% !important;
   background-color: #242b39 !important;
   border: 3px solid #ff886d !important;
+  opacity: 0.2 !important;
 }
 .nftCheckBox-wrap label:after {
   color: #ff886d !important;
   padding-top: 7px !important;
   font-size: 20px !important;
   padding-left: 5px !important;
+  content: '\E800' !important;
+  opacity: 0.2 !important;
 }
+.nftCheckBox-wrap input:checked~label:before {
+  width: 30px !important;
+  height: 30px !important;
+  border-radius: 50% !important;
+  background-color: #242b39 !important;
+  border: 3px solid #ff886d !important;
+  opacity: 1 !important;
+} 
+.nftCheckBox-wrap input:checked~label:after {
+  color: #ff886d !important;
+  padding-top: 7px !important;
+  font-size: 20px !important;
+  padding-left: 5px !important;
+  opacity: 1 !important;
+} 

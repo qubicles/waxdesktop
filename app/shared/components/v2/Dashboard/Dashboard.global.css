@@ -3,7 +3,7 @@
   display: flex;
   color: white;
   background-color: #242b39;
-  box-shadow: 0px 0px 89px 0px rgba(255,255,255,0.1);
+  box-shadow: 0px 0px 89px 0px rgba(255, 255, 255, 0.1);
   flex: 1;
 }
 
@@ -19,12 +19,19 @@
   background-color: #191f28;
   min-height: 1200px;
 }
-
+.token-ntfs-section .right-badge {
+  color: #ff886d;
+  padding: 10px 18px !important;
+  border: none !important;
+  border-radius: 20px !important;
+  background-color: rgba(255, 136, 109, 0.2) !important;
+  font-family: montserratBold;
+  font-size: 15px;
+}
 
 /* responsive */
 @media only screen and (max-width: 1050px) {
   .trending-assets-body {
     height: 290px !important;
   }
-  
 }

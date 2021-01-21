@@ -8,6 +8,9 @@ import * as AssetsActions from "../../../../actions/assets";
 class NFTPanes extends Component {
     constructor(props) {
         super(props);
+        this.state = {
+            assetsForSubmit: [],
+        }
     }
 
     componentDidMount() {
@@ -17,9 +20,22 @@ class NFTPanes extends Component {
             getNftAssets(owner);
         }
     }
+    toggleSellAssets = (e, { checked, name }) => {
+        const { assetsForSubmit } = this.state;
+        const existing = assetsForSubmit.indexOf(name);
+        if(checked && existing < 0) {
+            assetsForSubmit.push(name);
+        } else if (!checked && existing >=0) {
+            assetsForSubmit.splice(existing, 1);
+        }
+        this.setState({
+            assetsForSubmit: assetsForSubmit,
+        })
+    }
 
     render() {
         const { assets: { isAssetsLoading, nftAssets } } = this.props;
+        let assetCard = [];
 
         if (isAssetsLoading) {
             return <div>Loading...</div>
@@ -29,11 +45,14 @@ class NFTPanes extends Component {
             return <div>No data found</div>
         }
 
-        const NFTAssets = nftAssets && nftAssets.data.map(asset => 
-            <Card className="trending-assets-card" key={`nft-token-${asset.offer_id}`}>
+        const NFTAssets = nftAssets && nftAssets.data.map((asset, index) => 
+            <Card className="trending-assets-card" key={`nft-token-${asset.asset_id}`}>
                 <Image src={`https://ipfs.io/ipfs/${asset.collection.img}`} />
                 <Checkbox
                     className="nftCheckBox-wrap"
+                    name={`assetsCards${index}`}
+                    onChange={this.toggleSellAssets}
+                    
                 />
                 <Card.Header className="t-card-title">{asset.collection.name}</Card.Header>
                 <Card.Meta>
