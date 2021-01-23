@@ -40,6 +40,7 @@ class Balance extends Component {
         this.state = initialState;
     }
     componentDidMount() {
+       
         const {
             globals,
             accounts,
@@ -47,12 +48,13 @@ class Balance extends Component {
         } = this.props;
         if (accounts[settings['account']]) {
             const { balanceHistory } = accounts[settings['account']];
-            if (balanceHistory) {
+            if (balanceHistory && balanceHistory[0] && balanceHistory[1]) {
                 this.setState({
                     increaseBal: (parseFloat(balanceHistory[0].data.amount) - parseFloat(balanceHistory[1].data.amount)) / parseFloat(balanceHistory[1].data.amount)*100
                 })
             }
         }
+       
     }
     getBalance = (base) => {
         const {

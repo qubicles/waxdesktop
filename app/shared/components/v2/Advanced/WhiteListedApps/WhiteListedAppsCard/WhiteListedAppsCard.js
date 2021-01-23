@@ -55,19 +55,19 @@ class WhiteListedAppsCard extends React.Component {
                   }}
                 >
                   <div className="item-child-group">
-                    <div className="item-child-des">Markatbuy</div>
+                    <div className="item-child-des">Marketbuy</div>
                     <div className="common-checkbox">
                       <Checkbox />
                     </div>
                   </div>
                   <div className="item-child-group">
-                    <div className="item-child-des">Markatbuy</div>
+                    <div className="item-child-des">Marketsell</div>
                     <div className="common-checkbox">
                       <Checkbox />
                     </div>
                   </div>
                   <div className="item-child-group">
-                    <div className="item-child-des">Markatbuy</div>
+                    <div className="item-child-des">Limitorder</div>
                     <div className="common-checkbox">
                       <Checkbox />
                     </div>
