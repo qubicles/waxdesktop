@@ -94,9 +94,9 @@ export const purchaseAssets = (selectedAsset) => {
       const symbol = settings.blockchain.tokenSymbol;
       const contracts = balances.__contracts;
       const account = contracts[symbol].contract;
-      const price = Decimal(selectedAsset.price.amount/100000000).toFixed(8) + ' ' + selectedAsset.price.token_symbol;
-      const wdwPrice = Decimal(selectedAsset.price.amount/100000000*0.01).toFixed(8) + ' ' + selectedAsset.price.token_symbol;
-      const authorPrice = Decimal(selectedAsset.price.amount/100000000*0.08).toFixed(8) + ' ' + selectedAsset.price.token_symbol;
+      const price = Decimal(selectedAsset.price.amount / 100000000).toFixed(8) + ' ' + selectedAsset.price.token_symbol;
+      const wdwPrice = Decimal(selectedAsset.price.amount / 100000000 * 0.01).toFixed(8) + ' ' + selectedAsset.price.token_symbol;
+      const authorPrice = Decimal(selectedAsset.price.amount / 100000000 * 0.08).toFixed(8) + ' ' + selectedAsset.price.token_symbol;
       const assetAuthor = selectedAsset.collection.author;
       let actions = [
         {
@@ -189,10 +189,97 @@ export const purchaseAssets = (selectedAsset) => {
   };
 }
 
+export const sellAssets = (listPrice, selectedAssets) => {
+  return (dispatch: () => void, getState) => {
+    const {
+      balances,
+      connection,
+      settings,
+      accounts
+    } = getState();
+
+    dispatch({
+      type: types.SELL_ASSETS_PENDING
+    });
+
+    try {
+      const listingPrice = listPrice + ' ' + selectedAssets.prices[0].token.token_symbol;
+      let senderAssets = [];
+      let receipAssets = [];
+      senderAssets.push(selectedAssets.asset_id);
+      if (selectedAssets && listingPrice) {
+        let actions = [
+          // {
+          //   account: 'atomicmarket',
+          //   name: 'announcesale',
+          //   authorization: [{
+          //     actor: settings.account,
+          //     permission: 'active',
+          //   }],
+          //   data: {
+          //     seller: settings.account,
+          //     listing_price: listingPrice,
+          //     asset_ids: selectedAssets.asset_id,
+          //     settlement_symbol: `${selectedAssets.prices[0].token.token_precision},${selectedAssets.prices[0].token.token_symbol}`,
+          //     maker_marketplace: ""
+          //   },
+          // },
+          {
+            account: 'atomicassets',
+            name: 'createoffer',
+            authorization: [{
+              actor: settings.account,
+              permission: 'active',
+            }],
+            data: {
+              sender: settings.account,
+              recipient: "atomicmarket",
+              sender_asset_ids: senderAssets,
+              recipient_asset_ids: receipAssets,
+              memo: "sale"
+            },
+          }
+        ]
+
+        const payforaction = payforcpunet(settings.account, getState());
+        if (payforaction) actions = payforaction.concat(actions);
+
+        return eos(connection, true, payforaction !== null).transaction(
+          {
+            actions
+          },
+          {
+            broadcast: connection.broadcast,
+            expireInSeconds: connection.expireInSeconds,
+            sign: connection.sign
+          }).then((tx) => {
+            return dispatch({
+              payload: { tx },
+              type: types.SELL_ASSETS_SUCCESS
+            });
+          }).catch((err) => {
+            debugger
+            dispatch({
+              payload: { err },
+              type: types.SELL_ASSETS_FAILURE
+            })
+          });
+      }
+
+
+    } catch (err) {
+      return dispatch({
+        payload: { err },
+        type: types.SELL_ASSETS_FAILURE
+      })
+    }
+  }
+}
 export default {
   getTrendingAssets,
   getAssets,
   getActiveCollections,
   getNftAssets,
   purchaseAssets,
+  sellAssets
 };

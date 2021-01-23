@@ -4,12 +4,17 @@ import { connect } from "react-redux";
 import { Tab, Image, Card, Button, Checkbox } from "semantic-ui-react";
 
 import * as AssetsActions from "../../../../actions/assets";
+import * as GlobalsActions from "../../../../actions/globals";
+import SellAssetsModal from "../../Dashboard/Modals/SellAssetModal/SellAssetModal"
 
 class NFTPanes extends Component {
     constructor(props) {
         super(props);
         this.state = {
             assetsForSubmit: [],
+            sellAssetModal: false,
+            selectedAssets: "",
+            
         }
     }
 
@@ -20,7 +25,7 @@ class NFTPanes extends Component {
             getNftAssets(owner);
         }
     }
-    toggleSellAssets = (e, { checked, name }) => {
+    checkSellAssets = (e, { checked, name }) => {
         const { assetsForSubmit } = this.state;
         const existing = assetsForSubmit.indexOf(name);
         if(checked && existing < 0) {
@@ -33,9 +38,18 @@ class NFTPanes extends Component {
         })
     }
 
+    toggleSellAssetsModal = (index) => {
+        const { sellAssetModal } = this.state;
+        const { nftAssets } = this.props.assets;
+        this.setState({
+            sellAssetModal: !sellAssetModal,
+            selectedAssets: nftAssets.data[index]
+        })
+    }
+
     render() {
-        const { assets: { isAssetsLoading, nftAssets } } = this.props;
-        let assetCard = [];
+        const { assets: { isAssetsLoading, nftAssets }, actions, globals } = this.props;
+        const { sellAssetModal, selectedAssets } = this.state;
 
         if (isAssetsLoading) {
             return <div>Loading...</div>
@@ -51,7 +65,7 @@ class NFTPanes extends Component {
                 <Checkbox
                     className="nftCheckBox-wrap"
                     name={`assetsCards${index}`}
-                    onChange={this.toggleSellAssets}
+                    onChange={this.checkSellAssets}
                     
                 />
                 <Card.Header className="t-card-title">{asset.collection.name}</Card.Header>
@@ -60,14 +74,23 @@ class NFTPanes extends Component {
                     <div className="t-card-price">
                         <Image src={require('../../../../../renderer/assets/images/dashboard/Group47.png')} />
                         <div className="t-card-des">
-                            {asset.prices[0].sales ? `${asset.prices[0].sales} ${asset.prices[0].token.token_symbol}` : '' }
+                            {asset.prices[0].min ? `${asset.prices[0].min/100000000} ${asset.prices[0].token.token_symbol}` : '' }
                         </div>
                     </div>
                     <div className="card-btn-group">
                         <Button className="card-detail-btn">Details</Button>
-                        <Button className="card-buy-btn">Sell</Button>
+                        <Button className="card-buy-btn" onClick={() => this.toggleSellAssetsModal(index)}>Sell</Button>
                     </div>
                 </Card.Meta>
+                <SellAssetsModal 
+                    closeModal={this.toggleSellAssetsModal}
+                    modalOpen={sellAssetModal}
+                    history={history}
+                    actions={actions}
+                    selectedAssets={selectedAssets}
+                    location={location}
+                    globals={globals}
+                />
             </Card>
         )
 
@@ -79,7 +102,8 @@ class NFTPanes extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        assets: state.assets
+        assets: state.assets,
+        globals: state.globals,
     };
 }
 
@@ -87,6 +111,7 @@ const mapDispatchToProps = (dispatch) => {
     return {
         actions: bindActionCreators({
             ...AssetsActions,
+            ...GlobalsActions,
         }, dispatch)
     };
 }

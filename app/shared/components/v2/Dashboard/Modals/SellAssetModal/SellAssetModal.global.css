@@ -39,7 +39,7 @@
     margin-bottom: 20px !important;
 }
 .SellAssetModal-body .sell-right-container .seller-input input::placeholder {
-    color: white !important;
+    color: #707070 !important;
 }
 .SellAssetModal-body .seller-input {
     position: relative;
@@ -59,4 +59,8 @@
     color: white;
     font-size: 17px;
     font-family: montserratBold;
+}
+.SellAssetModal-body .warn-hint {
+    color: #ff886d;
+    padding: 5px;
 }
