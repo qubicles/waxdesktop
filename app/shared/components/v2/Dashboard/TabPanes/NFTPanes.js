@@ -78,7 +78,7 @@ class NFTPanes extends Component {
                         </div>
                     </div>
                     <div className="card-btn-group">
-                        <Button className="card-detail-btn">Details</Button>
+                        {/* <Button className="card-detail-btn">Details</Button> */}
                         <Button className="card-buy-btn" onClick={() => this.toggleSellAssetsModal(index)}>Sell</Button>
                     </div>
                 </Card.Meta>

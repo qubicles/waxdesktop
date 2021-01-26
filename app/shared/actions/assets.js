@@ -206,7 +206,7 @@ export const sellAssets = (listPrice, selectedAssets) => {
       const listingPrice = listPrice + ' ' + selectedAssets.prices[0].token.token_symbol;
       let senderAssets = [];
       let receipAssets = [];
-      senderAssets.push(selectedAssets.asset_id);
+      senderAssets.push(parseInt(selectedAssets.asset_id));
       if (selectedAssets && listingPrice) {
         let actions = [
           // {
@@ -219,7 +219,7 @@ export const sellAssets = (listPrice, selectedAssets) => {
           //   data: {
           //     seller: settings.account,
           //     listing_price: listingPrice,
-          //     asset_ids: selectedAssets.asset_id,
+          //     asset_ids: senderAssets,
           //     settlement_symbol: `${selectedAssets.prices[0].token.token_precision},${selectedAssets.prices[0].token.token_symbol}`,
           //     maker_marketplace: ""
           //   },
@@ -229,7 +229,7 @@ export const sellAssets = (listPrice, selectedAssets) => {
             name: 'createoffer',
             authorization: [{
               actor: settings.account,
-              permission: 'active',
+              permission: settings.authorization || 'active',
             }],
             data: {
               sender: settings.account,
