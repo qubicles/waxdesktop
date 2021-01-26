@@ -136,13 +136,16 @@ class Marketplace extends React.Component {
               </div>
             </div>
             <div className="card-btn-group">
-              <Button className="card-detail-btn">Details</Button>
-              <Button
+              <Button 
+              className="card-detail-btn"
+              onClick={() => this.toggleBuyAssetModal(index)}
+              >Details</Button>
+              {/* <Button
                 className="card-buy-btn"
                 onClick={() => this.toggleBuyAssetModal(index)}
               >
                 Buy
-              </Button>
+              </Button> */}
             </div>
           </Card.Meta>
         </Card>

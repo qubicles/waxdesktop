@@ -141,7 +141,7 @@ class CustomPermissions extends React.Component {
                                 </div>
                             </div>
                             {
-                                account.permissions.map((data, index) => {
+                                account.permissions && account.permissions.map((data, index) => {
                                     return (
                                         <div className="active-permission" key={index}>
                                             <div className="active-permission-left">
