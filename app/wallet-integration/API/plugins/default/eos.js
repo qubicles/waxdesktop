@@ -5,7 +5,8 @@ import Network from '../../models/Network'
 // import Account from '../../models/Account'
 // import KeyPairService from '../../services/KeyPairService'
 import Eos from 'eosjs';
-let {ecc, Fcbuffer} = Eos.modules;
+// let {ecc, Fcbuffer} = Eos.modules;
+import ecc from 'eosjs-ecc'
 import ObjectHelpers from '../../util/ObjectHelpers';
 import * as ricardianParser from 'eos-rc-parser';
 // import {Popup} from '../../models/popups/Popup'
