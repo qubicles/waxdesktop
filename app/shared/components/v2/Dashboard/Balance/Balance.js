@@ -166,12 +166,12 @@ class Balance extends Component {
                     </div>
                         <Image src={require('../../../../../renderer/assets/images/dashboard/credit-card2.png')} />
                     </div>
-                    {/* <div className="balance-button-wrap">
-                        <div className="balance-button-title" onClick={openSwapTokenModal}>
+                    <div className="balance-button-wrap">
+                        <div className="balance-button-title" onClick={this.toggleSwapTokenModal}>
                             Swap Tokens
                         </div>
                         <Image src={require('../../../../../renderer/assets/images/dashboard/Group1734.png')} />
-                    </div> */}
+                    </div>
                     <div className="balance-button-wrap" onClick={this.toggleResourcesModal}>
                         <div className="balance-button-title">
                             Resources

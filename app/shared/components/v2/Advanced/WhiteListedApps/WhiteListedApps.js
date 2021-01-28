@@ -45,7 +45,6 @@ class WhiteListedApps extends React.Component {
             <div className="whiteListedApps-body">
               <div className="w-title">Whitelisted Apps</div>
               <WhiteListedAppsCard />
-              <WhiteListedAppsCard />
             </div>
           </div>
         </div>

@@ -11,13 +11,23 @@ import {
 } from "semantic-ui-react";
 import { connect } from "react-redux";
 import Balance from "../../Dashboard/Balance/Balance";
+import StakingModal from "../../Staking/Modals/StakingModal/StakingModal";
 import "./CurrentStackingCard.global.css";
+
+const initialState = {
+  stakingModal: false
+}
 
 class CurrentStackingCard extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = initialState;
   }
+
+  toggleStakingModal = () => {
+    const { stakingModal } = this.state;
+    this.setState({ stakingModal: !stakingModal});
+};
 
   render() {
     return (
@@ -31,7 +41,7 @@ class CurrentStackingCard extends React.Component {
             <div>1,468,932.19 WAX</div>
           </div>
         </div>
-        <div className="stake-card-btn">Stake WAX</div>
+        <div className="stake-card-btn" onClick={this.toggleStakingModal}>Stake WAX</div>
       </div>
     );
   }
