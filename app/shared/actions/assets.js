@@ -1,8 +1,16 @@
 import * as types from "./types";
 import axios from "axios";
 import eos from './helpers/eos';
+
 import { payforcpunet } from './helpers/eos';
+import { decrypt } from './wallet';
 import { Decimal } from 'decimal.js';
+
+import { Api, JsonRpc, RpcError } from 'eosjs-new';
+import { JsSignatureProvider } from 'eosjs-new/dist/eosjs-jssig';
+
+const CryptoJS = require('crypto-js');
+const ecc = require('eosjs-ecc');
 
 export const getTrendingAssets = () => {
   return (dispatch: () => void, getState) => {
@@ -202,84 +210,154 @@ export const sellAssets = (listPrice, selectedAssets) => {
       type: types.SELL_ASSETS_PENDING
     });
 
-    try {
-      const listingPrice = listPrice + ' ' + selectedAssets.prices[0].token.token_symbol;
-      let senderAssets = [];
-      let receipAssets = [];
-      senderAssets.push(parseInt(selectedAssets.asset_id));
-      if (selectedAssets && listingPrice) {
-        let actions = [
-          // {
-          //   account: 'atomicmarket',
-          //   name: 'announcesale',
-          //   authorization: [{
-          //     actor: settings.account,
-          //     permission: 'active',
-          //   }],
-          //   data: {
-          //     seller: settings.account,
-          //     listing_price: listingPrice,
-          //     asset_ids: senderAssets,
-          //     settlement_symbol: `${selectedAssets.prices[0].token.token_precision},${selectedAssets.prices[0].token.token_symbol}`,
-          //     maker_marketplace: ""
-          //   },
-          // },
-          {
-            account: 'atomicassets',
-            name: 'createoffer',
-            authorization: [{
-              actor: settings.account,
-              permission: settings.authorization || 'active',
-            }],
-            data: {
-              sender: settings.account,
-              recipient: "atomicmarket",
-              sender_asset_ids: senderAssets,
-              recipient_asset_ids: receipAssets,
-              memo: "sale"
-            },
-          }
-        ]
 
-        const payforaction = payforcpunet(settings.account, getState());
-        if (payforaction) actions = payforaction.concat(actions);
-
-        return eos(connection, true, payforaction !== null).transaction(
-          {
-            actions
+    const listingPrice = listPrice + ' ' + selectedAssets.prices[0].token.token_symbol;
+    let senderAssets = [];
+    let receipAssets = [];
+    senderAssets.push(parseInt(selectedAssets.asset_id));
+    if (selectedAssets && listingPrice) {
+      let anounceActions = [
+        {
+          account: 'atomicmarket',
+          name: 'announcesale',
+          authorization: [{
+            actor: settings.account,
+            permission: 'active',
+          }],
+          data: {
+            seller: settings.account,
+            listing_price: listingPrice,
+            asset_ids: senderAssets,
+            settlement_symbol: `${selectedAssets.prices[0].token.token_precision},${selectedAssets.prices[0].token.token_symbol}`,
+            maker_marketplace: ""
           },
-          {
-            broadcast: connection.broadcast,
-            expireInSeconds: connection.expireInSeconds,
-            sign: connection.sign
-          }).then((tx) => {
-            return dispatch({
-              payload: { tx },
-              type: types.SELL_ASSETS_SUCCESS
-            });
-          }).catch((err) => {
-            debugger
-            dispatch({
-              payload: { err },
-              type: types.SELL_ASSETS_FAILURE
-            })
-          });
-      }
+        }
+      ]
+      let createOfferAction = [
+        {
+          account: 'atomicassets',
+          name: 'createoffer',
+          authorization: [{
+            actor: settings.account,
+            permission: settings.authorization || 'active',
+          }],
+          data: {
+            sender: settings.account,
+            recipient: "atomicmarket",
+            sender_asset_ids: senderAssets,
+            recipient_asset_ids: receipAssets,
+            memo: "sale"
+          },
+        }
+      ]
 
+      
+      eos(connection, true, false).transaction(
+        {
+          actions: anounceActions
+        },
+        {
+          broadcast: connection.broadcast,
+          expireInSeconds: connection.expireInSeconds,
+          sign: connection.sign
+        }).then((tx) => {
+          dispatch({
+            type: types.UNNOUNCE_SELL_SUCCESS
+          })
 
-    } catch (err) {
-      return dispatch({
-        payload: { err },
-        type: types.SELL_ASSETS_FAILURE
-      })
+          const { hash, key } = connection.keyProviderObfuscated;
+          if (hash && key) {
+            const wif = decrypt(key, hash, 1).toString(CryptoJS.enc.Utf8);
+            if (ecc.isValidPrivate(wif) === true) {
+              const defaultPrivateKey = wif;
+              const signatureProvider = new JsSignatureProvider([defaultPrivateKey]);
+              const rpc = new JsonRpc(connection.httpEndpoint, { fetch });
+              const api = new Api({ rpc, signatureProvider, textDecoder: new TextDecoder(), textEncoder: new TextEncoder() });
+              (async () => {
+                await api.transact({
+                  actions: createOfferAction
+                },
+                  {
+                    blocksBehind: 3,
+                    expireSeconds: 30,
+                  }).then((tx) => {
+                    dispatch({
+                      type: types.SELL_ASSETS_SUCCESS
+                    })
+                  }).catch((err) => {
+                    debugger
+                    dispatch({
+                      type: types.SELL_ASSETS_FAILURE
+                    })
+                  });
+              })();
+            }
+          }
+
+        }).catch((err) => {
+          debugger
+          dispatch({
+            type: types.UNNOUNCE_SELL_FAILURE
+          })
+        });
     }
   }
 }
+
+export const cancelSellAssets = (selectedAssets) => {
+  return (dispatch: () => void, getState) => {
+    const {
+      balances,
+      connection,
+      settings,
+      accounts
+    } = getState();
+
+    let cancelAction = [
+      {
+        account: 'atomicmarket',
+        name: 'cancelsale',
+        authorization: [{
+          actor: settings.account,
+          permission: 'active',
+        }],
+        data: {
+          sale_id: selectedAssets.sales[0].sale_id,
+        },
+      }
+    ]
+
+    const { hash, key } = connection.keyProviderObfuscated;
+    if (hash && key) {
+      const wif = decrypt(key, hash, 1).toString(CryptoJS.enc.Utf8);
+      if (ecc.isValidPrivate(wif) === true) {
+        const defaultPrivateKey = wif;
+        const signatureProvider = new JsSignatureProvider([defaultPrivateKey]);
+        const rpc = new JsonRpc(connection.httpEndpoint, { fetch });
+        const api = new Api({ rpc, signatureProvider, textDecoder: new TextDecoder(), textEncoder: new TextEncoder() });
+        (async () => {
+          await api.transact({
+            actions: cancelAction
+          },
+            {
+              blocksBehind: 3,
+              expireSeconds: 30,
+            }).then((tx) => { }).catch((err) => {
+              debugger
+            });
+        })();
+      }
+    }
+
+  }
+}
+
 export default {
   getTrendingAssets,
   getAssets,
   getActiveCollections,
   getNftAssets,
   purchaseAssets,
-  sellAssets
+  sellAssets,
+  cancelSellAssets
 };

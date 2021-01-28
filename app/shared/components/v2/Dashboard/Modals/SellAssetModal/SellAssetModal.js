@@ -51,10 +51,10 @@ class SellAssetModal extends React.Component {
   }
   submitSellAsset = () => {
     const { actions: { sellAssets }, selectedAssets } = this.props;
+    // this.props.actions.cancelSellAssets(selectedAssets);
     const { buyPrice } = this.state;
-    const listPrice = (parseFloat(buyPrice) * 0.91).toFixed(8);
-
-    if (listPrice && listPrice != 0) {
+    if (buyPrice && buyPrice != 0) {
+      const listPrice = (parseFloat(buyPrice) * 0.91).toFixed(8);
       sellAssets(listPrice, selectedAssets);
     } else {
       this.setState({
@@ -135,7 +135,7 @@ class SellAssetModal extends React.Component {
                 {
                   (errMsg)
                     ? (
-                     <p className="warn-hint">This field is required and must be a number</p>
+                      <p className="warn-hint">This field is required and must be a number</p>
                     )
                     : false
                 }
