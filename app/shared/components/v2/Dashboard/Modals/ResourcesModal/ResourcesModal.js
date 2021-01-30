@@ -178,7 +178,7 @@ class ResourcesModal extends React.Component {
 
 		const panes = [
 			{
-				menuItem: 'Network Resources',
+				menuItem: 'Stake',
 				render: () => <Tab.Pane attached={false}>
 					<ResourceUsageStats
 						cpuUsage={cpuUsage}
@@ -226,50 +226,50 @@ class ResourcesModal extends React.Component {
 					{/* </Form> */}
 				</Tab.Pane>,
 			},
-			// {
-			// 	menuItem: 'Unstake',
-			// 	render: () => <Tab.Pane attached={false}>
-			// 		<ResourceUsageStats
-			// 			cpuUsage={cpuUsage}
-			// 			netUsage={netUsage}
-			// 			ramUsage={ramUsage}
-			// 			parsedCpuWeight={parsedCpuWeight}
-			// 			parsedNetWeight={parsedNetWeight}
-			// 			settings={settings}
-			// 		/>
-			// 		<div className="resource-choose-section">
-			// 			<Dropdown
-			// 				defaultValue={selectItemUnstake}
-			// 				name="selectItemUnstake"
-			// 				selection
-			// 				options={options}
-			// 				className="resource-choose-dropdown"
-			// 				onChange={this.onChange}
-			// 			/>
-			// 			<div className="input-button-wrap">
-			// 				<Form.Field 
-			// 					className="common-input-wrap"
-			// 					control={Input}
-			// 					name="amountValUnstake"
-			// 					placeholder="Amount Of WAX" 
-			// 					value={amountValUnstake}
-			// 					onChange={this.onChange}
-			// 					required
-			// 				/>
-			// 				<div className="circle-btn-wrap" onClick={this.onSubmit1}>
-			// 					<img src={require('../../../../../../renderer/assets/images/dashboard/correct2.png')} />
-			// 				</div>
-			// 			</div>
-			// 		</div>
-			// 		{
-			// 			(errorMsg) ? (
-			// 				<div className="warnning-alert">
-			// 					{errorMsg}
-			// 				</div>
-			// 			): ''
-			// 		}
-			// 	</Tab.Pane>,
-			// },
+			{
+				menuItem: 'Unstake',
+				render: () => <Tab.Pane attached={false}>
+					<ResourceUsageStats
+						cpuUsage={cpuUsage}
+						netUsage={netUsage}
+						ramUsage={ramUsage}
+						parsedCpuWeight={parsedCpuWeight}
+						parsedNetWeight={parsedNetWeight}
+						settings={settings}
+					/>
+					<div className="resource-choose-section">
+						<Dropdown
+							defaultValue={selectItemUnstake}
+							name="selectItemUnstake"
+							selection
+							options={options}
+							className="resource-choose-dropdown"
+							onChange={this.onChange}
+						/>
+						<div className="input-button-wrap">
+							<Form.Field 
+								className="common-input-wrap"
+								control={Input}
+								name="amountValUnstake"
+								placeholder="Amount Of WAX" 
+								value={amountValUnstake}
+								onChange={this.onChange}
+								required
+							/>
+							<div className="circle-btn-wrap" onClick={this.onSubmit1}>
+								<img src={require('../../../../../../renderer/assets/images/dashboard/correct2.png')} />
+							</div>
+						</div>
+					</div>
+					{
+						(errorMsg) ? (
+							<div className="warnning-alert">
+								{errorMsg}
+							</div>
+						): ''
+					}
+				</Tab.Pane>,
+			},
 		]
 
 		return (
