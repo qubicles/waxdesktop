@@ -18,19 +18,41 @@ class HistoryChart extends Component {
         this.state = {
             balData: initBalData,
             buttonColor: '',
+            changeDate: false,
         }
     }
 
-    componentDidMount() {
-        this.changeRange(null, 'all');
+    static getDerivedStateFromProps(props, state) {
+        const { accounts, settings } = props;
+        const { changeDate } = state;
+        if (changeDate == false) {
+            if (accounts && accounts[settings.account] && accounts[settings.account].balanceHistory) {
+                console.log(state.changeDate)
+                const balTemp = accounts[settings.account].balanceHistory;
+                let newBalData = [
+                    ['Date', 'Amount'],
+                ]
+
+                balTemp.map((balList) => {
+                    newBalData.push([new Date(balList.timestamp).getTime(), balList.data.amount]);
+                });
+
+                return {
+                    balData: newBalData,
+                    changeDate: true
+                };
+            }
+        } 
+        return null;
+
     }
 
     changeRange(e, range) {
-        if(e) { 
+        if (e) {
             let allhistoryBtn = document.getElementsByClassName('bal-history-btn');
-            for(let element in allhistoryBtn ) {
-                if(allhistoryBtn[element].style) allhistoryBtn[element].style.background = 'transparent';
-                if(allhistoryBtn[element].style) allhistoryBtn[element].style.border = '1px solid white';
+            for (let element in allhistoryBtn) {
+                if (allhistoryBtn[element].style) allhistoryBtn[element].style.background = 'transparent';
+                if (allhistoryBtn[element].style) allhistoryBtn[element].style.border = '1px solid white';
             }
             e.target.style.backgroundColor = '#ff886d';
             e.target.style.border = 'none';
@@ -116,10 +138,10 @@ class HistoryChart extends Component {
                     }}
                 />
                 <div className="chart-button-group">
-                    <div className="chart-white-btn bal-history-btn" onClick={(e) => this.changeRange(e,'day')}>1D</div>
-                    <div className="chart-white-btn bal-history-btn" onClick={(e) => this.changeRange(e,'week')}>1W</div>
-                    <div className="chart-white-btn bal-history-btn" onClick={(e) => this.changeRange(e,'month')}>1M</div>
-                    <div className="chart-orange-btn bal-history-btn" onClick={(e) => this.changeRange(e,'all')}>All</div>
+                    <div className="chart-white-btn bal-history-btn" onClick={(e) => this.changeRange(e, 'day')}>1D</div>
+                    <div className="chart-white-btn bal-history-btn" onClick={(e) => this.changeRange(e, 'week')}>1W</div>
+                    <div className="chart-white-btn bal-history-btn" onClick={(e) => this.changeRange(e, 'month')}>1M</div>
+                    <div className="chart-orange-btn bal-history-btn" onClick={(e) => this.changeRange(e, 'all')}>All</div>
                 </div>
             </div>
 
