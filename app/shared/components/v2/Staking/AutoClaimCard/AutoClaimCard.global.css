@@ -1,13 +1,12 @@
 /* staking card radio */
-.s-custom-radio .ui.toggle.checkbox .box:before, .ui.toggle.checkbox label:before {
-    background-color: white !important;
-    border: none !important;
+.s-custom-radio .ui.toggle.checkbox input:checked~.box:before, .s-custom-radio .ui.toggle.checkbox input:checked~label:before {
+    background-color: #ff886d !important;
 }
 .s-custom-radio .ui.checkbox input:indeterminate~.box:after, .ui.checkbox input:indeterminate~label:after {
     background-color: #242b39 !important;
     content: '\00d7' !important;
     color: white !important;
-    font-size: 16px;
+    font-size: 14px;
     border: none !important;
     width: 18px !important;
     height: 18px !important;
@@ -15,10 +14,7 @@
     left: 1px !important;
 }
 
-.s-custom-radio .ui.toggle.checkbox input:focus~.box:before, .ui.toggle.checkbox input:focus~label:before {
-    background-color: white !important;
-}
-.s-custom-radio .ui.toggle.checkbox .box:hover::before, .ui.toggle.checkbox label:hover::before {
+.s-custom-radio .ui.toggle.checkbox .box::before, .s-custom-radio .ui.toggle.checkbox label::before {
     background-color: white !important;
 }
 .s-custom-radio .ui.toggle.checkbox input:focus:checked~.box:before, .s-custom-radio .ui.toggle.checkbox input:focus:checked~label:before {
@@ -33,6 +29,11 @@
     background-color: #242b39 !important;
     border-radius: 50% !important;
     border-color: #ff886d !important;
+    left: 29px !important;
+    font-size: 15px !important;
+    width: 18px !important;
+    height: 18px !important;
+    top: 1px !important;
 }
 
 .staking-card-right {
@@ -60,5 +61,9 @@
 }
 .staking-card-right .stake-card-btn {
     background-color: #ff886d;
-    opacity: 0.2;
+    margin-top: 30px;
+    padding: 20px;
+    border-radius: 30px;
+    font-size: 20px;
+    color: white;
 }

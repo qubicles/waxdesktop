@@ -33,7 +33,7 @@ class CurrentStackingCard extends React.Component {
 
   render() {
     const { resourcesModal } = this.state;
-    const { history, location, accounts, settings, globals } = this.props
+    const { history, location, accounts, settings, globals, actions } = this.props
     return (
       <div className="staking-card-left">
         <div className="staking-card-logo">
