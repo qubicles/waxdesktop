@@ -51,6 +51,7 @@ class Home extends React.Component {
     } = actions;
 
     if (settings.account) {
+      getAccount(settings.account);
       getBalanceHistory(settings.account);
     }
 
