@@ -12,7 +12,6 @@ export default function accounts(state = initialState, action) {
       return initialState;
     }
     case types.GET_ACCOUNT_SUCCESS: {
-      debugger
       return Object.assign({}, state, {
         __updated: Date.now(),
         [action.payload.results.account_name]: action.payload.results
@@ -35,7 +34,6 @@ export default function accounts(state = initialState, action) {
         ...state
       }
     case types.GET_BALANCE_HISTORY_SUCCESS:
-      debugger
       return Object.assign({}, state, {
         [action.payload.account_name]: 
           Object.assign({}, state[action.payload.account_name], action.payload.balHistory)

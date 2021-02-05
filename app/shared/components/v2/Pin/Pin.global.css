@@ -217,4 +217,16 @@ input[type="number"] {
 .resetWalletModal {
   height: auto;
   box-sizing: border-box;
+  background: rgba(25, 31, 40, 1) !important;
+}
+.resetWalletModal.ui.modal>.header {
+  background-color: unset !important;
+  text-align: center;
+  padding-top: 50px;
+}
+.resetWalletModal.ui.modal>.content {
+  background-color: unset !important;
+}
+.resetWalletModal.ui.modal>.actions {
+  background-color: unset !important;
 }
