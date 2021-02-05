@@ -21,42 +21,13 @@ import "./AutoClaimCard.global.css";
 class AutoClaimCard extends React.Component {
   constructor(props) {
     super(props);
-    let { account, settings } = props;
-    if (!account) account = {};
-    const {
-      cpu_weight,
-      net_weight
-    } = account.self_delegated_bandwidth || {
-      cpu_weight: '0.'.padEnd(settings.tokenPrecision + 2, '0') + ' ' + settings.blockchain.tokenSymbol,
-      net_weight: '0.'.padEnd(settings.tokenPrecision + 2, '0') + ' ' + settings.blockchain.tokenSymbol
-    };
-
-    const parsedCpuWeight = cpu_weight.split(' ')[0];
-    const parsedNetWeight = net_weight.split(' ')[0];
-
     this.state = {
-      cpuOriginal: Decimal(parsedCpuWeight),
       lastClaimTime: {},
       nextClaimTime: {},
       rewardsDue: 0,
       stakedBalance: 0,
       secondsSinceClaimed: 0,
-      netOriginal: Decimal(parsedNetWeight)
     };
-  }
-
-  componentWillMount() {
-    const {
-      cpuAmount,
-      cpuOriginal,
-      netAmount,
-      netOriginal
-    } = this.props;
-
-    this.setState({
-      cpuOriginal: cpuOriginal || cpuAmount || Decimal(0),
-      netOriginal: netOriginal || netAmount || Decimal(0)
-    });
   }
 
   componentDidMount() {
@@ -66,17 +37,23 @@ class AutoClaimCard extends React.Component {
   componentWillUnmount() {
     clearInterval(this.interval);
   }
+
   tick() {
+    let { accounts, settings } = this.props;
+    if (!accounts) accounts = {};
     const {
-      accounts,
-      settings
-    } = this.props;
+      cpu_weight,
+      net_weight
+    } = accounts[settings.account].self_delegated_bandwidth || {
+      cpu_weight: '0.'.padEnd(settings.tokenPrecision + 2, '0') + ' ' + settings.blockchain.tokenSymbol,
+      net_weight: '0.'.padEnd(settings.tokenPrecision + 2, '0') + ' ' + settings.blockchain.tokenSymbol
+    };
 
-    const {
-      cpuOriginal,
-      netOriginal
-    } = this.state;
-
+    const parsedCpuWeight = cpu_weight.split(' ')[0];
+    const parsedNetWeight = net_weight.split(' ')[0];
+    const cpuOriginal = Decimal(parsedCpuWeight);
+    const netOriginal = Decimal(parsedNetWeight);
+    
     if (accounts[settings.account]) {
       const account = accounts[settings.account];
       if (account.voter_info && account.voter_info.last_claim_time) {
@@ -88,7 +65,6 @@ class AutoClaimCard extends React.Component {
         const secondsSince = ((new Date().getTime() - lastClaimed.getTime()) / 1000);
         const staked = cpuOriginal.plus(netOriginal);
         const rewards = 0.000000010560287 * secondsSince * staked;
-
         this.setState({
           lastClaimTime: lastClaimed,
           nextClaimTime: nextClaim,
@@ -100,32 +76,26 @@ class AutoClaimCard extends React.Component {
     }
   }
 
-  claimAutomatically = () => {
+  claimVote = () => {
     const {
-      actions,
-      settings
+      actions
     } = this.props;
+    const {
+      claimVotingRewards
+    } = actions;
 
-    if (settings.claimGBMRewards === true) {
-      actions.setSetting('claimGBMRewards', false);
-      actions.setSetting('claimGBMBuyRAM', false);
-      actions.setSetting('claimGBMRestake', false);
-    }
-    else
-      actions.setSetting('claimGBMRewards', true);
+    claimVotingRewards();
   }
 
-  claimNow = () => {
+  claimGenesis = () => {
     const {
       actions
     } = this.props;
     const {
       claimGBMRewards,
-      claimVotingRewards
     } = actions;
 
     claimGBMRewards();
-    claimVotingRewards();
   }
 
   render() {
@@ -140,11 +110,11 @@ class AutoClaimCard extends React.Component {
       secondsSinceClaimed,
       stakedBalance
     } = this.state;
-    
+
     return (
       <div className="staking-card-right">
         <div className="staking-card-radio">
-          <div>Auto-Claim</div>
+          {/* <div>Auto-Claim</div>
           <div className="s-custom-radio">
             <Radio
               toggle
@@ -152,16 +122,22 @@ class AutoClaimCard extends React.Component {
               onChange={this.claimAutomatically}
               checked={settings.claimGBMRewards === true}
             />
-          </div>
+          </div> */}
         </div>
         <div className="s-card-des">
           <div>Next Claim</div>
           <Moment fromNow>{nextClaimTime}</Moment>
         </div>
         <Button
-          className="stake-card-btn"
-          content="Claim Rewards"
-          onClick={this.claimNow}
+          className="claim-btn"
+          content="Claim Vote"
+          onClick={this.claimVote}
+          disabled={rewardsDue <= 0 || secondsSinceClaimed < 86400}
+        />
+        <Button
+          className="claim-btn"
+          content="Claim Genesis"
+          onClick={this.claimGenesis}
           disabled={rewardsDue <= 0 || secondsSinceClaimed < 86400}
         />
       </div>
