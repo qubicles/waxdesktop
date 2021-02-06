@@ -14,7 +14,7 @@ import { bindActionCreators } from "redux";
 import * as AccountActions from "../../../../actions/accounts";
 import * as SettingsActions from "../../../../actions/settings";
 import * as GlobalsActions from "../../../../actions/globals"
-import ResourcesModal from "../../Dashboard/Modals/ResourcesModal/ResourcesModal";
+import StakingModal from "../Modals/StakingModal/StakingModal"
 import "./CurrentStackingCard.global.css";
 
 
@@ -22,17 +22,17 @@ class CurrentStackingCard extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      resourcesModal: false,
+      stakingModal: false,
     };
   }
 
-  toggleResourcesModal = () => {
-    const { resourcesModal } = this.state;
-    this.setState({ resourcesModal: !resourcesModal });
+  toggleStakingModal = () => {
+    const { stakingModal } = this.state;
+    this.setState({ stakingModal: !stakingModal });
   };
 
   render() {
-    const { resourcesModal } = this.state;
+    const { stakingModal } = this.state;
     const { history, location, accounts, settings, globals, actions } = this.props
     return (
       <div className="staking-card-left">
@@ -45,17 +45,20 @@ class CurrentStackingCard extends React.Component {
             <div>1,468,932.19 WAX</div>
           </div>
         </div>
-        <div className="stake-card-btn" onClick={this.toggleResourcesModal}>Stake Rewards</div>
-        {resourcesModal && (
-          <ResourcesModal
-            closeModal={this.toggleResourcesModal}
-            modalOpen={resourcesModal}
+        <Button 
+          className="stake-card-btn"
+          onClick={this.toggleStakingModal}
+        >
+          Staking Rewards
+        </Button>
+        {stakingModal && (
+          <StakingModal
+            closeModal={this.toggleStakingModal}
+            modalOpen={stakingModal}
             history={history}
             actions={actions}
             location={location}
-            accounts={accounts}
             settings={settings}
-            globals={globals}
           />
         )}
       </div>
@@ -69,22 +72,22 @@ CurrentStackingCard.defaultProps = {};
 
 const mapStateToProps = state => {
   return {
-      settings: state.settings,
-      globals: state.globals,
-      accounts: state.accounts,
+    settings: state.settings,
+    globals: state.globals,
+    accounts: state.accounts,
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-      actions: bindActionCreators(
-          {
-              ...AccountActions,
-              ...GlobalsActions,
-              ...SettingsActions,
-          },
-          dispatch
-      )
+    actions: bindActionCreators(
+      {
+        ...AccountActions,
+        ...GlobalsActions,
+        ...SettingsActions,
+      },
+      dispatch
+    )
   };
 };
 

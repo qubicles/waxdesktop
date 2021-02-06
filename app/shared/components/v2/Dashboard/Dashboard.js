@@ -4,7 +4,6 @@ import { Divider, Tab, Dropdown } from "semantic-ui-react";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 
-import DashboardTokenModal from "./Modals/TokenModal/DashboardTokenModal";
 import TabPanes from "./TabPanes/TabPanes";
 import ImportAccountModal from "./Modals/ImportAccountModal/ImportAccountModal";
 import CreateAccountModal from "./Modals/CreateAccountModal/CreateAccountModal";

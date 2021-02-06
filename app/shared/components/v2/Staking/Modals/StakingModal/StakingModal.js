@@ -12,14 +12,39 @@ class StakingModal extends React.Component {
     this.state = {
 
     }
-
   }
 
-  // render() {
-  //   return (
+  componentDidMount() {
+    const { actions } = this.props;
+    // actions.getGenesisBalance("bxxaw.wam");
+    actions.testVoteRewards()
+  }
 
-  //   )
-  // }
+  render() {
+    const { modalOpen, closeModal, settings, actions } = this.props;
+    return (
+      <Modal
+        onClose={closeModal}
+        className="dashboardTokenModal"
+        size={"tiny"}
+        open={modalOpen}
+      >
+        <Modal.Content className="dashboardTokenModal-body">
+          <div className="modal-header">
+            <span>Staking </span>
+            <span> Rewards</span>
+          </div>
+          <div className="modal-body">
+            <div>
+              <span>Total Genesis WAX tokens: </span>
+              <span>234234.4646 WAX</span> 
+            </div>
+
+          </div>
+        </Modal.Content>
+      </Modal>
+    );
+  }
 
 }
 
