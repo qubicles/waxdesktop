@@ -512,46 +512,6 @@ export function claimGBMRewards() {
   };
 }
 
-export function testVoteRewards() {
-  return (dispatch: () => void, getState) => {
-    const { connection, settings } = getState();
-
-    const { account } = settings;
-
-    // Build the operation to perform
-    const op = {
-      actions: [
-        {
-          account: "eosio",
-          name: "collect_voter_reward",
-          authorization: [
-            {
-              actor: account,
-              permission: settings.authorization || "active"
-            }
-          ],
-          data: {
-            owner: account
-          }
-        }
-      ]
-    };
-
-    return eos2(connection, true)
-      .transact(op, {
-        broadcast: true,
-        blocksBehind: 3,
-        expireSeconds: 120
-      })
-      .then(tx => {
-        debugger
-      })
-      .catch(err =>{
-        debugger
-      }
-      );
-  };
-}
 
 export function claimVotingRewards() {
   return (dispatch: () => void, getState) => {
@@ -657,5 +617,4 @@ export default {
   getNFTBalance,
   previousAccounts,
   getBalanceHistory,
-  testVoteRewards
 };

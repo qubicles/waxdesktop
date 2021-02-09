@@ -65,6 +65,7 @@ class AutoClaimCard extends React.Component {
         const secondsSince = ((new Date().getTime() - lastClaimed.getTime()) / 1000);
         const staked = cpuOriginal.plus(netOriginal);
         const rewards = 0.000000010560287 * secondsSince * staked;
+        // debugger
         this.setState({
           lastClaimTime: lastClaimed,
           nextClaimTime: nextClaim,

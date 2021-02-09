@@ -27,7 +27,6 @@ class HistoryChart extends Component {
         const { changeDate } = state;
         if (changeDate == false) {
             if (accounts && accounts[settings.account] && accounts[settings.account].balanceHistory) {
-                console.log(state.changeDate)
                 const balTemp = accounts[settings.account].balanceHistory;
                 let newBalData = [
                     ['Date', 'Amount'],

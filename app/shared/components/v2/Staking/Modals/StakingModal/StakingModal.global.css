@@ -1,48 +1,24 @@
-.modal-body input:first-child {
-    margin-bottom: 10px !important;
+.staking-modal-body {
+  display: flex;
+  padding-bottom: 50px;
 }
-.stakingModal-body .resource-choose-dropdown {
-    background-color: #242b39 !important;
-    border: 1px solid rgba(255, 255, 255, 0.15) !important;
+.staking-modal-body .modal-header span:first-child {
+  font-family: montserratMedium !important;
 }
-.stakingModal-body .resource-choose-dropdown .visible {
-    background-color: #242b39 !important;
-    border: 1px solid rgba(255, 255, 255, 0.15) !important;
+.staking-modal-body .modal-header span:last-child {
+  font-family: montserratMedium !important;
 }
-.stakingModal-body .delegate-btn {
-    margin-bottom: 20px;
-    margin-top: 20px;
-    text-align: center;
+.staking-modal-body .modal-header {
+  padding-top: 30px;
+  padding-bottom: 50px;
+}
+.staking-modal-body .modal-body {
+  padding-bottom: 30px;
+}
+.rewards-info-row {
     color: white;
-    border-radius: 20px;
-    background-color: #ff886d;
-    padding-top: 15px;
-    padding-bottom: 15px;
-    font-size: 24px;
-    font-family: montserratBold;
-}
-.delegate-btn img {
-    margin-left: 10px;
-    width: 22px;
-}
-
-.ui-common-input input {
-    background-color: #242b39 !important;
-    border: 0 !important;
-    height: 50px !important;
-    width: 100% !important;
-    border-radius: 30px !important;
-    color: white !important;
-    font-size: 20px !important;
-    font-family: montserratBold !important;
-}
-
-.ui-common-input input:focus {
-    outline: none !important;
-}
-.ui-common-input input::placeholder {
-    font-size: 20px !important;
-    font-family: montserrat;
-    font-family: montserratBold;
-    color: #707070 !important;
+    font-family: montserratSemiBold;
+    font-size: 20px;
+    display: flex;
+    justify-content: space-between;
 }
