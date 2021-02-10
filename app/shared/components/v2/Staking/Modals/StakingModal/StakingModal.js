@@ -24,6 +24,7 @@ class StakingModal extends React.Component {
       genesisTotalBal: 0,
       gbmRewards: 0,
       totalVoteRewards: 0,
+      dateSince: 0,
     };
   }
 
@@ -35,16 +36,24 @@ class StakingModal extends React.Component {
     eos(connection).getActions(settings.account, -1, -100000).then((results) => {
       if (results && results.actions) {
         let mapVoteAmt = 0;
+        let firstVoteTime = [];
         results.actions.map(action => {
           if (action && action.action_trace && action.action_trace.act) {
             const trace = action.action_trace.act;
             if (trace.name == "delegatebw" && trace.data.from == "eosio.voters") {
               mapVoteAmt += parseFloat(trace.data.amount);
+              firstVoteTime.push(new Date(action.block_time).getTime());
             }
           }
         });
+        firstVoteTime.sort(function(a, b) {
+          return a - b;
+        });
+
+        const voteRangeDay = (new Date().getTime() - firstVoteTime[0]) / 86400000;
         this.setState({
           totalVoteRewards: mapVoteAmt,
+          dateSince: voteRangeDay,
         })
       }
     })
@@ -96,9 +105,10 @@ class StakingModal extends React.Component {
 
   render() {
     const { modalOpen, closeModal } = this.props;
-    const { genesisTotalBal, voteRewardsDue, gbmRewards, totalVoteRewards } = this.state;
+    const { genesisTotalBal, voteRewardsDue, gbmRewards, totalVoteRewards, dateSince } = this.state;
     const totalPending = gbmRewards != 0 ? parseFloat(voteRewardsDue) + parseFloat(gbmRewards.split(" ")[0]) : voteRewardsDue;
     const totalRewards = parseFloat(genesisTotalBal) + parseFloat(totalVoteRewards);
+    const dailyRewards = totalRewards/dateSince;
     return (
       <Modal
         onClose={closeModal}
@@ -118,7 +128,7 @@ class StakingModal extends React.Component {
             </div>
             <div className="rewards-info-row">
               <span>Daily Rewards: </span>
-              <span>234234.4646 WAX</span>
+              <span>{dailyRewards.toFixed(8)} WAX</span>
             </div>
             <div className="rewards-info-row">
               <span>Rewards earned to date: </span>
