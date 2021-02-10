@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import { Dropdown, Modal, Form, Input, Button } from "semantic-ui-react";
 import { Decimal } from 'decimal.js';
 import { find } from "lodash";
+import eos from '../../../../../actions/helpers/eos';
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import * as AccountActions from "../../../../../actions/accounts";
@@ -22,13 +23,33 @@ class StakingModal extends React.Component {
       secondsSinceClaimed: 0,
       genesisTotalBal: 0,
       gbmRewards: 0,
+      totalVoteRewards: 0,
     };
   }
 
   componentDidMount() {
     this.tick();
     this.interval = setInterval(this.tick.bind(this), 5000);
+    // get stake CPU/NET history
+    const { connection, settings } = this.props;
+    eos(connection).getActions(settings.account, -1, -100000).then((results) => {
+      if (results && results.actions) {
+        let mapVoteAmt = 0;
+        results.actions.map(action => {
+          if (action && action.action_trace && action.action_trace.act) {
+            const trace = action.action_trace.act;
+            if (trace.name == "delegatebw" && trace.data.from == "eosio.voters") {
+              mapVoteAmt += parseFloat(trace.data.amount);
+            }
+          }
+        });
+        this.setState({
+          totalVoteRewards: mapVoteAmt,
+        })
+      }
+    })
   }
+
   componentWillUnmount() {
     clearInterval(this.interval);
   }
@@ -66,7 +87,7 @@ class StakingModal extends React.Component {
           secondsSinceClaimed: secondsSince,
           stakedBalance: staked,
           voteRewardsDue: rewards,
-          genesisTotalBal: balances && balances.__genesisbal && balances.__genesisbal.balance ? balances.__genesisbal.balance : 0, 
+          genesisTotalBal: balances && balances.__genesisbal && balances.__genesisbal.balance ? balances.__genesisbal.balance : 0,
           gbmRewards: balances && balances.__genesisbal && balances.__genesisbal.unclaimed_balance ? balances.__genesisbal.unclaimed_balance : 0,
         });
       }
@@ -75,8 +96,9 @@ class StakingModal extends React.Component {
 
   render() {
     const { modalOpen, closeModal } = this.props;
-    const { genesisTotalBal, voteRewardsDue, gbmRewards } = this.state
-    const totalPending = gbmRewards != 0 ? parseFloat(voteRewardsDue) + parseFloat(gbmRewards.split(" ")[0]): voteRewardsDue;
+    const { genesisTotalBal, voteRewardsDue, gbmRewards, totalVoteRewards } = this.state;
+    const totalPending = gbmRewards != 0 ? parseFloat(voteRewardsDue) + parseFloat(gbmRewards.split(" ")[0]) : voteRewardsDue;
+    const totalRewards = parseFloat(genesisTotalBal) + parseFloat(totalVoteRewards);
     return (
       <Modal
         onClose={closeModal}
@@ -92,7 +114,7 @@ class StakingModal extends React.Component {
           <div className="modal-body">
             <div className="rewards-info-row">
               <span>Total Genesis WAX tokens: </span>
-              <span>{genesisTotalBal ? genesisTotalBal: '0 WAX'}</span>
+              <span>{genesisTotalBal ? genesisTotalBal : '0 WAX'}</span>
             </div>
             <div className="rewards-info-row">
               <span>Daily Rewards: </span>
@@ -100,11 +122,11 @@ class StakingModal extends React.Component {
             </div>
             <div className="rewards-info-row">
               <span>Rewards earned to date: </span>
-              <span>234234.4646 WAX</span>
+              <span>{totalRewards.toFixed(8)} WAX</span>
             </div>
             <div className="rewards-info-row">
               <span>Total staking/voter rewards pending: </span>
-              <span>{totalPending.toFixed(6)} WAX</span>
+              <span>{totalPending.toFixed(8)} WAX</span>
             </div>
 
           </div>
@@ -125,6 +147,7 @@ const mapStateToProps = state => {
     globals: state.globals,
     accounts: state.accounts,
     balances: state.balances,
+    connection: state.connection,
   };
 };
 
