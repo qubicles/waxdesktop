@@ -39,16 +39,16 @@
 }
 
 .new-permission-btn {
-    width: 100%;
-    margin-top: 30px;
-    padding: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #ff886d;
-    border-radius: 20px;
-    font-size: 16px;
-    font-family: montserratBold;
+    width: 100% !important;
+    margin-top: 30px !important;
+    padding: 20px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    background-color: #ff886d !important;
+    border-radius: 20px !important;
+    font-size: 16px !important;
+    font-family: montserratBold !important;
 }
 .new-permission-btn img {
     margin-left: 20px;

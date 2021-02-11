@@ -163,10 +163,13 @@ class DelegatedResources extends React.Component {
                                     }
                                 </div>
                             </div>
-                            <div className="new-permission-btn" onClick={this.toggleDelegateModal}>
+                            <Button 
+                                className="new-permission-btn" 
+                                onClick={this.toggleDelegateModal}
+                                disabled={!accounts[settings.account]}>
                                 Create New Delegation
                                 <img src={require('../../../../../renderer/assets/images/advanced/Group1730.png')} />
-                            </div>
+                            </Button>
                         </div>
                     </div>
                 </div>

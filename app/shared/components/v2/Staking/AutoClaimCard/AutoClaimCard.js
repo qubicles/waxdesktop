@@ -40,21 +40,20 @@ class AutoClaimCard extends React.Component {
 
   tick() {
     let { accounts, settings } = this.props;
-    if (!accounts) accounts = {};
-    const {
-      cpu_weight,
-      net_weight
-    } = accounts[settings.account].self_delegated_bandwidth || {
-      cpu_weight: '0.'.padEnd(settings.tokenPrecision + 2, '0') + ' ' + settings.blockchain.tokenSymbol,
-      net_weight: '0.'.padEnd(settings.tokenPrecision + 2, '0') + ' ' + settings.blockchain.tokenSymbol
-    };
 
-    const parsedCpuWeight = cpu_weight.split(' ')[0];
-    const parsedNetWeight = net_weight.split(' ')[0];
-    const cpuOriginal = Decimal(parsedCpuWeight);
-    const netOriginal = Decimal(parsedNetWeight);
-    
     if (accounts[settings.account]) {
+      const {
+        cpu_weight,
+        net_weight
+      } = accounts[settings.account].self_delegated_bandwidth || {
+        cpu_weight: '0.'.padEnd(settings.tokenPrecision + 2, '0') + ' ' + settings.blockchain.tokenSymbol,
+        net_weight: '0.'.padEnd(settings.tokenPrecision + 2, '0') + ' ' + settings.blockchain.tokenSymbol
+      };
+
+      const parsedCpuWeight = cpu_weight.split(' ')[0];
+      const parsedNetWeight = net_weight.split(' ')[0];
+      const cpuOriginal = Decimal(parsedCpuWeight);
+      const netOriginal = Decimal(parsedNetWeight);
       const account = accounts[settings.account];
       if (account.voter_info && account.voter_info.last_claim_time) {
 
@@ -101,6 +100,7 @@ class AutoClaimCard extends React.Component {
   render() {
     const {
       settings,
+      accounts,
     } = this.props;
 
     const {
@@ -126,7 +126,12 @@ class AutoClaimCard extends React.Component {
         </div>
         <div className="s-card-des">
           <div>Next Claim</div>
-          <Moment fromNow>{nextClaimTime}</Moment>
+          {
+            (accounts[settings.account])
+              ? (<Moment fromNow>{nextClaimTime}</Moment>)
+              : false
+          }
+
         </div>
         <Button
           className="claim-btn"

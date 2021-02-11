@@ -87,7 +87,6 @@ class CustomPermissions extends React.Component {
             modalKey
         } = this.state;
         const account = accounts[settings.account];
-        if (!account) return false;
 
         let { pubkey } = wallet;
         if (!pubkey) {
@@ -137,11 +136,11 @@ class CustomPermissions extends React.Component {
                                 <img src={require('../../../../../renderer/assets/images/advanced/password.png')} />
                                 <div className="p-key-des">
                                     <div>Active Public Key:</div>
-                                    <div>EOS7alsdkfjaosijGzlkJLKJOiksjflsadkjDFKJDLFJEKJDL</div>
+                                    <div>{pubkey ? pubkey: 'You have no Public key now.'}</div>
                                 </div>
                             </div>
                             {
-                                account.permissions && account.permissions.map((data, index) => {
+                                account && account.permissions && account.permissions.map((data, index) => {
                                     return (
                                         <div className="active-permission" key={index}>
                                             <div className="active-permission-left">
@@ -177,10 +176,12 @@ class CustomPermissions extends React.Component {
                                     )
                                 })
                             }
-                            <div className="new-permission-btn" onClick={() => this.togglePermissionModal()}>
+                            <Button className="new-permission-btn" 
+                                onClick={() => this.togglePermissionModal()}
+                                disabled={!account}>
                                 Create New Permission
                                 <img src={require('../../../../../renderer/assets/images/advanced/Group1730.png')} />
-                            </div>
+                            </Button>
                         </div>
                     </div>
                 </div>
