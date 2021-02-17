@@ -72,9 +72,12 @@ class NFTPanes extends Component {
                 <Card.Meta>
                     <div className="t-card-author">{asset.collection.author}</div>
                     <div className="t-card-price">
-                        <Image src={require('../../../../../renderer/assets/images/dashboard/Group47.png')} />
+                        <Image 
+                            src={require('../../../../../renderer/assets/images/dashboard/accountIcon.png')} 
+                            style={{width: 16, height: 16}}    
+                        />
                         <div className="t-card-des">
-                            {asset.prices[0].min ? `${asset.prices[0].min/100000000} ${asset.prices[0].token.token_symbol}` : '' }
+                            {asset.prices[0].min ? `${(asset.prices[0].min/100000000).toFixed(2)} ${asset.prices[0].token.token_symbol}` : '' }
                         </div>
                     </div>
                     <div className="card-btn-group">

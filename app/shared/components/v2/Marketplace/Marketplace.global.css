@@ -56,6 +56,10 @@
     background-color: #ff886d !important;
     color: white !important;
     border: 1px solid #ff886d !important;
+    text-align: center;
+}
+.market-search-section .ui.selection.dropdown .menu>.item {
+    text-align: left;
 }
 .market-search-section .round-dropdown .text {
     margin-bottom: 0 !important;
@@ -85,7 +89,7 @@
     padding-left: 10px !important;
     padding-right: 10px !important;
     font-size: 14px !important;
-    width: 70px;
+    width: 90%;
 }
 /* .card-btn-group .card-buy-btn {
     padding-left: 10px !important;

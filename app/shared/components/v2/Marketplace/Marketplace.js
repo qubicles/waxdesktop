@@ -23,7 +23,7 @@ import BuyAssetModal from "../Marketplace/Modals/BuyAssetModal/BuyAssetModal";
 
 const options = [
   { key: "created", text: "Most Recent", value: "created" },
-  { key: "updated", text: "Recently Updated", value: "updated" },
+  { key: "updated", text: "Updated", value: "updated" },
   { key: "price", text: "Price", value: "price" }
 ];
 
@@ -129,10 +129,11 @@ class Marketplace extends React.Component {
             <div className="t-card-author">{asset.seller}</div>
             <div className="t-card-price">
               <Image
-                src={require("../../../../renderer/assets/images/dashboard/Group47.png")}
+                src={require("../../../../renderer/assets/images/dashboard/accountIcon.png")}
+                style={{width: 16, height:16}}
               />
               <div className="t-card-des">
-                {asset.listing_price / 100000000} {asset.listing_symbol}
+                {(asset.listing_price / 100000000).toFixed(2)} {asset.listing_symbol}
               </div>
             </div>
             <div className="card-btn-group">

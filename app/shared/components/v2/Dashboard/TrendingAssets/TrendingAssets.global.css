@@ -58,6 +58,12 @@
 .trending-assets-card .t-card-title {
     font-size: 12px;
     font-family: MontserratExtraBold;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 5px;
 }
 .trending-assets-card .t-card-author {
     padding-bottom: 8px;

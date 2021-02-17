@@ -58,9 +58,12 @@ class TrendingAssets extends React.Component {
                     <Card.Meta>
                         <div className="t-card-author">{item.seller}</div>
                         <div className="t-card-price">
-                            <Image src={require('../../../../../renderer/assets/images/dashboard/Group47.png')} />
+                            <Image 
+                                src={require('../../../../../renderer/assets/images/dashboard/accountIcon.png')} 
+                                style={{width: 16, height:16}}
+                            />
                             <div className="t-card-des">
-                                {item.listing_price / 100000000} {item.listing_symbol}
+                                {(item.listing_price / 100000000).toFixed(2)} {item.listing_symbol}
                             </div>
                         </div>
                         <Button className="trending-view-button" onClick={() => this.toggleBuyAssetModal(index)}>View Market</Button>
