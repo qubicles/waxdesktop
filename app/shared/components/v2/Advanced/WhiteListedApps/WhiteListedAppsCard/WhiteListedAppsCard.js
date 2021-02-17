@@ -2,7 +2,10 @@ import React from "react";
 import SlideToggle from "react-slide-toggle";
 import PropTypes from "prop-types";
 import { translate } from 'react-i18next';
-import { debounce, filter, sortBy, find } from 'lodash';
+import { debounce, filter, sortBy } from 'lodash';
+import { find } from 'lodash';
+import { bindActionCreators } from "redux";
+
 import {
   Card,
   Button,
@@ -15,6 +18,13 @@ import {
   Segment,
   Table
 } from 'semantic-ui-react';
+
+import * as GlobalsActions from "../../../../../actions/globals";
+import * as AccountActions from "../../../../../actions/accounts";
+import * as SettingsActions from "../../../../../actions/settings";
+import * as TransferActions from "../../../../../actions/transfer";
+import * as TableActions from "../../../../../actions/table";
+
 import { connect } from "react-redux";
 import Balance from "../../../Dashboard/Balance/Balance";
 import "./WhiteListedAppsCard.global.css";
@@ -59,15 +69,17 @@ class WhiteListedAppsCard extends React.Component {
         connection
       } = this.props;
   
-      const account = accounts[settings.account];
+      const account = accounts[settings.account] ;
   
       if (!account || !wapii || !wapii.authorizedApps || !wapii.authorizedApps.length)
         return (
           <Message
-            header='Whitelisted Apps'
-            content='There are no apps connected to your Wax Desktop Wallet'
+            content='There are no apps connected to WDW'
             icon="info circle"
             info
+            color="orange"
+            size="small"
+            compact
           />
         );
   
@@ -107,20 +119,6 @@ class WhiteListedAppsCard extends React.Component {
 
     return (
       <div className="item-list-wrap">
-        <Segment basic>
-          <Input
-            icon="search"
-            onChange={this.onSearchChange}
-            placeholder={t('tools_permissions_app_text')}
-            floated="left"
-          />
-          <Button
-            content="Delete All"
-            icon="trash alternate"
-            floated="right"
-            onClick={() => this.setState({ confirmDeleteAll: true})}>
-          </Button>
-        </Segment>
         {appsToDisplay.map((app, i) => (
         <SlideToggle
           collapsed
@@ -128,16 +126,15 @@ class WhiteListedAppsCard extends React.Component {
           render={({ onToggle, setCollapsibleElement, progress }) => (
             <div className="item-list-body">
               <div className="item-parent-wrap">
-                <div className="item-parent-left" onClick={onToggle}>
-                </div>
+                <div className="item-parent-left" onClick={onToggle}></div>
                 <div className="item-parent-right">
                   <div className="round-checkbox">
-                    <Checkbox />
+                    <Checkbox onClick={() => this.setState({ confirmDeleteApp: true, appToDelete: app})}/>
                   </div>
                 </div>
               </div>
 
-
+            {(permissions[app.origin] && permissions[app.origin].identityRequirements.length) ? (
               <div className="item-child-wrap" ref={setCollapsibleElement}>
                 <div
                   className="item-child-inner"
@@ -147,31 +144,34 @@ class WhiteListedAppsCard extends React.Component {
                     )}px)`
                   }}
                 >
+                  {permission.accounts.map((unique, i1) => { const account = PermissionList.getAccountUnique(unique, wapii.accounts);
+                  <React.Fragment>
+                  <div className="item-child-group">
+                    <div className="item-child-des">{account.name}@{account.authority}</div>
+                    <div className="common-checkbox">
+                      <Checkbox onClick={() => this.setState({ confirmDeletePermission: true, permissionToDelete: permission})}/>
+                    </div>
+                  </div>
 
                   <div className="item-child-group">
-                    <div className="item-child-des"></div>
+                    <div className="item-child-des">{account.name}@{account.authority}</div>
                     <div className="common-checkbox">
-                      <Checkbox />
+                      <Checkbox onClick={() => this.setState({ confirmDeletePermission: true, permissionToDelete: permission})}/>
                     </div>
                   </div>
 
 
                   <div className="item-child-group">
-                    <div className="item-child-des"></div>
+                    <div className="item-child-des">{account.name}@{account.authority}</div>
                     <div className="common-checkbox">
-                      <Checkbox />
+                      <Checkbox onClick={() => this.setState({ confirmDeletePermission: true, permissionToDelete: permission})}/>
                     </div>
                   </div>
-
-
-                  <div className="item-child-group">
-                    <div className="item-child-des"></div>
-                    <div className="common-checkbox">
-                      <Checkbox />
-                    </div>
+                  </React.Fragment>
+                  })}
                   </div>
-                </div>
               </div>
+              ) : false }
             </div>
           )}
         />
@@ -180,8 +180,30 @@ class WhiteListedAppsCard extends React.Component {
     );
   }
 }
+
 WhiteListedAppsCard.propTypes = {};
 
 WhiteListedAppsCard.defaultProps = {};
 
-export default WhiteListedAppsCard;
+const mapStateToProps = (state) => {
+  return {
+      settings: state.settings,
+      globals: state.globals,
+      accounts: state.accounts,
+      tables: state.tables,
+  };
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+      actions: bindActionCreators({
+          ...AccountActions,
+          ...GlobalsActions,
+          ...SettingsActions,
+          ...TableActions
+      }, dispatch)
+  };
+}
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(WhiteListedAppsCard);
