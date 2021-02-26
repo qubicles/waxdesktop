@@ -30,8 +30,8 @@ class BuyAssetModal extends React.Component {
       nftName: props.selectedAssets ? props.selectedAssets.assets[0].name : "",
       collectionName: props.selectedAssets ? props.selectedAssets.assets[0].collection.collection_name : "",
       sellerAmt: props.selectedAssets ? props.selectedAssets.listing_price / 100000000 : "",
-      currencyPrice: props.selectedAssets && tokenPrice ? (parseInt(props.selectedAssets.listing_price / 100000000) + (parseInt(props.selectedAssets.listing_price / 100000000) * 0.09)) * parseFloat(tokenPrice.price) : 0,
-      totalAmt: props.selectedAssets ? parseInt(props.selectedAssets.listing_price / 100000000) + (parseInt(props.selectedAssets.listing_price / 100000000) * 0.09) : "",
+      currencyPrice: props.selectedAssets && tokenPrice ? (parseFloat(props.selectedAssets.listing_price / 100000000) + (parseFloat(props.selectedAssets.listing_price / 100000000) * 0.09)) * parseFloat(tokenPrice.price) : 0,
+      totalAmt: props.selectedAssets ? parseFloat(props.selectedAssets.listing_price / 100000000) + (parseFloat(props.selectedAssets.listing_price / 100000000) * 0.09) : "",
     };
   }
 
@@ -136,7 +136,7 @@ class BuyAssetModal extends React.Component {
               <div className="seller-info total-fee">
                 <div>Total</div>
                 <div>
-                  <span>{totalAmt} WAX</span>
+                  <span>{parseFloat(totalAmt).toFixed(2)} WAX</span>
                   <span> $ {currencyPrice.toFixed(2)}</span>
                 </div>
               </div>
