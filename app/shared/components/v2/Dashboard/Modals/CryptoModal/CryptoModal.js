@@ -41,7 +41,6 @@ class CryptoModal extends React.Component {
       this.props.actions.transfer(from, to, quantityFom, memo, asset).then((results) => {
 
         if (results.type == 'SYSTEM_TRANSFER_SUCCESS') {
-          debugger;
           let blockExplorer = blockExplorers[settings.blockExplorer];
           let urlPartsWithoutVariable;
           let generatedLink;

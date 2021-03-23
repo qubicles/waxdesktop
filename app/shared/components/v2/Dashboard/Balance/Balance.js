@@ -201,6 +201,7 @@ class Balance extends Component {
                         accounts={accounts}
                         settings={settings}
                         globals={globals}
+                        blockExplorers={blockexplorers}
                     />
                 )}
                 {cryptoModal && (

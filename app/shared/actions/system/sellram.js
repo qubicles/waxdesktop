@@ -26,7 +26,7 @@ export function sellram(amount) {
           permission: settings.authorization || 'active'
         }],
         data: {
-          account:account,
+          account: account,
           bytes: Number(amount)
         }
       }
@@ -37,7 +37,7 @@ export function sellram(amount) {
 
     console.log('sell ram actions:', actions)
 
-    return eos(connection, true, payforaction!==null).transaction({
+    return eos(connection, true, payforaction !== null).transaction({
       actions
     }).then((tx) => {
       setTimeout(dispatch(getAccount(account)), 500);
@@ -46,10 +46,12 @@ export function sellram(amount) {
         payload: { tx },
         type: types.SYSTEM_SELLRAM_SUCCESS
       });
-    }).catch((err) => dispatch({
-      payload: { err },
-      type: types.SYSTEM_SELLRAM_FAILURE
-    }));
+    }).catch((err) => {
+      return dispatch({
+        payload: { err },
+        type: types.SYSTEM_SELLRAM_FAILURE
+      })
+    });
   };
 }
 
