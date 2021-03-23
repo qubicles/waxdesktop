@@ -230,3 +230,19 @@ input[type="number"] {
 .resetWalletModal.ui.modal>.actions {
   background-color: unset !important;
 }
+
+/* Customize sweetAlert css */
+.swal2-modal {
+  background-color: #191F28;
+  border-radius: 10px;
+}
+.swal2-title {
+  color: white;
+}
+.swal2-content {
+  color: white;
+}
+.swal2-styled {
+  outline: none !important;
+  box-shadow: none !important;
+}

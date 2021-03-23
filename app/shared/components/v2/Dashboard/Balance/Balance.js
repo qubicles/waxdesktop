@@ -16,6 +16,7 @@ import * as StakeActions from "../../../../actions/stake";
 import * as BuyRamActions from "../../../../actions/system/buyram";
 import * as SellRamActions from "../../../../actions/system/sellram";
 import StatsFetcher from "../../../../utils/StatsFetcher";
+import * as BlockExplorersActions from "../../../../actions/blockexplorers";
 
 import DashboardTokenModal from "../../Dashboard/Modals/TokenModal/DashboardTokenModal";
 import ResourcesModal from "../../Dashboard/Modals/ResourcesModal/ResourcesModal";
@@ -103,6 +104,7 @@ class Balance extends Component {
             accounts,
             system,
             chain,
+            blockexplorers,
         } = this.props;
         const {
             dashboardTokenModal,
@@ -212,6 +214,7 @@ class Balance extends Component {
                         history={history}
                         actions={actions}
                         location={location}
+                        blockExplorers={blockexplorers}
                     />
                 )}
                 {swapTokenModal && (
@@ -253,6 +256,7 @@ const mapStateToProps = state => {
         wallets: state.wallets,
         wallet: state.wallet,
         keys: state.keys,
+        blockexplorers: state.blockexplorers
     };
 };
 
@@ -270,6 +274,7 @@ const mapDispatchToProps = dispatch => {
                 ...StakeActions,
                 ...BuyRamActions,
                 ...SellRamActions,
+                ...BlockExplorersActions,
             },
             dispatch
         )

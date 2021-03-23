@@ -64,7 +64,7 @@ export function transfer(from, to, quantity, memo, symbol) {
           type: types.SYSTEM_TRANSFER_SUCCESS
         });
       }).catch((err) => {
-      dispatch({
+      return dispatch({
         payload: { err },
         type: types.SYSTEM_TRANSFER_FAILURE
       })});

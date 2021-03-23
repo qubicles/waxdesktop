@@ -5,8 +5,16 @@ export default function showSweetAlert(alertType, message) {
     case 'error':
       Swal.fire({
         icon: alertType,
-        title: 'Oops..',
+        // title: 'Oops..',
         html: message,
+        confirmButtonColor: '#ff886d',
+      })
+    case 'success':
+      Swal.fire({
+        icon: alertType,
+        // title: 'Success',
+        html: message,
+        confirmButtonColor: '#ff886d',
       })
   }
 }
