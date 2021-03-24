@@ -101,7 +101,7 @@ class NFTPanes extends Component {
                 />
             </Card>
         )
-
+        
         return <Tab.Pane attached={false}>
             {NFTAssets}
         </Tab.Pane>

@@ -45,7 +45,7 @@ class CryptoModal extends React.Component {
           let urlPartsWithoutVariable;
           let generatedLink;
           if (blockExplorer && blockExplorer['txid']) {
-            urlPartsWithoutVariable = blockExplorer['txid'].split('txid');
+            urlPartsWithoutVariable = blockExplorer['txid'].split(`{txid}`);
             generatedLink = `${urlPartsWithoutVariable[0]}${results.payload.tx.transaction_id}${urlPartsWithoutVariable[1]}`;
           }
 

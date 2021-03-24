@@ -73,7 +73,7 @@ class SellAssetModal extends React.Component {
 		let generatedLink;
 		if (results.type == 'SELL_ASSETS_SUCCESS') {
 			if (blockExplorer && blockExplorer['txid']) {
-				urlPartsWithoutVariable = blockExplorer['txid'].split('txid');
+				urlPartsWithoutVariable = blockExplorer['txid'].split(`{txid}`);
 				generatedLink = `${urlPartsWithoutVariable[0]}${results.payload.tx.transaction_id}${urlPartsWithoutVariable[1]}`;
 			}
 

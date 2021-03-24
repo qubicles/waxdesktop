@@ -183,7 +183,7 @@ export const purchaseAssets = (selectedAsset) => {
             type: types.PURCHASE_ASSETS_SUCCESS
           });
         }).catch((err) => {
-          dispatch({
+          return dispatch({
             payload: { err },
             type: types.PURCHASE_ASSETS_FAILURE
           })

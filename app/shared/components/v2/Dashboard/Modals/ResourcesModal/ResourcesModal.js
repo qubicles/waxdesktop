@@ -114,7 +114,7 @@ class ResourcesModal extends React.Component {
 
 		if (results.type == 'SYSTEM_STAKE_SUCCESS') {
 			if (blockExplorer && blockExplorer['txid']) {
-				urlPartsWithoutVariable = blockExplorer['txid'].split('txid');
+				urlPartsWithoutVariable = blockExplorer['txid'].split(`{txid}`);
 				generatedLink = `${urlPartsWithoutVariable[0]}${results.payload.tx.transaction_id}${urlPartsWithoutVariable[1]}`;
 			}
 

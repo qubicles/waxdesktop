@@ -5,7 +5,11 @@ import { connect } from "react-redux";
 import { Dropdown, Modal } from "semantic-ui-react";
 
 import * as AssetsActions from "../../../../../actions/assets";
+import * as SettingsActions from "../../../../../actions/settings";
+import * as BlockExplorersActions from "../../../../../actions/blockexplorers";
+
 import "./BuyAssetModal.global.css";
+import showSweetAlert from "../../../../../utils/SweetAlert";
 
 class BuyAssetModal extends React.Component {
   constructor(props) {
@@ -37,8 +41,34 @@ class BuyAssetModal extends React.Component {
 
   purchaseAssets(selectedAssets) {
     const { actions } = this.props;
-    actions.purchaseAssets(selectedAssets);
+    actions.purchaseAssets(selectedAssets).then((results) => {
+      this.showAlert(results);
+    });
   }
+
+  showAlert = (results) => {
+		const { blockexplorers, settings } = this.props;
+		let blockExplorer = blockexplorers[settings.blockExplorer];
+		let urlPartsWithoutVariable;
+		let generatedLink;
+		if (results.type == 'PURCHASE_ASSETS_SUCCESS') {
+			if (blockExplorer && blockExplorer['txid']) {
+        urlPartsWithoutVariable = blockExplorer['txid'].split(`{txid}`);
+				generatedLink = `${urlPartsWithoutVariable[0]}${results.payload.tx.transaction_id}${urlPartsWithoutVariable[1]}`;
+			}
+
+			const expLink = `<a href="${generatedLink}" target="_blink"> ${results.payload.tx.transaction_id.substr(0, 8)}...${results.payload.tx.transaction_id.substr(-8)}</a>`;
+			showSweetAlert(
+				"success",
+				expLink
+			);
+		} else {
+			showSweetAlert(
+				"error",
+				"Error occurred. try again."
+			)
+		}
+	}
 
   render() {
     const {
@@ -47,7 +77,6 @@ class BuyAssetModal extends React.Component {
       selectedAssets,
       actions,
     } = this.props;
-
     const {
       seller,
       nftName,
@@ -158,23 +187,25 @@ BuyAssetModal.propTypes = {};
 
 BuyAssetModal.defaultProps = {};
 
-// const mapStateToProps = state => {
-//   return {
-//     assets: state.assets,
-//   };
-// };
+const mapStateToProps = state => {
+  return {
+    assets: state.assets,
+    settings: state.settings,
+    blockexplorers: state.blockexplorers,
+  };
+};
 
-// const mapDispatchToProps = dispatch => {
-//   return {
-//     actions: bindActionCreators(
-//       {
-//         ...AssetsActions,
-//       },
-//       dispatch
-//     )
-//   };
-// };
+const mapDispatchToProps = dispatch => {
+  return {
+    actions: bindActionCreators(
+      {
+        ...AssetsActions,
+        ...BlockExplorersActions,
+        ...SettingsActions
+      },
+      dispatch
+    )
+  };
+};
 
-// export default connect(mapStateToProps, mapDispatchToProps)(BuyAssetModal);
-
-export default BuyAssetModal
+export default connect(mapStateToProps, mapDispatchToProps)(BuyAssetModal);
