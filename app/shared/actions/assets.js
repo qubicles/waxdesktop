@@ -197,7 +197,7 @@ export const purchaseAssets = (selectedAsset) => {
   };
 }
 
-export const sellAssets = (listPrice, selectedAssets) => {
+export function sellAssets (listPrice, selectedAssets) {
   return (dispatch: () => void, getState) => {
     const {
       balances,
@@ -252,7 +252,7 @@ export const sellAssets = (listPrice, selectedAssets) => {
       ]
 
       
-      eos(connection, true, false).transaction(
+      return eos(connection, true, false).transaction(
         {
           actions: anounceActions
         },
@@ -273,30 +273,31 @@ export const sellAssets = (listPrice, selectedAssets) => {
               const signatureProvider = new JsSignatureProvider([defaultPrivateKey]);
               const rpc = new JsonRpc(connection.httpEndpoint, { fetch });
               const api = new Api({ rpc, signatureProvider, textDecoder: new TextDecoder(), textEncoder: new TextEncoder() });
-              (async () => {
-                await api.transact({
+              // (async () => {
+                return api.transact({
                   actions: createOfferAction
                 },
                   {
                     blocksBehind: 3,
                     expireSeconds: 30,
                   }).then((tx) => {
-                    dispatch({
+                    return dispatch({
+                      payload: { tx },
                       type: types.SELL_ASSETS_SUCCESS
                     })
                   }).catch((err) => {
-                    debugger
-                    dispatch({
+                    return dispatch({
+                      payload: { err },
                       type: types.SELL_ASSETS_FAILURE
                     })
                   });
-              })();
+              // });
             }
           }
 
         }).catch((err) => {
-          debugger
-          dispatch({
+          return dispatch({
+            payload: { err },
             type: types.UNNOUNCE_SELL_FAILURE
           })
         });
@@ -312,7 +313,6 @@ export const cancelSellAssets = (selectedAssets) => {
       settings,
       accounts
     } = getState();
-
     let cancelAction = [
       {
         account: 'atomicmarket',
@@ -343,7 +343,7 @@ export const cancelSellAssets = (selectedAssets) => {
               blocksBehind: 3,
               expireSeconds: 30,
             }).then((tx) => { }).catch((err) => {
-              debugger
+              
             });
         })();
       }

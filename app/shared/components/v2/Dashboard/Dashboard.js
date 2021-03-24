@@ -198,13 +198,7 @@ class Home extends React.Component {
             location={location}
           />
         )}
-        <SellAssetModal
-          closeModal={this.toggleSellAssetModal}
-          modalOpen={sellAssetModal}
-          history={history}
-          actions={actions}
-          location={location}
-        />
+        
       </div>
     );
   }

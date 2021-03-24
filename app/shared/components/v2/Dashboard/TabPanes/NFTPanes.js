@@ -5,6 +5,9 @@ import { Tab, Image, Card, Button, Checkbox } from "semantic-ui-react";
 
 import * as AssetsActions from "../../../../actions/assets";
 import * as GlobalsActions from "../../../../actions/globals";
+import * as BlockExplorersActions from "../../../../actions/blockexplorers";
+import * as SettingsActions from "../../../../actions/settings";
+
 import SellAssetsModal from "../../Dashboard/Modals/SellAssetModal/SellAssetModal"
 
 class NFTPanes extends Component {
@@ -48,7 +51,7 @@ class NFTPanes extends Component {
     }
 
     render() {
-        const { assets: { isAssetsLoading, nftAssets }, actions, globals } = this.props;
+        const { assets: { isAssetsLoading, nftAssets }, actions, globals, blockexplorers, settings } = this.props;
         const { sellAssetModal, selectedAssets } = this.state;
 
         if (isAssetsLoading) {
@@ -93,6 +96,8 @@ class NFTPanes extends Component {
                     selectedAssets={selectedAssets}
                     location={location}
                     globals={globals}
+                    blockExplorers = {blockexplorers}
+                    settings = {settings}
                 />
             </Card>
         )
@@ -107,6 +112,8 @@ const mapStateToProps = (state) => {
     return {
         assets: state.assets,
         globals: state.globals,
+        blockexplorers: state.blockexplorers,
+        settings: state.settings,
     };
 }
 
@@ -115,6 +122,8 @@ const mapDispatchToProps = (dispatch) => {
         actions: bindActionCreators({
             ...AssetsActions,
             ...GlobalsActions,
+            ...BlockExplorersActions,
+            ...SettingsActions
         }, dispatch)
     };
 }

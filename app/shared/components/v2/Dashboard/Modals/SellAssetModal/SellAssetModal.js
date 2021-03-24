@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import { Dropdown, Modal } from "semantic-ui-react";
 
 import "./SellAssetModal.global.css";
+import showSweetAlert from "../../../../../utils/SweetAlert";
 
 class SellAssetModal extends React.Component {
   constructor(props) {
@@ -55,7 +56,9 @@ class SellAssetModal extends React.Component {
     const { buyPrice } = this.state;
     if (buyPrice && buyPrice != 0) {
       const listPrice = (parseFloat(buyPrice) * 0.91).toFixed(8);
-      sellAssets(listPrice, selectedAssets);
+      sellAssets(listPrice, selectedAssets).then((results) => {
+        this.showAlert(results);
+      });
     } else {
       this.setState({
         errMsg: true
@@ -63,11 +66,36 @@ class SellAssetModal extends React.Component {
     }
   }
 
+  showAlert = (results) => {
+		const { blockExplorers, settings } = this.props;
+		let blockExplorer = blockExplorers[settings.blockExplorer];
+		let urlPartsWithoutVariable;
+		let generatedLink;
+		if (results.type == 'SELL_ASSETS_SUCCESS') {
+			if (blockExplorer && blockExplorer['txid']) {
+				urlPartsWithoutVariable = blockExplorer['txid'].split('txid');
+				generatedLink = `${urlPartsWithoutVariable[0]}${results.payload.tx.transaction_id}${urlPartsWithoutVariable[1]}`;
+			}
+
+			const expLink = `<a href="${generatedLink}" target="_blink"> ${results.payload.tx.transaction_id.substr(0, 8)}...${results.payload.tx.transaction_id.substr(-8)}</a>`;
+			showSweetAlert(
+				"success",
+				expLink
+			);
+		} else {
+			showSweetAlert(
+				"error",
+				"Error occurred. try again."
+			)
+		}
+	}
+
   render() {
     const {
       modalOpen,
       closeModal,
       selectedAssets,
+      blockExplorers
     } = this.props;
 
     const {
