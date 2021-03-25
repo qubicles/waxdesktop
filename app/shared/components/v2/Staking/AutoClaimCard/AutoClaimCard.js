@@ -17,6 +17,7 @@ import * as AccountActions from "../../../../actions/accounts";
 import * as SettingsActions from "../../../../actions/settings";
 import * as GlobalsActions from "../../../../actions/globals"
 import "./AutoClaimCard.global.css";
+import showSweetAlert from "../../../../utils/SweetAlert";
 
 class AutoClaimCard extends React.Component {
   constructor(props) {
@@ -83,7 +84,9 @@ class AutoClaimCard extends React.Component {
       claimVotingRewards
     } = actions;
 
-    claimVotingRewards();
+    claimVotingRewards().then(results => {
+      this.showAlert(results);
+    });
   }
 
   claimGenesis = () => {
@@ -94,8 +97,34 @@ class AutoClaimCard extends React.Component {
       claimGBMRewards,
     } = actions;
 
-    claimGBMRewards();
+    claimGBMRewards().then(results => {
+      this.showAlert(results);
+    });
   }
+
+  showAlert = (results) => {
+		const { blockexplorers, settings } = this.props;
+		let blockExplorer = blockexplorers[settings.blockExplorer];
+		let urlPartsWithoutVariable;
+		let generatedLink;
+		if (results.type == 'SYSTEM_CLAIMVOTING_SUCCESS' || results.type == 'SYSTEM_CLAIMGBM_SUCCESS') {
+			if (blockExplorer && blockExplorer['txid']) {
+				urlPartsWithoutVariable = blockExplorer['txid'].split(`{txid}`);
+				generatedLink = `${urlPartsWithoutVariable[0]}${results.payload.tx.transaction_id}${urlPartsWithoutVariable[1]}`;
+			}
+
+			const expLink = `<a href="${generatedLink}" target="_blink"> ${results.payload.tx.transaction_id.substr(0, 8)}...${results.payload.tx.transaction_id.substr(-8)}</a>`;
+			showSweetAlert(
+				"success",
+				expLink
+			);
+		} else {
+			showSweetAlert(
+				"error",
+				"Error occurred. try again."
+			)
+		}
+	}
 
   render() {
     const {

@@ -541,7 +541,6 @@ export function claimVotingRewards() {
         }
       ]
     };
-
     return eos2(connection, true)
       .transact(op, {
         broadcast: true,
@@ -554,12 +553,12 @@ export function claimVotingRewards() {
           type: types.SYSTEM_CLAIMVOTING_SUCCESS
         });
       })
-      .catch(err =>
-        dispatch({
+      .catch(err => {
+        return dispatch({
           payload: { err },
           type: types.SYSTEM_CLAIMVOTING_FAILURE
         })
-      );
+      });
   };
 }
 

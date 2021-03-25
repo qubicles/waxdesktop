@@ -10,7 +10,13 @@ import {
   Radio
 } from "semantic-ui-react";
 import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
 import Balance from "../Dashboard/Balance/Balance";
+
+import * as AssetsActions from "../../../actions/assets";
+import * as BlockExplorersActions from "../../../actions/blockexplorers";
+import * as SettingsActions from "../../../actions/settings";
+
 import "./Staking.global.css";
 import CurrentStackingCard from "./CurrentStackingCard/CurrentStackingCard";
 import AutoClaimCard from "./AutoClaimCard/AutoClaimCard";
@@ -23,6 +29,7 @@ class Staking extends React.Component {
   }
 
   render() {
+    const { actions, settings, blockexplorers } = this.props;
     return (
       <div className="dashboard-container">
         <div className="dashboard-body-section">
@@ -35,7 +42,11 @@ class Staking extends React.Component {
           <div className="staking-body">
             <div className="staking-card-section">
               <CurrentStackingCard />
-              <AutoClaimCard />
+              <AutoClaimCard 
+                actions = {actions}
+                settings = {settings}
+                blockexplorers = {blockexplorers}
+              />
             </div>
             <RewardHistoryCard />
           </div>
@@ -50,4 +61,21 @@ Staking.propTypes = {};
 
 Staking.defaultProps = {};
 
-export default Staking;
+const mapStateToProps = (state) => {
+  return {
+      assets: state.assets,
+      blockexplorers: state.blockexplorers,
+      settings: state.settings,
+  };
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+      actions: bindActionCreators({
+          ...AssetsActions,
+          ...BlockExplorersActions,
+          ...SettingsActions
+      }, dispatch)
+  };
+}
+export default connect(mapStateToProps, mapDispatchToProps)(Staking);
