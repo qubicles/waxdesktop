@@ -10,6 +10,8 @@ import GlobalPrivateKeyField from "../../../Global/Form/Field/Key/Private";
 import GlobalAccountField from "../../../Global/Form/Field/Account";
 import GlobalCPUField from "../../../Global/Form/Field/CPU";
 import GlobalNETField from "../../../Global/Form/Field/NET";
+import showSweetAlert from "../../../../../utils/SweetAlert";
+
 
 const { PrivateKey } = require('eosjs-ecc');
 const { clipboard } = require('electron');
@@ -45,6 +47,24 @@ class CreateAccountModal extends React.Component {
 				activePrivateKey: keys[1].key
 			})
 		}
+	}
+
+	showAlert = (results) => {
+		const { blockExplorers, settings } = this.props;
+		let blockExplorer = blockExplorers[settings.blockExplorer];
+		let urlPartsWithoutVariable;
+		let generatedLink;
+
+		if (blockExplorer && blockExplorer['txid']) {
+			urlPartsWithoutVariable = blockExplorer['txid'].split(`{txid}`);
+			generatedLink = `${urlPartsWithoutVariable[0]}${results.payload.tx.transaction_id}${urlPartsWithoutVariable[1]}`;
+		}
+
+		const expLink = `<a href="${generatedLink}" target="_blink"> ${results.payload.tx.transaction_id.substr(0, 8)}...${results.payload.tx.transaction_id.substr(-8)}</a>`;
+		showSweetAlert(
+			"success",
+			expLink
+		);
 	}
 
 	generateKeyPair = () => {
@@ -133,14 +153,6 @@ class CreateAccountModal extends React.Component {
 		} = this.state;
 
 		const { accounts, settings } = this.props;
-		let account = accounts[settings.account];
-		if (!account) account = {};
-
-		const {
-			cpu_weight,
-			net_weight
-		} = account.self_delegated_bandwidth
-
 		const formErrors = errors;
 		let submitDisabled = disabled;
 
@@ -157,35 +169,42 @@ class CreateAccountModal extends React.Component {
 			formErrors.delegatedBw = 'Not enough delegated CPU for new account';
 			submitDisabled = true;
 		}
+		let account = accounts[settings.account];
 
-		// const decimalBalance = Decimal(EOSbalance);
-		const decimalDelegatedNet = Decimal(net_weight.split(' ')[0]);
-		const decimalDelegatedCpu = Decimal(cpu_weight.split(' ')[0]);
+		if (account) {
+			const {
+				cpu_weight,
+				net_weight
+			} = account.self_delegated_bandwidth
 
-		if (+delegatedNet > decimalDelegatedNet) {
-			formErrors.delegatedBw = `Not enough balance for NET, must be in ${decimalDelegatedNet}`;
-		}
-		if (+delegatedCpu > decimalDelegatedCpu) {
-			formErrors.delegatedCpu = `Not enough balance for CPU, must be in ${decimalDelegatedCpu}`;
+			// const decimalBalance = Decimal(EOSbalance);
+			const decimalDelegatedNet = Decimal(net_weight.split(' ')[0]);
+			const decimalDelegatedCpu = Decimal(cpu_weight.split(' ')[0]);
+
+			if (+delegatedNet > decimalDelegatedNet) {
+				formErrors.delegatedBw = `Not enough balance for NET, must be in ${decimalDelegatedNet}`;
+			}
+			if (+delegatedCpu > decimalDelegatedCpu) {
+				formErrors.delegatedCpu = `Not enough balance for CPU, must be in ${decimalDelegatedCpu}`;
+			}
 		}
 
 		submitDisabled = true;
-
-
 		return { formErrors };
 	}
 
 	onSubmit = (e) => {
 		e.preventDefault();
 		const {
-			actions
+			actions,
+			history
 		} = this.props;
 
 		const {
-      createAccount,
-      createFreeAccount,
-      addNewAccount,
-      setSettings
+			createAccount,
+			createFreeAccount,
+			addNewAccount,
+			setSettings
 		} = actions;
 
 		const {
@@ -198,44 +217,52 @@ class CreateAccountModal extends React.Component {
 		} = this.state;
 
 		if (!submitDisabled) {
-      // if(this.props.accounts.allAccounts.length < 3) {
-      //   macaddress.all(function (err, all) {
-      //     const macaddresses = [];
-      //     const map = new Map();
-      //     let keys = Object.keys(all);
-      //     for(let index=0;index<keys.length;index++)
-      //     {
-      //       const mac = all[keys[index]].mac;
-      //       if(!map.has(mac) && mac != '00:00:00:00:00:00'){
-      //         map.set(mac, true);
-      //         macaddresses.push(mac);
-      //       }
-      //     }
-      //     if (macaddresses.length > 0) {
-      //       createFreeAccount(accountName, activePublicKey, activePublicKey, macaddresses)
-      //     }
-      //   });
-      // } else {
-        if(createAccount(
-            accountName,
-            activePublicKey,
-            delegatedNet,
-            delegatedCpu,
-            activePublicKey
-          )
-        ) {
-          addNewAccount(accountName)
-          setSettings('account', accountName)
-          history.push('/')
-        }
-      // }
+			// if (this.props.accounts.allAccounts.length < 3) {
+			// 	macaddress.all(function (err, all) {
+			// 		debugger
+			// 		const macaddresses = [];
+			// 		const map = new Map();
+			// 		let keys = Object.keys(all);
+			// 		for (let index = 0; index < keys.length; index++) {
+			// 			const mac = all[keys[index]].mac;
+			// 			if (!map.has(mac) && mac != '00:00:00:00:00:00') {
+			// 				map.set(mac, true);
+			// 				macaddresses.push(mac);
+			// 			}
+			// 		}
+			// 		if (macaddresses.length > 0) {
+			// 			createFreeAccount(accountName, activePublicKey, activePublicKey, macaddresses)
+			// 		}
+			// 	});
+			// } else {
+			createAccount(
+				accountName,
+				activePublicKey,
+				delegatedNet,
+				delegatedCpu,
+				activePublicKey
+			).then(results => {
+				debugger
+				if (results.type == 'SYSTEM_CREATEACCOUNT_SUCCESS') {
+					addNewAccount(accountName)
+					setSettings('account', accountName);
+					this.showAlert(results);
+
+				} else {
+					showSweetAlert(
+						"error",
+						"Error occurred. try again."
+					)
+				}
+			})
+			// }
 		}
 	}
 
 	render() {
 		const { modalOpen, closeModal, system } = this.props;
 		const { formErrors, accountName, delegatedNet, delegatedCpu, keys, activePublicKey, activePrivateKey } = this.state;
-
+		
 		let { submitDisabled } = this.state;
 		if (accountName &&
 			accountName.length !== 0 &&

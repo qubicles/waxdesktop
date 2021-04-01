@@ -53,7 +53,7 @@ class TrendingAssets extends React.Component {
             }
             return (trendingAssetsList.data.map((item, index) => (
                 <Card className="trending-assets-card" key={`trending-asset-${index}`}>
-                    <Image src={item.assets[0].data.img.indexOf('http') == -1 ? `https://ipfs.io/ipfs/${item.assets[0].data.img}` : item.assets[0].data.img } />
+                    <Image src={item.assets[0].data.img && item.assets[0].data.img.indexOf('http') == -1 ? `https://ipfs.io/ipfs/${item.assets[0].data.img}` : item.assets[0].data.img } />
                     <Card.Header className="t-card-title">{item.assets[0].name}</Card.Header>
                     <Card.Meta>
                         <div className="t-card-author">{item.seller}</div>

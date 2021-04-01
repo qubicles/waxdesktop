@@ -14,6 +14,7 @@ import * as CreateAccountActions from "../../../actions/createaccount";
 import * as WalletsActions from "../../../actions/wallets";
 import * as WalletAction from "../../../actions/wallet";
 import * as ChainActions from "../../../actions/chain";
+import * as BlockExplorersActions from "../../../actions/blockexplorers";
 
 import CreateAccountModal from "../Dashboard/Modals/CreateAccountModal/CreateAccountModal";
 import ImportAccountModal from "../Dashboard/Modals/ImportAccountModal/ImportAccountModal";
@@ -138,8 +139,8 @@ const SideBar = props => {
     actions,
     chain,
     wallets,
+    blockexplorers
   } = props;
-
   return (
     <div className="nav-section">
       <div className="logo-section">
@@ -175,6 +176,7 @@ const SideBar = props => {
           history={history}
           actions={actions}
           location={location}
+          blockExplorers={blockexplorers}
         />
       )}
       {importAccountModal && (
@@ -209,6 +211,7 @@ const mapStateToProps = state => {
     wallets: state.wallets,
     chain: state.chain,
     wallet: state.wallet,
+    blockexplorers: state.blockexplorers
   };
 };
 
@@ -224,6 +227,7 @@ const mapDispatchToProps = dispatch => {
         ...WalletsActions,
         ...ChainActions,
         ...WalletAction,
+        ...BlockExplorersActions
       },
       dispatch
     )

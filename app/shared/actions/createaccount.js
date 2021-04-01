@@ -52,7 +52,7 @@ export function createAccount(
         data: {
           payer: currentAccount,
           receiver: accountName,
-          bytes: Number(ramAmount)
+          bytes: Number(8192)
         }
       },{
         account: eosiocontract,
@@ -71,7 +71,7 @@ export function createAccount(
         )
       }
     ];
-
+    
     const payforaction = payforcpunet(currentAccount, getState());
     if (payforaction) actions = payforaction.concat(actions);
 
@@ -82,16 +82,17 @@ export function createAccount(
       expireInSeconds: connection.expireInSeconds,
       sign: connection.sign
     }).then((tx) => {
+      
       setTimeout(() => {
         dispatch(AccountActions.getAccount(currentAccount));
       }, 500);
-      dispatch({
+      return dispatch({
         payload: { tx },
         type: types.SYSTEM_CREATEACCOUNT_SUCCESS
       });
-      return true
     }).catch((err) => {
-      dispatch({
+      
+      return dispatch({
         payload: { err },
         type: types.SYSTEM_CREATEACCOUNT_FAILURE
       });
