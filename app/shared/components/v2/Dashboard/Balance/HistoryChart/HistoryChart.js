@@ -35,9 +35,9 @@ class HistoryChart extends Component {
                 balTemp.map((balList) => {
                     newBalData.push([new Date(balList.timestamp).getTime(), balList.data.amount]);
                 });
-
+                
                 return {
-                    balData: newBalData,
+                    balData: newBalData.length == 1 ? initBalData: newBalData,
                     changeDate: true
                 };
             }

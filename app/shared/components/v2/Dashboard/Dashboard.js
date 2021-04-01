@@ -88,7 +88,7 @@ class Home extends React.Component {
     //       pubkey
     //     );
     const activeAccount = wallets.filter(acc => acc.account == account)
-    if (account != keys.account) {
+    if (account != keys.account && activeAccount[0] && activeAccount[0].data) {
       actions.setWalletKey(
         activeAccount[0].data,
         wallet.pin,
