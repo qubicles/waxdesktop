@@ -17,7 +17,7 @@ export const getTrendingAssets = () => {
     const { settings } = getState();
     return axios
       .get(
-        `https://wax.api.atomicassets.io/atomicmarket/v1/sales?page=1&limit=5&order=desc&sort=created`
+        `https://wax.api.atomicassets.io/atomicmarket/v1/sales?page=1&limit=10&order=desc&sort=created`
       )
       .then(res => {
         dispatch({
