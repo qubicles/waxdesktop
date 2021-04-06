@@ -61,46 +61,46 @@ class TrendingAssets extends React.Component {
             prevArrow: false,
             nextArrow: false,
             responsive: [
-              {
-                breakpoint: 1750,
-                settings: {
-                  slidesToShow: 5,
-                  slidesToScroll: 1,
-                  infinite: true,
-                  dots: true
+                {
+                    breakpoint: 1750,
+                    settings: {
+                        slidesToShow: 5,
+                        slidesToScroll: 1,
+                        infinite: true,
+                        dots: true
+                    }
+                },
+                {
+                    breakpoint: 1530,
+                    settings: {
+                        slidesToShow: 4,
+                        slidesToScroll: 1,
+                        initialSlide: 2
+                    }
+                },
+                {
+                    breakpoint: 1350,
+                    settings: {
+                        slidesToShow: 3,
+                        slidesToScroll: 1
+                    }
+                },
+                {
+                    breakpoint: 1170,
+                    settings: {
+                        slidesToShow: 2,
+                        slidesToScroll: 1
+                    }
+                },
+                {
+                    breakpoint: 975,
+                    settings: {
+                        slidesToShow: 1,
+                        slidesToScroll: 1
+                    }
                 }
-              },
-              {
-                breakpoint: 1530,
-                settings: {
-                  slidesToShow: 4,
-                  slidesToScroll: 1,
-                  initialSlide: 2
-                }
-              },
-              {
-                breakpoint: 1350,
-                settings: {
-                  slidesToShow: 3,
-                  slidesToScroll: 1
-                }
-              },
-              {
-                breakpoint: 1170,
-                settings: {
-                  slidesToShow: 2,
-                  slidesToScroll: 1
-                }
-              },
-              {
-                breakpoint: 975,
-                settings: {
-                  slidesToShow: 1,
-                  slidesToScroll: 1
-                }
-              }
             ]
-          };
+        };
 
         const { buyAssetModal, selectedAssets } = this.state;
 
@@ -110,24 +110,26 @@ class TrendingAssets extends React.Component {
             }
             return (
                 <Slider {...trendSliderSetting}>
-                    {trendingAssetsList.data.map((item, index) => (
-                    <Card className="trending-assets-card" key={`trending-asset-${index}`}>
-                        <Image src={item.assets[0].data.img && item.assets[0].data.img.indexOf('http') == -1 ? `https://ipfs.io/ipfs/${item.assets[0].data.img}` : item.assets[0].data.img} />
-                        <Card.Header className="t-card-title">{item.assets[0].name}</Card.Header>
-                        <Card.Meta>
-                            <div className="t-card-author">{item.seller}</div>
-                            <div className="t-card-price">
-                                <Image
-                                    src={require('../../../../../renderer/assets/images/dashboard/accountIcon.png')}
-                                    style={{ width: 16, height: 16 }}
-                                />
-                                <div className="t-card-des">
-                                    {(item.listing_price / 100000000).toFixed(2)} {item.listing_symbol}
-                                </div>
-                            </div>
-                            <Button className="trending-view-button" onClick={() => this.toggleBuyAssetModal(index)}>View Market</Button>
-                        </Card.Meta>
-                    </Card>))}
+                    {
+                        trendingAssetsList.data.map((item, index) => (
+                            <Card className="trending-assets-card" key={`trending-asset-${index}`}>
+                                <Image src={item.assets[0].data.img && item.assets[0].data.img.indexOf('http') == -1 ? `https://ipfs.io/ipfs/${item.assets[0].data.img}` : item.assets[0].data.img} />
+                                <Card.Header className="t-card-title">{item.assets[0].name}</Card.Header>
+                                <Card.Meta>
+                                    <div className="t-card-author">{item.seller}</div>
+                                    <div className="t-card-price">
+                                        <Image
+                                            src={require('../../../../../renderer/assets/images/dashboard/accountIcon.png')}
+                                            style={{ width: 16, height: 16 }}
+                                        />
+                                        <div className="t-card-des">
+                                            {(item.listing_price / 100000000).toFixed(2)} {item.listing_symbol}
+                                        </div>
+                                    </div>
+                                    <Button className="trending-view-button" onClick={() => this.toggleBuyAssetModal(index)}>View Market</Button>
+                                </Card.Meta>
+                            </Card>))
+                    }
                 </Slider >
             )
         }

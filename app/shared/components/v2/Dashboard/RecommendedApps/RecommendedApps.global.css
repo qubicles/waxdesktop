@@ -12,13 +12,23 @@
 .recommended-apps-title {
     font-size: 20px;
     font-family: montserratBold;
+    text-align: center;
 }
   
 /* recommended app card */
-.recommended-apps-card {
-    text-align: center;
+.recommended-apps-section .recommended-apps-card {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
     margin-right: 30px;
+}
+.recently-apps-section .recommended-apps-card {
     display: inline-block;
+    margin-right: 30px;
+    text-align: center;
+}
+.recommended-apps-card .app-title {
+    text-align: center;
 }
 .recommended-apps-card img {
     width: 80px;

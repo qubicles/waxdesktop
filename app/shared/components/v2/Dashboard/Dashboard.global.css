@@ -29,9 +29,3 @@
   font-size: 15px;
 }
 
-/* responsive */
-@media only screen and (max-width: 1050px) {
-  .trending-assets-body {
-    height: 290px !important;
-  }
-}
