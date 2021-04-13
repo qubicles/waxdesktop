@@ -59,7 +59,6 @@ class Marketplace extends React.Component {
     } = this.props;
     const {
       match,
-      owner,
       page,
       limit,
       order,
@@ -70,7 +69,7 @@ class Marketplace extends React.Component {
       buyAssetModal
     } = this.state;
 
-    getAssets({ match, owner, page, limit, order, sort, minPrice, maxPrice });
+    getAssets({ match, page, limit, order, sort, minPrice, maxPrice });
   };
 
   onChange = debounce((e, { name, value }) => {
@@ -105,7 +104,7 @@ class Marketplace extends React.Component {
     const {
       assets: { isAssetsLoading, assetsList }
     } = this.props;
-    if (isAssetsLoading) {
+    if (isAssetsLoading && assetsList.data.length === 0) {
       return <div>Loading...</div>;
     }
 

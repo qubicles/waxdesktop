@@ -242,7 +242,6 @@ class CreateAccountModal extends React.Component {
 				delegatedCpu,
 				activePublicKey
 			).then(results => {
-				debugger
 				if (results.type == 'SYSTEM_CREATEACCOUNT_SUCCESS') {
 					addNewAccount(accountName)
 					setSettings('account', accountName);

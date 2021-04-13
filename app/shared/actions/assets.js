@@ -17,7 +17,7 @@ export const getTrendingAssets = () => {
     const { settings } = getState();
     return axios
       .get(
-        `https://wax.api.atomicassets.io/atomicmarket/v1/sales?page=1&limit=10&order=desc&sort=created`
+        `https://test.wax.api.atomicassets.io/atomicmarket/v1/sales?page=1&limit=10&order=desc&sort=created`
       )
       .then(res => {
         dispatch({
@@ -30,7 +30,6 @@ export const getTrendingAssets = () => {
 
 export const getAssets = ({
   match,
-  owner,
   page = 1,
   limit = 100,
   order = "desc",
@@ -46,12 +45,18 @@ export const getAssets = ({
     });
     return axios
       .get(
-        `https://wax.api.atomicassets.io/atomicmarket/v1/sales?symbol=WAX&match=${match}&page=${page}&limit=${limit}&order=${order}&sort=${sort}&min_price=${minPrice}&max_price=${maxPrice}&collection_name=${collection}`
+        `https://test.wax.api.atomicassets.io/atomicmarket/v1/sales?symbol=WAX&match=${match}&page=${page}&limit=${limit}&order=${order}&sort=${sort}&min_price=${minPrice}&max_price=${maxPrice}&collection_name=${collection}`
       )
       .then(res => {
         dispatch({
           type: types.ASSETS_LIST_SUCCESS,
           payload: res.data
+        });
+      })
+      .catch((err) => {
+        dispatch({
+          type: types.ASSETS_LIST_FAILURE,
+          payload: err
         });
       });
   };
@@ -69,13 +74,19 @@ export const getNftAssets = (owner) => {
           payload: res.data
         })
       })
+      .catch((err) => {
+        dispatch({
+          type: types.NFT_ASSETS_LIST_FAILURE,
+          payload: err
+        });
+      });
   }
 }
 export const getActiveCollections = () => {
   return (dispatch: () => void, getState) => {
     return axios
       .get(
-        `https://wax.api.atomicassets.io/atomicmarket/v1/stats/collections?symbol=WAX&order=desc&sort=volume`
+        `https://test.wax.api.atomicassets.io/atomicmarket/v1/stats/collections?symbol=WAX&order=desc&sort=volume`
       )
       .then(res => {
         dispatch({
