@@ -86,7 +86,7 @@ export const getActiveCollections = () => {
   return (dispatch: () => void, getState) => {
     return axios
       .get(
-        `https://test.wax.api.atomicassets.io/atomicmarket/v1/stats/collections?symbol=WAX&order=desc&sort=volume`
+        `https://wax.api.atomicassets.io/atomicmarket/v1/stats/collections?symbol=WAX&order=desc&sort=volume`
       )
       .then(res => {
         dispatch({

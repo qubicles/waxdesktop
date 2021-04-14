@@ -52,6 +52,9 @@
 .staking-history-img {
     width: 100%;
     margin-right: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 .history-body-right .history-body-des {
     text-align: left;
@@ -67,4 +70,10 @@
 .history-body-right .history-body-des div:last-child {
     font-size: 18px;
     font-family: montserratBold;
+}
+@media only screen and (max-width: 1220px) {
+    .staking-history-img {
+        width: 250px !important;
+        height: 100px !important;
+    }
 }

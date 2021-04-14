@@ -126,7 +126,7 @@ class GuildsTab extends Component {
                     />
                 </Table.Cell>
                 <Table.Cell >
-                    <Header style={{color:"white"}}>{producer.owner}</Header>
+                    <Header style={{color:"white"}} className="producer-owner">{producer.owner}</Header>
                 </Table.Cell>
                 <Table.Cell>
                     <div className="list-btn">
@@ -136,7 +136,7 @@ class GuildsTab extends Component {
                 <Table.Cell>
                   <Flag name={producer.flag} style={{display:'inline', marginRight:'10px'}} />
                   <Header style={{color:"white", display:'inline'}}>
-                      {producer.country}
+                      <span className="producer-country">{producer.country}</span>
                   </Header>
                 </Table.Cell>
                 <Table.Cell className="list-img-group" >
@@ -147,7 +147,7 @@ class GuildsTab extends Component {
                     {producer.twitter &&
                         <a href={`https://twitter.com/${producer.twitter}`} target="_target"><Image src={require('../../../../renderer/assets/images/marketplace/Logo__x2014__FIXED.png')} /></a>}
                 </Table.Cell>
-                <Table.Cell>
+                <Table.Cell className="guild-total-votes">
                     <Header style={{color:"white"}}>
                       {this.numberWithComma(producer.num_votes.toFixed(2))}
                     {producer.voteNumChange < 0 ?

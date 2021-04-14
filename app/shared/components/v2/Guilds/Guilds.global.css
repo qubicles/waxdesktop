@@ -175,3 +175,19 @@
     font-family: montserratSemiBold;
 }
 
+/* responsive design */
+@media only screen and (max-width: 1570px) {
+    .guild-total-votes {
+      display: none;
+    }
+}
+@media only screen and (max-width: 1280px) {
+    .producer-country {
+        display: none;
+    }
+}
+@media only screen and (max-width: 1220px) {
+    .producer-owner {
+        display: none;
+    }
+}
