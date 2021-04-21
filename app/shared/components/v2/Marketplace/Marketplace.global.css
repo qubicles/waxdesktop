@@ -209,6 +209,11 @@
 /* search bar responsive */
 @media only screen and (min-width: 1050px) {
     .round-search-bar  {
+       width: 65%;
+    }
+}
+@media only screen and (min-width: 1200px) {
+    .round-search-bar  {
        width: 75%;
     }
 }
