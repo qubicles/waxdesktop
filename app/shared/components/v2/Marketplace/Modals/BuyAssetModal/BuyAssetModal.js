@@ -47,28 +47,28 @@ class BuyAssetModal extends React.Component {
   }
 
   showAlert = (results) => {
-		const { blockexplorers, settings } = this.props;
-		let blockExplorer = blockexplorers[settings.blockExplorer];
-		let urlPartsWithoutVariable;
-		let generatedLink;
-		if (results.type == 'PURCHASE_ASSETS_SUCCESS') {
-			if (blockExplorer && blockExplorer['txid']) {
+    const { blockexplorers, settings } = this.props;
+    let blockExplorer = blockexplorers[settings.blockExplorer];
+    let urlPartsWithoutVariable;
+    let generatedLink;
+    if (results.type == 'PURCHASE_ASSETS_SUCCESS') {
+      if (blockExplorer && blockExplorer['txid']) {
         urlPartsWithoutVariable = blockExplorer['txid'].split(`{txid}`);
-				generatedLink = `${urlPartsWithoutVariable[0]}${results.payload.tx.transaction_id}${urlPartsWithoutVariable[1]}`;
-			}
+        generatedLink = `${urlPartsWithoutVariable[0]}${results.payload.tx.transaction_id}${urlPartsWithoutVariable[1]}`;
+      }
 
-			const expLink = `<a href="${generatedLink}" target="_blink"> ${results.payload.tx.transaction_id.substr(0, 8)}...${results.payload.tx.transaction_id.substr(-8)}</a>`;
-			showSweetAlert(
-				"success",
-				expLink
-			);
-		} else {
-			showSweetAlert(
-				"error",
-				"Error occurred. try again."
-			)
-		}
-	}
+      const expLink = `<a href="${generatedLink}" target="_blink"> ${results.payload.tx.transaction_id.substr(0, 8)}...${results.payload.tx.transaction_id.substr(-8)}</a>`;
+      showSweetAlert(
+        "success",
+        expLink
+      );
+    } else {
+      showSweetAlert(
+        "error",
+        "Error occurred. try again."
+      )
+    }
+  }
 
   render() {
     const {
@@ -97,16 +97,20 @@ class BuyAssetModal extends React.Component {
           <div className="sell-left-container">
             <div className="sell-card">
               {
-                (!selectedAssets) ?
-                  (
-                    <img
-                      src={require("../../../../../../renderer/assets/images/dashboard/dallas141.png")}
-                    />
-                  ) : (
-                    <img
-                      src={selectedAssets.assets[0].data.img.indexOf('http') == -1 ? `https://ipfs.io/ipfs/${selectedAssets.assets[0].data.img}` : selectedAssets.assets[0].data.img}
-                    />
-                  )
+                (
+                  selectedAssets ?
+                    (selectedAssets && selectedAssets.assets[0] && selectedAssets.assets[0].data.img == undefined) ?
+                      (
+                        <img
+                          src={require("../../../../../../renderer/assets/images/unknowImg.jpg")}
+                        />
+                      ) : (
+                        <img
+                          src={selectedAssets.assets[0].data.img.indexOf('http') == -1 ? `https://ipfs.io/ipfs/${selectedAssets.assets[0].data.img}` : selectedAssets.assets[0].data.img}
+                        />
+                      ) : ''
+                )
+
               }
               <div className="sell-card-info">
                 <div className="sc-title">{nftName}</div>
@@ -170,7 +174,7 @@ class BuyAssetModal extends React.Component {
                 </div>
               </div>
             </div>
-            <div className="delegate-btn" onClick={() => {this.purchaseAssets(selectedAssets)}}>
+            <div className="delegate-btn" onClick={() => { this.purchaseAssets(selectedAssets) }}>
               Confirm Purchase
               <img
                 src={require("../../../../../../renderer/assets/images/dashboard/correct3.png")}

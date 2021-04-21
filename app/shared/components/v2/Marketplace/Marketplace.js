@@ -104,7 +104,7 @@ class Marketplace extends React.Component {
     const {
       assets: { isAssetsLoading, assetsList }
     } = this.props;
-    if (isAssetsLoading && assetsList.data.length === 0) {
+    if (isAssetsLoading && assetsList && assetsList.data.length === 0) {
       return <div>Loading...</div>;
     }
 
@@ -120,7 +120,7 @@ class Marketplace extends React.Component {
       assetsList &&
       assetsList.data.map((asset, index) => (
         <Card className="trending-assets-card" key={`assets-${asset.offer_id}`}>
-          <Image src={asset.assets[0].data.img.indexOf('http') == -1 ? `https://ipfs.io/ipfs/${asset.assets[0].data.img}`: asset.assets[0].data.img } />
+          <Image src={asset.assets[0].data.img && asset.assets[0].data.img.indexOf('http') == -1 ? `https://ipfs.io/ipfs/${asset.assets[0].data.img}`: asset.assets[0].data.img } />
           <Card.Header className="t-card-title">
             {asset.assets[0].name}
           </Card.Header>
