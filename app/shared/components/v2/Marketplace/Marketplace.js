@@ -69,7 +69,7 @@ class Marketplace extends React.Component {
       buyAssetModal
     } = this.state;
 
-    getAssets({ match, page, limit, order, sort, minPrice, maxPrice });
+    getAssets({ match, page, limit, order, sort, minPrice, maxPrice, collection });
   };
 
   onChange = debounce((e, { name, value }) => {
