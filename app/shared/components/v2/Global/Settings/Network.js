@@ -6,16 +6,19 @@ class GlobalSettingsNetwork extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            value: "waxMainnet"
+            value: ""
         }
     }
 
     onChange = (e, { value }) => {
-        const { actions } = this.props;
+        const { actions, onChangeNode} = this.props;
+
         this.setState({
-            value
+            value: value.value
+        },() => {
+            onChangeNode(value);
         })
-        // actions.setSetting('lang', value);
+        
     }
 
     render() {
@@ -35,16 +38,26 @@ class GlobalSettingsNetwork extends Component {
                     className={value === "waxMainnet" ? "btn-round btn-inside active-btn" : "btn-round btn-inside"}
                     name={name}
                     value="waxMainnet"
+                    apiurl="https://api.wax.alohaeos.com"
                     checked={value === "waxMainnet"}
-                    onChange={this.onChange}
+                    onChange={(name, value) => this.onChange(null, {name, value: value })} 
                 />
                 <Radio
                     label="WAX Testnet"
                     className={value === "waxTestnet" ? "btn-right btn-round btn-inside active-btn" : "btn-right btn-round btn-inside"}
                     name={name}
                     value="waxTestnet"
+                    apiurl="https://api.waxtest.alohaeos.com"
                     checked={value === "waxTestnet"}
-                    onChange={this.onChange}
+                    onChange={(name, value) => this.onChange(null, {name, value: value })} 
+                />
+                <Radio
+                    label="Custom Node API"
+                    className={value === "customNode" ? "btn-right btn-round btn-inside active-btn" : "btn-right btn-round btn-inside"}
+                    name={name}
+                    value="customNode"
+                    checked={value === "customNode"}
+                    onChange={(name, value) => this.onChange(null, {name, value: value })} 
                 />
             </React.Fragment>
         );

@@ -11,7 +11,8 @@ import {
   Checkbox,
   Form,
   Input,
-  Button
+  Button,
+  Message
 } from "semantic-ui-react";
 import { connect } from 'react-redux';
 import { bindActionCreators } from "redux";
@@ -34,6 +35,7 @@ import GlobalSettingsPowerToken from "../../Global/Settings/PowerToken";
 import GlobalSettingsFilterSpamTransfers from "../../Global/Settings/FilterSpamTransfers";
 import GlobalSettingsNetwork from "../../Global/Settings/Network";
 import GlobalSettingsNode from "../../Global/Settings/Node";
+import ValidateActions from "../../../../actions/validate"
 import Balance from "../../Dashboard/Balance/Balance";
 import "./WalletSettings.global.css";
 
@@ -41,25 +43,48 @@ class WalletSettings extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      node: ""
+      node: "",
+      isDisabled: true,
     };
   }
 
-  static getDerivedStateFromProps(nextProps, nextState) {
-    if (nextProps.settings.node !== nextState.node) {
-      return {
-        node: nextProps.settings.node
-      }
-    }
-
-    return null;
-  }
+  // static getDerivedStateFromProps(nextProps, nextState) {
+  //   if (nextProps.settings.node !== nextState.node) {
+  //     return {
+  //       node: nextProps.settings.node
+  //     }
+  //   }
+  //   return null;
+  // }
   componentDidMount() {
     this.props.actions.getBlockExplorers()
   }
 
   goBack = () => {
     this.props.history.push("/advanced");
+  }
+  onChangeNode = (value) => {
+    const { actions } = this.props;
+    const { setSettingWithValidation } = actions;
+    if (value.apiurl) {
+      this.setState({
+        node: value.apiurl,
+        isDisabled: true
+      }, () => {
+        setSettingWithValidation('node', this.state.node);
+      })
+    } else {
+      if (typeof (value) == 'string') {
+        this.setState({
+          node: value
+        })
+      } else {
+        this.setState({
+          isDisabled: false
+        })
+      }
+    }
+
   }
 
   onConnect = () => {
@@ -89,7 +114,8 @@ class WalletSettings extends React.Component {
   }
 
   render() {
-    const { actions, settings, blockExplorers } = this.props;
+    const { actions, settings, blockExplorers, validate } = this.props;
+    const { isDisabled } = this.state;
     return (
       <div className="dashboard-container">
         <div className="dashboard-body-section">
@@ -99,12 +125,6 @@ class WalletSettings extends React.Component {
                 src={require("../../../../../renderer/assets/images/advanced/down-arrow1.png")}
                 onClick={this.goBack}
               />
-              <div className="delegate-btn">
-                Confirm Changes
-                <img
-                  src={require("../../../../../renderer/assets/images/advanced/correct2.png")}
-                />
-              </div>
             </div>
             <div className="walletSettings-body">
               <div className="w-title">Wallet Settings</div>
@@ -198,25 +218,32 @@ class WalletSettings extends React.Component {
                   </div>
                   <div className="seller-input">
                     <div className="input-title">Connect To Network</div>
-                    <div className="btn-wrap">
+                    <div className="btn-wrap blockchain-radio-group">
                       <Form.Field className="ui-common-input">
                         <GlobalSettingsNetwork
                           name="blockchain"
+                          onChangeNode={this.onChangeNode}
                         />
                       </Form.Field>
-                      {/* <Button className="btn-left-round btn-inside">
-                        WAX Mainnet
-                      </Button>
-                      <Button className="btn-right-round btn-inside">
-                        WAX Testnet
-                      </Button> */}
                     </div>
                   </div>
+                  {
+                    (validate.NODE === 'FAILURE') ? (
+                      <Message
+                        color="red"
+                        content="Try again or enter a different server."
+                        header="Unable to connect"
+                        icon="warning sign"
+                      />
+                    ) : ''
+                  }
                   <div className="seller-input w-img-wrap">
                     <div className="input-title">Wallet API URL</div>
                     <GlobalSettingsNode
+                      isDisabled={isDisabled}
                       actions={actions}
                       settings={settings}
+                      onChangeNode={this.onChangeNode}
                     />
                     <img
                       src={require("../../../../../renderer/assets/images/dashboard/correct3.png")}
@@ -247,6 +274,7 @@ const mapStateToProps = (state) => {
     globals: state.globals,
     accounts: state.accounts,
     blockExplorers: state.blockexplorers,
+    validate: state.validate
   };
 }
 
@@ -257,6 +285,7 @@ const mapDispatchToProps = (dispatch) => {
       ...GlobalsActions,
       ...SettingsActions,
       ...BlockExplorersActions,
+      ...ValidateActions
     }, dispatch)
   };
 }

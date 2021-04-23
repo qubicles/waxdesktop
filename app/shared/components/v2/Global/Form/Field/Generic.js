@@ -19,7 +19,8 @@ export default class GlobalFormFieldGeneric extends Component
         const {
             name,
             value,
-            label
+            label,
+            isDisabled
         } = this.props;
 
         return (
@@ -31,6 +32,7 @@ export default class GlobalFormFieldGeneric extends Component
                 name={name}
                 onChange={this.onChange}
                 defaultValue={value}
+                disabled={isDisabled}
             />
         );
     }

@@ -6,14 +6,15 @@ import GlobalFormFieldGeneric from '../Form/Field/Generic';
 
 class GlobalSettingsNode extends Component{
   onChange = (e, { name, value }) => {
-    const { actions } = this.props;
-
-    actions.setSetting(name, value);
+    const { actions, onChangeNode } = this.props;
+    onChangeNode(value);
+    // actions.setSetting(name, value);
   }
 
   render() {
     const {
-      settings
+      settings,
+      isDisabled
     } = this.props;
 
     return (
@@ -22,6 +23,7 @@ class GlobalSettingsNode extends Component{
         name="node"
         onChange={this.onChange}
         value={settings.node}
+        isDisabled={isDisabled}
       />
     );
   }
