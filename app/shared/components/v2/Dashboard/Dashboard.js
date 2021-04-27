@@ -173,7 +173,7 @@ class Home extends React.Component {
           <RecommendedApps history={history} />
           <div className="token-ntfs-section">
             <div className="right-badge">
-              confirm
+              {t('d_confirm')}
             </div>
             <TabPanes statsFetcher={statsFetcher} actions={actions} />
           </div>
@@ -247,6 +247,6 @@ const mapDispatchToProps = dispatch => {
 
 
 export default compose(
-  translate('wallet'),
+  translate('dashboard'),
   connect(mapStateToProps, mapDispatchToProps)
 )(Home)

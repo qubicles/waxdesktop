@@ -2,6 +2,8 @@ import React from "react";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import Slider from "react-slick";
+import compose from 'lodash/fp/compose';
+import { translate } from 'react-i18next';
 
 import { Card, Image, Button } from "semantic-ui-react";
 import * as TrendingAssetsActions from "../../../../actions/assets";
@@ -45,6 +47,7 @@ class TrendingAssets extends React.Component {
             actions,
             assets,
             globals,
+            t
         } = this.props;
 
         var trendSliderSetting = {
@@ -138,7 +141,7 @@ class TrendingAssets extends React.Component {
                                             {(item.listing_price / 100000000).toFixed(2)} {item.listing_symbol}
                                         </div>
                                     </div>
-                                    <Button className="trending-view-button" onClick={() => this.toggleBuyAssetModal(index)}>View Market</Button>
+                                    <Button className="trending-view-button" onClick={() => this.toggleBuyAssetModal(index)}>{t('d_viewMarket')}</Button>
                                 </Card.Meta>
                             </Card>))
                     }
@@ -149,8 +152,8 @@ class TrendingAssets extends React.Component {
         return (
             <div className="trending-assets-section">
                 <div className="trending-assets-header">
-                    <div className="trending-assets-title">Trending Assets</div>
-                    <div className="trending-assets-view" onClick={this.goMarketplace}>View Market</div>
+                    <div className="trending-assets-title">{t('d_trendingAssets')}</div>
+                    <div className="trending-assets-view" onClick={this.goMarketplace}>{t('d_viewMarket')}</div>
                 </div>
                 <div className="trending-assets-body">
                     <TrendingAssetCard />
@@ -185,5 +188,8 @@ const mapDispatchToProps = (dispatch) => {
     };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(TrendingAssets);
+export default compose(
+    translate('dashboard'),
+    connect(mapStateToProps, mapDispatchToProps)
+)(TrendingAssets);
 

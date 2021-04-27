@@ -1,6 +1,8 @@
 import React from "react";
-import "./RecommendedApps.global.css";
+import compose from 'lodash/fp/compose';
+import { translate } from 'react-i18next';
 
+import "./RecommendedApps.global.css";
 import recommendedAppsJSON from "../../../../../../resources/recommendedApps.json";
 import { decentralizedData } from "../../Apps/dApps";
 import Slider from "react-slick";
@@ -105,11 +107,11 @@ class RecommendedApps extends React.Component {
   };
 
   render() {
-
+    const { t } = this.props;
     return (
       <div className="recommended-apps-section">
         <div className="recommended-apps-header">
-          <div className="recommended-apps-title">Recommended Apps</div>
+          <div className="recommended-apps-title">{t('d_recommendApps')}</div>
           <img
             src={require("../../../../../renderer/assets/images/dashboard/Group1737.png")}
             onClick={this.goApps}
@@ -122,4 +124,4 @@ class RecommendedApps extends React.Component {
   }
 }
 
-export default RecommendedApps;
+export default translate('dashboard')(RecommendedApps);

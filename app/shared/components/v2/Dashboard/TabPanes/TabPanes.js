@@ -1,5 +1,8 @@
 import React from "react";
 import { bindActionCreators } from "redux";
+import { translate } from "react-i18next";
+import compose from 'lodash/fp/compose';
+
 import { connect } from "react-redux";
 import { Tab, Table, Image, Header, Card, Button } from "semantic-ui-react";
 import { forEach } from 'lodash';
@@ -11,9 +14,9 @@ import "./TabPanes.global.css";
 
 class TabPanes extends React.Component {
   getPanes() {
-    const { settings } = this.props
+    const { settings, t } = this.props
     const tokensPane = {
-      menuItem: "Tokens",
+      menuItem: t('d_tokens'),
       render: () => (
         <Tab.Pane attached={false}>
           <Table className="tokens-table">
@@ -24,7 +27,7 @@ class TabPanes extends React.Component {
     };
 
     const nftsPane = {
-      menuItem: "NFTs",
+      menuItem: t('d_nfts'),
       render: () => <NFTPane settings={settings} />
     };
     return [tokensPane, nftsPane];
@@ -50,7 +53,7 @@ class TokenBalance extends React.Component {
   }
 
   render() {
-    const { settings, globals, balances, statsFetcher } = this.props;
+    const { settings, globals, balances, statsFetcher, t } = this.props;
     const { tokens, totalTokens } = statsFetcher.fetchAll();
 
     let coreTokenInfo = globals.remotetokens && globals.remotetokens.filter((t) => t.symbol == settings.blockchain.tokenSymbol)[0];
@@ -129,4 +132,7 @@ const mapStateToProps = (state) => {
   };
 }
 
-export default connect(mapStateToProps, null)(TabPanes);
+export default compose(
+  translate('dashboard'),
+  connect(mapStateToProps, null)
+)(TabPanes);
