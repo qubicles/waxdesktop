@@ -4,6 +4,8 @@ import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { Decimal } from 'decimal.js';
 import { forEach } from 'lodash';
+import compose from 'lodash/fp/compose';
+import { translate } from 'react-i18next';
 
 import * as GlobalsActions from "../../../../actions/globals";
 import * as AccountActions from "../../../../actions/accounts";
@@ -105,6 +107,7 @@ class Balance extends Component {
             system,
             chain,
             blockexplorers,
+            t,
         } = this.props;
         const {
             dashboardTokenModal,
@@ -141,7 +144,7 @@ class Balance extends Component {
             <div className="balance-section">
                 <div className="balance-chart-container">
                     <div className="balance-total">
-                        <h4>Total Balance</h4>
+                        <h4>{t('nav_totalBalance')}</h4>
                         <div className="balance-percent">
                             {Math.sign(increaseBal) == 1 ? `+${increaseBal.toFixed(2)}`: increaseBal.toFixed(2)} %
                         </div>
@@ -150,13 +153,13 @@ class Balance extends Component {
                     <HistoryChart />
                     <div className="send-btn-wrap">
                         <div className="dashboard-send-btn" onClick={this.toggleCryptoModal}>
-                            <h3>Send</h3>
+                            <h3>{t('nav_send')}</h3>
                             <Image src={require('../../../../../renderer/assets/images/dashboard/arrow1.png')} />
                         </div>
                     </div>
                     <div className="send-btn-wrap">
                         <div className="dashboard-send-btn" onClick={this.toggleDashboardTokenModal}>
-                            <h3>Receive</h3>
+                            <h3>{t('nav_receive')}</h3>
                             <Image src={require('../../../../../renderer/assets/images/dashboard/iconfinder263.png')} />
                         </div>
                     </div>
@@ -164,19 +167,19 @@ class Balance extends Component {
                 <div className="balance-button-group">
                     <div className="balance-button-wrap" onClick={this.toggleBuyWaxModal}>
                         <div className="balance-button-title">
-                            Buy WAX
+                        {t('nav_buyWax')}
                     </div>
                         <Image src={require('../../../../../renderer/assets/images/dashboard/credit-card2.png')} />
                     </div>
                     <div className="balance-button-wrap">
                         <div className="balance-button-title" onClick={this.toggleSwapTokenModal}>
-                            Swap Tokens
+                        {t('nav_swapToken')}
                         </div>
                         <Image src={require('../../../../../renderer/assets/images/dashboard/Group1734.png')} />
                     </div>
                     <div className="balance-button-wrap" onClick={this.toggleResourcesModal}>
                         <div className="balance-button-title">
-                            Resources
+                        {t('nav_resources')}
                         </div>
                         <Image src={require('../../../../../renderer/assets/images/dashboard/Group15.png')} />
                     </div>
@@ -282,4 +285,7 @@ const mapDispatchToProps = dispatch => {
     };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Balance);
+export default compose(
+    translate('rightNav'),
+    connect(mapStateToProps, mapDispatchToProps)
+)(Balance);

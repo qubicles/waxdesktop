@@ -5,6 +5,8 @@ import { Dropdown } from "semantic-ui-react";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { withRouter } from "react-router-dom";
+import { translate } from 'react-i18next';
+import compose from 'lodash/fp/compose';
 
 import * as GlobalsActions from "../../../actions/globals";
 import * as AccountActions from "../../../actions/accounts";
@@ -28,6 +30,7 @@ const accountIcon = {
 
 const SideBar = props => {
   let allAccounts = [];
+  const { t } = props;
   props.wallets.map(arr => {
     if (arr.text && arr.value) {
       Object.assign(arr, accountIcon);
@@ -39,7 +42,7 @@ const SideBar = props => {
   const [importAccountModal, toggleImportAccountModal] = useState(false);
   const dropDownOptions = [
     {
-      text: "Create Account",
+      text: t('nav_createAccount'),
       value: "createAccount",
       image: {
         avatar: true,
@@ -47,7 +50,7 @@ const SideBar = props => {
       }
     },
     {
-      text: "Import Account",
+      text: t('nav_importAccount'),
       value: "importAccount",
       image: {
         avatar: true,
@@ -89,32 +92,32 @@ const SideBar = props => {
   );
   const menuOption = [
     {
-      text: "Home",
+      text: t('nav_home'),
       value: "dashboard",
       image: require("../../../../renderer/assets/images/dashboard/dashboard-home.png")
     },
     {
-      text: "Market",
+      text: t('nav_market'),
       value: "marketplace",
       image: require("../../../../renderer/assets/images/dashboard/dashboard-market.png")
     },
     {
-      text: "Apps",
+      text: t('nav_apps'),
       value: "apps",
       image: require("../../../../renderer/assets/images/dashboard/dashboard-apps.png")
     },
     {
-      text: "Staking",
+      text: t('nav_staking'),
       value: "staking",
       image: require("../../../../renderer/assets/images/dashboard/dashboard-stacking.png")
     },
     {
-      text: "Guilds",
+      text: t('nav_guilds'),
       value: "guilds",
       image: require("../../../../renderer/assets/images/dashboard/dashboard-guilds.png")
     },
     {
-      text: "Advanced",
+      text: t('nav_advanced'),
       value: "advanced",
       image: require("../../../../renderer/assets/images/dashboard/dashabord-advanced.png")
     }
@@ -234,6 +237,11 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default withRouter(
-  connect(mapStateToProps, mapDispatchToProps)(SideBar)
-);
+// export default withRouter(
+//   connect(mapStateToProps, mapDispatchToProps)(SideBar)
+// );
+export default compose(
+  withRouter,
+  translate('leftNav'),
+  connect(mapStateToProps, mapDispatchToProps)
+)(SideBar);

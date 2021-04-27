@@ -114,7 +114,13 @@ class WalletSettings extends React.Component {
   }
 
   render() {
-    const { actions, settings, blockExplorers, validate } = this.props;
+    const { 
+            actions,
+            settings, 
+            blockExplorers, 
+            validate,
+            i18n, 
+          } = this.props;
     const { isDisabled } = this.state;
     return (
       <div className="dashboard-container">
@@ -164,6 +170,7 @@ class WalletSettings extends React.Component {
                     <GlobalSettingsLanguage
                       actions={actions}
                       setLanguage={settings.lang}
+                      i18n={i18n}
                       selection />
                   </div>
                   <div className="seller-input">

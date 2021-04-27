@@ -3,6 +3,8 @@ import PropTypes from "prop-types";
 import { Divider, Tab, Dropdown } from "semantic-ui-react";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
+import compose from 'lodash/fp/compose';
+import { translate } from 'react-i18next';
 
 import TabPanes from "./TabPanes/TabPanes";
 import ImportAccountModal from "./Modals/ImportAccountModal/ImportAccountModal";
@@ -153,6 +155,7 @@ class Home extends React.Component {
       accounts,
       system,
       chain,
+      t,
     } = this.props;
 
     const statsFetcher = new StatsFetcher(
@@ -242,6 +245,8 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Home);
 
-// export default connect(mapStateToProps)(Home)
+export default compose(
+  translate('wallet'),
+  connect(mapStateToProps, mapDispatchToProps)
+)(Home)
