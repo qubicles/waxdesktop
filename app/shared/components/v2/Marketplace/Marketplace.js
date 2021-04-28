@@ -14,18 +14,14 @@ import {
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import debounce from "lodash/debounce";
+import compose from 'lodash/fp/compose';
+import { translate } from 'react-i18next';
 
 import * as AssetsActions from "../../../actions/assets";
 import * as GlobalsActions from "../../../actions/globals";
 import "./Marketplace.global.css";
 import MarketplaceRightNav from "./MarketplaceRightNav/MarketplaceRightNav";
 import BuyAssetModal from "../Marketplace/Modals/BuyAssetModal/BuyAssetModal";
-
-const options = [
-  { key: "created", text: "Most Recent", value: "created" },
-  { key: "updated", text: "Updated", value: "updated" },
-  { key: "price", text: "Price", value: "price" }
-];
 
 class Marketplace extends React.Component {
   constructor(props) {
@@ -185,7 +181,12 @@ class Marketplace extends React.Component {
       selectedAssets
     } = this.state;
     const displayAssets = this.renderAssets();
-    const { assets, actions, globals } = this.props;
+    const { assets, actions, globals, t } = this.props;
+    const options = [
+      { key: "created", text: t('m_recent'), value: "created" },
+      { key: "updated", text: t('m_updated'), value: "updated" },
+      { key: "price", text: t('m_price'), value: "price" }
+    ];
 
     const MarketplaceDropdown = () => (
       <Dropdown
@@ -232,7 +233,7 @@ class Marketplace extends React.Component {
             </div>
           </div> */}
           <div className="marketplace-filter-section">
-            <div className="title">Price Filter</div>
+            <div className="title">{t('m_priceFilter')}</div>
             <div className="price-filter-wrap">
               <Form.Field
                 placeholder="Min Price"
@@ -257,7 +258,7 @@ class Marketplace extends React.Component {
             </div>
           </div>
           <div className="marketplce-collections-section">
-            <div className="title">Collections</div>
+            <div className="title">{t('m_collections')}</div>
             <div className="radio-btn-wrap">
               <Form>
                 <Form.Field>
@@ -324,4 +325,7 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Marketplace);
+export default compose(
+  translate('market'),
+  connect(mapStateToProps, mapDispatchToProps)
+)(Marketplace);
