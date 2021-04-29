@@ -1,0 +1,14 @@
+{
+    "s_staking": "Ставка",
+    "s_pendingRewards": "Ожидающие вознаграждения",
+    "s_stakingRewards": "Награды за стекинг",
+    "s_nextClaim": "Следующая претензия",
+    "s_claimVote": "Заявить голос",
+    "s_claimGenesis": "Заявить о происхождении",
+    "s_rewardHistory": "История наград",
+    "s_earned": "Заработано",
+    "s_estRewards": "Оценить награды",
+    "s_wax_per_day": "WAX В день",
+    "s_monthlyRewards": "Ежемесячные награды",
+    "s_anually": "Ежегодно"
+}

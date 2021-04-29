@@ -13,6 +13,9 @@ import {
 } from "semantic-ui-react";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
+import { translate } from 'react-i18next';
+import compose from 'lodash/fp/compose';
+
 import * as AccountActions from "../../../../actions/accounts";
 import * as SettingsActions from "../../../../actions/settings";
 import * as GlobalsActions from "../../../../actions/globals"
@@ -130,6 +133,7 @@ class AutoClaimCard extends React.Component {
     const {
       settings,
       accounts,
+      t
     } = this.props;
 
     const {
@@ -154,7 +158,7 @@ class AutoClaimCard extends React.Component {
           </div> */}
         </div>
         <div className="s-card-des">
-          <div>Next Claim</div>
+          <div>{t('s_nextClaim')}</div>
           {
             (accounts[settings.account])
               ? (<Moment fromNow>{nextClaimTime}</Moment>)
@@ -164,13 +168,13 @@ class AutoClaimCard extends React.Component {
         </div>
         <Button
           className="claim-btn"
-          content="Claim Vote"
+          content={t('s_claimVote')}
           onClick={this.claimVote}
           disabled={rewardsDue <= 0 || secondsSinceClaimed < 86400}
         />
         <Button
           className="claim-btn"
-          content="Claim Genesis"
+          content={t('s_claimGenesis')}
           onClick={this.claimGenesis}
           disabled={rewardsDue <= 0 || secondsSinceClaimed < 86400}
         />
@@ -204,4 +208,7 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(AutoClaimCard);
+export default compose(
+  connect(mapStateToProps, mapDispatchToProps),
+  translate('staking')
+)(AutoClaimCard);

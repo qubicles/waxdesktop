@@ -1,0 +1,14 @@
+{
+    "s_staking": "Staking",
+    "s_pendingRewards": "Pending Rewards",
+    "s_stakingRewards": "Staking Rewards",
+    "s_nextClaim": "Next Claim",
+    "s_claimVote": "Claim Vote",
+    "s_claimGenesis": "Claim Genesis",
+    "s_rewardHistory": "Reward History",
+    "s_earned": "Earned",
+    "s_estRewards": "Est Rewards",
+    "s_wax_per_day": "WAX Per Day",
+    "s_monthlyRewards": "Monthly Rewards",
+    "s_anually": "Annually"
+}

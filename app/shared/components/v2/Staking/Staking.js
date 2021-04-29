@@ -11,6 +11,9 @@ import {
 } from "semantic-ui-react";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
+import { translate } from 'react-i18next';
+import compose from 'lodash/fp/compose';
+
 import Balance from "../Dashboard/Balance/Balance";
 
 import * as AssetsActions from "../../../actions/assets";
@@ -29,7 +32,7 @@ class Staking extends React.Component {
   }
 
   render() {
-    const { actions, settings, blockexplorers } = this.props;
+    const { actions, settings, blockexplorers, t } = this.props;
     return (
       <div className="dashboard-container">
         <div className="dashboard-body-section">
@@ -37,7 +40,7 @@ class Staking extends React.Component {
             <img
               src={require("../../../../renderer/assets/images/dashboard/dashboard-stacking.png")}
             />
-            <div>Staking</div>
+            <div>{t('s_staking')}</div>
           </div>
           <div className="staking-body">
             <div className="staking-card-section">
@@ -78,4 +81,8 @@ const mapDispatchToProps = (dispatch) => {
       }, dispatch)
   };
 }
-export default connect(mapStateToProps, mapDispatchToProps)(Staking);
+
+export default compose(
+  translate('staking'),
+  connect(mapStateToProps, mapDispatchToProps)
+)(Staking);

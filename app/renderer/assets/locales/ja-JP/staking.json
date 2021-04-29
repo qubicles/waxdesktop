@@ -1,0 +1,14 @@
+{
+    "s_staking": "ステーキング",
+    "s_pendingRewards": "保留中の報酬",
+    "s_stakingRewards": "ステーキングリワード",
+    "s_nextClaim": "次のクレーム",
+    "s_claimVote": "投票を主張する",
+    "s_claimGenesis": "クレームジェネシス",
+    "s_rewardHistory": "報酬履歴",
+    "s_earned": "稼いだ",
+    "s_estRewards": "報酬を見積もる",
+    "s_wax_per_day": "WAX 1日あたり",
+    "s_monthlyRewards": "毎月の報酬",
+    "s_anually": "毎年"
+}

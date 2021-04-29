@@ -12,6 +12,9 @@ import {
 import { connect } from "react-redux";
 import { Decimal } from 'decimal.js';
 import { bindActionCreators } from "redux";
+import { translate } from 'react-i18next';
+import compose from 'lodash/fp/compose';
+
 import * as AccountActions from "../../../../actions/accounts";
 import * as SettingsActions from "../../../../actions/settings";
 import * as GlobalsActions from "../../../../actions/globals"
@@ -87,7 +90,7 @@ class CurrentStackingCard extends React.Component {
 
   render() {
     const { stakingModal, genesisTotalBal, voteRewardsDue, gbmRewards } = this.state;
-    const { history, location, accounts, settings, globals, actions } = this.props;
+    const { history, location, accounts, settings, globals, actions, t } = this.props;
     const totalPending = gbmRewards != 0 ? parseFloat(voteRewardsDue) + parseFloat(gbmRewards.split(" ")[0]): voteRewardsDue;
 
     return (
@@ -97,7 +100,7 @@ class CurrentStackingCard extends React.Component {
             src={require("../../../../../renderer/assets/images/marketplace/ScrollGroup3.png")}
           />
           <div className="staking-card-des">
-            <div>Pending Rewards</div>
+            <div>{t('s_pendingRewards')}</div>
             <div>{totalPending.toFixed(8)} WAX</div>
           </div>
         </div>
@@ -106,7 +109,7 @@ class CurrentStackingCard extends React.Component {
           onClick={this.toggleStakingModal}
           disabled={!accounts[settings.account]}
         >
-          Staking Rewards
+          {t('s_stakingRewards')}
         </Button>
         {stakingModal && (
           <StakingModal
@@ -148,4 +151,7 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(CurrentStackingCard);
+export default compose(
+  connect(mapStateToProps, mapDispatchToProps),
+  translate('staking')
+)(CurrentStackingCard);

@@ -1,0 +1,14 @@
+{
+    "s_staking": "Picchettamento",
+    "s_pendingRewards": "premi in sospeso",
+    "s_stakingRewards": "puntare ricompense",
+    "s_nextClaim": "Reclamo successivo",
+    "s_claimVote": "Richiedi voto",
+    "s_claimGenesis": "Rivendica Genesis",
+    "s_rewardHistory": "Storia delle ricompense",
+    "s_earned": "Guadagnata",
+    "s_estRewards": "Stima dei premi",
+    "s_wax_per_day": "WAX Al giorno",
+    "s_monthlyRewards": "Ricompense mensili",
+    "s_anually": "Annualmente"
+}

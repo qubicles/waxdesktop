@@ -1,0 +1,14 @@
+{
+    "s_staking": "Jalonnement",
+    "s_pendingRewards": "Récompenses en attente",
+    "s_stakingRewards": "Jalonnement des récompenses",
+    "s_nextClaim": "Réclamation suivante",
+    "s_claimVote": "Revendiquer le vote",
+    "s_claimGenesis": "Revendiquer la Genèse",
+    "s_rewardHistory": "Historique des récompenses",
+    "s_earned": "Gagné",
+    "s_estRewards": "Récompenses Est",
+    "s_wax_per_day": "WAX Par jour",
+    "s_monthlyRewards": "Récompenses mensuelles",
+    "s_anually": "Annuellement"
+}

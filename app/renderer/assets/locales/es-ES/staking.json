@@ -1,0 +1,14 @@
+{
+    "s_staking": "Replanteo",
+    "s_pendingRewards": "Recompensas pendientes",
+    "s_stakingRewards": "Recompensas de apuesta",
+    "s_nextClaim": "Siguiente reclamo",
+    "s_claimVote": "Reclamar voto",
+    "s_claimGenesis": "Reclamar Génesis",
+    "s_rewardHistory": "Historial de recompensas",
+    "s_earned": "Ganada",
+    "s_estRewards": "Recompensas estimadas",
+    "s_wax_per_day": "WAX Por día",
+    "s_monthlyRewards": "Recompensas mensuales",
+    "s_anually": "Anualmente"
+}

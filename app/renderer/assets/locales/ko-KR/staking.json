@@ -1,0 +1,14 @@
+{
+    "s_staking": "스테이 킹",
+    "s_pendingRewards": "보류중인 보상",
+    "s_stakingRewards": "스테이 킹 보상",
+    "s_nextClaim": "다음 청구",
+    "s_claimVote": "투표권 주장",
+    "s_claimGenesis": "창세기 주장",
+    "s_rewardHistory": "보상 내역",
+    "s_earned": "획득",
+    "s_estRewards": "Estimate Rewards",
+    "s_wax_per_day": "WAX 하루",
+    "s_monthlyRewards": "월간 보상",
+    "s_anually": "매년"
+}

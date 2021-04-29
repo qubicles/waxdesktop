@@ -1,0 +1,14 @@
+{
+    "s_staking": "放样",
+    "s_pendingRewards": "待奖励",
+    "s_stakingRewards": "权益奖励",
+    "s_nextClaim": "下一个索偿",
+    "s_claimVote": "要求投票",
+    "s_claimGenesis": "索赔发生",
+    "s_rewardHistory": "奖励历史",
+    "s_earned": "已赚",
+    "s_estRewards": "预估奖励",
+    "s_wax_per_day": "WAX 每天",
+    "s_monthlyRewards": "每月奖励",
+    "s_anually": "每年"
+}
