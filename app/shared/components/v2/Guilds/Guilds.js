@@ -2,6 +2,8 @@ import React from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
+import { translate } from 'react-i18next';
+import compose from 'lodash/fp/compose';
 import {
   Card,
   Image,
@@ -202,7 +204,7 @@ class Guilds extends React.Component {
   };
 
   getPanes() {
-    const { actions, settings, blockExplorers, system, keys } = this.props
+    const { actions, settings, blockExplorers, system, keys, t } = this.props
     const guildsPan = {
       menuItem: (
         <Menu.Item key="guilds-list" onClick={this.emptyChoices}>
@@ -210,7 +212,7 @@ class Guilds extends React.Component {
             src={require("../../../../renderer/assets/images/dashboard/dashboard-guilds.png")}
             style={{ width: 15, height: 15, marginRight: 10 }}
           />
-          Guilds
+          {t('g_guilds')}
         </Menu.Item>
       ),
       render: () => (
@@ -231,7 +233,7 @@ class Guilds extends React.Component {
             src={require("../../../../renderer/assets/images/marketplace/Group565.png")}
             style={{ width: 15, height: 15, marginRight: 10 }}
           />
-          Proxies
+          {t('g_proxies')}
         </Menu.Item>
       ),
       render: () => (
@@ -262,7 +264,7 @@ class Guilds extends React.Component {
       addProxy,
       removeProxy
     } = this.state;
-    const { actions, blockExplorers, system, settings, accounts, keys, tables } = this.props;
+    const { actions, blockExplorers, system, settings, accounts, keys, tables, t } = this.props;
     const account = accounts[settings.account]
     const currentProxy = account && account.voter_info && account.voter_info.proxy;
     const isProxying = !!(account && account.voter_info && account.voter_info.proxy);
@@ -271,7 +273,7 @@ class Guilds extends React.Component {
     const confirmVotesButton =
       <div className="confirm-btn-wrap">
         <div className="confirm-btn">
-          <h3>Confirm Votes</h3>
+          <h3>{t('g_confirm')}</h3>
           <Image
             src={require("../../../../renderer/assets/images/dashboard/correct3.png")}
           />
@@ -389,4 +391,7 @@ Guilds.propTypes = {};
 
 Guilds.defaultProps = {};
 
-export default connect(mapStateToProps, mapDispatchToProps)(Guilds);
+export default compose(
+  connect(mapStateToProps, mapDispatchToProps),
+  translate('guilds')
+)(Guilds);
