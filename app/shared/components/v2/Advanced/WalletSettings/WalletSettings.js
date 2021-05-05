@@ -16,6 +16,8 @@ import {
 } from "semantic-ui-react";
 import { connect } from 'react-redux';
 import { bindActionCreators } from "redux";
+import { translate } from 'react-i18next';
+import compose from 'lodash/fp/compose';
 
 import * as GlobalsActions from "../../../../actions/globals";
 import * as AccountActions from "../../../../actions/accounts";
@@ -120,6 +122,7 @@ class WalletSettings extends React.Component {
             blockExplorers, 
             validate,
             i18n, 
+            t
           } = this.props;
     const { isDisabled } = this.state;
     return (
@@ -133,14 +136,14 @@ class WalletSettings extends React.Component {
               />
             </div>
             <div className="walletSettings-body">
-              <div className="w-title">Wallet Settings</div>
+              <div className="w-title">{t('w_setting')}</div>
               <div className="w-form">
                 <Form>
                   <div className="seller-input">
                     {(settings.walletMode !== 'cold')
                       ? (
                         <Form.Field>
-                          <div className="input-title">Default Block Explorer</div>
+                          <div className="input-title">{t('w_blockExplorer')}</div>
                           <GlobalSettingsBlockExplorer
                             actions={actions}
                             blockExplorers={blockExplorers}
@@ -152,21 +155,21 @@ class WalletSettings extends React.Component {
                     }
                   </div>
                   <div className="seller-input">
-                    <div className="input-title">Default IPFS Node</div>
+                    <div className="input-title">{t('w_ipfsNode')}</div>
                     <GlobalSettingsIPFSNode
                       actions={actions}
                       settings={settings}
                     />
                   </div>
                   <div className="seller-input">
-                    <div className="input-title">IPFS Port</div>
+                    <div className="input-title">{t('w_ipfsPort')}</div>
                     <GlobalSettingsIPFSPort
                       actions={actions}
                       settings={settings}
                     />
                   </div>
                   <div className="seller-input">
-                    <div className="input-title">Language</div>
+                    <div className="input-title">{t('w_language')}</div>
                     <GlobalSettingsLanguage
                       actions={actions}
                       setLanguage={settings.lang}
@@ -175,7 +178,7 @@ class WalletSettings extends React.Component {
                   </div>
                   <div className="seller-input">
                     <div className="input-title">
-                      Lock Wallet Automatically When Inactive
+                      {t('w_lockWallet')}
                   </div>
                     <GlobalSettingsIdleTimeout
                       actions={actions}
@@ -185,7 +188,7 @@ class WalletSettings extends React.Component {
                   </div>
                   <div className="seller-input">
                     <div className="input-title">
-                      Show Warning When Clicking Links to External Sites
+                      {t('w_externalSites')}
                   </div>
                     <GlobalSettingsSkipLinkModal
                       actions={actions}
@@ -195,7 +198,7 @@ class WalletSettings extends React.Component {
                   </div>
                   <div className="seller-input">
                     <div className="input-title">
-                      Recalculate Voting Weight Prior To Voting
+                      {t('w_recalc')}
                   </div>
                     <GlobalSettingsMirrorCastVote
                       actions={actions}
@@ -205,7 +208,7 @@ class WalletSettings extends React.Component {
                   </div>
                   <div className="seller-input">
                     <div className="input-title">
-                      Use Wax Desktop Wallet To Pay For Resources
+                      {t('w_payResources')}
                   </div>
                     <GlobalSettingsPowerToken
                       actions={actions}
@@ -215,7 +218,7 @@ class WalletSettings extends React.Component {
                   </div>
                   <div className="seller-input">
                     <div className="input-title">
-                      Filter Out Spam Transters (Hide tx's below 0.005 WAX)
+                      {t('w_filter')}
                   </div>
                     <GlobalSettingsFilterSpamTransfers
                       actions={actions}
@@ -224,7 +227,7 @@ class WalletSettings extends React.Component {
                     />
                   </div>
                   <div className="seller-input">
-                    <div className="input-title">Connect To Network</div>
+                    <div className="input-title">{t('w_connectNetwork')}</div>
                     <div className="btn-wrap blockchain-radio-group">
                       <Form.Field className="ui-common-input">
                         <GlobalSettingsNetwork
@@ -238,14 +241,14 @@ class WalletSettings extends React.Component {
                     (validate.NODE === 'FAILURE') ? (
                       <Message
                         color="red"
-                        content="Try again or enter a different server."
+                        content={t('w_diff_server_alert')}
                         header="Unable to connect"
                         icon="warning sign"
                       />
                     ) : ''
                   }
                   <div className="seller-input w-img-wrap">
-                    <div className="input-title">Wallet API URL</div>
+                    <div className="input-title">{t('w_walletApi')}</div>
                     <GlobalSettingsNode
                       isDisabled={isDisabled}
                       actions={actions}
@@ -257,7 +260,7 @@ class WalletSettings extends React.Component {
                       className="w-input-img"
                     />
                   </div>
-                  <Button className="delegate-btn" onClick={this.onConnect}>Connect To Server</Button>
+                  <Button className="delegate-btn" onClick={this.onConnect}>{t('w_connectServer')}</Button>
                 </Form>
 
               </div>
@@ -297,4 +300,7 @@ const mapDispatchToProps = (dispatch) => {
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(WalletSettings);
+export default compose(
+  connect(mapStateToProps, mapDispatchToProps),
+  translate('walletSetting')
+)(WalletSettings);

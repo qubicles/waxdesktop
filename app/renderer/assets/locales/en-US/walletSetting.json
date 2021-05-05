@@ -1,0 +1,16 @@
+{
+    "w_setting": "Wallet Settings",
+    "w_blockExplorer": "Default Block Explorer",
+    "w_ipfsNode": "Default IPFS Node",
+    "w_ipfsPort": "IPFS Port",
+    "w_language": "Language",
+    "w_lockWallet": "Lock Wallet Automatically When Inactive",
+    "w_externalSites": "Show Warning When Clicking Links to External Sites",
+    "w_recalc": "Recalculate Voting Weight Prior To Voting",
+    "w_payResources": "Use Wax Desktop Wallet To Pay For Resources",
+    "w_filter": "Filter Out Spam Transters (Hide tx's below 0.005 WAX)",
+    "w_connectNetwork": "Connect To Network",
+    "w_diff_server_alert": "Try again or enter a different server",
+    "w_walletApi": "Wallet API URL",
+    "w_connectServer": "Connect To Server"
+}
